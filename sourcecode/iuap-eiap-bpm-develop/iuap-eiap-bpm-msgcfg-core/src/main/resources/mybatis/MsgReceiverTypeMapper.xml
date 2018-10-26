@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.msgcfg.MsgReceiverTypeMapper">
+
+	<resultMap id="BaseResultMap" type="com.yonyou.iuap.bpm.entity.msgcfg.MsgReceiverTypeVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="receivertypecode" property="receivertypecode" jdbcType="VARCHAR" />
+		<result column="receivertypename" property="receivertypename"
+			jdbcType="VARCHAR" />
+		<result column="receiverref" property="receiverref" jdbcType="VARCHAR" />
+		<result column="userconverter" property="userconverter" jdbcType="VARCHAR" />
+		<result column="inputtype" property="inputtype" jdbcType="VARCHAR" />
+				
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,receivertypecode,receivertypename,receiverref,userconverter,inputtype
+	</sql>
+	
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from iuap_bpm_msgreceivertype
+	</select>
+	
+</mapper>

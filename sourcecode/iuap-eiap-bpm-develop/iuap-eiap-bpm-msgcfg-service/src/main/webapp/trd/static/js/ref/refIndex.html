@@ -1,0 +1,34 @@
+	<link href="/iwebap/css/ref/ref.css" rel="stylesheet">
+	
+	<div id="container" class="ref-main">
+		<div class="pane ui-layout-center">
+			 <div  class="ref-grid-body"></div>
+		</div>
+		<div class="pane ui-layout-north">
+			<div class="input-group">
+			  <span class="input-group-addon">业务单元</span>
+			  <input type="text" class="form-control" placeholder="请选择">
+			</div>
+		</div>
+		<div class="pane ui-layout-south">
+			 <div class="btn-group" style="margin:0 5px 0 10px">
+				    <button  type="button" class="btn btn-sm" id="addbtn"><i class="fa fa-plus"></i>&nbsp;新增</button>
+			 </div>
+		     <div class="checkbox check-success " style="display:inline-block">
+				<input type="checkbox"   id="isIncludeSub" name="isIncludeSub"     data-bind="checked: isIncludeSub, valueUpdate: 'afterkeydown'">
+				<label for="isIncludeSub">包含下级</label>
+			  </div>
+			  <div class="checkbox  check-success" style="display:inline-block">
+				<input type="checkbox"   id="isDisabledDataShow" name="isDisabledDataShow"    data-bind="checked: isDisabledDataShow, valueUpdate: 'afterkeydown'">
+				<label for="isDisabledDataShow">显示停用数据</label>
+			  </div>
+		</div>
+		<div class="pane ui-layout-east">
+		</div>
+		<div class="pane ui-layout-west">
+			 <div class="input-with-icon"> <i class="fa fa-search"></i>
+		        <input type="text" class="form-control" id="treeQuery" name="treeQuery" data-bind="value: treeQuery, valueUpdate: 'afterkeydown'">
+		      </div>
+		  	  <div  class="ztree" id="ref-tree-basic" rootName="bm2"></div>
+		</div>
+	</div>

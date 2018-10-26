@@ -1,0 +1,245 @@
+/**
+ *表格样式：
+ *from:  tsingm
+ */
+
+.main-container {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #FFF;
+}
+.hr-table table {
+    width: 100%;
+    table-layout: fixed;
+}
+.hr-table tr {
+    height: 45px;
+    border: 1px solid #EEEFF1;
+}
+.hr-table tr.daymonth td:last-child {
+    padding-right: 10px;
+    text-align: left;
+}
+.hr-table td, .hr-table th {
+    padding-left: 10px;
+    text-align: left;
+}
+.hr-table th {
+    font-weight: normal;
+}
+.hr-table th.sortable:hover {
+    background: #D7D7D7;
+}
+.hr-table th i {
+    display: none;
+    font-size: 12px;
+    color: #B4B4B4;
+}
+.hr-table th.clicked i {
+    display: inline;
+}
+.hr-table thead {
+    font-size: 14px;
+    background-color: #EEEFF1;
+}
+.hr-table tbody {
+    font-size: 12px;
+}
+.hr-table tbody tr.is-selected, .hr-table tbody tr:hover {
+    background: #E9F7FC;
+}
+.hr-table tbody tr:hover i {
+    display: inline;
+}
+.hr-table tbody tr:hover .check-link {
+    color: #2788CC;
+}
+.hr-table tbody tr:hover .check-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.hr-table tbody td {
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    /* Opera */
+    -webkit-text-overflow: ellipsis;
+    /* Safari and Chrome */
+    -moz-text-overflow: ellipsis;
+    /* Firefox */
+    text-overflow: ellipsis;
+}
+.hr-table tbody td:last-child {
+    padding-right: 10px;
+    text-align: right;
+}
+.hr-table tbody i {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #2788CC;
+    display: none;
+}
+.hr-table tbody i.disable {
+    color: #B4B4B4;
+}
+.hr-table .u-checkbox-focus-helper, .hr-table .u-checkbox-outline {
+    top: -11px;
+}
+
+/**
+* loading样式
+*/
+
+#LoadingImage {
+    border: 1px solid #EAEAEA;
+    border-top: 0;
+    display: none;
+    position: relative;
+    /*width: 100%;
+  text-align: center;*/
+    min-height: 450px;
+}
+#LoadingImage img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -38px;
+    margin-left: -38px;
+}
+#LoadingImage span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 55px;
+    margin-left: -26px;
+    color: #B4B4B4;
+    font-size: 14px;
+}
+#emptyImage {
+    border: 1px solid #EAEAEA;
+    border-top: 0;
+    display: none;
+    position: relative;
+    /*width: 100%;*/
+    /*text-align: center;*/
+    min-height: 450px;
+}
+#emptyImage img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -45px;
+    margin-left: -38px;
+}
+#emptyImage span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 60px;
+    margin-left: -84px;
+    color: #B4B4B4;
+    font-size: 14px;
+}
+
+/**
+ * 按钮及更多下拉
+ * from:tsingm
+ */
+
+.entry-button-more {
+    position: relative;
+    display: inline-block;
+}
+.entry-button-more button {
+    min-width: 100px;
+    height: 34px;
+    font-size: 14px;
+    text-align: left;
+    text-indent: 1em;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 1px;
+    /* Safari and Chrome */
+    -moz-border-radius: 1px;
+    /* Firefox */
+    -o-border-radius: 1px;
+    /* Opera */
+    border-radius: 1px;
+    background: #FFF url("/hrcloud/static/img/background/selectDown.png") no-repeat 95% center;
+}
+.entry-button-more ul {
+    position: absolute;
+    top: 34px;
+    left: 0;
+    min-width: 150px;
+    background-color: #FFF;
+    -moz-box-shadow: 1px 1px 2px 0 #888;
+    /* Firefox */
+    -webkit-box-shadow: 1px 1px 2px 0 #888;
+    /* Safari and Chrome */
+    -o-box-shadow: 1px 1px 2px 0 #888;
+    /* Opera */
+    box-shadow: 1px 1px 2px 0 #888;
+    display: none;
+    z-index: 100;
+}
+.entry-button-more ul li {
+    padding: 5px;
+    text-align: center;
+}
+.entry-button-more ul li:hover {
+    background-color: #E9F7FC;
+    cursor: pointer;
+}
+.entry-button-more ul .btn:focus {
+    background-color: #ffffff;
+}
+-webkit-box-shadow: 1px 1px 2px 0 #888;
+
+/* Safari and Chrome */
+
+-o-box-shadow: 1px 1px 2px 0 #888;
+
+/* Opera */
+
+box-shadow: 1px 1px 2px 0 #888;
+display: none;
+z-index: 100;
+
+}
+.entry-button-more ul li {
+    padding: 5px;
+    text-align: center;
+}
+.entry-button-more ul li:hover {
+    background-color: #E9F7FC;
+    cursor: pointer;
+}
+.entry-button-more ul .btn:focus {
+    background-color: #ffffff;
+}
+-box-shadow: 1px 1px 2px 0 #888;
+
+/* Safari and Chrome */
+-o-box-shadow: 1px 1px 2px 0 #888;
+
+/* Opera */
+box-shadow: 1px 1px 2px 0 #888;
+display: none;
+z-index: 100;
+
+}
+.entry-button-more ul li {
+    padding: 5px;
+    text-align: center;
+}
+.entry-button-more ul li:hover {
+    background-color: #E9F7FC;
+    cursor: pointer;
+}
+.entry-button-more ul .btn:focus {
+    background-color: #ffffff;
+}

@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.eform-cty-hd {
+  	margin: 10px .9% 0;
+  	cursor: auto;
+}
+
+#custom-category .tempCard{
+	margin-left: 0px;
+	border: none;
+}
+
+.temp-copycontrol{
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	margin-top: 5px;
+	width: 120px;
+}
+
+#custom-category .tempCard h4#cate-name{
+	font-size: 20px;
+}
+
+
+
+
+

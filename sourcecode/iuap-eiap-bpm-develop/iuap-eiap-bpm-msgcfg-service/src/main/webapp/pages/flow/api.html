@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>接口列表</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        h2{
+            color: #777;
+        }
+        h3{
+            color: #333;
+        }
+        h5{
+            color: #666;
+            font-size: 17px;
+            line-height: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+<h1>接口列表</h1>
+
+<ul>
+    <li>
+        <h2>1.查询消息配置列表</h2>
+        <h3>  param: proc_module_id(活动id),act_id</h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            {
+            id;1,
+            enable:true, //是否启用当前消息配置项
+            name:"张三入职申请通知"
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>2.查询触发事件类型</h2>
+        <h3>  param:
+            proc_module_id(活动id),  <br>
+            act_id(活动id),  <br>
+            buzientity_id(业务实体id),  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            {
+            id;1,
+            eventcode :"assda",
+            eventname :"通知"
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>3.查询触发条件 <br> 三层下拉选择，先选字段，再选操作符，选定对比参照值</h2>
+        <h3>  param:
+            proc_module_id(活动id),  <br>
+            act_id(活动id),  <br>
+            buzientity_id(业务实体id),  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            {
+            id;1,
+            code:"assda",
+            name:"金额"，
+            operator:[
+            {code:">",name:"大于"}
+            {code:"<",name:"大于"}
+            {code:"=",name:"大于"}
+            ],
+            options:{
+            type:"input",
+            data:[]
+            }
+            options:{
+            type:"select",
+            data:[{value:'123'},{value:'223'},{value:'323'}]
+            }
+            options:{
+            type:"ref",
+            data:[url:" "]
+            }
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>4.查询接收者类型</h2>
+        <h3>  param:
+            proc_module_id(活动id),  <br>
+            act_id(活动id),  <br>
+            buzientity_id(业务实体id),  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            {
+            id;1,
+            code:"assda",
+            name:"通知",
+            refurl:"",
+
+            }
+            {
+            id;1,
+            code:"email",
+            name:"通知",
+            refurl:"",//邮箱时手输
+
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>5.查询消息模板 参照（左树由表）</h2>
+        <h3>  param:
+            refCode,  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>6.查询消息通道:</h2>
+        <h3>  param:
+            proc_module_id(活动id),  <br>
+            act_id(活动id),  <br>
+            buzientity_id(业务实体id) ,  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+                {
+                  code:"",
+                value:""
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>7.保存消息配置接口</h2>
+        <h3>  param:    <br>
+
+            {
+            proc_module_id(活动id),
+            act_id,
+            buzientity_id(业务实体id),
+            id:"",
+             name:"",
+             enable:true,
+             eventcode :"tongzhi",
+            triggercondition :[
+            { filed:"",operator:"",value:""},
+            { filed:"",operator:"",value:""}
+            ],
+            receivertype: [
+            {
+            receivertypecode:"",
+            receiver  :"",
+            }],
+            msgtemplateid:"",
+            commway:""//消息通道code
+
+            }
+
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            {
+            id;1,
+            enable:true, //是否启用当前消息配置项
+            name:"张三入职申请通知"
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>8.根据id查询消息配置:（编辑的时候请求数据渲染form表单）</h2>
+        <h3>  param:
+            proc_module_id(活动id),  <br>
+            act_id(活动id),  <br>
+            buzientity_id(业务实体id) ,  <br>
+            id(消息配置id) ,  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            {
+            id:"",
+            name:"",
+            enable:true,
+            eventcode :"tongzhi",
+            triggercondition :[
+            { filed:"",operator:"",value:""},
+            { filed:"",operator:"",value:""}
+            ],
+            receivertype: [
+            {
+            receivertypecode:"",
+            receiver  :"",
+            }],
+            msgtemplateid:"",
+            commway:""//消息通道code
+            }
+            ],
+            msg:"suc"
+            }
+        </h5>
+    </li>
+    <li>
+        <h2>8.根据id删除消息配置:</h2>
+        <h3>  param:
+            proc_module_id(活动id),  <br>
+            act_id(活动id),  <br>
+            buzientity_id(业务实体id) ,  <br>
+            id(消息配置id) ,  <br>
+        </h3>
+        <h5>
+            res:{
+            status:1,
+            data:[
+            ],
+            msg:"del suc"
+            }
+        </h5>
+    </li>
+</ul>
+
+
+
+</body>
+</html>

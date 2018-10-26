@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.msgcfg.ConditionOperatorMapper">
+
+	<resultMap id="BaseResultMap" type="com.yonyou.iuap.bpm.entity.msgcfg.ConditionOperatorVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="conditontype_id" property="conditontype_id" jdbcType="VARCHAR" />
+		<result column="operatecode" property="operatecode" jdbcType="VARCHAR" />
+		<result column="operatename" property="operatename" jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="baseColumnList">
+	c.id,c.conditontype_id,c.operatecode,c.operatename
+    </sql>
+	<select id="getByMsgCfgId" resultMap="BaseResultMap" parameterType="java.lang.String">
+	SELECT
+	 <include refid="baseColumnList"/>
+	FROM
+	iuap_bpm_condoperator c
+	LEFT JOIN iuap_bpm_conditontype t ON c.conditontype_id = t.id
+	JOIN eiap_bpm_buzientityfield bfield ON bfield.fieldtype = t. CODE
+	JOIN eiap_bpm_buzimodel bmodel ON bfield.buzientity_id =
+	bmodel.buzientity_id
+	JOIN eiap_bpm_info binfo ON bmodel.id = binfo.biz_model_ref_id
+	JOIN iuap_bpm_msgcfg bmsg ON bmsg.proc_module_id = binfo.proc_module_id
+	WHERE
+	bmsg.id = #{msgcfgId}
+	</select>
+</mapper>

@@ -1,0 +1,49 @@
+<div class="process-page">
+    <div class="title-header">
+            <div class="pap-title">
+                    <button class="u-button backbutton" data-bind="click: deBack">
+                        <i class="fa fa-angle-left"></i> 返回
+                        <span class="u-button-container">
+                            <span class="u-ripple"></span>
+                        </span>
+                    </button>
+                    <h1>发布历史</h1>
+                </div>
+    </div>
+
+    <div class="deploy-page">
+        <div class="main-container">
+            <div class="hr-table">
+                <table class="deploy-table">
+                    <thead class="thead">
+                    <tr>
+                        <th width="30%">部署名称</th>
+                        <th width="20%">部署时间</th>
+                        <th width="30%">流程定义ID</th>
+                        <th width="20%">版本</th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach:{data:deployData.rows(), as: 'row'}">
+                    <tr>
+                        <td data-bind="text: row.ref('name')"></td>
+                        <td data-bind="text: u.dateRender(row.ref('deploymentResponse.deploymentTime'),'YYYY-MM-DD HH:mm:ss')"></td>
+                        <td data-bind="text: row.ref('id')"></td>
+                        <td data-bind="text: row.ref('version')"></td>
+                    </tr>
+                    </tbody>
+                </table>
+               <!--  <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                    <div id='deploypagination' class='u-pagination'></div>
+                </div> -->
+                <div id="LoadingImage">
+                    <img src="./static/images/loading.gif" />
+                    <span>请稍后...</span>
+                </div>
+                <div id="emptyImage" data-bind="visible:deployData.rows().length<1">
+                    <img src="./static/images/empty.png" />
+                    <span>没有查询到符合条件的记录</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

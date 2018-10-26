@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	<groupId>com.yonyou.iuap.pap.bpm</groupId>
+		<artifactId>iuap-eiap-bpm-parent</artifactId>
+		<version>3.5.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>iuap-eiap-bpm-core</artifactId>
+
+	<name>iuap-eiap-bpm-core</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>iuap-eiap-bpm-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>ubpm-rest-sdk</artifactId>
+			<version>${ubpm-rest-sdk.version}</version>
+			<exclusions>
+			    <exclusion>
+			        <groupId>commons-io</groupId>
+  					<artifactId>commons-io</artifactId>
+			    </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-cache</artifactId>
+			<version>${iuap.modules.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-generic</artifactId>
+			<version>${iuap.modules.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>iuap-auth</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-auth</artifactId>
+			<version>3.1.1-RC001</version>
+			<exclusions>
+			    <exclusion>
+			        <groupId>commons-io</groupId>
+  					<artifactId>commons-io</artifactId>
+			    </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-mybatis</artifactId>
+			<version>${iuap-mybatis}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjweaver.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- jdbc driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${oracle.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-message-sdk</artifactId>
+			<version>${iuap-message-sdk.version}</version>
+		</dependency>
+
+		<!-- ui模板参照 -->
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>uitemplate_ref</artifactId>
+			<version>${iuap-uitemplate-ref.version}</version>
+			<classifier>classes</classifier>
+		</dependency>
+
+		<!-- ui模板运行时 -->
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>uitemplate_rt</artifactId>
+			<version>${iuap-uitemplate-rt.version}</version>
+			<classifier>classes</classifier>
+		</dependency>
+	</dependencies>
+	<build>
+	<pluginManagement>
+	<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<configuration>
+					<target name="copylicense">
+						<copy todir="${project.build.directory}/classes/META-INF"
+							file="license.txt"></copy>
+					</target>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+
+	</build>
+</project>

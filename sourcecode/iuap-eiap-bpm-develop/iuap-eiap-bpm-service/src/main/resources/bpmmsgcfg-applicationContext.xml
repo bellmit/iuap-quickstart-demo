@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!--context:property-placeholder location="classpath:application.properties" 
+		/ -->
+
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/dispatch_dbinfo.properties</value>
+			</list>
+		</property>
+		<property name="systemPropertiesMode"
+			value="#{T(org.springframework.beans.factory.config.PropertyPlaceholderConfigurer).SYSTEM_PROPERTIES_MODE_OVERRIDE}" />
+	</bean>
+
+	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+	<!-- <context:component-scan base-package="com.yonyou.iuap.dispatch.server,com.yonyou.iuap.user" 
+		/> -->
+
+	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+	<context:component-scan
+		base-package="com.yonyou.iuap.dispatch.server,com.yonyou.iuap.user.service,iuap.ref" />
+
+	<bean id="userInfoService" class="${userInfoService.ClassName}"></bean>
+	<!-- 参照 start -->
+
+	<bean id="referRestTemplate" class="iuap.ref.environment.ReferRestTemplate">
+		<constructor-arg ref="clientHttpRequestFactory" />
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"
+		factory-method="create">
+		<property name="connectionManager" ref="pollingConnectionManager" />
+		<!-- 开启重试 -->
+		<property name="retryHandler">
+			<bean class="org.apache.http.impl.client.DefaultHttpRequestRetryHandler">
+				<constructor-arg value="2" />
+				<constructor-arg value="true" />
+			</bean>
+		</property>
+		<property name="defaultHeaders">
+			<list>
+				<bean class="org.apache.http.message.BasicHeader">
+					<constructor-arg value="User-Agent" />
+					<constructor-arg
+						value="Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.16 Safari/537.36" />
+				</bean>
+				<bean class="org.apache.http.message.BasicHeader">
+					<constructor-arg value="Accept-Encoding" />
+					<constructor-arg value="gzip,deflate" />
+				</bean>
+				<bean class="org.apache.http.message.BasicHeader">
+					<constructor-arg value="Accept-Language" />
+					<constructor-arg value="zh-CN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="httpClient" factory-bean="httpClientBuilder"
+		factory-method="build" />
+
+	<bean id="clientHttpRequestFactory"
+		class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+		<constructor-arg ref="httpClient" />
+		<!-- 连接超时时间，毫秒 -->
+		<property name="connectTimeout" value="5000" />
+		<!-- 读写超时时间，毫秒 -->
+		<property name="readTimeout" value="10000" />
+	</bean>
+	<!-- 使用httpclient的实现，带连接池 -->
+	<bean id="pollingConnectionManager"
+		class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager">
+		<!-- 整个连接池的并发 -->
+		<property name="maxTotal" value="1000" />
+		<!-- 每个主机的并发 -->
+		<property name="defaultMaxPerRoute" value="1000" />
+	</bean>
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="jdbcDataSource" />
+		<property name="mapperLocations">
+			<array>
+				<value>classpath:/mybatis/**/*Dao.xml</value>
+				<value>classpath:/mybatis/**/*Mapper.xml</value>
+				<value>classpath:iuap/*/mappers/*Mapper.xml</value>
+			</array>
+		</property>
+		<property name="typeAliasesPackage"
+			value="iuap.uitemplate,com.yonyou.metadata.spi,com.yonyou.metadata.mybatis.util.publish.model" />
+	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="jdbcDataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="defaultCatalog" value="${jdbc.catalog}" />
+		<!-- Connection Pooling Info -->
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="${jdbc.initialSize}"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="${jdbc.maxActive}"></property>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}"></property>
+
+		<property name="defaultAutoCommit" value="true" />
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.pool.minEvictableIdleTimeMillis}" />
+		<property name="removeAbandoned" value="${jdbc.pool.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${jdbc.pool.removeAbandonedTimeout}" />
+	</bean>
+
+
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="dispatchSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="jdbcDataSource" />
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations" value="classpath:mybatis/*Mapper.xml"></property>
+	</bean>
+
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.yonyou.iuap.dao,iuap.ref.*" />
+		<property name="sqlSessionFactoryBeanName" value="dispatchSqlSessionFactory"></property>
+	</bean>
+
+
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="jdbcDataSource" />
+
+	<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="serviceMethod"
+			expression=" execution(* com.yonyou.iuap.dispatch..*(..))" />
+		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<bean class="com.yonyou.iuap.dispatch.common.SpringContextUtil"></bean>
+
+	<context:annotation-config />
+	<context:property-placeholder location="classpath:quartz.properties" />
+	<bean name="dispatchSchedulerFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="autoStartup" value="true" />
+		<property name="dataSource" ref="jdbcDataSource" />
+		<property name="configLocation" value="classpath:quartz.properties" />
+		<property name="schedulerName" value="DefaultQuartzScheduler" /><!-- 
+			集群编码 -->
+	</bean>
+
+
+
+
+
+
+</beans>

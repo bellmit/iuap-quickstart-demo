@@ -1,0 +1,65 @@
+/*Emoji css*/
+.emoji-png{
+	width: 25px;
+	vertical-align: middle;
+	border: 0 none;
+}
+
+.emoji-menu {
+	position: absolute;
+	z-index: 9999;
+	width: 380px;
+	background: #fff;
+	height: 240px;
+	margin-left: -100px;
+	border:1px solid #d5d5d5;
+	border-radius:3px;
+	-webkit-box-shadow:0 0 15px rgba(0,0,0,0.125);
+		-ms-box-shadow:0 0 15px rgba(0,0,0,0.125);
+			box-shadow:0 0 15px rgba(0,0,0,0.125);
+}
+.emoji-menu>div{
+	height:210px;
+	margin:15px;
+}
+.emoji-menu img {
+	width: 25px;
+	vertical-align: middle;
+	border: 0 none;
+}
+.emoji-menu a {
+	border-top: 1px solid #f2f2f2;
+	border-left: 1px solid #f2f2f2;
+	padding: 5px;
+	display: block;
+	float: left;
+}
+.emoji-menu a:hover {
+	background-color: #fffae7;
+}
+.emoji-menu:after {
+	content: ' ';
+	display: block;
+	clear: left;
+}
+.emoji-menu a .label {
+	display: none;
+}
+.emoji-menu:after {
+    content: "";
+    position: absolute;
+    height: 9px;
+    width: 10px;
+    border: 1px solid #ddd;
+    border-width: 0 1px 1px 0;
+    background: #fff;
+    bottom: -9px;
+    left:50%;
+    -webkit-box-shadow: 10px 9px 15px rgba(0,0,0,.125);
+        -ms-box-shadow: 10px 9px 15px rgba(0,0,0,.125);
+            box-shadow: 10px 9px 15px rgba(0,0,0,.125);
+     -webkit-transform: rotate(45deg) translateX(-50%);
+         -ms-transform: rotate(45deg) translateX(-50%);
+        -moz-transform: rotate(45deg) translateX(-50%);
+          -o-transform: rotate(45deg) translateX(-50%);   
+}

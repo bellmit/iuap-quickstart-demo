@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.buzi.BuziEntityMapper">
+
+	<resultMap id="baseResultMap"
+		type="com.yonyou.iuap.bpm.entity.buzi.BuziEntityVO">
+		
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		
+		<result column="model_id" property="model_id" jdbcType="VARCHAR" />
+		<result column="formcode" property="formcode" jdbcType="VARCHAR" />
+		<result column="formname" property="formname" jdbcType="VARCHAR" />
+		<result column="formdiscription" property="formdiscription" jdbcType="VARCHAR" />
+		<result column="formurl" property="formurl" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<resultMap id="childResultMap"
+		type="com.yonyou.iuap.bpm.entity.buzi.BuziEntityVO">
+		
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		
+		<result column="model_id" property="model_id" jdbcType="VARCHAR" />
+		<result column="formcode" property="formcode" jdbcType="VARCHAR" />
+		<result column="formname" property="formname" jdbcType="VARCHAR" />
+		<result column="formdiscription" property="formdiscription" jdbcType="VARCHAR" />
+		<result column="formurl" property="formurl" jdbcType="VARCHAR" />
+		
+		<collection property="fields" column="buzientity_id"
+			ofType="com.yonyou.iuap.bpm.entity.buzi.BuziEntityFieldVO">
+			
+			<id column="field_id" property="id" jdbcType="VARCHAR" />
+			
+			<result column="buzientity_id" property="buzientity_id" jdbcType="VARCHAR" />
+			<result column="model_id" property="model_id" jdbcType="VARCHAR" />
+			<result column="fieldcode" property="fieldcode" jdbcType="VARCHAR" />
+			<result column="fieldname" property="fieldname" jdbcType="VARCHAR" />
+			<result column="fieldtype" property="fieldtype" jdbcType="VARCHAR" />
+			<result column="typeoptions" property="typeoptions" jdbcType="VARCHAR" />
+			<result column="defaultvalue" property="defaultvalue" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+	
+	<sql id="baseTable">
+		iuap_bpm_buzientity
+	</sql>
+	
+	<sql id="childTable">
+		iuap_bpm_buzientityfield
+	</sql>
+	
+	<sql id="baseColumnList">
+		id, model_id, formcode, formname, formdiscription, formurl
+	</sql>
+	
+	<sql id="oneToManyColumnList">
+		e.id, e.model_id, e.formcode, e.formname, e.formdiscription, e.formurl,
+		f.id as field_id, 
+		f.buzientity_id, f.model_id, f.fieldcode, f.fieldname, f.fieldtype, f.typeoptions, f.defaultvalue
+    </sql>
+    
+    <!-- 根据表单主表主键查询，关联表查询，查询除所有表单字段 -->
+    <select id="getEntityAndFieldsByEntityId" parameterType="java.lang.String" resultMap="childResultMap">
+		SELECT 	
+			<include refid="oneToManyColumnList" />
+		FROM
+			<include refid="baseTable"/> e
+		LEFT OUTER JOIN 
+			<include refid="childTable"/> f
+		ON 
+			e.id = f.buzientity_id
+		<where>
+			e.id = #{entityId,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据表单编码查询记录 -->
+	<select id="getByFormCode" parameterType="String" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			formcode = #{formCode,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.buzi.BuziEntityVO">
+		insert into iuap_bpm_buzientity(id,
+		model_id,formcode,formname,formdiscription,formurl) values (#{id,jdbcType=VARCHAR},
+		#{model_id,jdbcType=VARCHAR},#{formcode,jdbcType=VARCHAR},#{formname,jdbcType=VARCHAR},#{formdiscription,jdbcType=VARCHAR},#{formurl,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="findAll" parameterType="java.lang.String" resultMap="baseResultMap">
+		select * from iuap_bpm_buzientity where 1=1
+		<!-- <if test="name != null and !&quot;&quot;.equals(name.trim())"> -->
+		<!-- and formname=#{name} -->
+		<!-- </if> -->
+	</select>
+	
+	<update id="update" parameterType="com.yonyou.iuap.bpm.entity.buzi.BuziEntityVO">
+		update iuap_bpm_buzientity set
+		model_id=#{model_id,jdbcType=VARCHAR},
+		formcode=#{formcode,jdbcType=VARCHAR},formname=#{formname,jdbcType=VARCHAR},formdiscription=#{formdiscription,jdbcType=VARCHAR},formurl=#{formurl,jdbcType=VARCHAR}
+		where id=#{id,jdbcType=VARCHAR}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String"
+		statementType="PREPARED">
+		delete from iuap_bpm_buzientity
+		<where>
+			id=#{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+</mapper>

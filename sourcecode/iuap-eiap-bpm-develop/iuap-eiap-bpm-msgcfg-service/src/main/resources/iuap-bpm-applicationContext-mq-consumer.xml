@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/rabbit
+	http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd">
+
+	<!-- 连接服务配置 -->
+	<rabbit:connection-factory id="connectionFactory"
+		addresses="${mq.address}" username="${mq.username}" password="${mq.password}" />
+
+
+	<bean id="mnsAccount" class="com.aliyun.mns.client.CloudAccount">
+		<constructor-arg index="0">
+			<value>${mns.accesskeyid}</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>${mns.accesskeysecret}</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>${mns.accountendpoint}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="mqService" class="com.yonyou.iuap.mq.mns.AliyunMnsService">
+		<property name="mnsAccount" ref="mnsAccount"></property>
+	</bean>
+
+	<bean id="simpleListener" class="com.yonyou.iuap.bpm.runtime.msgcfg.MqMnsListener">
+		<constructor-arg index="0">
+			<value>iuap-yunshen-queue-application</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="mnsAccount" />
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>5</value>
+		</constructor-arg>
+	</bean>
+
+
+</beans>

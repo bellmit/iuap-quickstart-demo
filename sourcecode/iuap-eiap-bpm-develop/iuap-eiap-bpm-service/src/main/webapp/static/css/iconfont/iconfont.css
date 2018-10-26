@@ -1,0 +1,312 @@
+
+@font-face {font-family: "hrfont";
+  src: url('iconfont.eot?t=1478766739656'); /* IE9*/
+  src: url('iconfont.eot?t=1478766739656#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1478766739656') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1478766739656') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1478766739656#hrfont') format('svg'); /* iOS 4.1- */
+}
+
+.hrfont {
+  font-family:"hrfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hr-gear:before { content: "\e600"; }
+
+.hr-error:before { content: "\e601"; }
+
+.hr-reverse:before { content: "\e602"; }
+
+.hr-phone:before { content: "\e603"; }
+
+.hr-power-supply:before { content: "\e604"; }
+
+.hr-check-mark:before { content: "\e605"; }
+
+.hr-house:before { content: "\e606"; }
+
+.hr-magnifier:before { content: "\e607"; }
+
+.hr-magnifier02:before { content: "\e608"; }
+
+.hr-share:before { content: "\e609"; }
+
+.hr-pen:before { content: "\e60a"; }
+
+.hr-close:before { content: "\e60b"; }
+
+.hr-close02:before { content: "\e60c"; }
+
+.hr-plus:before { content: "\e60d"; }
+
+.hr-plus02:before { content: "\e60e"; }
+
+.hr-minus:before { content: "\e60f"; }
+
+.hr-switch:before { content: "\e610"; }
+
+.hr-dustbin:before { content: "\e611"; }
+
+.hr-pencil:before { content: "\e612"; }
+
+.hr-calendar:before { content: "\e613"; }
+
+.hr-okey:before { content: "\e615"; }
+
+.hr-drop-down:before { content: "\e616"; }
+
+.hr-smile:before { content: "\e617"; }
+
+.hr-information-group:before { content: "\e618"; }
+
+.hr-star:before { content: "\e619"; }
+
+.hr-right:before { content: "\e61a"; }
+
+.hr-hourglass:before { content: "\e61b"; }
+
+.hr-book:before { content: "\e61d"; }
+
+.hr-refresh:before { content: "\e61e"; }
+
+.hr-star02:before { content: "\e61f"; }
+
+.hr-star-flag:before { content: "\e620"; }
+
+.hr-computer:before { content: "\e621"; }
+
+.hr-user-group:before { content: "\e622"; }
+
+.hr-right02:before { content: "\e623"; }
+
+.hr-function:before { content: "\e624"; }
+
+.hr-broken-arrow:before { content: "\e625"; }
+
+.hr-order:before { content: "\e626"; }
+
+.hr-clock:before { content: "\e627"; }
+
+.hr-leave-things:before { content: "\e628"; }
+
+.hr-T:before { content: "\e629"; }
+
+.hr-organization:before { content: "\e62a"; }
+
+.hr-reference:before { content: "\e62b"; }
+
+.hr-print:before { content: "\e62c"; }
+
+.hr-import:before { content: "\e62e"; }
+
+.hr-open:before { content: "\e62f"; }
+
+.hr-bubble:before { content: "\e630"; }
+
+.hr-briefcase:before { content: "\e632"; }
+
+.hr-close03:before { content: "\e633"; }
+
+.hr-list:before { content: "\e634"; }
+
+.hr-down:before { content: "\e635"; }
+
+.hr-medal:before { content: "\e636"; }
+
+.hr-jiesuo:before { content: "\e637"; }
+
+.hr-company:before { content: "\e63a"; }
+
+.hr-exclamation:before { content: "\e63b"; }
+
+.hr-stretching:before { content: "\e63c"; }
+
+.hr-dash:before { content: "\e63d"; }
+
+.hr-service:before { content: "\e63e"; }
+
+.hr-calendar02:before { content: "\e63f"; }
+
+.hr-date-setting:before { content: "\e640"; }
+
+.hr-stop:before { content: "\e641"; }
+
+.hr-ellipsis02:before { content: "\e642"; }
+
+.hr-video:before { content: "\e643"; }
+
+.hr-phone02:before { content: "\e644"; }
+
+.hr-phone03:before { content: "\e645"; }
+
+.hr-double-arrow:before { content: "\e646"; }
+
+.hr-disable:before { content: "\e647"; }
+
+.hr-chart:before { content: "\e648"; }
+
+.hr-atlas:before { content: "\e649"; }
+
+.hr-complete:before { content: "\e64a"; }
+
+.hr-relevant:before { content: "\e64b"; }
+
+.hr-relevant1:before { content: "\e64c"; }
+
+.hr-information:before { content: "\e64d"; }
+
+.hr-business-unit:before { content: "\e64e"; }
+
+.hr-front-quote:before { content: "\e64f"; }
+
+.hr-right021:before { content: "\e650"; }
+
+.hr-voice:before { content: "\e651"; }
+
+.hr-cloud-download:before { content: "\e652"; }
+
+.hr-forward02:before { content: "\e653"; }
+
+.hr-forward:before { content: "\e654"; }
+
+.hr-organizational-structure:before { content: "\e655"; }
+
+.hr-organization-structure:before { content: "\e656"; }
+
+.hr-pad:before { content: "\e657"; }
+
+.hr-release:before { content: "\e658"; }
+
+.hr-recovery:before { content: "\e659"; }
+
+.hr-remind:before { content: "\e65a"; }
+
+.hr-identity:before { content: "\e65b"; }
+
+.hr-suspend:before { content: "\e65c"; }
+
+.hr-scheduling-definition:before { content: "\e65d"; }
+
+.hr-place:before { content: "\e65e"; }
+
+.hr-subject-contract:before { content: "\e65f"; }
+
+.hr-back-quote:before { content: "\e660"; }
+
+.hr-holiday-definition:before { content: "\e661"; }
+
+.hr-attendance-site:before { content: "\e662"; }
+
+.hr-turnover-management:before { content: "\e663"; }
+
+.hr-entry-management:before { content: "\e664"; }
+
+.hr-employee-entry:before { content: "\e666"; }
+
+.hr-grade:before { content: "\e667"; }
+
+.hr-rank:before { content: "\e668"; }
+
+.hr-rank-atlas:before { content: "\e669"; }
+
+.hr-position-system:before { content: "\e66a"; }
+
+.hr-back-quote1:before { content: "\e66b"; }
+
+.hr-duty-system:before { content: "\e66c"; }
+
+.hr-noshow:before { content: "\e66d"; }
+
+.hr-shared-services:before { content: "\e66e"; }
+
+.hr-attendance-record:before { content: "\e66f"; }
+
+.hr-attendance-daily:before { content: "\e670"; }
+
+.hr-attendance-monthly:before { content: "\e671"; }
+
+.hr-entry-formalities:before { content: "\e672"; }
+
+.hr-system-settings:before { content: "\e673"; }
+
+.hr-Employee-leave:before { content: "\e674"; }
+
+.hr-employee-leave:before { content: "\e675"; }
+
+.hr-post-state:before { content: "\e676"; }
+
+.hr-preview:before { content: "\e677"; }
+
+.hr-fill-attendance:before { content: "\e62d"; }
+
+.hr-department-work-handover:before { content: "\e638"; }
+
+.hr-service1:before { content: "\e678"; }
+
+.hr-close04:before { content: "\e679"; }
+
+.hr-turnover-list:before { content: "\e67a"; }
+
+.hr-leave:before { content: "\e67b"; }
+
+.hr-upload:before { content: "\e67c"; }
+
+.hr-social-security-inquiry:before { content: "\e67d"; }
+
+.hr-field-personnel:before { content: "\e67e"; }
+
+.hr-started:before { content: "\e67f"; }
+
+.hr-approval:before { content: "\e680"; }
+
+.hr-camera:before { content: "\e681"; }
+
+.hr-employee-turnover:before { content: "\e682"; }
+
+.hr-drop-down02:before { content: "\e639"; }
+
+.hr-disposition-turnover:before { content: "\e683"; }
+
+.hr-color:before { content: "\e684"; }
+
+.hr-star021:before { content: "\e685"; }
+
+.hr-system-message:before { content: "\e686"; }
+
+.hr-head:before { content: "\e614"; }
+
+.hr-design:before { content: "\e631"; }
+
+.hr-ellipsis:before { content: "\e61c"; }
+
+.hr-employee-turnover1:before { content: "\e665"; }
+
+.hr-doubt:before { content: "\e688"; }
+
+.hr-back:before { content: "\e687"; }
+
+.hr-process-history:before { content: "\e689"; }
+
+.hr-time-setting:before { content: "\e68a"; }
+
+.hr-save:before { content: "\e68b"; }
+
+.hr-edit:before { content: "\e68c"; }
+
+.hr-page-backward:before { content: "\e68d"; }
+
+.hr-page-forward:before { content: "\e68e"; }
+
+.hr-cancel:before { content: "\e68f"; }
+
+.hr-reporting-relationship:before { content: "\e690"; }
+
+.hr-remind2:before { content: "\e711"; }
+
+.hr-arrow:before { content: "\e713"; }
+

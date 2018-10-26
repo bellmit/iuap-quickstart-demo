@@ -1,0 +1,9 @@
+#mainContainer {
+	top: 0;
+}
+.eform-right-wrapper .eform-slider{
+	background-position: -120px -192px;
+}
+.eform-right-wrapper .eform-slider:hover {
+	background-position: -160px -192px;
+}

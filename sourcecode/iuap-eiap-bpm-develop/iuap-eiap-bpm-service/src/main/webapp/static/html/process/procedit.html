@@ -1,0 +1,98 @@
+<div class="process-page">
+        <div>
+                <div class="pap-title">
+                        <button class="u-button backbutton" data-bind="click: back">
+                            <i class="fa fa-angle-left"></i> 返回
+                            <span class="u-button-container">
+                                <span class="u-ripple"></span>
+                            </span>
+                        </button>
+                        <h1>流程模型设置</h1>
+                        <button type="button" style="float: right;" class="btn blue-button" data-bind="click: editSave">
+                                <span data-bind="text: editFlag.button"></span>
+                            </button>
+                    </div>
+        </div>
+    
+
+    <div class="edit-page">
+        <form class="common-form">
+            <div class="form-row-hide">
+                <input type="hidden" u-meta='{"id":"id","type":"string","data":"formData","field":"id"}' placeholder="" />
+            </div>
+            <div class="form-row">
+                <span class="form-col-odd">名称</span>
+                <input class="form-col-even must-icon" u-meta='{"id":"procName","type":"string","data":"formData","field":"procName"}' data-bind="visible: editFlag.flag()" placeholder="*"/>
+                <span class="form-col-even" data-bind="visible: !editFlag.flag(),text: formData.ref('procName')"></span>
+            </div>
+            <!--<div class="form-row" data-bind="visible: !newEditFlag2.flag()">-->
+            	<!--<span class="form-col-odd">模型</span>-->
+	            <!--<div class="u-input-group u-has-feedback" style="width: 27%;" u-meta='{"type":"uiRefer", "data":"procmodal", "field":"dataSourceId"}' data-bind="visible: editFlag.flag()">-->
+	               	<!--<input type="text" class="u-form-control must-icon" u-meta='{"id":"bizModelRefId","type":"string","data":"formData","field":"bizModelRefId"}' placeholder="*">-->
+					<!--<span class="u-form-control-feedback uf uf-listwithdots refer"></span>-->
+				<!--</div>-->
+				<!--<span class="form-col-even" data-bind="visible: !editFlag.flag(),text: formData.ref('bizModelRefName')"></span>-->
+            <!--</div>-->
+<!--             <div class="form-row" data-bind="visible: newEditFlag.flag()">
+                <span class="form-col-odd">分组</span>
+                <div class="u-input-group u-has-feedback" style="width: 27%;" u-meta='{"type":"uiRefer", "data":"catagorymodal", "field":"dataSourceId"}' data-bind="visible: editFlag.flag()">
+	               	<input type="text" class="u-form-control must-icon" u-meta='{"id":"categoryName","type":"string","data":"formData","field":"categoryName"}'>
+					<span class="u-form-control-feedback uf uf-listwithdots refer"></span>
+				</div>
+                <span class="form-col-even" data-bind="visible: !editFlag.flag(),text: formData.ref('categoryName')"></span>
+            </div> -->
+            <div class="form-row" data-bind="visible: newEditFlag.flag()">
+                <span class="form-col-odd">分组</span>
+                <div class="u-input-group u-has-feedback" style="width: 27%;" data-role="categoryNameRef" data-bind="visible: editFlag.flag()">
+	               	<input type="text" class="u-form-control must-icon" u-meta='{"id":"categoryName","type":"string","data":"formData","field":"categoryName"}'>
+					<span class="u-form-control-feedback uf uf-listwithdots refer"></span>
+				</div>
+                <span class="form-col-even" data-bind="visible: !editFlag.flag(),text: formData.ref('categoryName')"></span>
+            </div>
+            <div class="form-row-textarea">
+                <span class="form-col-odd">描述</span>
+                <textarea class="form-textarea" placeholder="请输入不超过250个字符！" row="3" u-meta='{"id":"description","type":"textarea","data":"formData","field":"description"}' data-bind="visible: editFlag.flag()" maxlength="255"></textarea>
+                <span class="form-textarea"  data-bind="visible: !editFlag.flag(),text: formData.ref('description')"></span>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- 分组参照弹出框 -->
+<div class="modal fade" id="cataModal" tabindex="-1" role="dialog" aria-hidden="true" style="overflow-y:hidden;">
+        <div class="modal-dialog">
+             <div class="modal-content" style="height: 100%;">
+                 <div class="modal-header" style="padding: 10px;margin: 0px 15px;">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                         &times;
+                     </button>
+                     <h4 class="modal-title" id="myModalLabel" style="font-weight: bold;">分组列表</h4>
+                 </div>
+                 <div class="modal-body" style="min-height: 350px;height: 75%;">
+				<div class="u-container-fluid u-widget-bg heightcss" style="padding:0px;">
+				    <div class="u-row heightcss" style="width: 100%;margin: 0px;">
+				        <div class="u-col-md-12 heightcss">
+						    <div class="u-row" style="height: 90%;">
+						        <div class="u-col-12 heightcss" style="padding:0px;">
+						            <div class="u-widget  u-widget-right heightcss" style="margin: 0px;width: 100%;min-height: 400px;">
+										<div class="u-widget-heading grid-header" style="padding-top: 10px;padding-bottom: 25px;">
+											<div class="u-input-group u-has-feedback u-left" style="width: 100%;">
+											    <input type=text class="u-form-control catasearchinput" data-role="catasearchinput" placeholder="请输入分组名称">
+											    <span data-role="catasearchspan" class="u-form-control-feedback uf uf-search"></span>
+											</div>
+						                </div>
+						                <div class="u-widget-body pagination-center">
+											<div id="cataGrid" u-meta='{"id":"catagrid","type":"grid","data":"catadata","columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"editable":false,"editType":"default"}'>
+												<div options='{"field":"id","dataType":"String","title":"id","editType":"string","visible":"false"}'></div>
+												<div options='{"field":"name","width":"80%","dataType":"String","title":"分组名称","editType":"string"}'></div>
+											</div>
+						                </div>
+						            </div>
+				               </div>
+				          	</div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+        </div>
+     </div>
+</div>

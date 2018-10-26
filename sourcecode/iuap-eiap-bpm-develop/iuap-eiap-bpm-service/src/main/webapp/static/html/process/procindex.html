@@ -1,0 +1,74 @@
+<div class="process">
+    <div class="list-panel">
+        <div>
+				<div class="pap-title">
+						<button class="u-button backbutton" onclick="window.history.go(-1)">
+							<i class="fa fa-angle-left"></i> 返回
+							<span class="u-button-container">
+								<span class="u-ripple"></span>
+							</span>
+						</button>
+						<h1>流程模型</h1>
+					</div>
+        </div>
+        <div class="common-header">
+				<button type="button" class="btn blue-button" data-bind="click:addgroup">新建分组</button>
+            <button type="button" class="btn blue-button" data-bind="click:add">新增流程</button>
+            
+        </div>
+
+        <div class="main-container">
+            <div class="hr-table" id="ctxBody">
+                <div class='pltree'>
+                    <div id="demoLeft"  >
+                        <div id="treeTest"   class="ztree"
+                             u-meta='{"id":"tree","data":"treedt","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+                    </div>
+                </div>
+                <div class="tablecontainer">
+	                <table>
+	                    <thead>
+	                        <tr>
+	                            <th width="30%">流程名称</th>
+	                            <th width="10%">版本</th>
+	                            <th width="15%">创建时间</th>
+	                            <th width="15%">最后修改时间</th>
+	                            <th width="30%"></th>
+	                        </tr>
+	                    </thead>
+	                    <tbody data-bind="foreach:{data:listData.rows(), as: 'row'}">
+	                        <tr>
+	                            <td data-bind="text: row.ref('procName')"></td>
+	                            <td data-bind="text: row.ref('version')"></td>
+	                            <td data-bind="text: u.dateRender(row.ref('createTime'),'YYYY-MM-DD HH:mm:ss'),attr:{title:u.dateRender(row.ref('createTime'),'YYYY-MM-DD HH:mm:ss')}"></td>
+	                            <td data-bind="text: u.dateRender(row.ref('lastUpdateTime'),'YYYY-MM-DD HH:mm:ss'),attr:{title:u.dateRender(row.ref('lastUpdateTime'),'YYYY-MM-DD HH:mm:ss')}"></td>
+	                            <td class="icons">
+	                                <!-- <i class="uf uf-editinterfacesign" title="启动配置" data-bind=""></i> -->
+	                                <i class="icon hrfont" title="设计" data-bind="click:$parent.design.bind($data, $index())">&#xe631;</i>
+	                                <i class="icon hrfont" title="发布" data-bind="click:$parent.deploy.bind($data, $index())">&#xe658;</i>
+									<i class="fa fa-pencil" title="编辑" data-bind="click:$parent.edit.bind($data, $index())"></i>
+									<i class="fa fa-trash-o" title="删除" data-bind="click:$parent.del.bind($data, $index())"></i>
+									<i class="fa fa-history" title="发布历史" data-bind="click:$parent.showDeploy.bind($data, $index())"></i>
+									
+									<!-- <i class="glyphicon glyphicon-circle-arrow-down panel-switch" title="更多" data-bind="event: {click:$parent.isShow.bind($data, $index()), mouseout:$parent.hidePanel.bind($data, $index())}"></i>
+									
+									
+									<ul class="man-panel" data-bind="attr: {show:$index()}, event:{mouseover:$parent.showPanel.bind($data, $index()), mouseout:$parent.hidePanel.bind($data, $index())}">
+	                                    <li data-bind="click:$parent.edit.bind($data, $index())">编辑</li>
+	                                    <li data-bind="click:$parent.del.bind($data, $index())">删除</li>
+	                                    <li data-bind="click:$parent.showDeploy.bind($data, $index())">发布历史</li>
+	                                </ul> -->
+	                            </td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	                <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                        <div id='pagination' class='u-pagination'></div>
+                    </div>
+	              </div>
+            </div>
+        </div>
+    </div>
+    <div class="edit-panel"></div>
+    <div class="deploy-panel"></div>
+</div>

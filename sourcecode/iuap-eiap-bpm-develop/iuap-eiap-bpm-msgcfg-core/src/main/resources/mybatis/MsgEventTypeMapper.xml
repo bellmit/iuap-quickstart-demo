@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.msgcfg.MsgEventTypeMapper">
+
+	<resultMap id="BaseResultMap" type="com.yonyou.iuap.bpm.entity.msgcfg.MsgEventTypeVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="eventcode" property="eventcode" jdbcType="VARCHAR" />
+		<result column="eventname" property="eventname"
+			jdbcType="VARCHAR" />
+		<result column="source" property="source" jdbcType="VARCHAR" />
+		
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,eventcode,eventname,source
+	</sql>
+	
+	<select id="selectAll" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from iuap_bpm_msgeventtype
+	</select>
+	
+</mapper>

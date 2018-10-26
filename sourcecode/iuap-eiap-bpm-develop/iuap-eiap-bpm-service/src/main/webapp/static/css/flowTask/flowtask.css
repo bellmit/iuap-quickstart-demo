@@ -1,0 +1,36 @@
+.workbench .main-container {
+    /*跳转表单样式冲突*/
+    /*margin-top: 0;*/
+    padding-top: 10px;
+}
+.workbench .tab-button {
+    width: 60px;
+    height: 42px;
+    margin: 0 3px;
+    display: block;
+    list-style: none;
+    color: #666;
+    font-size: 15px;
+    text-align: center;
+    line-height: 42px;
+    float: left;
+    cursor: pointer;
+}
+.workbench .tab-state, .workbench .tab-time {
+    height: 42px;
+    float: left;
+}
+.workbench .tab-line {
+    width: 0;
+    height: 22px;
+    margin: 10px 5px;
+    border-left: 1px solid #666;
+    float: left;
+}
+.workbench .cur-state, .workbench .cur-time {
+    font-weight: 600;
+    border-bottom: 3px solid #ff8687;
+}
+.workbench .hr-table tr td:last-child {
+    text-align: left;
+}

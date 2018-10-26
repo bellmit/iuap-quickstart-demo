@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.adapter.BpmRoleMappingDao">
+	<resultMap id="BaseResultMap"
+		type="com.yonyou.iuap.bpm.entity.adapter.BpmRoleMappingVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="localrole_id" property="localrole_id" jdbcType="VARCHAR" />
+		<result column="localrole_code" property="localrole_code" jdbcType="VARCHAR" />
+		<result column="remoterole_id" property="remoterole_id" jdbcType="VARCHAR" />
+		<result column="remoterole_code" property="remoterole_code" jdbcType="VARCHAR" />
+		<result column="create_date" property="create_date" jdbcType="DATE" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+		id,localrole_id,localrole_code,remoterole_id,create_date
+	</sql>
+	<sql id="baseTable">
+		iuap_bpm_rolemapping
+	</sql>
+	
+	<select id="findByLocalRoleId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="baseTable" />
+		WHERE localrole_id = #{roleId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="findByLocalRoleIds" resultMap="BaseResultMap">
+		Select
+		<include refid="baseColumnList" />
+		from
+		<include refid="baseTable" />
+		WHERE localrole_id in
+		<foreach collection="list" item="item" open="(" close=")"  separator=",">
+   			#{item,jdbcType=VARCHAR}
+		</foreach>
+	</select>
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.adapter.BpmRoleMappingVO">
+		insert into
+		<include refid="baseTable" />
+		( <include refid="baseColumnList" />)
+		values (#{id,jdbcType=VARCHAR},#{localrole_id,jdbcType=VARCHAR},#{localrole_code,jdbcType=VARCHAR},#{remoterole_id,jdbcType=VARCHAR},#{create_date,jdbcType=DATE})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM
+		<include refid="baseTable" />
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+	<delete id="deleteByLocalId" parameterType="java.lang.String"
+		statementType="STATEMENT">
+		delete from
+		<include refid="baseTable" />
+		<where>
+			localrole_id=#{localId,jdbcType=VARCHAR}
+		</where>
+	</delete>
+</mapper>

@@ -1,0 +1,81 @@
+<div class="workbench">
+    <div class="list-panel" id="taskList">
+       <!-- <div class="title-header">
+            <h2 class="name">SSC工作台</h2>
+            <span class="fa fa-star fa-lg star"></span>
+            <a href="#/hrcloud/pages/ssc/instance/index" class="link">
+                <i class="glyphicon glyphicon-link"></i> 流程中心
+            </a>
+        </div>
+-->
+        <div class="common-header">
+            <div class="tab-state">
+                <div class="tab-button" id="todo">
+                    <span>待办</span>
+                </div>
+               <!-- <div class="tab-button" id="claim">
+                    <span>待认领</span>
+                </div>-->
+                <div class="tab-button" id="his">
+                    <span>已办</span>
+                </div>
+            </div>
+            <div class="tab-line"></div>
+            <div class="tab-time">
+                <div class="tab-button" id="day">
+                    <span>今日</span>
+                </div>
+                <div class="tab-button" id="week">
+                    <span>本周</span>
+                </div>
+                <div class="tab-button" id="month">
+                    <span>本月</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="hr-table">
+                <table>
+                    <thead class="thead">
+                        <tr>
+                           <!-- <th width="10%">服务目录</th>-->
+                            <th width="30%">流程概要</th>
+                            <th width="10%">流程环节</th>
+                            <th width="15%">发起人</th>
+                            <th width="20%">发起时间</th>
+                           <!-- <th width="15%">结束时间</th>-->
+                            <th width="25%">流程状态</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:{data:listData.rows(), as: 'row'}">
+                        <tr data-bind="click:$parent.openApprove.bind($data, $index())">
+                          <!--  <td data-bind="text: row.ref('categoryName')"></td>-->
+                            <td data-bind="text: row.ref('processInstanceName')" class="check-link"></td>
+                            <td data-bind="text: row.ref('taskName')"></td>
+                            <td data-bind="text: row.ref('startParticipantName')"></td>
+                            <td data-bind="text: u.dateRender(row.ref('startTime'),'YYYY-MM-DD HH:mm')"></td>
+                          <!--  <td data-bind="text: u.dateRender(row.ref('endTime'),'YYYY-MM-DD HH:mm')"></td>-->
+                            <td data-bind="text: u.stateName(row.ref('state'))"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="LoadingImage">
+                    <img src="./static/images/loading.gif" />
+                    <span>请稍后...</span>
+                </div>
+                <div id="emptyImage" data-bind="visible:listData.rows().length<1">
+                    <img src="./static/images/empty.png" />
+                    <span>没有查询到符合条件的记录</span>
+                </div>
+            </div>
+            <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                <div id='pagination' class='u-pagination'></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="taskApprove" class="edit-panel" style="display: none;">
+
+    </div>
+</div>

@@ -1,0 +1,106 @@
+/**
+ * ======================================
+ * 覆盖组件样式统一维护管理
+ * by :lizhik  2016/7/22
+ * ======================================
+ */
+
+
+/**
+ * 覆盖树滑过样式
+ * by:lizhik
+ */
+
+#content .ztree li a:hover, .outerContainer .ztree li a:hover {
+    background-color: #E9F7FC !important;
+}
+#content .ztree li a.focusNode, .outerContainer .ztree li a.focusNode {
+    background-color: #C4EAF6 !important;
+    color: #333;
+}
+
+/**
+ *信息框样式覆盖
+ */
+
+.u-msg-dialog {
+    width: 36%;
+}
+.u-msg-dialog .u-msg-footer {
+    width: auto;
+    float: right;
+}
+.u-msg-dialog .u-msg-footer .u-msg-ok {
+    float: left;
+}
+.u-msg-dialog .u-msg-footer .only-one-btn button {
+    float: right;
+}
+.u-msg-dialog .u-msg-cancel {
+    border: 1px solid #CCC;
+}
+
+/**
+ * 树图标层级覆盖
+ */
+
+#content .ztree li span.button.switch {
+    z-index: 1;
+}
+#content .u-form-control {
+    -webkit-border-radius: 0;
+    /* Safari and Chrome */
+    -moz-border-radius: 0;
+    /* Firefox */
+    -o-border-radius: 0;
+    /* Opera */
+    border-radius: 0;
+    padding-right: 36px;
+    border: 1px solid #CECECE;
+}
+
+/**
+* select 下拉
+*/
+
+.u-combo-ul {
+    min-width: 87px;
+}
+
+/**
+* ztree 节点图标调整
+*/
+.ztree li span.edit,.ztree li span.remove{
+	width: 15px!important;
+    height: 17px!important;
+    margin-top: 5px!important;
+    background-image: url("../images/zTreeStandard.png");
+}
+
+.u-grid-content{
+	height: 310px!important;
+    overflow-y: auto!important;
+}
+.ztree li span.edit,.ztree li span.remove{
+    background: none;
+    font-family: "uf" !important;
+    font-size: 14px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.ztree li span.edit::before{
+    content: "\e69b";
+}
+.ztree li span.remove::before{
+    content: "\e654";
+}
+.ztree li span.button.edit,.ztree li span.button.remove{
+    margin: 0;
+    background: none;
+    vertical-align: initial;
+}
+.ztree li span.button.edit{
+    margin-left: 10px;
+    margin-right: 5px;
+}

@@ -1,0 +1,299 @@
+/**
+ * reset样式
+ * by:lizhik
+ */
+
+
+/**
+ colors
+ */
+
+
+/**
+ font
+ */
+
+
+/**
+ * 背景图片
+ */
+
+
+/*
+ * 避免影响表格样式
+ * table, caption, tbody, tfoot, thead, tr, th, td,
+ */
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, time, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:after, blockquote:before, q:after, q:before {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+textarea {
+    resize: none;
+}
+
+/**
+ *常用属性：
+ *可根据个人页面添加常用字体、属性样式
+ */
+
+.position-rel {
+    position: relative;
+}
+.align-right {
+    text-align: right;
+}
+.cursor-point {
+    cursor: pointer;
+}
+.block {
+    display: block;
+}
+.inline-bolck {
+    display: inline-block;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.pad-left30 {
+    padding-left: 30px;
+}
+.font-yahei {
+    font-family: 'Microsoft Yahei';
+}
+li, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * 全局通用样式
+ * form: lizhik, tsingm
+ */
+
+#content {
+    padding: 6px 28px;
+    font-family: tahoma, arial, 'Hiragino Sans GB', 'Microsoft YaHei', '\5b8b\4f53', sans-serif;
+    color: #333;
+    font-size: 14px;
+    /**
+   * 按钮样式和划过样式
+   */
+}
+#content .btn-default {
+    border-color: #CECECE;
+}
+#content .blue-button {
+    min-width: 72px;
+    height: 30px;
+    background-color: #1BAEDE;
+    border: 1px solid #1BAEDE;
+    -webkit-border-radius: 1px;
+    /* Safari and Chrome */
+    -moz-border-radius: 1px;
+    /* Firefox */
+    -o-border-radius: 1px;
+    /* Opera */
+    border-radius: 1px;
+    color: #FFF;
+    font-size: 14px;
+    outline: none;
+    margin-right: 10px;
+}
+#content .blue-button:hover {
+    background-color: #189CC7;
+}
+#content .white-button {
+    min-width: 72px;
+    height: 34px;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 1px;
+    /* Safari and Chrome */
+    -moz-border-radius: 1px;
+    /* Firefox */
+    -o-border-radius: 1px;
+    /* Opera */
+    border-radius: 1px;
+    font-size: 14px;
+    outline: none;
+    margin-right: 10px;
+}
+#content .white-button:hover {
+    background-color: #F1F1F1;
+}
+#content .green-button {
+    background-color: #39B588;
+    border: 1px solid #39B588;
+    -webkit-border-radius: 0;
+    /* Safari and Chrome */
+    -moz-border-radius: 0;
+    /* Firefox */
+    -o-border-radius: 0;
+    /* Opera */
+    border-radius: 0;
+    color: #FFF;
+    outline: none;
+    margin-right: 12px;
+}
+#content .green-button:hover {
+    background-color: #33A37A;
+    color: #FFF;
+    outline: none;
+}
+#content .red-button {
+    background-color: #ED4047;
+    -webkit-border-radius: 0;
+    /* Safari and Chrome */
+    -moz-border-radius: 0;
+    /* Firefox */
+    -o-border-radius: 0;
+    /* Opera */
+    border-radius: 0;
+    outline: none;
+}
+#content .red-button:hover {
+    background-color: #D53940;
+}
+#content .button-blue-disable, #content .button-blue-disable:hover {
+    background-color: #98DAF0;
+    color: #FFF;
+    border: 1px solid #98DAF0;
+}
+#content .form-control {
+    background-color: #FFF;
+}
+#content button {
+    outline: none;
+}
+#content label {
+    font-weight: normal;
+}
+#content a {
+    text-decoration: none;
+}
+
+/**
+ * checkbox样式
+ */
+
+.u-checkbox-outline {
+    border: 2px solid #D7D7D7;
+}
+.u-checkbox.is-checked .u-checkbox-outline {
+    border: 2px solid #2AAFD6;
+}
+
+/*.u-checkbox.is-checked .u-checkbox-tick-outline {
+    background: #2cafd6;
+}*/
+
+
+/**
+ * "*"号必填项样式
+ */
+
+.must-icon:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #F00;
+}
+.must-icon::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #F00;
+}
+.must-icon:-ms-input-placeholder {
+    color: #F00;
+}
+.must-icon::-webkit-input-placeholder {
+    color: #F00;
+}
+
+/*表单样式*/
+
+input, select {
+    height: 36px;
+    line-height: 36px;
+}
+input[disabled] {
+    background-color: #F5F5F5;
+}
+select {
+    border: 1px solid #CECECE;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #FFF url("/hrcloud/static/img/background/selectDown.png") no-repeat 95% center;
+    padding: 0 15px;
+    min-width: 87px;
+    outline: none;
+    -webkit-border-radius: 0;
+    /* Safari and Chrome */
+    -moz-border-radius: 0;
+    /* Firefox */
+    -o-border-radius: 0;
+    /* Opera */
+    border-radius: 0;
+}
+
+/**
+ * 分页
+ */
+
+.paginate-box {
+    overflow: hidden;
+    width: 100%;
+    height: 36px;
+    margin-top: 10px;
+}
+.u-pagination {
+    position: absolute;
+    right: 5px;
+}
+.u-pagination> .active> a, .u-pagination> .active> a:hover, .u-pagination> .active> span, .u-pagination> .active> span:focus, .u-pagination> .active> span:hover, .u-pagination> .active> a:focus {
+    background-color: #1BAEDE;
+    border-color: #1BAEDE;
+}
+
+/**
+ * 流程历史按钮样式
+ */
+
+.flow-icon {
+    color: #1BAEDE;
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+}
+.flow-btn {
+    color: #0377C1;
+    font-size: 12px;
+    line-height: 36px;
+}

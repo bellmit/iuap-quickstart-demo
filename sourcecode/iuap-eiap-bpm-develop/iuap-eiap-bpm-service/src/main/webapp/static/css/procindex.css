@@ -1,0 +1,229 @@
+.process .main-container {
+    overflow: hidden;
+    min-width:1024px;
+}
+
+/**
+ * 树
+ */
+
+.process .pltree {
+    width: 18%;
+    min-height: 496px;
+    display: inline-block;
+    background-color: #FFF;
+    border: 1px solid #CCCCCC;
+    float: left;
+    margin-right: 10px;
+	height: 100%;
+	overflow: auto;
+}
+.pltree .switch {
+    border: none;
+}
+
+/**
+ * 表格
+ */
+
+
+.deploy-table {
+    width: 100%!important;
+    float: none!important;
+    background-color: #FFFFFF;
+}
+.process td.check-link {
+    text-decoration: underline;
+    color: #65B0E4;
+    cursor: pointer;
+}
+.process td i.disable {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/**
+ * 行操作面板
+ */
+
+.process td ul.man-panel {
+    display: none;
+    border-top: 1px solid #65B0E4;
+    border-left: 1px solid #65B0E4;
+    border-right: 1px solid #65B0E4;
+    background-color: #FFFFFF;
+    margin: 0px;
+    padding: 0px;
+    width: 72px;
+    position: absolute;
+    right: 20px;
+    z-index: 3;
+}
+.process td ul.man-panel li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    height: 30px;
+    line-height: 30px;
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #65B0E4;
+}
+.process td ul.man-panel li:hover {
+    background-color: #EEEEEE;
+}
+.deploy-page .hr-table tr td:last-child {
+    text-align: left;
+}
+
+.tablecontainer{
+    width: 80%;
+    float: left;
+	height: 100%;
+	overflow: auto;
+}
+
+.heightcss{
+	height: 100%;
+}
+
+.grid-header{
+    height: 30px;
+    border: none;
+    line-height: 30px;
+    padding: 30px;
+}
+
+.ztree li a input.rename{
+	    height: 25px;
+	    line-height: 25px;
+}
+.ztree li a.curSelectedNode_Edit {
+  height: 28px!important;
+  line-height:28px!important;
+
+}
+#demoLeft #tree>li>ul>li>a span:nth-of-type(2){
+    max-width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* papheader样式 */
+.pap-title{
+	position: relative;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	background: #fff;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	margin-bottom: 1px;
+  }
+  .pap-title h1{
+	font-size: 14px;
+	height: 40px;
+	line-height: 40px;
+	margin: 0;
+    color: rgb(51, 51, 51);
+    display: inline-block;
+  }
+  .pap-title .backbutton{
+	height: 30px;
+	color: rgb(3,155,229);
+	padding: 0;
+	border: none;
+	position: absolute;
+	left: 5px;
+	top: 6px;
+	margin: 0;
+	padding-left: 13px;
+	padding-right: 13px;
+	line-height: 30px;
+	font-size: 12px!important;
+	background: #ffffff;
+	outline: none;
+	display: inline-block;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	text-decoration: none;
+  }
+  .pap-title .backbutton i{
+	padding: 0;
+	position: relative;
+	top: -2px;
+	}
+	.pap-title .backbutton i.fa{
+		font-size: 20px!important;
+		margin-right: 5px;
+    }
+    /* 固定头 */
+    .process .list-panel .pap-title{
+        position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    }
+    .process .common-header{
+        margin-top: 41px;
+    }
+    .process .edit-panel .pap-title{
+        position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+    }
+    .process .edit-panel .edit-page{
+        margin-top: 41px;
+    }
+    .u-msg-dialog .u-msg-footer{
+        position:absolute;
+        bottom:0px;
+        border-radius:0 0 2px 2px;
+        padding:4px 20px;
+        height:56px;
+        width:100% !important;
+        box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        -webkit-box-sizing:border-box;
+    }
+    .u-msg-footer button{
+        height: 30px;
+        background: #039BE5;
+        color: #fff;
+        outline: none;
+        margin-left: 25px;
+        min-width: 72px;
+        font-size: 12px !important;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 4px;
+        text-decoration: none;
+        border: 1px solid #039BE5;
+    }
+.u-msg-footer button:hover{
+    background: #039BE5;
+    border: 1px solid #039BE5;
+}
+

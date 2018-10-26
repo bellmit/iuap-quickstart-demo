@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.base.BpmProcModelDao">
+
+	<resultMap id="baseResultMap" type="com.yonyou.iuap.bpm.entity.base.BpmProcModel">
+
+		<id column="id" property="id" jdbcType="VARCHAR" />
+
+		<result column="pid" property="pid" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR"/>
+		<result column="code" property="code" jdbcType="VARCHAR"/>
+		<result column="is_catalog" property="isCatalog" jdbcType="VARCHAR"/>
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+
+	</resultMap>
+
+	<!-- 基本表名 -->
+	<sql id="baseTable">
+		iuap_bpm_model
+	</sql>
+
+	<!-- 查询的记录列名（与数据库表的列名一致） -->
+	<sql id="baseColumnList">
+		id, pid, name, code, is_catalog, create_date
+	</sql>
+	
+	<!-- 获取所有记录 -->
+	<select id="getAll" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList" />
+		FROM
+			<include refid="baseTable" />
+	</select>
+	
+	<!-- 根据父节点查询，查询一个节点下是否有子节点 -->
+	<select id="getByPid" parameterType="String" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			pid = #{pid,jdbcType=VARCHAR}
+		</where>
+	</select>
+
+	<!-- 增加一条记录 -->
+	<insert id="create" parameterType="com.yonyou.iuap.bpm.entity.base.BpmProcModel">
+		INSERT INTO
+			<include refid="baseTable" />
+		(
+			id,
+			pid,
+			name,
+			code,
+			is_catalog,
+			create_date	
+		)
+		VALUES
+		(
+			#{id, jdbcType=VARCHAR},
+			#{pid, jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{code,jdbcType=VARCHAR},
+			#{isCatalog,jdbcType=VARCHAR},
+			#{createDate, jdbcType=TIMESTAMP}
+		)
+	</insert>
+	
+	<!-- 更新一条记录 -->
+	<update id="update" parameterType="com.yonyou.iuap.bpm.entity.base.BpmProcModel">
+		UPDATE 
+			<include refid="baseTable"/>
+		<trim prefix="SET" suffixOverrides=",">
+			<if test=" pid != null and pid != '' ">
+				pid = #{pid,jdbcType=VARCHAR},
+			</if>
+			<if test=" name != null and name != '' ">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test=" code != null and code != '' ">
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test=" isCatalog != null and isCatalog != '' ">
+				is_catalog = #{isCatalog,jdbcType=VARCHAR}
+			</if>
+		</trim>	
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</update>
+	
+	<!-- 删除一条记录 -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM
+			<include refid="baseTable" />
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+	
+</mapper>

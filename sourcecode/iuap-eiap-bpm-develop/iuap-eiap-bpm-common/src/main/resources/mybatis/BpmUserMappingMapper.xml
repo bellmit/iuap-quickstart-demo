@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.adapter.BpmUserMappingDao">
+	<resultMap id="BaseResultMap"
+		type="com.yonyou.iuap.bpm.entity.adapter.BpmUserMappingVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="localuser_id" property="localuser_id" jdbcType="VARCHAR" />
+		<result column="localuser_code" property="localuser_code"
+			jdbcType="VARCHAR" />
+		<result column="remoteuser_id" property="remoteuser_id"
+			jdbcType="VARCHAR" />
+		<result column="remoteuser_code" property="remoteuser_code"
+			jdbcType="VARCHAR" />
+		<result column="create_date" property="create_date" jdbcType="DATE" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+		id,localuser_id,localuser_code,remoteuser_id,remoteuser_code,create_date
+	</sql>
+	<sql id="baseTable">
+		iuap_bpm_usermapping
+	</sql>
+
+	<!-- 查询所有记录 -->
+	<select id="findAll" resultMap="BaseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+	</select>
+
+	<select id="findByLocalUserId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="baseTable" />
+		WHERE localuser_id = #{userId,jdbcType=VARCHAR}
+	</select>
+	<select id="findByLocalUserIds" resultMap="BaseResultMap">
+		Select
+		<include refid="baseColumnList" />
+		from
+		<include refid="baseTable" />
+		WHERE localuser_id in
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item,jdbcType=VARCHAR}
+		</foreach>
+	</select>
+	<select id="findByRemoteUserIds" resultMap="BaseResultMap">
+		Select
+		<include refid="baseColumnList" />
+		from
+		<include refid="baseTable" />
+		WHERE remoteuser_id in
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item,jdbcType=VARCHAR}
+		</foreach>
+	</select>
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.adapter.BpmUserMappingVO">
+		insert into
+		<include refid="baseTable" />
+		(
+		<include refid="baseColumnList" />
+		)
+		values
+		(#{id,jdbcType=VARCHAR},#{localuser_id,jdbcType=VARCHAR},#{localuser_code,jdbcType=VARCHAR},#{remoteuser_id,jdbcType=VARCHAR},#{remoteuser_code,jdbcType=VARCHAR},#{create_date,jdbcType=DATE})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM
+		<include refid="baseTable" />
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+	<delete id="deleteByLocalId" parameterType="java.lang.String"
+		statementType="STATEMENT">
+		DELETE FROM
+		<include refid="baseTable" />
+		<where>
+			localrole_id=#{localId,jdbcType=VARCHAR}
+		</where>
+	</delete>
+</mapper>

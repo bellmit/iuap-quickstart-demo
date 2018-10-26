@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.base.BpmProcInfoDao">
+
+	<resultMap id="baseResultMap" type="com.yonyou.iuap.bpm.entity.base.BpmProcInfo">
+
+		<id column="id" property="id" jdbcType="VARCHAR" />
+
+		<result column="proc_name" property="procName" jdbcType="VARCHAR" />
+		<result column="biz_model_ref_id" property="bizModelRefId" jdbcType="VARCHAR"/>
+		<result column="category_id" property="categoryId" jdbcType="VARCHAR"/>
+		<result column="description" property="description" jdbcType="VARCHAR"/>
+		<result column="proc_model_id" property="procModelId" jdbcType="VARCHAR" />
+		<result column="proc_deploy_id" property="procDeployId" jdbcType="VARCHAR"/>
+		<result column="proc_key" property="procKey" jdbcType="VARCHAR"/>
+		<result column="proc_def_id" property="procDefId" jdbcType="VARCHAR"/>
+
+	</resultMap>
+
+	<!-- 基本表名 -->
+	<sql id="baseTable">
+		iuap_bpm_info
+	</sql>
+
+	<!-- 查询的记录列名（与数据库表的列名一致） -->
+	<sql id="baseColumnList">
+		id, proc_name, biz_model_ref_id, category_id, description, 
+			proc_model_id, proc_deploy_id, proc_key, proc_def_id
+	</sql>
+	
+	<!-- 分页获取流程信息（插件形式）-->
+	<select id="retrievePage" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList" />
+		FROM
+			<include refid="baseTable" />
+		<where>
+			category_id = #{categoryId,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据主键获取一条记录 -->
+	<select id="getOne" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据流程定义模型ID获取一条记录 -->
+	<select id="getByProcModelId" parameterType="String" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			proc_model_id = #{modelId,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据业务模型ID获取流程基本信息记录 -->
+	<select id="getByBuizModelRefId" parameterType="String" resultMap="baseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			biz_model_ref_id = #{buizModelId,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据模型ID获取流程定义基本信息 -->
+	<select id="getByCategoryId" parameterType="String" resultMap="baseResultMap">
+		SELECT
+			<include refid="baseColumnList"/>
+		FROM	
+			<include refid="baseTable"/>
+		<where>
+			category_id = #{categoryId,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据流程定义ID查询一条记录 -->
+	<select id="getByProcDefId" parameterType="String" resultMap="baseResultMap">
+		SELECT
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			proc_def_id = #{procDefId,jdbcType=VARCHAR}
+		</where>
+	</select>
+
+	<!-- 增加一条记录 -->
+	<insert id="create" parameterType="com.yonyou.iuap.bpm.entity.base.BpmProcInfo">
+		INSERT INTO
+			<include refid="baseTable" />
+		(
+			id,
+			proc_name,
+			biz_model_ref_id,
+			category_id,
+			description,
+			proc_model_id,
+			proc_deploy_id,
+			proc_key,
+			proc_def_id
+		)
+		VALUES
+		(
+			#{id,jdbcType=VARCHAR},
+			#{procName,jdbcType=VARCHAR},
+			#{bizModelRefId,jdbcType=VARCHAR},
+			#{categoryId,jdbcType=VARCHAR},
+			#{description,jdbcType=VARCHAR},
+			#{procModelId,jdbcType=VARCHAR},
+			#{procDeployId,jdbcType=VARCHAR},
+			#{procKey,jdbcType=VARCHAR},
+			#{procDefId,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 更新一条记录 -->
+	<update id="update" parameterType="com.yonyou.iuap.bpm.entity.base.BpmProcInfo">
+		UPDATE
+			<include refid="baseTable"/>
+		<trim prefix="SET" suffixOverrides=",">
+			<if test=" procName != null and procName != '' ">
+				proc_name = #{procName,jdbcType=VARCHAR},
+			</if>
+			<if test=" bizModelRefId != null and bizModelRefId != '' ">
+				biz_model_ref_id = #{bizModelRefId,jdbcType=VARCHAR},
+			</if>
+			<if test=" categoryId != null and categoryId != '' ">
+				category_id = #{categoryId,jdbcType=VARCHAR},
+			</if>
+			<if test=" description != null and description != '' ">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test=" procModelId != null and procModelId != '' ">
+				proc_model_id = #{procModelId,jdbcType=VARCHAR},
+			</if>
+			<if test=" procDeployId != null and procDeployId != '' ">
+				proc_deploy_id = #{procDeployId,jdbcType=VARCHAR},
+			</if>
+			<if test=" procKey != null and procKey != '' ">
+				proc_key = #{procKey,jdbcType=VARCHAR},
+			</if>
+			<if test=" procDefId != null and procDefId != '' ">
+				proc_def_id = #{procDefId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</update>
+	
+	<!-- 删除一条记录 -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM
+			<include refid="baseTable" />
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+	
+</mapper>

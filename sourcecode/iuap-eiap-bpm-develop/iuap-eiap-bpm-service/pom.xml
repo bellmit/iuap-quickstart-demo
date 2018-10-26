@@ -1,0 +1,316 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yonyou.iuap.pap.bpm</groupId>
+		<artifactId>iuap-eiap-bpm-parent</artifactId>
+		<version>3.5.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>iuap-eiap-bpm-service</artifactId>
+	<packaging>war</packaging>
+
+	<name>iuap-eiap-bpm-service</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.authrbac</groupId>
+			<artifactId>iuap-authrbac-sdk</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>iuap-eiap-bpm-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>iuap-eiap-bpm-approval-service</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>iuap-eiap-bpm-approval-adapter</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/webapp/WEB-INF</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<overlays>
+						<overlay>
+							<groupId>com.yonyou.iuap.pap.bpm</groupId>
+							<artifactId>iuap-eiap-bpm-approval-service</artifactId>
+							<excludes>
+								<exclude>**/WEB-INF/classes/*.xml</exclude>
+								<exclude>**/WEB-INF/classes/*.properties</exclude>
+							</excludes>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<configuration>
+					<target name="copylicense">
+						<copy
+							todir="${project.build.directory}/${project.artifactId}-${project.version}/META-INF"
+							file="license.txt"></copy>
+					</target>
+				</configuration>
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <phase>generate-resources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>run</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+			</plugin>
+		</plugins>
+		<finalName>iuap-eiap-bpm-service</finalName>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>linuxOracle</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- jdbc -->
+				<pom.jdbc.driver>oracle.jdbc.driver.OracleDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:oracle:thin:@172.20.23.234:1521/dc]]></pom.jdbc.url>
+				<pom.jdbc.username>LSH0601</pom.jdbc.username>
+				<pom.jdbc.password>1</pom.jdbc.password>
+				<pom.jdbc.catalog>LSH0601</pom.jdbc.catalog>
+				<pom.jdbc.type>oracle</pom.jdbc.type>
+				<pom.server><![CDATA[http://10.10.24.84:8080]]></pom.server>
+				<pom.bpm.server><![CDATA[http://10.10.24.84:8080]]></pom.bpm.server>
+				<pom.authrbac.server.http.url><![CDATA[http://10.10.24.84:8080/wbalone]]></pom.authrbac.server.http.url>
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://10.10.24.84:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+
+
+			</properties>
+		</profile>
+		<profile>
+			<id>linuxOracle12</id>
+			<properties>
+				<!-- jdbc -->
+				<pom.jdbc.driver>oracle.jdbc.driver.OracleDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:oracle:thin:@10.10.24.56:1521/dc]]></pom.jdbc.url>
+				<pom.jdbc.username>LSH0622</pom.jdbc.username>
+				<pom.jdbc.password>1</pom.jdbc.password>
+				<pom.jdbc.catalog>LSH0622</pom.jdbc.catalog>
+				<pom.server><![CDATA[http://10.10.24.84:8080]]></pom.server>
+
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://10.10.24.84:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+
+
+			</properties>
+		</profile>
+		<profile>
+			<id>linuxMysql</id>
+			<properties>
+				<!-- jdbc -->
+				<pom.jdbc.driver>com.mysql.jdbc.Driver</pom.jdbc.driver>
+				<pom.jdbc.url>
+					<![CDATA[jdbc:mysql://172.20.8.76:3306/y0621?useUnicode=true&characterEncoding=utf-8]]></pom.jdbc.url>
+				<pom.jdbc.username>root</pom.jdbc.username>
+				<pom.jdbc.password>root</pom.jdbc.password>
+				<pom.jdbc.catalog>y0621</pom.jdbc.catalog>
+				<pom.server><![CDATA[http://10.10.24.84:8080]]></pom.server>
+
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://10.10.24.84:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+
+
+			</properties>
+		</profile>
+		<profile>
+			<id>winMysql</id>
+			<properties>
+				<!-- jdbc -->
+				<pom.jdbc.driver>com.mysql.jdbc.Driver</pom.jdbc.driver>
+				<pom.jdbc.url>
+					<![CDATA[jdbc:mysql://172.20.8.76:3306/y0621?useUnicode=true&characterEncoding=utf-8]]></pom.jdbc.url>
+				<pom.jdbc.username>root</pom.jdbc.username>
+				<pom.jdbc.password>root</pom.jdbc.password>
+				<pom.jdbc.catalog>y0621</pom.jdbc.catalog>
+				<pom.server><![CDATA[http://172.20.8.92:8080]]></pom.server>
+
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://172.20.8.92:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+
+
+			</properties>
+		</profile>
+		<profile>
+			<id>winOracle</id>
+			<properties>
+				<!-- jdbc -->
+				<pom.jdbc.driver>oracle.jdbc.driver.OracleDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:oracle:thin:@10.10.24.56:1521/dc]]></pom.jdbc.url>
+				<pom.jdbc.username>LSH0622</pom.jdbc.username>
+				<pom.jdbc.password>1</pom.jdbc.password>
+				<pom.jdbc.catalog>LSH0622</pom.jdbc.catalog>
+				<pom.server><![CDATA[http://172.20.8.92:8080]]></pom.server>
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://172.20.8.92:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+
+
+			</properties>
+		</profile>
+		<profile>
+			<id>winOracle12</id>
+			<properties>
+				<!-- jdbc -->
+				<pom.jdbc.driver>oracle.jdbc.driver.OracleDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:oracle:thin:@10.10.24.56:1521/dc]]></pom.jdbc.url>
+				<pom.jdbc.username>LSH0622</pom.jdbc.username>
+				<pom.jdbc.password>1</pom.jdbc.password>
+				<pom.jdbc.catalog>LSH0622</pom.jdbc.catalog>
+				<pom.server><![CDATA[http://172.20.8.92:8080]]></pom.server>
+
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://172.20.8.92:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+
+			</properties>
+		</profile>
+
+		<profile>
+			<id>172.20.17.90</id>
+			<properties>
+				<pom.jdbc.driver>oracle.jdbc.driver.OracleDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:oracle:thin:@172.20.23.234/dc]]></pom.jdbc.url>
+				<pom.jdbc.username>WCL211</pom.jdbc.username>
+				<pom.jdbc.password>1</pom.jdbc.password>
+				<pom.jdbc.catalog>WCL211</pom.jdbc.catalog>
+				<pom.jdbc.type>oracle</pom.jdbc.type>
+				<pom.server><![CDATA[http://127.0.0.1:8089]]></pom.server>
+				<pom.bpm.server><![CDATA[http://127.0.0.1:8080]]></pom.bpm.server>
+				<pom.authrbac.server.http.url><![CDATA[http://172.20.17.90:8080/wbalone]]></pom.authrbac.server.http.url>
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://172.20.17.90:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+				<pom.msgCenter.base.url><![CDATA[http://172.20.17.90:8080/iuap-saas-message-center/]]></pom.msgCenter.base.url>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>172.20.17.89</id>
+			<properties>
+				<pom.jdbc.driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:sqlserver://172.20.53.121:1433;database=pap_wbalone1015;sendStringParametersAsUnicode=true;responseBuffering=adaptive]]></pom.jdbc.url>
+				<pom.jdbc.username>sa</pom.jdbc.username>
+				<pom.jdbc.password>sa</pom.jdbc.password>
+				<pom.jdbc.catalog>pap_wbalone1015</pom.jdbc.catalog>
+				<pom.jdbc.type>sqlserver</pom.jdbc.type>
+				<pom.server><![CDATA[http://127.0.0.1:8089]]></pom.server>
+				<pom.bpm.server><![CDATA[http://127.0.0.1:8089]]></pom.bpm.server>
+				<pom.authrbac.server.http.url><![CDATA[http://172.20.17.89:8080/wbalone]]></pom.authrbac.server.http.url>
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://172.20.17.89:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+				<pom.msgCenter.base.url><![CDATA[http://172.20.17.89:8080/iuap-saas-message-center/]]></pom.msgCenter.base.url>
+			</properties>
+		</profile>
+
+
+
+
+
+
+
+
+
+
+
+
+		<profile>
+			<id>localSetting</id>
+			<properties>
+				<!-- jdbc -->
+
+				<!--	<pom.jdbc.driver>com.mysql.jdbc.Driver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/y0503?useUnicode=true&characterEncoding=utf-8]]></pom.jdbc.url>
+				<pom.jdbc.username>root</pom.jdbc.username>
+				<pom.jdbc.password>passw0rd</pom.jdbc.password>
+				<pom.jdbc.catalog>y0503</pom.jdbc.catalog>
+				<pom.jdbc.type>mysql</pom.jdbc.type>
+				-->
+
+				<pom.jdbc.driver>oracle.jdbc.driver.OracleDriver</pom.jdbc.driver>
+				<pom.jdbc.url><![CDATA[jdbc:oracle:thin:@10.10.24.56:1521/dc]]></pom.jdbc.url>
+				<pom.jdbc.username>T0712</pom.jdbc.username>
+				<pom.jdbc.password>1</pom.jdbc.password>
+				<pom.jdbc.catalog>T0712</pom.jdbc.catalog>
+				<pom.jdbc.type>oracle</pom.jdbc.type>
+
+
+				<pom.server><![CDATA[http://localhost:8080]]></pom.server>
+				<pom.bpm.server><![CDATA[http://localhost:8090]]></pom.bpm.server>
+				<pom.authrbac.server.http.url><![CDATA[http://localhost:8080/wbalone]]></pom.authrbac.server.http.url>
+				<!-- redis -->
+				<pom.redis.url><![CDATA[direct://localhost:6379?poolSize=50&poolName=mypool&masterName=mymaster&password=yonyou123&database=0]]></pom.redis.url>
+				<pom.msgCenter.base.url><![CDATA[http://localhost:8080/iuap-saas-message-center/]]></pom.msgCenter.base.url>
+			</properties>
+		</profile>
+
+
+	</profiles>
+
+</project>

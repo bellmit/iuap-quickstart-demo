@@ -1,0 +1,35 @@
+{
+    "form": {
+        "name": "合同订单审批表",
+        "ownership": "personal",
+        "operator": {
+            "secLevel": 0,
+            "loginCount": 0,
+            "admin": false,
+            "id": "4524793913205044560",
+            "employeeId": "4524793913205044560"
+        },
+        "recommend": false,
+        "sort": 0,
+        "module": "workflow",
+        "fillCount": 0,
+        "reviewCount": 0,
+        "exportCount": 0,
+        "copyCount": 0,
+        "viewCount": 0,
+        "delete": false,
+        "id": "6995092527274599996"
+    },
+    "isCreate": true,
+    "pageNo": 0,
+    "pageSize": 0,
+    "introCount": 0,
+    "sort": 0,
+    "module": "workflow",
+    "newSort": 0,
+    "pageformSize": 25,
+    "pageformNo": 1,
+    "byId": "success",
+    "formReports": "success",
+    "filedByForm": "success"
+}

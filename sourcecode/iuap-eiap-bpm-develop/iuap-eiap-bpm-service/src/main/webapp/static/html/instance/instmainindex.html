@@ -1,0 +1,78 @@
+<div class="instance">
+    <div class="list-panel">
+            <div>
+                    <div class="pap-title">
+                            <button class="u-button backbutton" onclick="window.history.go(-1)">
+                                <i class="fa fa-angle-left"></i> 返回
+                                <span class="u-button-container">
+                                    <span class="u-ripple"></span>
+                                </span>
+                            </button>
+                            <h1>流程监控</h1>
+                        </div>
+            </div>
+
+        <div class="common-header">
+            <div class="tab-button cur" id="false">
+                <span>未完成</span>
+            </div>
+            <div class="tab-button" id="true">
+                <span>已完成</span>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="hr-table" id="ctxBody">
+                <div class='pltree'>
+                    <div id="demoLeft">
+                        <div id="treeTest" class="ztree"
+                             u-meta='{"id":"tree2","data":"treedt","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+                    </div>
+                </div>
+                <div class="prtable">
+                    <table>
+                        <thead class="thead">
+                        <tr>
+                            <th width="15%">状态</th>
+                            <!-- <th width="25%">发起人</th> -->
+                            <th width="25%">流程实例名称</th>
+                            <th width="20%">启动时间</th>
+                            <th width="20%">结束时间</th>
+                            <th width="20%"></th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="foreach:{data:listData.rows(), as: 'row'}">
+                        <tr>
+                            <td data-bind="text: u.stateName(row.ref('state'))"></td>
+                            <!-- <td data-bind="text: row.ref('startParticipant.name')"></td> -->
+                            <td data-bind="text: row.ref('name'), click:$parent.check.bind($data, $index()),attr: { title: row.ref('name') }" class="check-link"></td>
+                            <td data-bind="text: u.dateRender(row.ref('startTime'),'YYYY-MM-DD HH:mm:ss')"></td>
+                            <td data-bind="text: u.dateRender(row.ref('endTime'),'YYYY-MM-DD HH:mm:ss')"></td>
+                            <td>
+                                <!-- <i class="uf uf-shareoption" title="改派" data-bind="click:$parent.forward.bind($data, $index())"></i> -->
+                                <i class="icon hrfont" title="恢复" data-bind="visible: row.ref('state')() == 'suspended',click:$parent.changeState.bind($data, $index())">&#xe624;</i>
+                                <i class="icon hrfont" title="挂起" data-bind="visible: row.ref('state')() == 'run',click:$parent.changeState.bind($data, $index())">&#xe65c;</i>
+                                <i class="icon hrfont" title="终止" data-bind="visible: row.ref('state')() == 'run' || row.ref('state')() == 'suspended',click:$parent.del.bind($data, $index())">&#xe60f;</i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="LoadingImage">
+                        <img src="./static/images/loading.gif" />
+                        <span>请稍后...</span>
+                    </div>
+                    <div id="emptyImage" data-bind="visible:listData.rows().length<1">
+                        <img src="./static/images/empty.png" />
+                        <span>没有查询到符合条件的记录</span>
+                    </div>
+                    <!-- <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                        <div id='pagination' class='u-pagination'></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="edit-panel">
+    </div>
+</div>

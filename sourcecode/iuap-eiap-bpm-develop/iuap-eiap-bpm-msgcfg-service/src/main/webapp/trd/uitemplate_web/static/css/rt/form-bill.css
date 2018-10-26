@@ -1,0 +1,190 @@
+.bill-body{
+	padding-top:0;
+	font-family: "Microsoft YaHei";
+}
+.bill-body .bill-body-container{
+	background-color:#dce7f5;
+	padding-top:40px;
+}
+.panel-body-white{
+	background-color:#fff;
+	border-color: #c9c9c9;
+    border-style: solid;
+    border-width: 1px;
+    border-top-width: 0;
+    border-bottom-width:0;
+    padding-bottom: 0;
+    padding-top:0;
+    color:#333;
+}
+.panel-success-m .panel-heading-fc{
+	background-color:#f5f5f5;
+	border-color: #c9c9c9;
+    border-style: solid;
+    border-width: 1px;
+}
+.panel-title-fc{
+	font-size: 20px;
+    color: #333333;
+    font-weight:bold;
+}
+.panel-success-m{
+	padding:15px 15px 20px 20px;
+	border:1px solid #bcbcbc;
+	background-color:#fff;
+    margin-bottom: 150px;
+    box-shadow:2px 2px 2px #999999;
+}
+.panel-success .panel-body .billitem-label-content{
+	font-weight:bold;
+	font-size:13px;
+	margin-left:3px;
+	word-wrap:break-word;
+}
+.panel-success .panel-body .form-group-sm{
+	margin-bottom:0;
+	padding:15px;
+	border-bottom:1px solid #c9c9c9;	
+	-webkit-margin-start: -16px;
+    -webkit-margin-end: -16px;
+}
+.panel-success .panel-body .form-group-sm .form-control{
+	height: 26px;
+	padding:3px 3px;
+	border-color:#fff;
+}
+.panel-success .panel-body .form-group-sm textarea.form-control{
+	height: 70px;
+	resize:none;
+}
+.panel-body .cardpanel div.form-tablelayout table.table fieldset.form-group{
+	border-bottom:none;
+}
+.panel-success .panel-body-white div.ColumnPanel{
+	border: 1px solid #c9c9c9;
+}
+.panel-success .panel-body-white .ColumnPanel fieldset.billitem{
+	boder-width:0;
+}
+.panel-success .panel-body-white div.cardpanel input.form-control:focus{
+	border:1px solid  #c9c9c9;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.panel-success .panel-body-white div.form-tablelayout div.form-control:focus{
+	border:1px solid  #c9c9c9;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.panel-success .panel-body-white div.row fieldset.form-group div.form-control:focus{
+	border:1px solid  #c9c9c9;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.panel-success .panel-body-white fieldset.form-group .label-billitem-label{
+	width: 100%;
+	text-align:center;
+}
+.billitem-textarea{
+	padding:15px;
+	margin:0;
+}
+.bill-body div.input-group > .form-control{
+	border:none;
+	box-shadow:none;
+  	font-family: "Microsoft YaHei";
+}
+.bill-body div.input-group > .form-control:hover{
+	border:1px solid  #c9c9c9;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+body.bill-body div.cardpanel > fieldset:first-child{
+	margin-top:-1px;
+}
+.input-group-addon{
+	visibility:hidden;
+}
+.input-group-addon-show{
+	visibility:visible;
+}
+.panel-success .panel-body .form-group-sm .form-control-show-border{
+	border:1px solid #c9c9c9;
+}
+div.input-group input.form-control:hover + span.input-group-addon{
+	visibility:visible;
+}
+.bill-body .panel-body div.row div.cardpanel div.row fieldset.form-group-sm{
+	border-right:1px solid #c9c9c9;
+}
+.cardpanel .u-grid-content-td-div{
+	text-align:center;
+	font-family: "Microsoft YaHei";
+}
+.u-grid-edit-item-float, .u-grid-edit-item-currency, .u-grid-edit-item-integer{
+	text-align:center;
+}
+.panel-body .cardpanel div[componentkey=DataTable]{
+	-webkit-margin-start: -15px;
+    -webkit-margin-end: -15px;
+}
+.u-grid-content-td-div{
+	margin:0;
+	border-right:1px solid #c9c9c9;
+	background-color:#fff;
+}
+.u-grid td{
+	border-color:#c9c9c9;
+}
+div[componentkey=DataTable] .u-grid-header-th{
+	border-color:#c9c9c9;
+	border-left-width: 0px;
+	border-right-width: 1px;
+}
+.btn-small{
+  	font-family: "Microsoft YaHei";
+}
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel]{
+	display: flex;
+    border-bottom: 1px solid #c9c9c9;
+}
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel] div{
+	flex: 1;
+    border-right: 1px solid #c9c9c9;
+}
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel] div fieldset.form-group{
+	border:none;
+}
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel] div fieldset.form-group div.billitem-label-content{
+	border-right:none;
+}
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel] div fieldset.form-group div.input-group{
+	border-right:none;
+}
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel] div fieldset.form-group div.item-ta-lab-wrap{
+	border-right:none;
+} 
+div.panel-body div.row div.cardpanel div[componentkey=ColumnPanel] div:last-child{
+	border-right:none;
+}
+.form-tablelayout .table{
+	margin-bottom:0px;
+}
+div.panel-body div.row div.cardpanel .billitem-label-bg-color{
+	background-color:#e7edf5;
+	padding: 2px 0 0 0;
+	border-left:1px solid #c9c9c9;
+	border-right:1px solid #c9c9c9;
+}
+.form-tablelayout table.table tr td{
+	border:1px solid #c9c9c9;
+}
+.form-tablelayout table.table tr td:first-child{
+	border-left:none;
+}
+.form-tablelayout table.table tr td:last-child{
+	border-right:none;
+}
+.form-tablelayout table.table{
+	border-left:none;
+	border-right:none;
+}
+.panel-body .cardpanel div[componentkey=DataTable] tbody tr td:last-child{
+	
+}

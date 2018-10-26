@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.buzi.BuziModelMapper">
+	<resultMap id="BaseResultMap" type="com.yonyou.iuap.bpm.entity.buzi.BuziModelVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="buzientity_id" property="buzientity_id"
+			jdbcType="VARCHAR" />
+		<result column="msgtemplateclass_id" property="msgtemplateclass_id"
+			jdbcType="VARCHAR" />
+		<result column="sysid" property="sysid" jdbcType="VARCHAR" />
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="tenantid" property="tenantid" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="baseTable">
+		iuap_bpm_buzimodel
+	</sql>
+
+	<!-- 列名 -->
+	<sql id="baseColumnList">
+		id,code,name,buzientity_id,msgtemplateclass_id,sysid,createtime,tenantid
+	</sql>
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.buzi.BuziModelVO">
+		insert into
+		<include refid="baseTable" />
+		(id,
+		code,name,buzientity_id,msgtemplateclass_id,sysid,createtime,tenantid)
+		values
+		(#{id,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{buzientity_id,jdbcType=VARCHAR},#{msgtemplateclass_id,jdbcType=VARCHAR},#{sysid,jdbcType=VARCHAR},#{createtime,jdbcType=TIMESTAMP},#{tenantid,jdbcType=VARCHAR})
+	</insert>
+
+	<select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="baseColumnList" />
+		from
+		<include refid="baseTable" />
+		where 1=1
+	</select>
+	
+	<!-- 根据编码查询 -->
+	<select id="findByCode" parameterType="String" resultMap="BaseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			code = #{code,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据ID查询 -->
+	<select id="findById" parameterType="String" resultMap="BaseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			id = #{id,jdbcType=VARCHAR} 
+		</where>
+	</select>
+	
+	<!-- 根据打个属性查询实体 -->
+	<select id="findBySingleAttrLikeSearch" parameterType="Map" resultMap="BaseResultMap">
+		SELECT 
+			<include refid="baseColumnList"/>
+		FROM
+			<include refid="baseTable"/>
+		<where>
+			<choose>
+				<when test=" name != null and name != '' ">
+						name 
+					LIKE
+						CONCAT(CONCAT('%', #{name}), '%')
+				</when>
+				<when test=" code != null and code != '' ">
+						code
+					LIKE
+						CONCAT(CONCAT('%', #{code}), '%')
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<!-- 分页查询 -->
+	<select id="retrievePage" resultMap="BaseResultMap">
+		SELECT
+			<include refid="baseColumnList" />
+		FROM
+			<include refid="baseTable" />
+		<where>
+				1=1
+			<if test=" subject != null and subject != '' ">
+				AND
+				(
+						name
+					LIKE 
+						CONCAT(CONCAT('%', #{subject}), '%')
+					OR
+						code
+					LIKE
+						CONCAT(CONCAT('%', #{subject}), '%')
+				)
+			</if>
+		</where>
+	</select>
+
+	<!-- 根据ID批量查询 -->
+	<select id="findByIdsMap" resultMap="BaseResultMap">
+		SELECT
+			<include refid="baseColumnList" />
+		FROM
+			<include refid="baseTable" />
+		<where>
+				id
+			IN
+			<foreach collection="list" item="item" open="(" separator="," close=")">
+				#{item,jdbcType=VARCHAR}
+			</foreach>
+		</where>
+	</select>
+
+	<update id="update" parameterType="com.yonyou.iuap.bpm.entity.buzi.BuziModelVO">
+		update
+		<include refid="baseTable" />
+		set
+		code=#{code,jdbcType=VARCHAR},
+		name=#{name,jdbcType=VARCHAR},buzientity_id=#{buzientity_id,jdbcType=VARCHAR},msgtemplateclass_id=#{msgtemplateclass_id,jdbcType=VARCHAR},sysid=#{sysid,jdbcType=VARCHAR},createtime=#{createtime,jdbcType=TIMESTAMP},tenantid=#{tenantid,jdbcType=VARCHAR}
+		where id=#{id,jdbcType=VARCHAR}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String"
+		statementType="PREPARED">
+		delete from
+		<include refid="baseTable" />
+		<where>
+			id=#{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.user.WBUserMapper">
+	<resultMap id="BaseResultMap" type="com.yonyou.iuap.bpm.entity.user.WBUser">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="login_name" property="loginName" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="salt" property="salt" jdbcType="VARCHAR" />
+		<result column="roles" property="roles" jdbcType="VARCHAR" />
+		<result column="states" property="states" jdbcType="VARCHAR" />
+		<result column="register_date" property="registerDate" jdbcType="TIMESTAMP" />
+		<result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+		<result column="avator" property="avator" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="img" property="img" jdbcType="VARCHAR" />
+		<result column="islock" property="islock" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="create_person" property="createPerson" jdbcType="VARCHAR" />
+		<result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+		<result column="modify_person" property="modifyPerson" jdbcType="VARCHAR" />
+		<result column="organization_id" property="organizationId"  jdbcType="VARCHAR" />
+		<result column="organization_name" property="organizationName" jdbcType="VARCHAR" />
+		<result column="dr" property="dr" jdbcType="INTEGER" />
+		<result column="ts" property="ts" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+		id,login_name,name,password,salt,roles,states,register_date,tenant_id,avator,type,phone,email,img,islock,remark,create_date,create_person,modify_date,organization_id,organization_name,dr,ts
+	</sql>
+	<sql id="baseTable">
+		app_user
+	</sql>
+
+	<!-- 通过用户id 查询改用户-->
+	<select id="queryUser"  parameterType="string" resultMap="BaseResultMap">
+		SELECT
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="baseTable" />
+		WHERE id = #{id,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

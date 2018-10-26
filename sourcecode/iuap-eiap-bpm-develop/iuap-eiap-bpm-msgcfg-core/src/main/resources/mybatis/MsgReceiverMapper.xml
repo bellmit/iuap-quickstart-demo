@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.msgcfg.MsgReceiverMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.yonyou.iuap.bpm.entity.msgcfg.MsgReceiverVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="msgcfg_id" property="msgcfg_id" jdbcType="VARCHAR" />
+		<result column="receivertypecode" property="receivertypecode"
+			jdbcType="VARCHAR" />
+		<result column="receiver" property="receiver" jdbcType="VARCHAR" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,msgcfg_id,receivertypecode,receiver
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from iuap_bpm_msgreceiver
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+		
+	<select id="getMsgReceiverVOByMsgcfgId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		iuap_bpm_msgreceiver.id,msgcfg_id,iuap_bpm_msgreceiver.receivertypecode,receiver,iuap_bpm_msgreceivertype.inputtype
+		from iuap_bpm_msgreceiver,iuap_bpm_msgreceivertype
+		where iuap_bpm_msgreceiver.receivertypecode = iuap_bpm_msgreceivertype.receivertypecode and msgcfg_id = #{msgcfg_id,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		iuap_bpm_msgreceiver
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<delete id="deleteByMsgcfgId" parameterType="java.lang.String">
+		delete from
+		iuap_bpm_msgreceiver
+		where msgcfg_id = #{msgcfg_id,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgReceiverVO">
+		insert into
+		iuap_bpm_msgreceiver
+		(id,msgcfg_id,receivertypecode,receiver)
+		values (#{id,jdbcType=VARCHAR},
+		#{msgcfg_id,jdbcType=VARCHAR},#{receivertypecode,jdbcType=VARCHAR},
+		#{receiver,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgReceiverVO">
+		insert into iuap_bpm_msgreceiver
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="msgcfg_id != null">
+				msgcfg_id,
+			</if>
+			<if test="receivertypecode != null">
+				receivertypecode,
+			</if>
+			<if test="receiver != null">
+				receiver,
+			</if>
+
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="msgcfg_id != null">
+				#{msgcfg_id,jdbcType=VARCHAR},
+			</if>
+			<if test="receivertypecode != null">
+				#{receivertypecode,jdbcType=VARCHAR},
+			</if>
+			<if test="receiver != null">
+				#{receiver,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+</mapper>

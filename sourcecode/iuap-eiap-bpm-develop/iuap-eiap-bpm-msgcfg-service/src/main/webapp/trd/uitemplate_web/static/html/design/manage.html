@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>模板管理</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+	<link type="text/css" rel="stylesheet" href="/uitemplate_web/static/css/design/manage.ui.min.css" />
+	<link type="text/css" rel="stylesheet" href="/uitemplate_web/static/css/design/plugins.css" />
+	<link type="text/css" rel="stylesheet" href="/uitemplate_web/static/css/design/manage.min.css" />
+	<link type="text/css" rel="stylesheet" href="/uitemplate_web/static/css/design/all-crm.min.css" />
+	<link type="text/css" rel="stylesheet" href="/uitemplate_web/static/css/design/youyon.ui.css" />
+</head>
+<body>
+	<!--div id="header"></div-->
+	<div id="mainContainer"><div class="loading_eteams"></div></div> 
+	<div id="entitySlider" class="j_stretchBox module-detail-slide"></div>
+	<div class="goto-top graph hide"></div>
+
+	<script src="/uitemplate_web/static/js/design/libs.js"></script>
+	<script src="/uitemplate_web/static/js/design/plugins.js"></script>
+	<script src="/uitemplate_web/static/js/design/requirejs/require.js"></script>
+
+	<script>
+		require.config({
+			baseUrl : '/uitemplate_web/static/js/design'
+		})
+		require(['teams/core/main']);
+	</script>
+</body>
+</html>

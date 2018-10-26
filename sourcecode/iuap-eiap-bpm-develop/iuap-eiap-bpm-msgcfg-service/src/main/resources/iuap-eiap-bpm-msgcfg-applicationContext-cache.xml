@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-lazy-init="true">
+
+    <description>cacheSession</description>
+
+    <bean id="redisPool" class="com.yonyou.iuap.cache.redis.RedisPoolFactory"
+          scope="prototype" factory-method="createJedisPool">
+        <constructor-arg value="${redis.url}"/>
+    </bean>
+
+    <bean id="jedisTemplate" class="org.springside.modules.nosql.redis.JedisTemplate">
+        <constructor-arg ref="redisPool"/>
+    </bean>
+
+    <!-- iuap-cache组件 -->
+    <bean id="cacheManager" class="com.yonyou.iuap.cache.CacheManager">
+        <property name="jedisTemplate" ref="jedisTemplate"/>
+    </bean>
+
+    <!-- 元数据缓存 -->
+    <!-- <bean id="metadataCache" class="com.yonyou.metadata.mybatis.util.MetadataCache">
+        <property name="saasCacheMgr" ref="saasCacheManager" />
+        <property name="cacheManager" ref="cacheManager" />
+    </bean> -->
+
+</beans>

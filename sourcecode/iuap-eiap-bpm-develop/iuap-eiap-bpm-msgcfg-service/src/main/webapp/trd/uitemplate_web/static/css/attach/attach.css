@@ -1,0 +1,191 @@
+.closeModal:hover{
+	color:#FFFFFF!important;
+}
+
+.modal-header-attach{
+	background-color:#01A3F6;
+	height: 48px;
+	padding-left:20px;
+}
+.attachIndex{
+	z-index : 90;
+}
+
+.modal-backdrop{
+	z-index : 89;
+}
+
+.attachtable-toolbar>thead>tr>th {
+  padding-left: 0px;
+  padding-top:10px;
+}
+
+.attachtable-toolbar{
+	margin-left:-10px;
+}
+
+
+.attachImage>li>a>img{
+	height:15px;
+}
+
+.tools.attachImage>li{
+	padding:0 0;
+}
+
+.tools.attachImage>:first-child {
+	border-right-width:0;
+	padding-right:2px;
+}
+
+.attachLabel{
+    position: absolute;
+    margin-top: 0px;
+    font-size:14px;
+    font-family: '宋体';
+    display:block;
+}
+
+.trSelected{
+	background-color:#2F9CF7;
+}
+
+.attachImg{
+    width: 80px;
+    height: 80px;
+}
+
+.attachthumbnailUl{
+	height:330px; 
+	overflow-y:scroll
+}
+
+.tools.attachthumbnailUl>li{
+	padding:15px;
+}
+
+.tools.attachthumbnailUl>:first-child{
+	border-right: solid 0px #cdcdcd;
+	padding-right:11px;
+}
+
+.table.tablegrid-group>tbody>tr{
+	border : none;
+}
+
+.table.tablegrid-group > tbody > tr:hover{
+    background-color: #fff8ee !important;
+}
+
+.table.tablegrid-group > tbody > tr > td > div > input:hover{
+    background-color: #fff8ee !important;
+}
+
+.table.tablegrid-group>tbody + tbody{
+	border : none;
+}
+
+.panel-heading-uploader{
+	height:60px!important;
+	border:1px!important;
+	border-color:red;
+	background-color:white!important;
+}
+
+.attachButton{
+	color: #333;
+    background-color: #e6e6e6;
+    border:1px solid #DDD;
+    border-color:#adadad;
+    border-radius:0;
+}
+
+.attachButton:hover{
+	color:#666;
+	cursor: pointer;
+}
+
+.attach-remove-list{
+	position: absolute;
+	float:left;
+	width: 100px!important;
+	z-index: 95;
+	background: white;
+	text-align: left;
+	left: 520px;
+	top: 148px;
+	opacity: 0.8;
+	border:1px #dcdcdc solid;
+}
+
+.attach-remove-list li{
+	float:left;
+	text-align:left;
+	border:1px #FFFFFF solid;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:10px;
+}
+
+.attach-remove-list li:hover{
+	float:left;
+	text-align:left;
+	background-color: #E1E1E1;
+	width:100%;
+}
+
+.table td{
+	font-size:12px;
+}
+
+.modal-title{
+	height:20px!important;
+	border-color: #dae2ef!important;
+	color:white!important;
+}
+.modal-body{
+	height:392px!important;
+	background-color:white!important;
+}
+
+.attach-btn-group{
+	font-size:14px;
+}
+
+.attach_oper_td{
+	font-size:14px;
+}
+
+table> tr> td.oper_td> div> span> a{
+	
+	text-align: center;
+	display: inline-block;
+	padding: 0px;
+	line-height: 30px;
+	font-size: 16px;
+	cursor: pointer;
+	color: #fff;
+	margin: 0 10px;
+	width: auto !important;
+	vertical-align: sub;
+}
+
+.groupgrid{
+	width:201px;
+	padding:0;
+	height:330px;
+	border-right:solid 1px #dcdcdc;
+	background-color: #EEEEEE;
+}
+
+.groupinput{
+	height:40px;
+	width:55px;
+	min-width:36px;
+	min-height:23px;
+	border:0px!important;
+	padding-left:12px;
+	font-size:14px;
+	color:#333333;
+	background-color:#EEEEEE;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.yonyou.iuap.pap.bpm</groupId>
+	<artifactId>iuap-eiap-bpm-parent</artifactId>
+	<version>3.5.3-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>iuap-eiap-bpm-parent</name>
+
+	<modules>
+		<module>iuap-eiap-bpm-service</module>
+		<module>iuap-eiap-bpm-approval-service</module>
+		<module>iuap-eiap-bpm-core</module>
+		<module>iuap-eiap-bpm-sdk</module>
+		<module>iuap-eiap-bpm-approval-adapter</module>
+		<module>iuap-eiap-bpm-hrextend</module>
+		<module>iuap-eiap-bpm-msgcfg-core</module>
+		<module>iuap-eiap-bpm-msgcfg-service</module>
+		<module>iuap-eiap-bpm-common</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<!-- 主要依赖库的版本定义 -->
+		<!-- iuap -->
+		<iuap.modules.version>3.1.0-RELEASE</iuap.modules.version>
+		<iuap-mybatis>3.2.2-SNAPSHOT</iuap-mybatis>
+		<iuap-uitemplate-ref.version>3.1.0-RC001</iuap-uitemplate-ref.version>
+		<iuap-uitemplate-rt.version>3.1.0-RC001</iuap-uitemplate-rt.version>
+		<iuap-saasbase-generic-adapter.version>3.1.0-RC001</iuap-saasbase-generic-adapter.version>
+		<iuap-message-sdk.version>3.1.0-RC001</iuap-message-sdk.version>
+
+		<commons-io.version>2.4</commons-io.version>
+		<!-- spring -->
+		<spring.version>4.0.5.RELEASE</spring.version>
+
+		<springside.version>4.3.0-RELEASE</springside.version>
+
+		<!-- mybatis -->
+		<mybatis.version>3.3.0</mybatis.version>
+		<mybatis-spring.version>1.2.3</mybatis-spring.version>
+
+		<!-- javax -->
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+
+		<!-- sdk -->
+		<ubpm-rest-sdk.version>3.5.3-SNAPSHOT</ubpm-rest-sdk.version>
+
+		<!-- tools -->
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<aspectjweaver.version>1.7.4</aspectjweaver.version>
+		<gson.version>2.3.1</gson.version>
+		<fastjson.version>1.2.3</fastjson.version>
+		<jackson.version>2.4.0</jackson.version>
+		<jstl.version>1.2</jstl.version>
+		<c3p0.version>0.9.1.2</c3p0.version>
+
+		<!-- Redis -->
+		<jedis.version>2.6.0</jedis.version>
+
+		<!-- sql -->
+		<mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+		<oracle.version>11.2.0.2.0</oracle.version>
+		<postgresql.version>9.4-1205-jdbc4</postgresql.version>
+
+		<!-- log -->
+		<slf4j.version>1.7.8</slf4j.version>
+
+		<!-- test -->
+		<junit.version>4.11</junit.version>
+	</properties>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>iUAP-Snapshots</id>
+			<name>iUAP-Snapshots</name>
+			<url>http://maven.yonyou.com/nexus/content/repositories/iUAP-Snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>iUAP-Stagings</id>
+			<name>iUAP-Stagings</name>
+			<url>http://maven.yonyou.com/nexus/content/repositories/iUAP-Stagings/</url>
+		</repository>
+	</distributionManagement>
+</project>

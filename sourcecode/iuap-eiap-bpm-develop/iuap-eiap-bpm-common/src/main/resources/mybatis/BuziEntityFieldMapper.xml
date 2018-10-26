@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.buzi.BuziEntityFieldMapper">
+	<resultMap id="BaseResultMap"
+		type="com.yonyou.iuap.bpm.entity.buzi.BuziEntityFieldVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="buzientity_id" property="buzientity_id"
+			jdbcType="VARCHAR" />
+		<result column="model_id" property="model_id" jdbcType="VARCHAR" />
+		<result column="fieldcode" property="fieldcode" jdbcType="VARCHAR" />
+		<result column="fieldname" property="fieldname" jdbcType="VARCHAR" />
+		<result column="fieldtype" property="fieldtype" jdbcType="VARCHAR" />
+		<result column="typeoptions" property="typeoptions" jdbcType="VARCHAR" />
+		<result column="defaultvalue" property="defaultvalue" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="childResultMap"
+		type="com.yonyou.iuap.bpm.entity.buzi.BuziEntityFieldVO">
+		<id column="field_id" property="id" jdbcType="VARCHAR" />
+		<result column="buzientity_id" property="buzientity_id"
+			jdbcType="VARCHAR" />
+		<result column="model_id" property="model_id" jdbcType="VARCHAR" />
+		<result column="fieldcode" property="fieldcode" jdbcType="VARCHAR" />
+		<result column="fieldname" property="fieldname" jdbcType="VARCHAR" />
+		<result column="fieldtype" property="fieldtype" jdbcType="VARCHAR" />
+		<result column="typeoptions" property="typeoptions" jdbcType="VARCHAR" />
+		<result column="defaultvalue" property="defaultvalue" jdbcType="VARCHAR" />
+		<collection property="conditionType"
+			ofType="com.yonyou.iuap.bpm.entity.msgcfg.ConditionTypeVO">
+			<id column="type_id" property="id" jdbcType="VARCHAR" />
+			<result column="code" property="code" jdbcType="VARCHAR" />
+			<collection property="operators"
+				ofType="com.yonyou.iuap.bpm.entity.msgcfg.ConditionOperatorVO">
+				<id column="operator_id" property="id" jdbcType="VARCHAR" />
+				<result column="conditontype_id" property="conditontype_id"
+					jdbcType="VARCHAR" />
+				<result column="operatecode" property="operatecode" jdbcType="VARCHAR" />
+				<result column="operatename" property="operatename" jdbcType="VARCHAR" />
+			</collection>
+		</collection>
+	</resultMap>
+
+	<!-- 基础表名 -->
+	<sql id="baseTable">
+		iuap_bpm_buzientityfield
+	</sql>
+
+	<sql id="baseColumnList">
+		f.id,
+		f.buzientity_id,
+		f.model_id,
+		f.fieldcode,
+		f.fieldname,
+		f.fieldtype,
+		f.typeoptions,
+		f.defaultvalue
+	</sql>
+	<sql id="oneToManyColumnList">
+		f.id as field_id,
+		f.buzientity_id,
+		f.model_id,
+		f.fieldcode,
+		f.fieldname,
+		f.fieldtype,
+		f.typeoptions,
+		f.defaultvalue,
+		t.id as type_id,
+		t.code,
+		o.id as operator_id,
+		o.operatecode,
+		o.operatename
+	</sql>
+
+	<select id="findByFormCode" parameterType="java.lang.String"
+		resultMap="childResultMap">
+		select
+		<include refid="oneToManyColumnList" />
+		FROM
+		iuap_bpm_buzientity b
+		LEFT JOIN iuap_bpm_buzientityfield f
+		ON b.id=f.buzientity_id
+		LEFT JOIN iuap_bpm_conditontype t ON
+		f.fieldtype = t. CODE
+		LEFT JOIN
+		iuap_bpm_condoperator o ON t.id =
+		o.conditontype_id
+		WHERE
+		1 = 1
+		AND b.formcode = #{formCode,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 根据业务实体ID查询，不涉及关联表 -->
+	<select id="findByBuizEntityId" parameterType="String"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="baseTable" />
+		f
+		<where>
+			f.buzientity_id = #{entityId,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
+	<!-- 根据业务实体ID查询，不涉及关联表 -->
+	<select id="findByModelID" parameterType="String"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="baseTable" />
+		f
+		<where>
+			f.model_id = #{modelId,jdbcType=VARCHAR}
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.buzi.BuziEntityFieldVO">
+		insert into
+		iuap_bpm_buzientityfield(id,
+		buzientity_id,model_id,fieldcode,fieldname,fieldtype,typeoptions,defaultvalue)
+		values(#{id,jdbcType=VARCHAR},
+		#{buzientity_id,jdbcType=VARCHAR},#{model_id,jdbcType=VARCHAR},#{fieldcode,jdbcType=VARCHAR},#{fieldname,jdbcType=VARCHAR},#{fieldtype,jdbcType=VARCHAR},#{typeoptions,jdbcType=VARCHAR},#{defaultvalue,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+		insert into
+		iuap_bpm_buzientityfield(id,
+		buzientity_id,model_id,fieldcode,fieldname,fieldtype,typeoptions,defaultvalue)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=","></foreach>
+			((#{item.id,jdbcType=VARCHAR},
+			#{item.buzientity_id,jdbcType=VARCHAR},#{item.model_id,jdbcType=VARCHAR},#{item.fieldcode,jdbcType=VARCHAR},#{item.fieldname,jdbcType=VARCHAR},#{item.fieldtype,jdbcType=VARCHAR},#{item.typeoptions,jdbcType=VARCHAR},#{item.defaultvalue,jdbcType=VARCHAR}))
+	</insert>
+
+	<select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from iuap_bpm_buzientityfield where 1=1
+		<!-- <if test="name != null and !&quot;&quot;.equals(name.trim())"> -->
+		<!-- and formname=#{name} -->
+		<!-- </if> -->
+	</select>
+
+	<update id="update" parameterType="com.yonyou.iuap.bpm.entity.buzi.BuziEntityFieldVO">
+		update
+		iuap_bpm_buzientityfield set
+		buzientity_id=#{buzientity_id},
+		model_id=#{model_id,jdbcType=VARCHAR},fieldcode=#{fieldcode,jdbcType=VARCHAR},fieldname=#{fieldname,jdbcType=VARCHAR},fieldtype=#{fieldtype,jdbcType=VARCHAR},typeoptions=#{typeoptions,jdbcType=VARCHAR},defaultvalue=#{defaultvalue,jdbcType=VARCHAR}
+		where id=#{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String"
+		statementType="PREPARED">
+		delete from iuap_bpm_buzientityfield
+		<where>
+			id=#{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+</mapper>

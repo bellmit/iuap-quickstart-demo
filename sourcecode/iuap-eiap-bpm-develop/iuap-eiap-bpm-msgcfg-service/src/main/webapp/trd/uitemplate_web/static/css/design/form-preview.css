@@ -1,0 +1,296 @@
+body {
+	padding-top: 20px;
+}
+.yfd .panel .widget-title {
+	width:70px;
+	float:left;
+	margin-top:8px;
+	text-align:right;
+}
+.yfd .fl{
+	float: left;
+}
+.yfd .ml-20{
+	margin-left: 20px;
+}
+.yfd .field-description-hoz{
+	border-bottom: 1px dashed #ccc;
+    border-top: none;
+    margin-bottom: 10px;
+    padding: 3px 0;
+    color: #666;
+    word-break: break-all;
+    margin-left: 90px;
+}
+.yfd .field-description-vertical{
+	border-top: 1px dashed #ccc;
+    padding: 3px 0;
+    color: #666;
+    word-break: break-all;
+}
+
+.yfd .large{
+	width: 100% !important;
+}
+.yfd .medium{
+	width: 75% !important;
+}
+.yfd .small{
+	width: 50% !important;
+}
+.yfd .text-right{
+	text-align: right;
+}
+.yfd .money-runtime .billitem-label-content{
+	font-size: 14px;
+    cursor: default;
+    word-wrap: break-word;
+    text-align: left;
+}
+.yfd .billitem-label-hoz{
+	width: 100px;
+	margin-right: -100px;
+	text-align: right;
+	padding-top: 4px;
+}
+.yfd .money-type{
+	font-size: 12px;
+    color: #999;
+    margin: 3px 0 0 3px;
+    display: inline-block;
+}
+.yfd .pl-90{
+	padding-left: 115px;
+}
+.yfd .width-100{
+	width: 100%;
+}
+.yfd .form-group .input-group-addon-new{
+	position: absolute;
+  	margin: 2px 0 0 -25px;
+  	z-index:10;
+}
+.yfd .form-group .input-group-addon-new > .fa.fa-angle-down {
+  	font-size: 20px;
+}
+.yfd .input-group.date .input-group-addon{
+	padding: 3px 5px;
+}
+.yfd .fa{
+	width:14px;
+	text-align: align;
+}
+.yfd .u-grid-header-num {
+	height:100%;
+}
+.yfd .form-databox-head {
+	margin-top: 10px;
+}
+.yfd .form-databox-btn-area {
+	float: right;
+}
+.yfd .form-group.form-paragraph {
+	margin-bottom:10px;
+}
+.yfd .form-paragraph p {
+	margin: 0;
+}
+.yfd .form-tablelayout .table td {
+	padding: 0 15px;
+}
+/*鐢ㄦ埛閫夋嫨*/
+.yfd .employee-runtime .btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #666;
+	background-color: #fff;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px
+}
+.yfd .employee-runtime .btn:hover,.btn:focus {
+	color: #333;
+	text-decoration: none;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	transition: all .25s ease
+}
+.yfd .employee-runtime .loading_small,.loading_small-b {
+	height: 40px;
+	text-align: center;
+	line-height: 40px
+}
+.yfd .employee-runtime .border-dropdown,.panel.border-dropdown {
+	border: 1px solid #a3adba;
+	background-color: #fff;
+	-moz-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+	box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+	display: none;
+	margin-bottom: 0
+}
+.yfd .employee-runtime .tt-suggestion{
+	position:absolute;
+	z-index: 100;
+	height: auto;
+	max-height: 288px;
+	overflow:hidden;
+	padding:0px;
+	margin: 28px 0px 0px -1px;
+	display: block;
+	background-color: #ffffff;
+}
+.yfd .employee-runtime .engine-search{
+	background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 26px;
+    margin: 0;
+    padding: 3px;
+    position: relative;
+    width: 20px;
+}
+.yfd .employee-runtime .engine-search i {
+    color: #0088cc;
+    font-size: 14px;
+    line-height: 18px;
+}
+.yfd .employee-runtime .btn-sm,.btn-group-sm>.btn {
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+	height: 30px
+}
+
+.yfd .form-group.form-group-sm.solid{
+	border-style: solid;
+	border-width: 1px 0;
+}
+.yfd .form-group.form-group-sm.dashed{
+	border-style: dashed;
+	border-width: 1px 0;
+	border-bottom: 0px solid #c9c9c9 !important;
+}
+.yfd .form-group.form-group-sm.solid-double{
+	border-style: solid;
+	border-width: 3px 0;
+}
+.yfd .form-group.form-group-sm.thicksolid-double{
+	border-style: solid;
+	border-width: 2px 0;
+  	height: 5px;
+}
+
+.yfd .form-group .choicelist-line{
+	display:block;
+	margin-bottom: 10px;
+}
+.yfd .form-group .choicelist-inline{
+	display:inline-block;
+	margin-right: 10px;
+}
+.yfd .form-runtime-dline{
+	width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0px !important;
+}
+.yfd .cardpanel .paragraph ul, .cardpanel .paragraph ol {
+  padding-left: 40px;
+}
+.yfd .form-databox-head .title{
+	color: #333;
+    font-weight: bold;
+    text-align: left;
+    /* line-height: 60px; */
+    margin-left: 0px !important;
+}
+
+.yfd .form-databox-head .j_datatableTitleStyle{
+	width:100%;
+	max-width:100%;
+	float:left;
+	background-color:#e7edf5;
+/* 	height:40px;
+	line-height:40px;
+	margin-top: 20px; */
+}
+
+.yfd .table-bordered {
+  border: none;
+  width: auto;
+  margin-bottom:0px;
+}
+
+.yfd .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  border: none;
+}
+.yfd .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  border: none;
+  /* vertical-align: middle; */
+}
+.yfd .table>tbody>tr:first-child td{
+	vertical-align: bottom;
+}
+.yfd .cardpanel .form-tablelayout fieldset .input-group{
+  display: none;
+}
+.yfd .form-group {
+  width: 100%;
+  max-width: 100%;
+}
+
+.yfd .form-tablelayout .form-group label{
+  color: #666666;
+  font-weight: normal;
+  font-size: 13px;
+}
+.module-detail-slide .detail-header{
+	  background: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+      height: 51px;
+      line-height: 51px;
+      font-size: 14px;
+}
+.module-detail-slide .detail-header .detail-brand{  
+    margin: 0 30px;
+    font-weight: bold;
+    color: #454545;
+    float: left;
+    font-size: 16px;
+}
+.title-head{
+	font-size:14px;
+	color:#333333!important;
+	font-weight: bold;
+	float: left;
+	font-family:'Microsoft YaHei',tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+}
+
+/* ��дiuap-designcss begin*/
+fieldset {
+  border: 0px;
+  margin: 0px;
+  padding: 0px; 
+  }
+  
+ /* ��дiuap-designcss end*/

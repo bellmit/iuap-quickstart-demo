@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.msgcfg.MsgCfgMapper">
+	<resultMap id="BaseResultMap" type="com.yonyou.iuap.bpm.entity.msgcfg.MsgCfgVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="msgname" property="msgname" jdbcType="VARCHAR" />
+		<result column="proc_module_id" property="proc_module_id"
+			jdbcType="VARCHAR" />
+		<result column="act_id" property="act_id" jdbcType="VARCHAR" />
+		<result column="buzientity_id" property="buzientity_id" jdbcType="VARCHAR" />
+		<result column="eventcode" property="eventcode" jdbcType="VARCHAR" />
+		<result column="triggercondition" property="triggercondition"
+			jdbcType="LONGVARBINARY" />
+		<result column="msgtemplateid" property="msgtemplateid"
+			jdbcType="VARCHAR" />
+		<result column="enable" property="enable"
+			jdbcType="INTEGER"/>
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="sysid" property="sysid" jdbcType="VARCHAR" />
+		<result column="tenantid" property="tenantid" jdbcType="VARCHAR" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="channel" property="channel" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,
+		msgname,proc_module_id,act_id,buzientity_id,eventcode,msgtemplateid,enable,createtime,sysid,
+		tenantid, userid,channel
+	</sql>
+	<sql id="Blob_Column_List">
+		triggercondition
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from iuap_bpm_msgcfg
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByProcId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from iuap_bpm_msgcfg
+		where proc_module_id = #{proc_module_id,jdbcType=VARCHAR} and act_id = #{act_id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByProcIdAndEvent" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from iuap_bpm_msgcfg
+		where proc_module_id = #{proc_module_id,jdbcType=VARCHAR} and act_id = #{act_id,jdbcType=VARCHAR} and eventcode=#{eventcode,jdbcType=VARCHAR}
+	</select>
+	
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		iuap_bpm_msgcfg
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgCfgVO">
+		insert into iuap_bpm_msgcfg
+		(id,
+		msgname,proc_module_id,act_id,buzientity_id,eventcode,msgtemplateid,enable,createtime,sysid,
+		tenantid, userid,triggercondition,channel)
+		values (#{id,jdbcType=VARCHAR},
+		#{msgname,jdbcType=VARCHAR},#{proc_module_id,jdbcType=VARCHAR},
+		#{act_id,jdbcType=VARCHAR},
+		#{buzientity_id,jdbcType=VARCHAR},
+		#{eventcode,jdbcType=VARCHAR},#{msgtemplateid,jdbcType=VARCHAR},
+		#{enable,jdbcType=INTEGER},
+		#{createtime,jdbcType=TIMESTAMP},#{sysid,jdbcType=VARCHAR},
+		#{tenantid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+		#{triggercondition,jdbcType=LONGVARBINARY},
+		#{channel,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgCfgVO">
+		insert into iuap_bpm_msgcfg
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="msgname != null">
+				msgname,
+			</if>
+			<if test="proc_module_id != null">
+				proc_module_id,
+			</if>
+			<if test="act_id != null">
+				act_id,
+			</if>
+			<if test="buzientity_id != null">
+				buzientity_id,
+			</if>
+			<if test="eventcode != null">
+				eventcode,
+			</if>
+			<if test="msgtemplateid != null">
+				msgtemplateid,
+			</if>
+			<if test="enable != null">
+				enable,
+			</if>
+			<if test="createtime != null">
+				createtime,
+			</if>
+			<if test="sysid != null">
+				sysid,
+			</if>
+			<if test="tenantid != null">
+				tenantid,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="triggercondition != null">
+				triggercondition,
+			</if>
+			<if test="channel != null">
+				channel,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="msgname != null">
+				#{msgname,jdbcType=VARCHAR},
+			</if>
+			<if test="proc_module_id != null">
+				#{proc_module_id,jdbcType=VARCHAR},
+			</if>
+			<if test="act_id != null">
+				#{act_id,jdbcType=VARCHAR},
+			</if>
+			<if test="buzientity_id  != null">
+				#{buzientity_id ,jdbcType=VARCHAR},
+			</if>
+			<if test="eventcode != null">
+				#{eventcode,jdbcType=VARCHAR},
+			</if>
+			<if test="msgtemplateid != null">
+				#{msgtemplateid,jdbcType=VARCHAR},
+			</if>
+			<if test="enable != null">
+				#{enable,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sysid != null">
+				#{sysid,jdbcType=VARCHAR},
+			</if>
+			<if test="tenantid != null">
+				#{tenantid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="triggercondition != null">
+				#{triggercondition,jdbcType=LONGVARBINARY},
+			</if>
+			<if test="channel != null">
+				#{channel,jdbcType=LONGVARBINARY},
+			</if>
+
+		</trim>
+	</insert>
+
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgCfgVO">
+		update iuap_bpm_msgcfg
+		<set>
+			<if test="msgname != null">
+				#{msgname,jdbcType=VARCHAR},
+			</if>
+			<if test="proc_module_id != null">
+				#{proc_module_id,jdbcType=VARCHAR},
+			</if>
+			<if test="act_id != null">
+				#{act_id,jdbcType=VARCHAR},
+			</if>
+			<if test="buzientity_id != null">
+				#{buzientity_id,jdbcType=VARCHAR},
+			</if>
+			<if test="eventcode != null">
+				#{eventcode,jdbcType=VARCHAR},
+			</if>
+			<if test="msgtemplateid != null">
+				#{msgtemplateid,jdbcType=VARCHAR},
+			</if>
+			<if test="enable != null">
+				#{enable,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sysid != null">
+				#{sysid,jdbcType=VARCHAR},
+			</if>
+			<if test="tenantid != null">
+				#{tenantid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="triggercondition != null">
+				#{triggercondition,jdbcType=LONGVARBINARY},
+			</if>
+			<if test="channel != null">
+				#{channel,jdbcType=LONGVARBINARY},
+			</if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgCfgVO">
+		update
+		iuap_bpm_msgcfg
+		set
+		msgname = #{msgname,jdbcType=VARCHAR},
+		proc_module_id =
+		#{proc_module_id,jdbcType=VARCHAR},
+
+		act_id = #{act_id,jdbcType=VARCHAR},
+		buzientity_id = #{buzientity_id,jdbcType=VARCHAR},
+		eventcode =
+		#{eventcode,jdbcType=VARCHAR},
+
+		msgtemplateid = #{msgtemplateid,jdbcType=VARCHAR},
+		enable =
+		#{enable,jdbcType=INTEGER},
+		createtime =
+		#{createtime,jdbcType=TIMESTAMP},
+				
+		sysid = #{sysid,jdbcType=VARCHAR},
+		tenantid =
+		#{tenantid,jdbcType=VARCHAR},
+		
+		triggercondition =
+		#{triggercondition,jdbcType=LONGVARBINARY},
+		
+		userid = #{userid,jdbcType=VARCHAR},
+		channel = #{channel,jdbcType=VARCHAR}
+		where id =
+		#{id,jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateEnableInfo" parameterType="com.yonyou.iuap.bpm.entity.msgcfg.MsgCfgVO">
+		update
+		iuap_bpm_msgcfg
+		set
+		enable =
+		#{enable,jdbcType=INTEGER}
+		where id =
+		#{id,jdbcType=VARCHAR}
+	</update>
+	
+
+</mapper>

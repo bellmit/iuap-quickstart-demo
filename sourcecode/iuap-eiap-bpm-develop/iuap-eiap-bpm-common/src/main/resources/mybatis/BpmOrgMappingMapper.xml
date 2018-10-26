@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.bpm.dao.adapter.BpmOrgMappingDao">
+	<resultMap id="BaseResultMap"
+		type="com.yonyou.iuap.bpm.entity.adapter.BpmOrgMappingVO">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="localorg_id" property="localorg_id" jdbcType="VARCHAR" />
+		<result column="localorg_code" property="localorg_code"
+			jdbcType="VARCHAR" />
+		<result column="remoteorg_id" property="remoteorg_id" jdbcType="VARCHAR" />
+		<result column="create_date" property="create_date" jdbcType="DATE" />
+	</resultMap>
+
+	<sql id="baseColumnList">
+		id,localorg_id,localorg_code,remoteorg_id,create_date
+	</sql>
+	<sql id="baseTable">
+		iuap_bpm_orgmapping
+	</sql>
+
+	<select id="findByLocalOrgId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="baseTable" />
+		WHERE localorg_id = #{orgId,jdbcType=VARCHAR}
+	</select>
+
+
+	<insert id="insert" parameterType="com.yonyou.iuap.bpm.entity.adapter.BpmOrgMappingVO">
+		insert into
+		<include refid="baseTable" />
+		(
+		<include refid="baseColumnList" />
+		)
+		values
+		(#{id,jdbcType=VARCHAR},#{localorg_id,jdbcType=VARCHAR},#{localorg_code,jdbcType=VARCHAR},#{remoteorg_id,jdbcType=VARCHAR},#{create_date,jdbcType=DATE})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM
+		<include refid="baseTable" />
+		<where>
+			id = #{id,jdbcType=VARCHAR}
+		</where>
+	</delete>
+
+	<delete id="deleteByLocalId" parameterType="String">
+		DELETE FROM
+			<include refid="baseTable" />
+		<where>
+			localorg_id=#{localId,jdbcType=VARCHAR}
+		</where>
+	</delete>
+
+	<delete id="deleteByRemotelId" parameterType="java.lang.String"
+		statementType="STATEMENT">
+		delete from
+		<include refid="baseTable" />
+		<where>
+			remoteorg_id=#{remoteId,jdbcType=VARCHAR}
+		</where>
+	</delete>
+
+</mapper>

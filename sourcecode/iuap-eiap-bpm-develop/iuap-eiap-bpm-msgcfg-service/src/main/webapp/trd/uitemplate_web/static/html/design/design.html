@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>iUAP - UI模板设计器</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1">
+<link type="text/css" rel="stylesheet" href="./static/css/design/iform.ui.css" />
+<!-- ue字体图标 -->
+<link type="text/css" rel="stylesheet" href="./static/css/design/iconfont/iconfont.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/jquery.ui.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/scrollbar.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/colpick.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/bootstrap.pnotify.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/bootstrap.datetimepicker.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/introjs.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/form.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/form-view.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/form-typeahead.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/design/org.css" />
+<link rel="shortcut icon" href="./static/img/favicon.ico" />
+<script type="text/javascript" src="./static/js/design/libs.js"></script>
+<script type="text/javascript" src="./static/js/design/plugins.js"></script>
+<script type="text/javascript" src="./static/js/design/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/uui/libs/requirejs/require.js"></script> 
+<script>
+	window.ctx = "/uitemplate_web";
+</script>
+</head>
+<body class="edit">
+<div id="dialog" class="modal fade"></div>
+<div id="sortdialog" class="modal fade"></div>
+<header class="header ">
+	<div class="js_formLevelOperate wrapper-operateBtn">
+	    <i class="UIT-iconfont UIT-designer fl" style="margin-left: 26px;color:#E84243;font-size: 24px;margin-top: -2px;"></i>
+	    <p class="pull-left header-left-name">UI模板&nbsp;</p>
+	    <p class="pull-left header-right-name">设计器</p>
+        <div class="pull-right btn-formLevelOperate fl">
+		  <a class="btn-formLevelOperate btn-lake runtime_js" submitType="runtime">
+		  <i class="UIT-iconfont UIT-yulan" style="font-size: 14px;"></i>&nbsp;&nbsp;预览
+		  </a>
+        </div>
+        <div class="pull-right btn-formLevelOperate fl btnSave" style="display:none;">
+		  <a class="btn-formLevelOperate-a submit_js" submitType="save">
+		  <i class="UIT-iconfont UIT-confirm" style="font-size: 14px;"></i>&nbsp;&nbsp;保存
+		  </a>
+        </div>
+	</div>
+</header>
+
+<section class="js_wrapperSize wrapper clearfix w-full">
+ <div class="form-w1185">
+	<div class="js_wrapperConSize wrapper-content" style="margin-left: auto;margin-right: auto;">
+	<!-- 左侧区域 -->
+		<div id="leftFormEdit_js" class="formEdit_left fl form-widgetEdit">
+
+		     <div class="form-tab-class">
+			     <div id="businessObj" class="j_edit_tab fl ml-38 attr-selected" edit-type="businessObj" >业务对象</div>
+			     <div id="form-addcomp" class="j_edit_tab fl" edit-type="form" style="margin-left: 60px;">控件 </div>
+		     </div>
+		     <div id="form-addCompContainer" class="clearfix" style="background: #ffffff;">
+		          <!-- 布局 -->
+		          <ul class="pull-left form-lead-tab">
+					<li>
+						<a class="j_widget_tab" widget-type="layout">
+							<i class="UIT-iconfont UIT-yousanjiao fl" style="font-size: 10px;"></i>
+							<span class="ml-10">布局</span></a>
+						<div id="layout-widget-list" class="hide" style="padding: 10px 15px;">
+							<div class="j_scrollWrapper j_scroll_sideBar scroll-wrapper layout-widget-list-div">
+								<div class="widget-list widget-layout">
+									<div class="widget-item form-layout_js" title="拖拽至页面中间区域" componentKey="ColumnPanel" componentSize="1">
+										<span class="widgetMark layout-1">
+										   <i class="UIT-iconfont UIT-iconfontrow1column"></i>
+										</span>
+										<span class="title">一行一列</span>
+									</div>
+									<div class="widget-item form-layout_js" title="拖拽至页面中间区域" componentKey="ColumnPanel" componentSize="2">
+										<span class="widgetMark layout-1">
+										   <i class="UIT-iconfont UIT-row2column"></i>
+										</span>
+										<span class="title">一行两列</span>
+									</div>
+									<div class="widget-item form-layout_js" title="拖拽至页面中间区域" componentKey="ColumnPanel" componentSize="3">
+										<span class="widgetMark layout-2">
+											<i class="UIT-iconfont UIT-row3column"></i>
+										</span>
+										<span class="title">一行三列</span>
+									</div>
+									<div class="widget-item table_layout_js" title="拖拽至页面中间区域" componentKey="TableLayout">
+			                            <span class="widgetMark layout-table">
+			                            	<i class="UIT-iconfont UIT-tablelayout"></i>
+			                            </span>
+			                            <span class="title">表格布局</span>
+			                        </div>
+									<div class="widget-item subform_js" title="拖拽至页面中间区域" componentKey="DataTable" componentSize="3">
+										<span class="widgetMark layout-databox">
+											<i class="UIT-iconfont UIT-childtable"></i>
+										</span>
+										<span class="title">明细子表</span>
+									</div>
+									<div class="widget-item subform_js" title="拖拽至页面中间区域" componentKey="GroupTable" componentSize="1">
+										<span class="widgetMark layout-group">
+											<i class="UIT-iconfont UIT-canvas"></i>
+										</span>
+										<span class="title">分组布局</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="widget-devide"></div><!--分割线-->
+					</li>
+					<li>
+						
+						<a class="j_widget_tab" widget-type="form">
+							<i class="UIT-iconfont UIT-s show-color fl" style="font-size: 10px;"></i>
+							<span class="ml-10 show-color">常用</span></a>
+						<div id="form-widget-list" class="widget-list" style="padding: 10px 15px;">
+							<div class="j_scrollWrapper j_scroll_sideBar scroll-wrapper form-widget-list-div" style="margin-bottom: 10px;">
+								<div class="drag-into-layout">
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="Text">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-input"></i></span>
+										<span class="title">文本输入框</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="TextArea">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-mtext"></i></span>
+										<span class="title">多行文本框</span>
+									</div>
+									<div class="widget-item general_js select-type" title="拖拽至页面中间区域" componentKey="Select">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-dropdown"></i></span>
+										<span class="title">选项控件</span>
+									</div>
+									<div class="widget-item general_js date-type" title="拖拽至页面中间区域" componentKey="DateComponent">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-date"></i></span>
+										<span class="title">日期</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="NumberComponent">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-num"></i></span>
+										<span class="title">数值</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="Money">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-money1"></i></span>
+										<span class="title">金额</span>
+									</div>
+			                        <div class="widget-item general_js select-type" title="拖拽至页面中间区域" componentKey="Reference">
+			                             <span class="widgetMark"><i class="UIT-iconfont UIT-canzhao"></i></span> 
+			                            <span class="title">参照</span>
+			                        </div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="Label">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-simpletext"></i></span>
+										<span class="title">简单文字</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="ImageComponent">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-picture"></i></span>
+										<span class="title">图片</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="Email">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-mail"></i></span>
+										<span class="title">邮箱</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="Phone">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-phone"></i></span>
+										<span class="title">电话</span>
+									</div>
+									<div class="widget-item general_js text-type" title="拖拽至页面中间区域" componentKey="Mobile">
+										<span class="widgetMark"><i class="UIT-iconfont UIT-mobilephone"></i></span>
+										<span class="title">手机</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+		     </div>
+			<div id="form-businessObj" class="ztree-div-class ztree j_scroll_editNew scroll-wrapperNew hide" style="height:100%;">
+		          
+		    </div>
+		</div>
+          <!--  </div> -->
+		<!-- 中区 -->
+		<div id="formContainer_js" class="formEdit_center form-design pull-left">
+			<div class="form-view-bg"></div>
+			<div class="form-view-wrapper j_scroll_formView scroll-wrapper" style="margin-left: 10px;margin-right: 10px;background-color:#ffffff;">
+					<div class="form-head form-head_js">
+						  <div class="form-h40 fl w-full">
+								<div class="form-head-l fl " style="width: 100%;">
+									<input id="form-head-l-name" class="form-name fl border-ccc input-name-disabled" disabled="disabled" style="text-align: center;width: 90%;"></input><i class="UIT-iconfont UIT-pencil icon-pencil-wrap fl ml-12 mt-10" style="font-size: 14px;"></i>
+								</div>
+						  </div>
+						  <div class="form-description"></div>
+					</div>
+				<div id="formContent" class="form-view form-edit-region" style="margin-right: auto;margin-left: auto;width: 98%;">
+					<div id="widget-control" class="widget-control form-view_js">
+						<div id="widget-control-noContent" class="widget-control-noContent form-view_js hide">
+							      <div class="form-giude"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 右侧区域 -->
+		<div id="formEdit_js" class="pull-left formEdit_right fl form-widgetEdit">
+
+		     <div class="form-tab-class">
+			     <div id="comp-setting" class="j_edit_tab fl ml-38" edit-type="formwidget" >表单设置</div>
+			     <div id="form-comp-setting" class="j_edit_tab fl" edit-type="widget" style="margin-left: 60px;">控件设置</div>
+		     </div>
+		     <div id="edit-widget" class="j_scroll_edit scroll-wrapper hide" style="min-width: 308px;">
+				<div class="form-Edit-content bg-white">
+					<div id="editor-component" style="color:#666666;">
+						<div class="alert alert-danger">
+							<i class="icon-exclamation-sign"></i> 请先选择控件
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="form-edit-widget" class="j_scroll_edit scroll-wrapper hide" style="min-width: 308px;">
+				<div id="edit-form">
+					<div class="form-Edit-content bg-white" style="padding: 24px 10px 10px 20px;">
+						<div class="form-group form-Edit-group">
+						    <label class="form-Edit-cf">表单标题</label>
+						    <input id="name-form" type="text" class="form-control ds-i form-content-font" placeholder="请输入表单标题" maxlength="50">
+					    </div>
+						<div class="form-group form-Edit-group">
+							<label class="form-Edit-cf">描述</label>
+							<textarea id="description-form" class=" form-control scroll-wrapper ds-i form-content-fontd" style="min-height:30px;" maxlength="200"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+  </div>
+  </div>
+  </div>
+</section>
+<div class="padding-div"></div><!--填充层-->
+
+<!-- 选项批量编辑模态窗 -->
+<div id="optBatcEdit" class="modal fade chooselist-batch">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h5 class="modal-title">批量编辑</h5>
+			</div>
+			<div class="modal-body">
+				<p class="mb-10">每个选项请单列一行<span class="j_optBatcEditEr ml-10 c-danger icon-warning-sign hide">不能为空</span></p>
+				<div><textarea id="optContent" class="form-control w-full rs-n"></textarea></div>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-sm btn-primary j_saveOptBatc">确定</a>
+				<a class="btn btn-sm j_close">取消</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 预览弹出框div -->
+<div id="" class="j_stretchBox module-detail-slide">
+	<div class="module-detail-view">
+		<div class="detail-header">
+			<div class="detail-brand">
+				模板预览
+			</div>
+			<div class="detail-actions">
+				<ul class="j_button_ul">
+					<li class="detail-close-li"><a title="关闭" id="btn-close" class="detail-slide-close j_btn_close">×</a></li>
+				</ul>
+			</div>
+			<div style="width:98%;height:800px;overflow:auto;"  id="template-preview">
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="./static/js/design/index.js"></script>
+</body>
+</html>

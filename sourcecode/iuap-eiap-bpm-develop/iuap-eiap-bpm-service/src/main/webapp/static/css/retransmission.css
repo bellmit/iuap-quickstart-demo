@@ -1,0 +1,190 @@
+#forwardTaskDialog .modal-body,
+#addSignsDialog .modal-body {
+  padding: 20px 30px;
+}
+.org-panel {
+  float: left;
+  width: 200px;
+  height: 374px;
+  border: 1px solid #cecece;
+}
+.staff-panel {
+  float: right;
+  width: 680px;
+}
+#forwardTaskDialog .common-header,
+#addSignsDialog .common-header {
+  padding: 0 0 6px 0;
+  height: 42px;
+  border: 0;
+}
+#forwardTaskDialog .search,
+#addSignsDialog .search {
+  margin-left: 0;
+}
+.staff-page {
+  display: inline-block;
+  width: 112px;
+  height: 36px;
+  line-height: 36px;
+}
+.leright {
+  cursor: pointer;
+  font-size: 30px;
+  color: #cecece;
+}
+.staff-page .pnumber {
+  display: inline-block;
+  width: 42px;
+  text-align: center;
+}
+.pnumber .p-current,
+.pnumber .p-total {
+  vertical-align: top;
+  height: 30px;
+  display: inline-block;
+  line-height: 26px;
+}
+.p-total:before {
+  content: '/';
+  padding-right: 2px;
+}
+#forwardTaskDialog .hr-table thead,
+#addSignsDialog .hr-table thead {
+  font-size: 14px;
+  background-color: #EEEFF1;
+}
+#forwardTaskDialog tr,
+#addSignsDialog tr {
+  height: 30px;
+  border: 1px solid #cecece;
+  cursor: default;
+}
+#forwardTaskDialog .hr-table tbody,
+#addSignsDialog .hr-table tbody {
+  font-size: 12px;
+}
+#forwardTaskDialog tr td:last-child,
+#addSignsDialog tr td:last-child {
+  text-align: left;
+}
+#addSignsDialog tr td:first-child,
+#addSignsDialog .thead th:first-child,
+#addSignsDialog tr td:first-child,
+#addSignsDialog .thead th:first-child {
+  padding-left: 20px;
+}
+#forwardTaskDialog .hr-table,
+#addSignsDialog .hr-table {
+  padding: 4px;
+  height: 100%;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+}
+#forwardTaskDialog .hr-table .active,
+#addSignsDialog .hr-table .active {
+  background: #C4EAF6;
+  cursor: default;
+}
+.org-panel {
+  padding: 0 10px;
+}
+.org-panel .ztree li .switch {
+  border: 0;
+}
+.org-panel .ztree li a {
+  padding: 0;
+}
+.org-panel .ztree li span.button.switch.noline_close:after {
+  top: 0;
+  right: 0;
+}
+.org-panel .ztree li span.button.switch {
+  height: 10px;
+}
+.org-panel .ztree li span.button.noline_open:after {
+  font-family: 'FontAwesome';
+  content: "\f0d7";
+  font-size: 14px;
+  padding: 0 5px;
+}
+.org-panel .ztree li span.button.noline_close:after {
+  font-family: 'FontAwesome';
+  content: "\f0da";
+  font-size: 14px;
+  padding: 0 5px;
+}
+.org-panel .ztree li span.button.ico_open:after {
+  content: '';
+}
+.org-panel .ztree li span.button.ico_close:after {
+  content: '';
+}
+.org-panel .ztree li span.button {
+  width: auto;
+  height: auto;
+}
+.org-panel .ztree li span.button.ico_docu:after {
+  content: '';
+}
+@media (min-width: 1024px) {
+  #myModal .modal-dialog {
+    width: 1010px;
+    margin: 30px auto;
+  }
+}
+.org-panel .ztree li span.button.switch.noline_close:after,
+.org-panel .ztree li span.button.switch.noline_open:after {
+  position: static;
+}
+.staff-bottom {
+  width: 100%;
+  border: 1px solid #cecece;
+  float: left;
+  min-height: 39px;
+  margin-top: 10px;
+}
+.staff-bottom .namespan {
+  position: relative;
+  font-size: 13px;
+  line-height: 15px;
+  display: inline-block;
+  margin: 7px 0 7px 10px;
+  border: 1px solid #98daf0;
+  padding: 4px 15px;
+  background-color: #e9f7fc;
+  color: #13799A;
+}
+.staff-bottom .namespan:hover {
+  cursor: pointer;
+}
+.namespan .removei {
+  display: none;
+  color: #1baede;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  cursor: pointer;
+}
+#emptyRight {
+  position: relative;
+  min-height: 300px;
+  display: none;
+  border: 1px solid #CECECE;
+  border-top: 0;
+}
+#emptyRight img {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -35px;
+}
+#emptyRight span {
+  color: #b4b4b4;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  margin-top: 40px;
+  margin-left: -80px;
+}

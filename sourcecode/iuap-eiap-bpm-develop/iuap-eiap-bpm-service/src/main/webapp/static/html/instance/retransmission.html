@@ -1,0 +1,59 @@
+<!-- Modal -->
+<div class="modal fade " id="forwardTaskDialog" tabindex="-1" role="dialog" aria-labelledby="forwardTaskDialog">
+    <div class="modal-dialog " role="document" style="width:960px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="formModalLabel" data-bind="text: title"></h4>
+            </div>
+            <div class="modal-body scroll clearfix">
+                <!-- <div class="org-panel clearfix"> -->
+                    <div id="treeOrg" class="org-panel clearfix ztree" u-meta='{"id":"treeOrg","data":"treeOrg","type":"tree","idField":"id","pidField":"pid","nameField":"orgname","setting":"treeSetting"}'></div>
+                <!-- </div> -->
+                <div class="staff-panel clearfix">
+                    <div class="common-header">
+                        <div class="search">
+                            <input type="text" class="fl" placeholder="输入姓名" id="searchVal" data-bind="value:searchStr" />
+                            <button type="button" class="btn btn-default" data-bind="click:searchStaff"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                        <div class="fr staff-page" data-bind="visible: totalPages() > 0">
+                            <span class="uf uf-anglepointingtoleft" data-bind="click: prePage"></span>
+                            <div class="pnumber">
+                                <label class="p-current" data-bind="text: current"></label>
+                                <label class="p-total" data-bind="text: totalPages"></label>
+                            </div>
+                            <span class="uf uf-anglearrowpointingtoright" data-bind="click: nextPage"></span>
+                        </div>
+                    </div>
+                        <table class="hr-table">
+                            <thead class="thead">
+                                <tr>
+                                    <th width="30%">编码</th>
+                                    <th width="20%">姓名</th>
+                                    <th width="20%">手机</th>
+                                    <th width="30%">所属组织</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach:{data:users.rows(), as: 'row'}">
+                                <tr data-bind="attr:{id:row.ref('user_id')},click:$parent.selectUser.bind($parent,row.ref('user_id'))">
+                                    <td data-bind="text: row.ref('code')"></td>
+                                    <td data-bind="text: row.ref('name')"></td>
+                                    <td data-bind="text: row.ref('mobile')"></td>
+                                    <td data-bind="text: row.ref('org_id_showname')"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <div id="emptyRight" style="display: none;">
+                        <img src="./static/images/empty.png"/>
+                        <span>没有查询到符合条件的记录</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue-button" data-bind="click:forwardTo">确定</button>
+                <button type="button" class="btn white-button" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

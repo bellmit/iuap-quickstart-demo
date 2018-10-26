@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>参照DEMO页面</title>
+<link href="/uui/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/uui/libs/uui/css/u.css" rel="stylesheet">
+
+<!-- 参照 第一步：引入参照的css和js-->
+<link href="/uitemplate_web/static/css/ref/ref.css" rel="stylesheet">
+<link href="/uitemplate_web/static/css/ref/jquery.scrollbar.css" rel="stylesheet">
+<link href="/uui/libs/uui/css/tree.css" rel="stylesheet">
+<!-- <link href="/uitemplate_web/static/trd/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"> -->
+<link href="/uitemplate_web/static/trd/bootstrap-table/src/bootstrap-table.css" rel="stylesheet">
+
+
+<script>
+	window.ctx = "/uitemplate_web";
+</script>
+	<style type="text/css">
+		.billitem{
+			margin-top: 20px;
+			/* float: left; */
+			width: 350px !important;
+		}
+		.billitem-label{
+			/* float: left; */
+	  		margin-top: 5px;
+	  		width: 120px;
+  			text-align: right;
+		}
+		.col-md-5{
+			width: 60%;
+	  		/* float: left; */
+		}
+		.refer{
+			top:8px;
+		}
+		.popWindow { 
+			background-color:#9D9D9D; 
+			width: 100%; 
+			height: 100%; 
+			left: 0; 
+			top: 0; 
+			filter: alpha(opacity=50); 
+			opacity: 0.5; 
+			z-index: 2; 
+			position: fixed; 
+		}  
+		.outerContainer{
+			webkit-transition: -webkit-transform .3s ease-out;
+		    -o-transition: -o-transform .3s ease-out;
+		  	transition: transform .3s ease-out;
+		  	-webkit-transform: translate3d(0,-25%,0);
+		  	-o-transform: translate3d(0,-25%,0);
+		  	transform: translate3d(0,-25%,0);
+		}
+		.active .outerContainer{
+			-webkit-transform: translate3d(0,0,0);
+  			-o-transform: translate3d(0,0,0);
+  			transform: translate3d(0,0,0);
+		}
+	</style>
+</head>
+<body>
+	<!-- 参照 第二步：编写前端参照，注意u-mata的type是uiRefer,其他属性要和viewModel中对应上-->
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 树表单选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefGridTree"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefGridTree"}'>
+	    	<input id="testRefGridTree" class="form-control" type="text" >
+			<!-- <a href="javascript:" title='清空' class="clearAuto"></a> -->
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+			<!-- <span class="input-group-addon"><span class="fa fa-search fa-angle-down"></span></span> -->
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 树表多选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefMuGridTree"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefMuGridTree"}'>
+	    	<input id="testRefMuGridTree" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 表格单选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefGrid"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefGrid"}'>
+	    	<input id="testRefGrid" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 表格多选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefMuGrid"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefMuGrid"}'>
+	    	<input id="testRefMuGrid" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 普通树型单选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefTree"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefTree"}'>
+	    	<input id="testRefTree" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> ztree树型单选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefzTree"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefzTree"}'>
+	    	<input id="testRefzTree" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 树型多选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefMuTree"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefMuTree"}'>
+	    	<input id="testRefMuTree" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 列表类型单选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefcommon"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefcommon"}'>
+	    	<input id="testRefcommon" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div class="form-group form-group-sm billitem" style="margin-left:60px;width:600px">
+		<label class="billitem-label" for="pk_deptid_v2x"> 列表类型多选类型： </label>
+		<div class="input-group date form_date col-md-5" id="testRefMucommon"	u-meta='{"type":"uiRefer", "data":"headform", "field":"testRefMucommon"}'>
+	    	<input id="testRefMucommon" class="form-control" type="text" >
+			<span class="u-form-control-feedback fa fa-list-ul refer"></span>
+		</div>
+	</div>
+	<div id="popWindow" class="popWindow" style="display: none;"></div> 
+	
+	<script src="/uui/libs/requirejs/require.js"></script>
+	<script >
+	require.config({
+		// baseUrl: "../",
+		paths: {
+			'jquery': "/uui/libs/jquery/jquery-1.11.2",
+			'knockout': "/uui/libs/knockout/knockout-3.2.0.debug",
+			'polyfill': "/uui/libs/uui/js/u-polyfill",
+			'uui': "/uui/libs/uui/js/u",
+			'css': "/uui/libs/requirejs/css",
+			'bootstrap':"/uui/libs/bootstrap/dist/js/bootstrap",
+			'ztree':"/uui/libs/uui/js/u-tree",
+			'reflib': "/uitemplate_web/static/js/uiref/reflib",
+			'refer': "/uitemplate_web/static/js/uiref/refer",
+			'refGrid': "/uitemplate_web/static/js/uiref/refGrid",
+			'refGridtree': "/uitemplate_web/static/js/uiref/refGridtree",
+			'refTree': "/uitemplate_web/static/js/uiref/refTree",
+			'refcommon': "/uitemplate_web/static/js/uiref/refcommon",
+			'uiReferComp' : "/uitemplate_web/static/js/uiref/uiReferComp",
+		},
+		
+		shim: {
+			bootstrap:{
+				deps:["jquery"]
+			},
+			'uui': {
+				deps: ["jquery", "bootstrap", "polyfill","knockout"]
+			},
+			'ztree': {
+				//deps: ["jquery","css!/uitemplate_web/static/trd/zTree_v3/css/zTreeStyle/zTreeStyle.css"]
+				deps: ["jquery","uui","css!/uui/libs/uui/css/tree.css","css!/uui/libs/uui/fonts/font-awesome/css/font-awesome.css"]
+			},
+			'zTree.exhide':{
+				deps: ["zTree"]
+			},
+			'reflib':{
+	       	 	deps: ["jquery"]
+	        },
+			'refer':{
+				deps:["jquery","reflib","ztree"]
+			},
+			'sco.message':{
+				deps: ["jquery"]
+			},
+			'uiReferComp':{
+				deps:["uui"]
+			},
+			'refGridtree':{
+				deps: ["refer"]
+			},
+			'refGrid':{
+				deps: ["refer"]
+			},
+			'refTree':{
+				deps: ["refer"]
+			},
+			'refcommon':{
+				deps: ["refer"]
+			}
+		},
+		waitSeconds:60
+	});
+
+	require([
+		'jquery',
+		'knockout',
+		'bootstrap',
+		'polyfill',
+		'uui',
+		'ztree',
+		'uiReferComp',
+		'refer',
+		'refGridtree',
+		'refGrid',
+		'refTree',
+		'refcommon'
+	], function($, ko, pageModel,templetutil,controller) {
+		  <!-- 参照 第三步：根据refCode去后台调用rest服务查询查询基本信息，然后放到meta里面-->
+		  var refmodel = "";
+			$.ajax({
+	            type: "get",
+	            url: '/uitemplate_web/iref_ctr/refInfo/',
+	            data: {
+	            	refCode: "testref"
+				},
+	            traditional: true,
+	            async: false,
+	            dataType: "json",
+	            success: function (pRefmodel) {
+					refmodel = JSON.stringify(pRefmodel);
+	            }
+	        });
+			var viewModel = {
+				headform: new u.DataTable({ // 主表
+					<!-- 参照 第四步：编写参照模型，根据使用参照的业务场景，定制参照的配置信息，然后放到meta里面-->
+					<!-- "isZtreeStyle":true, testref_common_ctr-->
+					meta:{ //'testRefMuGridTree':{'refmodel':refmodel}
+						 'testRefMuGridTree':{'refmodel':'{"refUIType":"RefGridTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_ctr/","refName":"树表多选类型"}','refcfg':'{"isMultiSelectedEnabled":true,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+						 ,'testRefGridTree':{'refmodel':'{"refUIType":"RefGridTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_ctr/","refName":"树表单选类型"}','refcfg':'{"isMultiSelectedEnabled":false,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefMuGrid':{'refmodel':'{"refUIType":"RefGrid","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_grid_ctr/","refName":"测试Mugrid"}','refcfg':'{"isMultiSelectedEnabled":true,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefGrid':{'refmodel':'{"refUIType":"RefGrid","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_grid_ctr/","refName":"测试grid"}','refcfg':'{"isMultiSelectedEnabled":false,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefMuTree':{'refmodel':'{"refUIType":"RefTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_tree_ctr/","refName":"测试Mutree"}','refcfg':'{"isMultiSelectedEnabled":true,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefTree':{'refmodel':'{"refUIType":"RefTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_tree_ctr/","refName":"测试tree"}','refcfg':'{"isMultiSelectedEnabled":false,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefMuzTree':{'refmodel':'{"refUIType":"RefTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_tree_ctr/","refName":"测试Muztree"}','refcfg':'{"isMultiSelectedEnabled":true,"isZtreeStyle":true,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefzTree':{'refmodel':'{"refUIType":"RefTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_tree_ctr/","refName":"测试ztree"}','refcfg':'{"isMultiSelectedEnabled":false,"isZtreeStyle":true,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefMucommon':{'refmodel':'{"refUIType":"CommonRef","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_common_ctr/","refName":"测试Mucommon"}','refcfg':'{"isMultiSelectedEnabled":true,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					     ,'testRefcommon':{'refmodel':'{"refUIType":"CommonRef","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_common_ctr/","refName":"测试common"}','refcfg':'{"isMultiSelectedEnabled":false,"pageUrl":"uitemplate_web","isCheckListEnabled":true}'}
+					}
+					//meta:{'testRef':{'refmodel':'{"refUIType":"RefGridTree","strFieldName":["备注","测试"],"isMultiSelectedEnabled":true,"rootName":"供应商","refModelUrl":"http://127.0.0.1:80/uitemplate_web/testref_ctr/","refName":"档案"}','refcfg':'{"isMultiSelectedEnabled":false,"pageUrl":"uitemplate_web"}'}}
+				})
+			}
+			var app = window.app;
+			if (app ===undefined) {
+				app = u.createApp();
+			}
+			//初始化数据
+			viewModel.headform.createEmptyRow(); //创建空行
+			viewModel.headform.setRowSelect(0); 
+			
+			try{
+				//第三个参数为： 是否执行ko.applyBindings  因为组件加载后会主动执行applyBindings,避免重复绑定，这里参数为false
+				app.init(viewModel,null,false);
+			}catch(e){
+				console.log(e.stack);
+			}
+		
+	})
+	
+	
+	</script>
+
+</body>
+</html>
