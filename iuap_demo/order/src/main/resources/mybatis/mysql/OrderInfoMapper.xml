@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.orderinfo.dao.OrderInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.yonyou.iuap.orderinfo.entity.OrderInfo">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="order_type"  property="orderType" />
+        <result column="order_no"  property="orderNo" />
+        <result column="pur_org"  property="purOrg" />
+        <result column="release_time"  property="releaseTime" />
+        <result column="order_amount"  property="orderAmount" />
+        <result column="apply_no"  property="applyNo" />
+        <result column="pur_group_no"  property="purGroupNo" />
+        <result column="confirm_time"  property="confirmTime" />
+        <result column="order_state"  property="orderState" />
+
+        <result column="dr" property="dr" />
+        <result column="ts" property="ts" />
+        <result column="last_modified" property="lastModified" />
+        <result column="last_modify_user" property="lastModifyUser" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+
+        <result column="bpm_state" property="bpmState" />
+        <result column="tenant_id" property="tenantid" />
+
+    </resultMap>
+
+
+        <select id="selectAllByPage"  resultMap="BaseResultMap">
+                SELECT  t.* FROM order_info t WHERE t.dr=0
+                         
+                        <if test="condition != null">
+                <if test="condition.searchMap.id!=null and condition.searchMap.id!='' ">
+                    and t.ID = #{condition.searchMap.id}
+                </if>
+                            <if test="condition.searchMap.orderType!=null and condition.searchMap.orderType!='' ">
+                    and t.order_type = #{condition.searchMap.orderType}
+                </if>
+
+
+
+                            <if test="condition.searchMap.orderNo!=null and condition.searchMap.orderNo!='' ">
+                    and t.order_no = #{condition.searchMap.orderNo}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purOrg!=null and condition.searchMap.purOrg!='' ">
+                    and t.pur_org = #{condition.searchMap.purOrg}
+                </if>
+
+
+
+                            <if test="condition.searchMap.releaseTime!=null and condition.searchMap.releaseTime!='' ">
+                    and t.release_time = #{condition.searchMap.releaseTime}
+                </if>
+
+
+
+                            <if test="condition.searchMap.orderAmount!=null and condition.searchMap.orderAmount!='' ">
+                    and t.order_amount = #{condition.searchMap.orderAmount}
+                </if>
+
+
+
+                            <if test="condition.searchMap.applyNo!=null and condition.searchMap.applyNo!='' ">
+                    and t.apply_no = #{condition.searchMap.applyNo}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purGroupNo!=null and condition.searchMap.purGroupNo!='' ">
+                    and t.pur_group_no = #{condition.searchMap.purGroupNo}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purOrgSrc!=null and condition.searchMap.purOrgSrc!='' ">
+                    and t.pur_org_src = #{condition.searchMap.purOrgSrc}
+                </if>
+
+
+
+                            <if test="condition.searchMap.confirmTime!=null and condition.searchMap.confirmTime!='' ">
+                    and t.confirm_time = #{condition.searchMap.confirmTime}
+                </if>
+
+
+
+                            <if test="condition.searchMap.applyName!=null and condition.searchMap.applyName!='' ">
+                    and t.apply_name = #{condition.searchMap.applyName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.orderState!=null and condition.searchMap.orderState!='' ">
+                    and t.order_state = #{condition.searchMap.orderState}
+                </if>
+
+
+
+                            <if test="condition.searchMap.tenantid!=null and condition.searchMap.tenantid!='' ">
+                                    and t.tenant_id = #{condition.searchMap.tenantid}
+                </if>
+                        </if>
+                        order by ts desc
+                        <if test="page != null">
+                                <if test="page.sort!=null">
+
+                                        <foreach collection="page.sort" item="item" separator=" ">
+                        ,${item.property}  ${item.direction}
+                                        </foreach>
+                                </if>
+                        </if>
+        </select>
+        <select id="selectListByExcelData"  resultMap="BaseResultMap" parameterType="java.util.List">
+                select t.* FROM order_info t WHERE t.dr=0 and
+                t.id in
+                        <foreach collection="list" item="item" index="index"
+                                separator="," open="(" close=")">
+                                #{item}
+                        </foreach>
+    </select>
+</mapper>

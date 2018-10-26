@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.duban.dao.DubanMapper">
+
+    <resultMap id="BaseResultMap" type="com.yonyou.iuap.duban.entity.Duban">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="CODE"  property="code" />
+        <result column="END_DATE"  property="endDate" />
+        <result column="XBR"  property="xbr" />
+        <result column="ZBR"  property="zbr" />
+        <result column="RWPF"  property="rwpf" />
+        <result column="LY_CODE"  property="lyCode" />
+        <result column="QT_LD"  property="qtLd" />
+        <result column="ZR_DW"  property="zrDw" />
+        <result column="JD_BL"  property="jdBl" />
+        <result column="STATE"  property="state" />
+        <result column="DB_INFO"  property="dbInfo" />
+        <result column="KPI_LEVEL"  property="kpiLevel" />
+        <result column="JFYQ"  property="jfyq" />
+        <result column="XB_DW"  property="xbDw" />
+        <result column="BEGIN_DATE"  property="beginDate" />
+        <result column="KPI_FLAG"  property="kpiFlag" />
+        <result column="LY_SM"  property="lySm" />
+        <result column="DBR"  property="dbr" />
+        <result column="NAME"  property="name" />
+        <result column="UNITID"  property="unitid" />
+        <result column="ZY_CD"  property="zyCd" />
+        <result column="ZRR"  property="zrr" />
+
+        <result column="dr" property="dr" />
+        <result column="ts" property="ts" />
+        <result column="last_modified" property="lastModified" />
+        <result column="last_modify_user" property="lastModifyUser" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+
+        <result column="bpm_state" property="bpmState" />
+        <result column="tenant_id" property="tenantid" />
+
+    </resultMap>
+
+
+        <select id="selectAllByPage"  resultMap="BaseResultMap">
+                SELECT  t.* FROM DUBAN t WHERE t.dr=0
+                         
+                        <if test="condition != null">
+                <if test="condition.searchMap.id!=null and condition.searchMap.id!='' ">
+                    and t.ID = #{condition.searchMap.id}
+                </if>
+                            <if test="condition.searchMap.code!=null and condition.searchMap.code!='' ">
+                    and t.CODE = #{condition.searchMap.code}
+                </if>
+
+
+
+                            <if test="condition.searchMap.endDate!=null and condition.searchMap.endDate!='' ">
+                    and t.END_DATE = #{condition.searchMap.endDate}
+                </if>
+
+
+
+                            <if test="condition.searchMap.bpmState!=null and condition.searchMap.bpmState!='' ">
+                    and t.bpm_state = #{condition.searchMap.bpmState}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zrrName!=null and condition.searchMap.zrrName!='' ">
+                    and t.zrr_name = #{condition.searchMap.zrrName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.xbr!=null and condition.searchMap.xbr!='' ">
+                    and t.XBR = #{condition.searchMap.xbr}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zbr!=null and condition.searchMap.zbr!='' ">
+                    and t.ZBR = #{condition.searchMap.zbr}
+                </if>
+
+
+
+                            <if test="condition.searchMap.rwpf!=null and condition.searchMap.rwpf!='' ">
+                    and t.RWPF = #{condition.searchMap.rwpf}
+                </if>
+
+
+
+                            <if test="condition.searchMap.lyCode!=null and condition.searchMap.lyCode!='' ">
+                    and t.LY_CODE = #{condition.searchMap.lyCode}
+                </if>
+
+
+
+                            <if test="condition.searchMap.qtLd!=null and condition.searchMap.qtLd!='' ">
+                    and t.QT_LD = #{condition.searchMap.qtLd}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zrDw!=null and condition.searchMap.zrDw!='' ">
+                    and t.ZR_DW = #{condition.searchMap.zrDw}
+                </if>
+
+
+
+                            <if test="condition.searchMap.jdBl!=null and condition.searchMap.jdBl!='' ">
+                    and t.JD_BL = #{condition.searchMap.jdBl}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zrdwName!=null and condition.searchMap.zrdwName!='' ">
+                    and t.zrdw_name = #{condition.searchMap.zrdwName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.state!=null and condition.searchMap.state!='' ">
+                    and t.STATE = #{condition.searchMap.state}
+                </if>
+
+
+
+                            <if test="condition.searchMap.dbInfo!=null and condition.searchMap.dbInfo!='' ">
+                    and t.DB_INFO = #{condition.searchMap.dbInfo}
+                </if>
+
+
+
+                            <if test="condition.searchMap.xbrName!=null and condition.searchMap.xbrName!='' ">
+                    and t.xbr_name = #{condition.searchMap.xbrName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.xbDwName!=null and condition.searchMap.xbDwName!='' ">
+                    and t.xb_dw_name = #{condition.searchMap.xbDwName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.kpiLevel!=null and condition.searchMap.kpiLevel!='' ">
+                    and t.KPI_LEVEL = #{condition.searchMap.kpiLevel}
+                </if>
+
+
+
+                            <if test="condition.searchMap.jfyq!=null and condition.searchMap.jfyq!='' ">
+                    and t.JFYQ = #{condition.searchMap.jfyq}
+                </if>
+
+
+
+                            <if test="condition.searchMap.xbDw!=null and condition.searchMap.xbDw!='' ">
+                    and t.XB_DW = #{condition.searchMap.xbDw}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zbrName!=null and condition.searchMap.zbrName!='' ">
+                    and t.zbr_name = #{condition.searchMap.zbrName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.beginDate!=null and condition.searchMap.beginDate!='' ">
+                    and t.BEGIN_DATE = #{condition.searchMap.beginDate}
+                </if>
+
+
+
+                            <if test="condition.searchMap.kpiFlag!=null and condition.searchMap.kpiFlag!='' ">
+                    and t.KPI_FLAG = #{condition.searchMap.kpiFlag}
+                </if>
+
+
+
+                            <if test="condition.searchMap.unitIdName!=null and condition.searchMap.unitIdName!='' ">
+                    and t.unit_id_name = #{condition.searchMap.unitIdName}
+                </if>
+
+
+
+                            <if test="condition.searchMap.lySm!=null and condition.searchMap.lySm!='' ">
+                    and t.LY_SM = #{condition.searchMap.lySm}
+                </if>
+
+
+
+                            <if test="condition.searchMap.dbr!=null and condition.searchMap.dbr!='' ">
+                    and t.DBR = #{condition.searchMap.dbr}
+                </if>
+
+
+
+                            <if test="condition.searchMap.name!=null and condition.searchMap.name!='' ">
+                    and t.NAME = #{condition.searchMap.name}
+                </if>
+
+
+
+                            <if test="condition.searchMap.unitid!=null and condition.searchMap.unitid!='' ">
+                    and t.UNITID = #{condition.searchMap.unitid}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zyCd!=null and condition.searchMap.zyCd!='' ">
+                    and t.ZY_CD = #{condition.searchMap.zyCd}
+                </if>
+
+
+
+                            <if test="condition.searchMap.zrr!=null and condition.searchMap.zrr!='' ">
+                    and t.ZRR = #{condition.searchMap.zrr}
+                </if>
+
+
+
+                            <if test="condition.searchMap.tenantid!=null and condition.searchMap.tenantid!='' ">
+                                    and t.tenant_id = #{condition.searchMap.tenantid}
+                </if>
+                        </if>
+                        order by ts desc
+                        <if test="page != null">
+                                <if test="page.sort!=null">
+
+                                        <foreach collection="page.sort" item="item" separator=" ">
+                        ,${item.property}  ${item.direction}
+                                        </foreach>
+                                </if>
+                        </if>
+        </select>
+        <select id="selectListByExcelData"  resultMap="BaseResultMap" parameterType="java.util.List">
+                select t.* FROM DUBAN t WHERE t.dr=0 and
+                t.id in
+                        <foreach collection="list" item="item" index="index"
+                                separator="," open="(" close=")">
+                                #{item}
+                        </foreach>
+    </select>
+</mapper>

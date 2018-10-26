@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    
+<mapper namespace="com.yonyou.iuap.stockin.dao.StockinSubMapper">
+
+    <resultMap id="BaseResultMap" type="com.yonyou.iuap.stockin.entity.StockinSub">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="unit"  property="unit" />
+        <result column="amount"  property="amount" />
+        <result column="materialname"  property="materialname" />
+        <result column="totalnum"  property="totalnum" />
+        <result column="price"  property="price" />
+        <result column="num"  property="num" />
+        <result column="matertype"  property="matertype" />
+        <result column="nextnum"  property="nextnum" />
+        <result column="materialid"  property="materialid" />
+        <result column="mainid"  property="mainid" />
+
+        <result column="dr" property="dr" />
+        <result column="ts" property="ts" />
+        <result column="last_modified" property="lastModified" />
+        <result column="last_modify_user" property="lastModifyUser" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+
+        
+        
+    </resultMap>
+
+        <select id="selectAllByPage"  resultMap="BaseResultMap">
+                SELECT  t.* FROM stockin_sub t WHERE t.dr=0
+
+                        <if test="condition != null">
+                <if test="condition.searchMap.id!=null and condition.searchMap.id!='' ">
+                    and t.ID = #{condition.searchMap.id}
+                </if>
+                            <if test="condition.searchMap.unit!=null and condition.searchMap.unit!='' ">
+                    and t.unit = #{condition.searchMap.unit}
+                </if>
+
+
+
+                            <if test="condition.searchMap.amount!=null and condition.searchMap.amount!='' ">
+                    and t.amount = #{condition.searchMap.amount}
+                </if>
+
+
+
+                            <if test="condition.searchMap.materialname!=null and condition.searchMap.materialname!='' ">
+                    and t.materialname = #{condition.searchMap.materialname}
+                </if>
+
+
+
+                            <if test="condition.searchMap.totalnum!=null and condition.searchMap.totalnum!='' ">
+                    and t.totalnum = #{condition.searchMap.totalnum}
+                </if>
+
+
+
+                            <if test="condition.searchMap.price!=null and condition.searchMap.price!='' ">
+                    and t.price = #{condition.searchMap.price}
+                </if>
+
+
+
+                            <if test="condition.searchMap.num!=null and condition.searchMap.num!='' ">
+                    and t.num = #{condition.searchMap.num}
+                </if>
+
+
+
+                            <if test="condition.searchMap.matertype!=null and condition.searchMap.matertype!='' ">
+                    and t.matertype = #{condition.searchMap.matertype}
+                </if>
+
+
+
+                            <if test="condition.searchMap.nextnum!=null and condition.searchMap.nextnum!='' ">
+                    and t.nextnum = #{condition.searchMap.nextnum}
+                </if>
+
+
+
+                            <if test="condition.searchMap.materialid!=null and condition.searchMap.materialid!='' ">
+                    and t.materialid = #{condition.searchMap.materialid}
+                </if>
+
+
+
+                            <if test="condition.searchMap.mainid!=null and condition.searchMap.mainid!='' ">
+                    and t.mainid = #{condition.searchMap.mainid}
+                </if>
+
+
+
+
+                        </if>
+                        order by ts desc
+                        <if test="page != null">
+                                <if test="page.sort!=null">
+                                        order by
+                                        <foreach collection="page.sort" item="item" separator=" ">
+                        ${item.property}  ${item.direction}
+                                        </foreach>
+                                </if>
+                        </if>
+        </select>
+        
+</mapper>
+      

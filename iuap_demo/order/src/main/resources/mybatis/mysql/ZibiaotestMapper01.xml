@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    
+<mapper namespace="com.yonyou.iuap.zhuzibiao.dao.ZibiaotestMapper01">
+
+    <resultMap id="BaseResultMap" type="com.yonyou.iuap.zhuzibiao.entity.Zibiaotest01">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="pk_zhubiao"  property="pkZhubiao" />
+        <result column="age"  property="age" />
+        <result column="pk_id"  property="pkId" />
+        <result column="dr" property="dr" />
+        <result column="ts" property="ts" />
+        <result column="last_modified" property="lastModified" />
+        <result column="last_modify_user" property="lastModifyUser" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+
+        
+        <result column="tenant_id" property="tenantid" />
+    </resultMap>
+
+        <select id="selectAllByPage"  resultMap="BaseResultMap">
+                SELECT  t.* FROM zibiaotest01 t WHERE t.dr=0
+
+                        <if test="condition != null">
+                <if test="condition.searchMap.id!=null and condition.searchMap.id!='' ">
+                    and t.ID = #{condition.searchMap.id}
+                </if>
+                            <if test="condition.searchMap.pkZhubiao!=null and condition.searchMap.pkZhubiao!='' ">
+                    and t.pk_zhubiao = #{condition.searchMap.pkZhubiao}
+                </if>
+
+
+
+                            <if test="condition.searchMap.age!=null and condition.searchMap.age!='' ">
+                    and t.age = #{condition.searchMap.age}
+                </if>
+
+
+
+                <if test="condition.searchMap.tenantid!=null and condition.searchMap.tenantid!='' ">
+                                    and t.tenant_id = #{condition.searchMap.tenantid}
+                </if>
+
+                        </if>
+                        order by ts desc
+                        <if test="page != null">
+                                <if test="page.sort!=null">
+                                        order by
+                                        <foreach collection="page.sort" item="item" separator=" ">
+                        ${item.property}  ${item.direction}
+                                        </foreach>
+                                </if>
+                        </if>
+        </select>
+        
+</mapper>
+      

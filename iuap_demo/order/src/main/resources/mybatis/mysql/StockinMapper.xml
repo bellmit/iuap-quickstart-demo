@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.iuap.stockin.dao.StockinMapper">
+
+    <resultMap id="BaseResultMap" type="com.yonyou.iuap.stockin.entity.Stockin">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="stockindate"  property="stockindate" />
+        <result column="stockinno"  property="stockinno" />
+        <result column="pk_purchase"  property="pkPurchase" />
+        <result column="stockintype"  property="stockintype" />
+        <result column="billstatus"  property="billstatus" />
+        <result column="purchaseunit"  property="purchaseunit" />
+        <result column="purchaseman"  property="purchaseman" />
+        <result column="memo"  property="memo" />
+        <result column="dept"  property="dept" />
+        <result column="stockman"  property="stockman" />
+        <result column="pk_stockorg"  property="pkStockorg" />
+        <result column="supplier"  property="supplier" />
+        <result column="stockarea"  property="stockarea" />
+        <result column="purchaseno"  property="purchaseno" />
+        <result column="arrivedate"  property="arrivedate" />
+
+        <result column="dr" property="dr" />
+        <result column="ts" property="ts" />
+        <result column="last_modified" property="lastModified" />
+        <result column="last_modify_user" property="lastModifyUser" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user" property="createUser" />
+
+        
+        
+
+    </resultMap>
+
+
+        <select id="selectAllByPage"  resultMap="BaseResultMap">
+                SELECT  t.* FROM stockin t WHERE t.dr=0
+                         
+                        <if test="condition != null">
+                <if test="condition.searchMap.id!=null and condition.searchMap.id!='' ">
+                    and t.ID = #{condition.searchMap.id}
+                </if>
+                            <if test="condition.searchMap.stockindate!=null and condition.searchMap.stockindate!='' ">
+                    and t.stockindate = #{condition.searchMap.stockindate}
+                </if>
+
+
+
+                            <if test="condition.searchMap.stockinno!=null and condition.searchMap.stockinno!='' ">
+                    and t.stockinno = #{condition.searchMap.stockinno}
+                </if>
+
+
+
+                            <if test="condition.searchMap.pkPurchase!=null and condition.searchMap.pkPurchase!='' ">
+                    and t.pk_purchase = #{condition.searchMap.pkPurchase}
+                </if>
+
+
+
+                            <if test="condition.searchMap.stockman_name!=null and condition.searchMap.stockman_name!='' ">
+                    and t.stockman_name = #{condition.searchMap.stockman_name}
+                </if>
+
+
+
+                            <if test="condition.searchMap.stockintype!=null and condition.searchMap.stockintype!='' ">
+                    and t.stockintype = #{condition.searchMap.stockintype}
+                </if>
+
+
+
+                            <if test="condition.searchMap.billstatus!=null and condition.searchMap.billstatus!='' ">
+                    and t.billstatus = #{condition.searchMap.billstatus}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purchaseunit!=null and condition.searchMap.purchaseunit!='' ">
+                    and t.purchaseunit = #{condition.searchMap.purchaseunit}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purchaseman!=null and condition.searchMap.purchaseman!='' ">
+                    and t.purchaseman = #{condition.searchMap.purchaseman}
+                </if>
+
+
+
+                            <if test="condition.searchMap.memo!=null and condition.searchMap.memo!='' ">
+                    and t.memo = #{condition.searchMap.memo}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purchaseunit_name!=null and condition.searchMap.purchaseunit_name!='' ">
+                    and t.purchaseunit_name = #{condition.searchMap.purchaseunit_name}
+                </if>
+
+
+
+                            <if test="condition.searchMap.purchaseman_name!=null and condition.searchMap.purchaseman_name!='' ">
+                    and t.purchaseman_name = #{condition.searchMap.purchaseman_name}
+                </if>
+
+
+
+                            <if test="condition.searchMap.dept_name!=null and condition.searchMap.dept_name!='' ">
+                    and t.dept_name = #{condition.searchMap.dept_name}
+                </if>
+
+
+
+                            <if test="condition.searchMap.dept!=null and condition.searchMap.dept!='' ">
+                    and t.dept = #{condition.searchMap.dept}
+                </if>
+
+
+
+                            <if test="condition.searchMap.pk_stockorg_name!=null and condition.searchMap.pk_stockorg_name!='' ">
+                    and t.pk_stockorg_name = #{condition.searchMap.pk_stockorg_name}
+                </if>
+
+
+
+                            <if test="condition.searchMap.stockman!=null and condition.searchMap.stockman!='' ">
+                    and t.stockman = #{condition.searchMap.stockman}
+                </if>
+
+
+
+                            <if test="condition.searchMap.pkStockorg!=null and condition.searchMap.pkStockorg!='' ">
+                    and t.pk_stockorg = #{condition.searchMap.pkStockorg}
+                </if>
+
+
+
+                            <if test="condition.searchMap.supplier!=null and condition.searchMap.supplier!='' ">
+                    and t.supplier LIKE CONCAT( CONCAT('%', #{condition.searchMap.supplier}),'%')
+                </if>
+
+
+
+                            <if test="condition.searchMap.stockarea!=null and condition.searchMap.stockarea!='' ">
+                    and t.stockarea LIKE CONCAT( CONCAT('%', #{condition.searchMap.stockarea}),'%')
+                </if>
+
+
+
+                            <if test="condition.searchMap.purchaseno!=null and condition.searchMap.purchaseno!='' ">
+                    and t.purchaseno LIKE CONCAT( CONCAT('%', #{condition.searchMap.purchaseno}),'%')
+                </if>
+
+
+
+                            <if test="condition.searchMap.arrivedate!=null and condition.searchMap.arrivedate!='' ">
+                    and t.arrivedate = #{condition.searchMap.arrivedate}
+                </if>
+
+
+
+                        </if>
+                        order by ts desc
+                        <if test="page != null">
+                                <if test="page.sort!=null">
+
+                                        <foreach collection="page.sort" item="item" separator=" ">
+                        ,${item.property}  ${item.direction}
+                                        </foreach>
+                                </if>
+                        </if>
+        </select>
+</mapper>
