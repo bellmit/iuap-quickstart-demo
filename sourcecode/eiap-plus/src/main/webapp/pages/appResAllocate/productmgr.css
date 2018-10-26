@@ -1,0 +1,455 @@
+
+.templateAllocate .fun-btn{
+	width: 100%;
+}
+.templateAllocate {
+    background: #eee;
+     box-shadow: none !important;
+     overflow-y: auto;
+     position: static;
+     height: auto;
+}
+.templateAllocate .demoe-page-content {
+  padding: 0;
+  border: 1px solid #E0E0E0;
+  margin-top: 0px;
+}
+.templateAllocate .demo-actions .u-button {
+  margin: 0 4px;
+}
+.templateAllocate .demo-datagrid {
+  width: 100%;
+}
+.templateAllocate .demo-card {
+  padding: 32px;
+}
+.templateAllocate .demo-card-wide {
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
+}
+.templateAllocate .u-table-editable .u-text {
+  width: 39px;
+}
+.templateAllocate .u-table-editable .not-focused .u-input {
+  border: none;
+}
+.templateAllocate .u-table-editable .not-focused .u-text:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.templateAllocate .u-table-editable .not-focused .table-line-save-btn,
+.templateAllocate .u-table-editable .not-focused .table-line-cancel-btn {
+  display: none;
+}
+.templateAllocate .u-table-editable .is-focused .table-line-edit-btn,
+.templateAllocate .u-table-editable .is-focused .table-line-del-btn {
+  display: none;
+}
+.templateAllocate .demo-actions-float {
+  position: fixed;
+  top: 66px;
+  right: 76px;
+}
+.templateAllocate .demo-line-button {
+  color: #fff!important;
+  background-color: #2196f3;
+  font-size: 12px;
+  border: none;
+}
+.templateAllocate ul,
+.templateAllocate ol,
+.templateAllocate dl {
+  margin: 0;
+  padding: 0;
+}
+.templateAllocate td {
+  text-align: center;
+}
+.templateAllocate th {
+  text-align: center;
+}
+.templateAllocate .checkbox {
+  margin: 0;
+}
+.templateAllocate .title {
+  background: #F7f7f7;
+  height: 35px;
+}
+.templateAllocate .title h4 {
+  padding-left: 16px;
+  margin: 0;
+  width: auto;
+  height: 35px;
+  line-height: 35px;
+  color: #333;
+  float: left;
+}
+.templateAllocate .title h4 span {
+  color: #ed4047;
+}
+.templateAllocate .title ul {
+  width: 538px;
+  margin: 6px 0;
+}
+.templateAllocate .title ul li {
+  float: left;
+  width: 100px;
+  height: 22px;
+  line-height: 22px;
+  background: #E6e6e6;
+  margin-left: 5px;
+  text-align: center;
+  color: #333;
+  border: 1px solid #dfdfdf;
+}
+.templateAllocate .title ul li:hover {
+  background: #ED4047;
+}
+.templateAllocate .title ul li:hover a {
+  color: #fff;
+}
+.templateAllocate .title ul li.liAct {
+  background: #ED4047;
+}
+.templateAllocate .title ul li a {
+  color: #333;
+}
+.templateAllocate .searchDiv {
+  padding: 10px 20px;
+  margin: 5px 15px;
+  border: 1px solid #E0E0E0;
+}
+.templateAllocate .searchDiv .queryCondition li {
+  float: left;
+  width: 30%;
+}
+.templateAllocate .searchDiv .queryCondition li dl {
+  width: 100%;
+  height: 28px;
+}
+.templateAllocate .searchDiv .queryCondition li dl dt {
+  float: left;
+  width: 30%;
+  text-align: right;
+  height: 28px;
+  line-height: 28px;
+  font-weight: normal;
+}
+.templateAllocate .searchDiv .queryCondition li dl dd {
+  float: left;
+  width: 70%;
+}
+.templateAllocate .searchDiv .queryCondition li dl dd input {
+  width: 100%;
+  border: 1px solid #ccc;
+  height: 28px;
+  line-height: 28px;
+}
+.templateAllocate .searchDiv .queryBtn {
+  margin-top: 20px;
+}
+.templateAllocate .searchDiv .queryBtn li {
+  float: left;
+  width: 61px!important;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 5px;
+  background: #ED4047;
+  margin-left: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.templateAllocate .searchDiv .queryBtn li a {
+  color: #fff;
+}
+.templateAllocate .searchDiv .queryBtn li.addIcon {
+  background: #ED4047 url(../pageImages/addIcon.png) center center no-repeat;
+}
+.templateAllocate .ztree {
+  border: 1px solid #E0E0E0;
+}
+.templateAllocate .ztree li span.button.root_close {
+  line-height: 25px;
+}
+.templateAllocate .ztreeHeader {
+  background: white;
+  position: relative;
+  margin-bottom: 1%;
+  height: 32px;
+  width: 100%;
+}
+
+.templateAllocate .ztreeHeader .searchIcon {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+}
+.templateAllocate .ztreeHeader .searchIcon img {
+  padding: 0 5px;
+  /*border-left:1px solid #ecf0f1;*/
+  /*border-right:1px solid #ecf0f1;*/
+}
+.templateAllocate .ztreeHeader .searchIcon .partingLineL {
+  height: 16px;
+  width: 1px;
+  background: #ecf0f1;
+  float: left;
+  margin-top: 4px;
+}
+.templateAllocate .ztreeHeader .searchIcon .partingLineR {
+  height: 10px;
+  width: 1px;
+  background: #ecf0f1;
+  float: right;
+  margin-top: 8px;
+}
+.templateAllocate .ztreeHeader input {
+  height: 32px;
+  line-height: 32px;
+  font-size: 13px;
+}
+
+.templateAllocate  .ztree li span.button {
+  background-image: none;
+}
+.templateAllocate  .ztree li a.curSelectedNode {
+  color: #ed4047;
+}
+.templateAllocate  .ztree li a {
+  height: 100%;
+}
+.templateAllocate  .ztree li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  line-height: 30px;
+  text-align: left;
+  white-space: nowrap;
+  outline: 0;
+}
+.templateAllocate  .ztree li a {
+  padding: 1px 3px 0 0;
+  margin: 0;
+  cursor: pointer;
+  height: 30px;
+  color: #333;
+  background-color: transparent;
+  text-decoration: none;
+  vertical-align: top;
+  display: inline-block;
+}
+.templateAllocate  .ztree li a:hover {
+  text-decoration: underline;
+  color: #3949AB;
+  background-color: #eee;
+}
+.templateAllocate  .ztree li span.button.ico_docu {
+  height: 100%!important;
+  line-height: 25px!important;
+}
+.templateAllocate  .ztree li span.button.ico_docu:after {
+  top: 0!important;
+}
+.templateAllocate  .ztree li span.button {
+  background: none;
+}
+.templateAllocate  .ztree li span.button.switch.noline_close:after {
+  content: "\f105";
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 10px;
+  font-size: 16px;
+}
+.templateAllocate  .ztree li span.button.switch.noline_open:after {
+  content: "\f107";
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 10px;
+  font-size: 16px;
+  left: 5px;
+}
+
+/*edit-start*/
+
+.templateAllocate .u-mdlayout-page-section{
+	background: #eee;
+	    overflow-x: hidden;
+}
+
+.templateAllocate .u-widget {
+    background-color: #eee;
+    margin: 15px;
+}
+
+.templateAllocate .function-menu ul li a:hover{
+	color: #ff3d00 !important;
+	/*text-decoration: solid !important;*/
+}
+
+.templateAllocate .function-menu ul li:before{
+	display: block;
+	content: " ";
+	width: 5px;
+    height: 5px;
+}
+
+.templateAllocate .function-menu ul li:after{
+	display: block;
+	content: " ";
+	width: 5px;
+    height: 5px;
+}
+
+
+.templateAllocate .row-width{
+	    width: 100%;
+    margin-left: 1%;
+    padding-top: 2%;
+    background: white;
+}
+
+.templateAllocate .row-grid{
+	    width: 100%;
+        margin-left: 1%;
+    background: white;
+     height: inherit;
+}
+.new-out {
+  background: #fff;
+  padding: 5px;
+  width: 100%;
+}
+/*@media (min-width: 992px)*/
+.templateAllocate .function-menu{
+	    width: 19.6%;
+    float: left;
+    overflow: auto;
+    position: static;
+    height: 100%;
+  }
+
+.templateAllocate .function-detail{
+	margin-left: 20%;
+  margin-top: 1%;
+  height: 100%;
+  overflow: auto;
+}
+.templateAllocate .function-grid{
+	    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.templateAllocate .u-input{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.46);
+}
+
+
+.templateAllocate #dicttype_list_button_2 button{
+  height: 30px;
+  line-height: 30px;
+  background: #039BE5;
+  border: 1px solid #039BE5;
+  float: right;
+  margin-left: 5px;
+  border-radius: 4px;
+}
+
+.templateAllocate .function-btn{
+    width: 99.5%;
+    padding-left: 1%;
+    background: white;
+    padding-top: 1%;
+    padding-bottom: 0;
+}
+
+.templateAllocate .function-section{
+    overflow-y: auto;
+    background: #eee;
+    padding-bottom: 1%;
+    border-width: 0;
+    border-style: solid;
+    border-color: #cecece;
+    margin-bottom: 3%;
+    position: static;
+}
+
+.templateAllocate .u-button-group .u-button:not(:last-child) {
+    border-right: 0px solid #fff !important;
+}
+
+.templateAllocate .function-list{
+	background-color: #eee !important;
+}
+
+.templateAllocate .function-page{
+	background: #eee;
+	padding:0;
+}
+
+.templateAllocate .activity-detail{
+  margin-bottom: 3%;
+  position: static;
+  height: 100%;
+}
+.templateAllocate .activity-detail .u-mdlayout-page{
+  position: static;
+}
+
+.templateAllocate .function-ztree{
+    background: white;
+    padding-bottom: 3%;
+}
+.templateAllocate .function-widget{
+	margin: 0 !important;
+     padding-left: 0 !important;
+}
+
+.templateAllocate .search-section label{
+    font-size: 20px !important;
+}
+.templateAllocate .function-title{
+  font-size: 18px;
+  color: #333;
+}
+
+
+
+.templateAllocate .new{
+  background: #fff;
+  margin-top: 10px;
+  margin-left: -15px;
+}
+.templateAllocate .search-section label{
+  font-size: 13px !important;
+  display: inline-block
+}
+.templateAllocate .u-input{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.46);
+  display: inline-block;
+  width: auto;
+  margin-right: 30px;
+}
+.search-section {
+    width: 100%;
+    display: inline-block;
+    background: #FFF;
+    margin-left: 1%;
+    padding-left: 15px;
+    padding-top: 8px;
+}
+.u-grid-noRowsDiv,.u-grid-noRowsShowDiv{
+  height: 44px;
+  line-height: 44px;
+}
+.templateAllocate .ztreeHeader .u-form-control:focus ~ .fa-search, .u-form-control:focus ~ .uf-magnifyingglass {
+  color: #039BE5;
+}
+#grid_AppResAllocate .u-grid-err-td,#grid_AppResAllocate .u-grid-err-td * {
+   background:none;
+}

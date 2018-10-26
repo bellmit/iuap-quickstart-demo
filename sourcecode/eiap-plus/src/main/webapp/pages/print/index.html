@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>打印模板管理</title>
+		<meta charset="utf-8">
+
+		<style>
+			body {
+				/*background-color: burlywood;*/
+				font-family: 'Microsoft YaHei', tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+			}
+
+			.white_content {
+				display: none;
+				position: absolute;
+				top: 30px;
+				left: 180px;
+				width: 850px;
+				height: 500px;
+				padding: 10px;
+				border: 2px solid #CDDC39;
+				background-color: #FFF;
+				z-index: 100;
+				overflow: auto;
+				font-size: 18px;
+				color: #F00;
+			}
+			.modal-dialog {
+				position: fixed;
+				width: 450px;
+				height: 160px;
+				left: 0;
+				right: 0;
+				top: 30%;
+				margin: auto;
+				z-index: 200;
+				border: 1px solid #19478a;
+				background: #fff;
+				color: #444;
+				font-size: 13px;
+				-moz-box-shadow: 0 0 7px rgba(0, 0, 0, .6);
+				-webkit-box-shadow: 0 0 7px rgba(0, 0, 0, .6);
+				box-shadow: 0 0 7px rgba(0, 0, 0, .3);
+			}
+			.modal-header {
+				padding: 10px;
+				font-weight: bold;
+				color: #19478a;
+				text-align: left;
+				border-bottom: 1px dotted #c6c6c6;
+			}
+			.modal-content {
+				padding: 20px;
+				overflow: hidden;
+				min-width: 350px;
+				max-width: 650px;
+				font-size: 12px;
+				text-align: center;
+			}
+			.modal-btn {
+				border: 1px solid #ababab;
+				height: 21px;
+				width: 80px;
+				line-height: 21px;
+				cursor: pointer;
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				-webkit-user-select: none;
+				position: absolute;
+				right: 10px;
+				bottom: 12px;
+				visibility: hidden;
+			}
+			.modal-btn:hover {
+				background-color: #d5e1f2;
+				border: 1px solid #a3bde3;
+			}
+			.popWindow {
+				background-color: #9D9D9D;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				filter: alpha(opacity = 50);
+				opacity: 0.5;
+				z-index: 1;
+				position: absolute;
+			}
+
+		</style>
+		<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="jquery.cookie.js"></script>
+		<style>
+			.backbutton {
+				background: #ffffff;
+				color: #333;
+				outline: none;
+				margin-left: 25px;
+				min-width: 72px;
+				font-size: 14px;
+				text-align: center;
+				cursor: pointer;
+				border: 1px solid #cecece;
+			}
+			.u-button, .btn {
+				height: 36px;
+				padding-left: 25px;
+				padding-right: 25px;
+				padding-bottom: 8px;
+				padding-top: 8px;
+				font-size: 14px;
+			}
+			.backbutton:hover {
+				background-color: #f1f1f1;
+				border: 1px solid #cecece;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="font-family:Microsoft YaHei;font-size:18px;font-weight:400;margin-bottom:20px;margin-top: 25px">
+			打印模板管理
+			<span class="btn btn-default btn-sm backbutton" id="rtnBtn">返回</span>
+		</div>
+		<div>
+			<div style="display: none">
+				<h2>设置身份信息</h2>
+				产品CODE：
+				<input id="appCode" list="appCode_list" value='iprint' />
+				<datalist id="appCode_list">
+					<option value="iprint" label="测试" />
+					<option value="hrclouds" label="HR云" />
+					<option value="ipu" label="友云采" />
+					<option value="auditcloud" label="云审" />
+					<option value="yyjzcloud" label="建筑" />
+					<option value="dstcloud" label="电商通" />
+					<option value="iform" label="云表单" />
+					<option value="ybz" label="友报账" />
+					<option value="ficloud" label="友报账" />
+					<option value="shopcloud" label="海底捞" />
+					<option value="sg_nc_cloud" label="国家电网" />
+				</datalist>
+				产品ID：
+				<input id="appId" value='9b718a890c9print'/>
+				租户ID：
+				<input id="tenantId" list="tenantId_list" value='tenant'/>
+				<datalist id="tenantId_list">
+					<option value="tenant" label="测试租户" />
+					<option value="sv3c1td6" label="测试租户2" />
+					<option value="sys" label="系统" />
+				</datalist>
+
+				私钥序号：
+				<input id="secret" value='ascrdm'/>
+				<button id='reset' style="width:100px">
+					重置上下文
+				</button>
+			</div>
+
+			<div style="background-color: #fff;margin-top:40px">
+				<div style="padding-top: 40px;padding-left:40px;font-family:Microsoft YaHei">
+					<span style="font-family:Microsoft YaHei;font-size:22px;font-weight:400">模板操作</span>
+					<br>
+					<br>
+
+					<div style="padding-left:20px">
+						<button id='querybo'>
+							加载业务对象
+						</button>
+						业务对象：
+						<input id="bocode" list="bo_list"/>
+						<datalist id="bo_list"></datalist>
+						新建的模板编号：
+						<input id="new_temp"/>
+						<button id='addTemplate'>
+							新建模板
+						</button>
+						<br>
+						<br>
+
+						<button id='queryTemplate'>
+							加载模板
+						</button>
+						<br>
+						加载的模板编号：
+						<input id="template" list="template_list" />
+						<datalist id="template_list"></datalist>
+						<button id='updateTemplate'>
+							模板设计
+						</button>
+						<button id='deleteTemplate'>
+							删除模板
+						</button>
+						<br>
+						<br>
+						复制后模板编号：
+						<input id="copytemplatecode" />
+						复制后模板名称：
+						<input id="copytemplatename" />
+						<button id='copyTemplate'>
+							复制模板
+						</button>
+						<!-- <button id='runtimetest'  style="display: block">预览</button> -->
+						<!-- <button id='openurl' style="display: block">打开</button> -->
+					</div>
+					<br>
+					<br>
+					<span style="font-family:Microsoft YaHei;font-size:22px;font-weight:400">模板导出</span>
+					<br>
+					<div style="padding-left: 20px">
+						<h4>模板列表：
+						<button id="template_download">
+							模板下载
+						</button>
+						<button id="exportAndUpload">
+							模板下载并上传
+						</button></h4>
+						<table border="1px" id='template_table'></table>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+
+		<div id="rttestcontent" class="white_content">
+			<div style="display:inline-block">
+				<fieldset>
+					<legend>
+						获取数据
+					</legend>
+					<!-- <a href="javascript:void(0)" onclick="document.getElementById('rttestcontent').style.display='none'">关闭</a> -->
+					<button id='getformat'>
+						获取数据格式
+					</button>
+				</fieldset>
+			</div>
+			<div style="display:inline-block">
+				<fieldset>
+					<legend>
+						预览
+					</legend>
+					<button id='preview'>
+						预览
+					</button>
+					<button id='previewNew'>
+						不跨域预览测试
+					</button>
+				</fieldset>
+			</div>
+			<div style="display:inline-block">
+				<fieldset>
+					<legend>
+						数据保存预览
+					</legend>
+					<button id='savedata' disabled="true">
+						保存
+					</button>
+					<button id='savepreview'>
+						数据预览测试
+					</button>
+				</fieldset>
+			</div>
+			<div style="display:inline-block;float:right">
+				<a href="javascript:void(0)" onclick="document.getElementById('rttestcontent').style.display='none'">关闭</a>
+			</div>
+			<div style="margin-top:5px">
+				<textarea id="json-src" placeholder="在此输入测试数据的json字符串..." style="height:400px;width:800px;padding:10px 10px 10px 10px;border:solid 1px #ddd;border-radius:0; outline:none; font-size:16px; color:#009688;"></textarea>
+			</div>
+		</div>
+
+		<div style="background-color: #fff;margin: 0px;padding: 0px">
+			<form action="/eiap-plus/remote/upload" enctype="multipart/form-data" method="post">
+				<div style="padding-left:40px;height: 100px">
+					上传文件：
+					<input type="file" name="file1">
+					<input type="submit" value="提交">
+				</div>
+			</form>
+		</div>
+		<div id="popWindow" class="popWindow" style="display: none;" align="center">
+
+			<table width="100%" height="100%">
+				<tr>
+					<td align="center"><!-- <img src="static/jpg/wait.jpg" height="64" width="64"/> --></td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal-dialog" style="display: none;">
+			<div class="modal-header">
+				提示
+			</div>
+			<div class="modal-content">
+				<img src="" alt="" class="modal-img">
+				<span class="model-message"></span>
+				<div id="close-modal" class="modal-btn">
+					确定
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="print_manage.js"></script>
+
+</html>

@@ -1,0 +1,585 @@
+/*outside frame*/
+.bpmsearch{
+    margin-bottom: 20px;
+}
+
+.bpmsearch-btn{
+    text-align: right;
+}
+
+.bpmSection{
+
+}
+.u-button_success_new,#approveBtn,#org-table-add,#bpmDisplayBill #user-form #bpmhead .u-button,#bpmDisplayBill #user-form #bpmhead .u-button:hover{
+    height: 30px;
+    line-height: 30px;
+    background: #039BE5;
+    border: 1px solid #039BE5;
+    margin-left: 5px;
+    color: #fff;
+    padding: 0 12px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+#test .u-widget{
+    margin: 0;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+#test .u-widget label{
+    font-size: 13px;
+}
+#test .u-form-control{
+    width: auto;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+}
+#test .u-radio.is-checked .u-radio-outer-circle{
+    border: 1px solid #039BE5;
+}
+#test .u-radio-inner-circle{
+    background: #039BE5;
+}
+
+.bpmd-detail-noSearch{
+    position: absolute !important;
+    float: right;
+    width: 98% !important;
+    /* margin-right: 10%; */
+    left: 1%;
+    width: 100%;
+    overflow: initial;
+    padding: 15px 15px;
+    background: white;
+}
+
+.bpm-detail{
+    width: 100%;
+    padding: 15px 15px;
+    background: white;
+    height: auto;
+}
+div#content {
+    background: #ECEFF1;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+.rwzx{
+    background: #EEEFF1;
+    box-shadow: none;
+}
+header > .u-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header > .u-container > .u-row {
+    margin-left: 0;
+    margin-right: 15px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.u-col-xs-12.u-col-sm-12.text-right {
+    padding-right: 0;
+}
+
+/*搜索框部分*/
+.rwzx #user-mdlayout .u-panel {
+    width: 100%;
+}
+.task-btn-allow{
+    text-align: left;
+    margin-bottom: 5px;
+}
+.rwzx .form-search {
+    background: #fff;
+    padding: 15px;
+}
+
+.u-button-accent, .u-button.gray-btn {
+    color: #2196f3;
+    background-color: #F7F7F7;
+    border: 1px #F7F7F7 solid;
+}
+
+#condition-toggle-user .uf.uf-aadown {
+    font-size: 12px;
+}
+
+#condition-toggle-user .uf.uf-aaup {
+    font-size: 12px;
+}
+
+.rwzx #user-mdlayout .u-panel.form-search {
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-size: 14px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 15px;
+}
+
+.rwzx #user-mdlayout .u-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.u-navlayout-fixed-drawer .u-navlayout-content {
+    margin-left: 200px;
+}
+
+#condition-toggle-user .u-link:focus, .u-link:hover {
+    text-decoration: none;
+}
+
+.rwzx #user-mdlayout .u-panel-title {
+    font-size: 14px;
+    padding: 7px 21px;
+}
+
+/*中间列表部分*/
+div#list, div#addPage {
+    background: #fff;
+}
+
+.rwzx #user-mdlayout .u-mdlayout-page-section {
+    top: 0;
+    bottom: 50px;
+}
+
+#user_list_button, .user_list_button {
+    width: 100%;
+    background: white;
+    z-index: 2000;
+    position: fixed;
+    padding: 5px 15px 5px 15px;
+}
+
+/*将user_list_button提到最上面，建立一个新的list 三部分*/
+/* 第一部分最右侧按钮组 */
+.rwzx #user_list_button_2,.rwzx .user_list_button_2 {
+    padding: 5px 15px 5px 15px;
+    float: left;
+}
+
+.rwzx #user_list_button_2 .u-button,.rwzx #user_card_button .u-button {
+    color: rgb(255, 255, 255);
+    background-color: #1E7BE2;
+    border: 1px #1E7BE2 solid;
+    padding: 0 10px;
+    height: 30px;
+    margin: 0 2px;
+}
+
+.rwzx #user_card_button a:hover {
+    cursor: pointer;
+}
+.rwzx #user_card_button>.ufBack{
+    margin-top: 5px;
+}
+.u-button-group.margin-0.padding-0 {
+    float: left;
+}
+
+.u-button-group .u-button-primary.u-button-sm {
+    color: rgb(255, 255, 255);
+    background-color: #1E7BE2;
+    border: 1px #1E7BE2 solid;
+}
+
+/*加上分割线*/
+.u-button-group .u-button-primary.u-button-sm:not(:last-child) {
+    border-right: 1px solid #fff;
+}
+
+.rwzx .u-mdlayout-btn {
+    background: #fff;
+    border-bottom: 1px solid #cecece;
+}
+
+/* 第二部分 居中标题 */
+.center-title {
+    float: right;
+    text-align: center;
+    line-height: 2.5;
+}
+
+/*页码*/
+#pagination {
+    margin: 5px 5px 5px 15px;
+}
+
+/*新增以及编辑页面的样式*/
+form#user-form {
+    padding-top: 30px;
+}
+
+div#commonShowDialog {
+    height: 100% !important;
+    overflow: auto;
+}
+
+.u-form-control[readonly], .u-form-control[disabled] {
+    background: #fff;
+}
+
+.ztree li span.button.ico_docu {
+    display: none;
+}
+
+.button-cancel {
+    border: 1px #F7F7F7 solid;
+    background: #F7F7F7;
+}
+
+#user_card_button {
+    padding: 5px 0 5px 0;
+}
+
+#user_card_button .u-button {
+    color: rgb(255, 255, 255);
+    background-color: #1E7BE2;
+    border: 1px #1E7BE2 solid;
+}
+
+.ufBack i.uf.uf-longleft {
+    line-height: 0;
+}
+
+.ufBack i.uf.uf-longleft:hover {
+    cursor: pointer;
+}
+
+
+
+/*验证*/
+span.u-form-control-info.uf.uf-exclamationsign {
+    font-size: 12px;
+    top: 32px !important;
+}
+
+/*测试collapse*/
+.u-panel-body {
+    padding: 0px;
+}
+
+.collapse.in {
+    height: auto;
+}
+
+.collapse {
+    -webkit-transition: height 0.35s ease;
+    -moz-transition: height 0.35s ease;
+    -ms-transition: height 0.35s ease;
+    -o-transition: height 0.35s ease;
+    transition: height 0.35s ease;
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    height: 0;
+
+}
+
+.page.side-page>.container-fluid{
+    height:100%;
+}
+.page.side-page>.container-fluid>div{
+    height:100%;
+}
+#content{
+    height:100%;
+}
+
+
+.change{
+    left:-18px;
+}
+.u-checkbox-outline{
+    top:-9px;
+}
+
+.u-mdlayout-page-section:before{
+    content: "";
+    display: block;
+    /*margin-bottom: 10px;*/
+}
+.u-mdlayout-page-section:after{
+    content: "";
+    display: block;
+    margin-bottom: 100px;
+}
+
+.u-form-control-feedback{
+    padding-top:10px;
+}
+
+.orgsearch{
+    left:160px;
+}
+
+
+.u-col-md-4>.u-form-group>.u-col-9{
+    padding: inherit;
+}
+.u-col-md-4>.u-form-group>.u-col-3{
+    padding-left:0;
+    padding-right: 0;
+}
+.u-table thead tr, .u-table thead tr th {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: #666666;
+}
+.page.side-page>.container-fluid{
+    height:100%;
+}
+.page.side-page>.container-fluid>div{
+    height:100%;
+}
+#content{
+    height:100%;
+}
+.u-table td[name=userCheckbox]:first-of-type, .u-table th[name=userCheckbox]:first-of-type{
+    padding-top: 21px;
+}
+.u-mdlayout>.u-row>h1{
+    font-size: 21px;
+    display: inline-block;
+}
+.u-mdlayout>.u-row>button.goback{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #cecece;
+}
+#portal {
+    overflow: hidden !important;
+}
+
+.u-mdlayout-master.form-search{
+    width: 100%;
+    padding: 15px;
+}
+
+
+.xy-search-title{
+    text-align: left;
+    font-size: 16px;
+}
+
+.search{
+    position: relative;
+    top: -10rem;
+    left: 100%;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.no-search:hover{
+    font-size: 18px;
+    color:red;
+}
+
+.no-search{
+    position: relative;
+    top: 10rem;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+}
+
+#task-h{
+    position: relative;
+    left: 1%;
+}
+
+#taskecenter-mdlayout .u-pagination > .active > a, #taskecenter-mdlayout .u-pagination > .active > a:focus, #taskecenter-mdlayout .u-pagination > .active > a:hover, #taskecenter-mdlayout .u-pagination > .active > span, #taskecenter-mdlayout .u-pagination > .active > span:focus, #taskecenter-mdlayout .u-pagination > .active > span:hover{
+    background: #039BE5;
+    border-color: #039BE5;
+}
+
+
+.head-title{
+    margin: 20px;
+    line-height: 36px;
+    vertical-align: middle;
+}
+
+.head-span{
+    font-size:20px;
+    vertical-align: middle;
+}
+
+
+
+#taskecenter-mdlayout #pagination{
+    margin-right: -10px;
+    margin-top: 10px;
+    display: inline-block!important;
+}
+.u-msg-dialog .u-msg-footer.only-one-btn button{
+    height: 30px;
+    line-height: 30px;
+    background: #039BE5;
+    border: 1px solid #039BE5;
+    padding: 0 12px;
+}
+.u-grid-noRowsDiv, .u-grid-noRowsShowDiv {
+    height: 44px;
+    line-height: 44px;
+}
+#taskecenter-mdlayout .u-grid-header-th>div:hover{
+    background: #EEEFF1;
+}
+#taskecenter-mdlayout .checkbox{
+    margin-top: 0;
+}
+#taskecenter-mdlayout{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.u-mdlayout>.u-row>button.goback,#task-h{
+    margin: 0;
+}
+
+#task-h{
+    margin-right: 40px;
+    line-height: 36px;
+}
+.u-mdlayout>.u-row>button.goback{
+    margin-top: -5px;
+}
+
+.u-grid{
+    border: none;
+}
+.u-button-accent, .u-button.accent,.u-button-accent, .u-button.accent:hover {
+    color: rgb(255,255,255);
+    background-color: #039BE5;
+    border: 1px #039BE5 solid;
+}
+#bpmDisplayBill{
+    background: #fff;
+}
+#bpmDisplayBill .u-mdlayout,
+#bpmDisplayBill .u-mdlayout-detail,
+#bpmDisplayBill .u-mdlayout-page{
+    position: relative;
+    height: auto;
+    margin-top: 0;
+}
+#bpmDisplayBill>.modal-dialog{
+    margin: 0;
+}
+#bpmDisplayBill>.modal-dialog>.modal-content{
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+#bpmDisplayBill>.modal-dialog>.modal-content>.modal-body{
+    padding: 0;
+    border: none;
+}
+#bpmDisplayBill #billBody .ygdemo-fluid{
+    padding: 0;
+}
+#billBody {
+    min-height: 100%;
+}
+#billBody .pap-title .u-button{
+    float: right;
+}
+#billBody .pap-title .backbutton,#billBody .pap-title .backbutton:hover{
+    background: #fff!important;
+    color: #039BE5!important;
+    border: none!important;
+    margin-left: -15px!important;
+}
+.u-mdlayout .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+.u-form-control {
+    position: relative;
+    display: inline-block;
+    padding: 0 12px;
+    width: 100%;
+    height: 30px;
+    cursor: text;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #424242;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    -webkit-transition: all .3s;
+    transition: all .3s; }
+.u-form-control:focus {
+    border-color: #66afe9;
+    outline: 0; }
+
+.u-form-control[disabled] {
+    background: #eee;
+    border-color: #e0e0e0;
+    color: #BDBDBD;
+    cursor: not-allowed; }
+
+.u-form-control.lg {
+    height: 38px;
+    font-size: 14px; }
+
+.u-form-control.sm {
+    font-size: 12px;
+    height: 24px; }
+
+.u-form-control-search-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 28px;
+    padding: 4px;
+    width: 100%; }
+.u-form-control-search-wrapper .u-form-control-search-action {
+    color: #ccc;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none; }
+.u-form-control-search-wrapper .u-form-control-search-action .uf {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    font-size: 12px;
+    color: #ccc; }
+.u-form-control-search-wrapper .u-form-control-search-action .uf.uf-search:before {
+    content: "\E603"; }
+
+.u-form-control-affix-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%; }
+.u-form-control-affix-wrapper .u-form-control-prefix, .u-form-control-affix-wrapper .u-form-control-suffix {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 2;
+    line-height: 0;
+    right: 7px;
+    color: rgba(0, 0, 0, 0.65); }

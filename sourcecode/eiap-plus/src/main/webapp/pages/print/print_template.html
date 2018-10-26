@@ -1,0 +1,95 @@
+<div id="printList">
+
+    <div class="pap-title">
+            <button class="u-button backbutton" onclick="window.history.go(-1)">
+                <i class="uf uf-arrow-left"></i> 返回
+                <span class="u-button-container">
+                    <span class="u-ripple"></span>
+                </span>
+            </button>
+            <h1>打印模版</h1>
+        </div>
+    <div class="main-wrap list-panel right_page_wrap" id="printTemplate">
+        <div class="right_page_operation bor-b">
+            <!--页面头部功能条-->
+            <a href="javascript:;" class="fl btn btn_blue category-add-btn" data-bind="click:createTemplate">新建模版</a>
+            <a href="javascript:;" class="fl btn btn_blue category-add-btn" data-bind="click:mutiDownLoad">批量下载</a>
+            <a href="javascript:;" class="fl btn btn_blue category-add-btn" data-bind="click:mutiPublish">批量发布</a>
+        </div>
+        <div class="wrapper">
+            <div class="wrap-body">
+                <!--tale列表展现区域-->
+                <div u-meta='{"id":"printLists","data":"dataTable","type":"grid","multiSelect":true,"editable":false,"onBeforeClickFun":"onBeforeClickFun1","pageSize":10}'>
+                    <div options='{"field":"templatecode","dataType":"String","title":"模版编码","editType":"string","sortable":true,"canSwap":true}'></div>
+                    <div options='{"field":"templatename","dataType":"String","title":"模版名称","editType":"string","sortable":true,"canSwap":true}'></div>
+                    <div options='{"field":"pk_print_template","dataType":"String","title":"模版pk","editType":"string","sortable":true,"canSwap":true}'></div>
+                    <div options='{"field":"edit","dataType":"String","title":"","sortable":true,"canSwap":true,"renderType":"operation"}'></div>
+                </div>
+                <!--分页区域-->
+                <div class="paginate-box text-center" data-bind="visible: pagination.totalCount() >= 10">
+                    <div id="paginationt" class="u-pagination pagination-center  text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dialog_content" style="display:none;">
+        <div class="u-msg-title">
+            <h4>新建模版</h4>
+        </div>
+        <div class="u-msg-content">
+            业务对象：
+            <div class="u-combo hide" id="comboBo">
+                <div class="u-input-group u-has-feedback">
+                    <input class="u-form-control" />
+                    <span class="u-form-control-feedback uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+            </div>
+            <input type="text" class="u-form-control" id="bocode" data-bind="click:createRef" />
+            模板编码：
+            <input type="text" class="u-form-control" id="templateCode" />
+        </div>
+        <div class="u-msg-footer">
+            <button class="u-msg-ok u-button u-button-info" data-bind="click:createTemplateSub" >保存<span class="u-button-container"><span class="u-ripple"></span></span></button>
+            <button class="u-msg-cancel u-button" data-bind="click:hide">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
+        </div>
+    </div>
+    <div id="freshList" style="display:none;top:-100px">
+        <div class="u-msg-title">
+            <h4 style="font-size:14px;">温馨提示</h4>
+        </div>
+        <div class="u-msg-content">
+            数据可能已发生变更，点击确定按钮刷新
+        </div>
+        <div class="u-msg-footer">
+            <button class="u-msg-cancel u-button " style="border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 4px;"
+                data-bind="click:loadList">确定
+                <span class="u-button-container">
+                    <span class="u-ripple"></span>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div id="dialog_copyTemplate" style="display:none;">
+        <div class="u-msg-title">
+            <h4>复制模版</h4>
+        </div>
+        <div class="u-msg-content">
+            <div class="u-msg-content-inner">
+                模板编码：
+                <input type="email" class="u-form-control" id="copytemplatecode" />
+                模板名称：
+                <input type="text" class="u-form-control" id="copytemplatename" />
+            </div>
+        </div>
+        <div class="u-msg-footer">
+                <button class="u-msg-cancel u-button" style="height:30px;border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 4px;" data-bind="click:hide">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
+            <button class="u-msg-ok u-button u-button-info" data-bind="click:copyTemplateSub">保存<span class="u-button-container"><span class="u-ripple"></span></span></button>
+        </div>
+    </div>
+    <div  class="u-message u-mesdanger active error-message">
+        <span class="u-msg-close uf uf-close"></span>
+        建议使用chrome浏览器!
+    </div>
+</div>

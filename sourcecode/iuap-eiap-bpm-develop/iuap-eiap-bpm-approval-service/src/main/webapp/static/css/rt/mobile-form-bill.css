@@ -1,0 +1,416 @@
+/*移动端表单样式*/
+.bill-mobile .panel-success{
+	background-color: #eaebef;
+	padding: 0;
+}
+.bill-mobile .panel-body{
+	background-color: #eaebef;
+	border: none;
+}
+.bill-mobile .panel-body input{
+	text-align: left!important;
+}
+.bill-mobile .col-md-12,.bill-mobile .col-md-6,.bill-mobile .row,.bill-mobile .yfd{
+	padding: 0;
+	margin: 0
+}
+.bill-mobile .panel-heading{
+	/*display: none;*/
+}
+.bill-mobile .form-databox-head{
+	background: #fff;
+	padding: 10px;
+	text-align: center;
+	margin-top: 15px;
+	margin-right: -15px;
+	margin-left: -15px;
+	box-shadow:0px 4px 10px #bbb;
+}
+.bill-mobile .form-databox-head .form-databox-btn-area{
+	float: none;
+}
+.bill-mobile .form-databox-head .btn-mb-add{
+	background-color: inherit;
+	border: none;
+	color: #39f;
+	margin: 0;
+	padding: 0;
+}
+.bill-mobile .form-databox-head .btn-mb-add .iconfont{
+	color: #39f;
+}
+.bill-mobile .u-grid-mobile{
+	margin-bottom: 15px;
+	box-shadow:0px 4px 10px #bbb;
+}
+.bill-mobile .dateinterval-compent{
+	color: #aaa;
+	text-align: left;
+}
+.bill-mobile .panel-body .form-group{
+	background-color: #fff;
+	border-color: #eee;
+	padding: 10px 15px;
+}
+.bill-mobile .panel-body .form-group-raty{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	box-shadow:0px 4px 10px #bbb;
+}
+.bill-mobile .panel-body .form-group .billitem-label:not(.w-full){
+	color: #aaa;
+	float: left;
+	width: 35%;
+	margin-right: 5%;
+	margin-bottom: 0px;
+	text-align: right;
+}
+.bill-mobile .panel-body .form-group .billitem-label .billitem-label-content{
+	float: none;
+	font-weight: normal;
+	line-height: 2;
+	color: #666569;
+	font-size: 16px;
+}
+.bill-mobile .panel-body .form-group>div.input-group{
+	float: left;
+	width: 60%!important;
+}
+.bill-mobile .panel-body .form-group>div.input-group .form-control{
+	border: none;
+	box-shadow: none;
+	color: #030303;
+	font-size: 16px;
+}
+.bill-mobile .panel-body .form-group>div.input-group .form-control:focus{
+	border: none;
+	box-shadow: none;
+}
+.bill-mobile .panel-body .form-group .file-upload.large{
+	width: 60%!important;
+	float: left;
+}
+.bill-mobile .form-group .input-group input.form-control + span.input-group-addon{
+	background: none;
+    border: none;
+    color: #C7C7CC;
+}
+.bill-mobile .form-group .input-group input.form-control + span.input-group-addon .fa-angle-down{
+	font-size: 18px;
+	font-weight: bold;
+	transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+}
+.bill-mobile .form-group .input-group input.form-control + span.input-group-addon .fa:not(.fa-angle-down){
+	display: none;
+}
+.bill-mobile .raty-compent .icon-star, .bill-mobile .raty-compent .icon-starhalf{
+	color: #F39800;
+	font-size: 18px;
+}
+.bill-mobile .icon-starhollow{
+	color: #C7C7CC;
+	font-size: 18px;
+}
+.bill-mobile input::-webkit-input-placeholder {
+	color: #B3B2BB; /*WebKit browsers */
+}
+.bill-mobile input:-moz-placeholder {
+	color: #B3B2BB; /* Mozilla Firefox 4 to 18 */
+}
+.bill-mobile input::-moz-placeholder {
+	color: #B3B2BB; /* Mozilla Firefox 19+ */
+}
+.bill-mobile input:-ms-input-placeholder {
+	color: #B3B2BB; /* Internet Explorer 10+ */
+}
+
+/*移动端流程*/
+.workflow-wrap{
+	font-size: 16px;
+	line-height: 1em;
+	background-color: #EAEBEF;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 80;
+}
+.workflow-wrap li {
+    list-style-type: none;
+    box-sizing: border-box;
+}
+.workflow-wrap ul {
+    padding: 0;
+    margin: 0;
+}
+.workflow-wrap + .bill-body-container{
+	margin-top: 10em;
+	margin-bottom: 4em;
+}
+.workflow-wrap + .bill-body-container .panel-heading{
+	display: none;
+}
+.workflow-wrap.action-open{
+	height: 100%;
+}
+.workflow-wrap.action-open .content-detail{
+	margin-top: 0;
+}
+.workflow-wrap .work-wrap-header{
+	height: 2.5em;
+	background: #f8f8f8;
+	padding: 0.7em;
+	text-align: center;
+}
+.workflow-wrap .work-wrap-header .header-title{
+	color: #333;
+	font-size: 1.2em;
+}
+.workflow-wrap .work-wrap-header .iconfont{
+	color: #39f;
+	font-size: 1.2em;
+	position: absolute;
+	left: 0.5em;
+}
+.workflow-wrap .status-bar{
+	height: 3em;
+	padding: 1em;
+	background-color: #fff;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+}
+.workflow-wrap .status-bar .form-name{
+	font-size: 1.2em;
+}
+.workflow-wrap .status-bar .form-status{
+	color: #fff;
+	font-size: 0.8em;
+	padding: 0.4em 0.5em;
+	margin: -0.3em 0;
+	border-radius: 0.3em;
+}
+.workflow-wrap .tool-bar{
+	height: 2.5em;
+	color: #7F8992;
+	background-color: #fff;
+	margin: 1em 0;
+	box-shadow:0px 4px 10px #bbb;
+}
+.workflow-wrap .tool-bar .tool-item{
+	text-align: center;
+}
+.workflow-wrap .tool-bar .tool-item.active{
+	color: #39f;
+	background: inherit;
+}
+.workflow-wrap .tool-bar .iconfont{
+	line-height: 1.5em;
+	font-size: 1.5em;
+}
+.workflow-wrap .work-wrap-footer{
+    position: fixed;
+    bottom: 0;
+    height: 3em;
+    z-index: 90;
+    width: 100%;
+    background-color: #fff;
+}
+.workflow-wrap .work-wrap-footer ul{
+	height: 100%;
+	padding: 0;
+}
+.workflow-wrap .more-hide-btn{
+	position: fixed;
+	bottom: 3em;
+	right: 0;
+	width: 33%;
+}
+.workflow-wrap .more-hide-btn .action-btn{
+	height: 48px;
+}
+.work-wrap-footer .action-btn, .workflow-wrap .more-hide-btn .action-btn{
+	color: #39f;
+	background-color: #ddd;
+	font-size: 1.2em;
+	line-height: 2.5em;
+	text-align: center;
+}
+.work-wrap-footer .action-btn.main-btn{
+	color: #fff;
+	background-color: #39f;
+}
+.work-wrap-footer .action-btn.btn-2{
+	width: 35%;
+}
+.work-wrap-footer .action-btn.main-btn.btn-3{
+	width: 46%;
+}
+.work-wrap-footer .action-btn.btn-3{
+	width: 33%;
+}
+.work-wrap-footer .more-btn.btn-3{
+	width: 21%;
+	color: #B5B5B6;
+	background: #F7F8F8;
+	text-align: center;
+}
+.work-wrap-footer .more-btn.btn-3 .icon-gengduo1{
+	font-size: 2em;
+    line-height: 1.5em;
+}
+.workflow-wrap .content-detail{
+	background-color: #EAEBEF;
+	color: #777;
+	margin-top: 1em;
+	position: fixed;
+	top: 7em;
+	bottom: 0em;
+	width: 100%;
+}
+.workflow-wrap .content-detail.my-task{
+	bottom: 3em;
+}
+.workflow-wrap .content-detail .workflow-info{
+	overflow: auto;
+	max-height: 100%;
+}
+.workflow-wrap .approve-opinion{
+	background: #fff;
+	padding: 1em 2em;
+}
+.workflow-wrap .approve-opinion .opinion-input{
+	margin-top: 1em;
+    width: 100%;
+    height: 6em;
+    resize: none;
+    outline: none;
+    border: none;
+    color: #aaa;
+}
+.workflow-wrap .workflow-info .task-item{
+	float: left;
+	width: 100%;
+	height: 5em;
+	color: #DCDDDD;
+	font-size: 14px;
+	background: #fff;
+	border-bottom: 1px solid #f1f1f1;
+}
+.workflow-wrap .workflow-info .task-item.active{
+	color: #969494;
+}
+.workflow-wrap .task-item .info-timespan{
+	float: left;
+	width: 40%;
+	line-height: 5em;
+	text-align: right;
+	padding-right: 1em;
+	border-right: 1px solid #f1f1f1;
+}
+.workflow-wrap .task-item .info-iconspan{
+	float: left;
+	line-height: 5em;
+	background: none;
+	margin-left: -0.6em;
+}
+.workflow-wrap .task-item .info-iconspan .iconfont{
+	background: #fff;
+	font-size: 1.2em;
+}
+.workflow-wrap .task-item.active .icon-time{
+	color: #EFA726;
+}
+.workflow-wrap .task-item .info-logospan{
+    float: left;
+    width: 3em;
+    height: 3em;
+    margin: 1em 0.3em;
+    border-radius: 50%;
+}
+.workflow-wrap .task-item .icon-touxiang{
+	float: left;
+	font-size: 3em;
+	margin-top: 0.3em;
+}
+.workflow-wrap .task-item .info-detail{
+	float: left;
+	width: 40%;
+	height: 100%;
+	padding: 1em;
+	margin-left: -0.7em;
+}
+.workflow-wrap .task-item .info-detail li{
+	line-height: 1.2em;
+	white-space:nowrap;
+	overflow: auto;
+}
+.action-wrap{
+	color: #A1A1A1;
+}
+.action-wrap .user-name{
+	color: #333;
+}
+.action-wrap .mobile-ref-input{
+    border: none;
+    text-align: right;
+    color: #333;
+    padding: 0;
+}
+.action-wrap .icon-xiangyou{
+	color: #ddd;
+	padding-left: 0.5em;
+}
+.action-wrap .action-btn{
+	width: 100%;
+}
+
+.user-list-wrap .user-list-item{
+	height: 3em;
+	padding: 1em 3em;
+	background-color: #fff;
+	margin-top: 1em;
+}
+.user-list-wrap .user-list-item .icon-confirm{
+	color: #39f;
+	font-size: 1.5em;
+}
+
+.flex-box {
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	display: -moz-box; /* Firefox 17- */
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+.flex-direction-column{
+    /* 兼容flex-direction,华为手机自带的浏览器不支持flex-direction,
+     * 资料中显示大部分手机自带的浏览器都是基于chrome lite改造的,
+     * 貌似这类浏览器都会有这个问题 */
+	-webkit-box-orient:vertical;
+	-webkit-box-direction:normal;
+	-moz-box-orient:vertical;
+	-moz-box-direction:normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column
+}
+.flex1{
+	-webkit-flex:1;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yonyou.iuap.internalmsg.dao.MsgAttachDao">
+    <resultMap id="baseResultMap" type="com.yonyou.iuap.internalmsg.entity.po.MsgAttach">
+        <id property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
+
+        <result property="name" column="name" javaType="String" jdbcType="VARCHAR"/>
+        <result property="link" column="link" javaType="String" jdbcType="VARCHAR"/>
+        <result property="cts" column="cts" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result property="msgId" column="msg_id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="tenantId" column="tenant_id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="sysId" column="sys_id" javaType="String" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <sql id="tableName">
+        iuap_msg_attach
+    </sql>
+
+    <sql id="baseColumnList">
+        id, name, link, cts, msg_id, tenant_id, sys_id
+    </sql>
+
+    <insert id="insert" parameterType="com.yonyou.iuap.internalmsg.entity.po.MsgAttach">
+        INSERT INTO
+        <include refid="tableName"/>
+        <trim prefix="(" suffix=")">
+            <include refid="baseColumnList"/>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")">
+            #{id, jdbcType=VARCHAR},
+            #{name, jdbcType=VARCHAR},
+            #{link, jdbcType=VARCHAR},
+            #{cts, jdbcType=TIMESTAMP},
+            #{msgId, jdbcType=VARCHAR},
+            #{tenantId, jdbcType=VARCHAR},
+            #{sysId, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <select id="getById" parameterType="String" resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        <where>
+            id = #{id, jdbcType=VARCHAR}
+            AND
+            tenant_id = #{tenantId, jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="listByMsgId" resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        <where>
+            msg_id = #{msgId, jdbcType=VARCHAR}
+            AND
+            tenant_id = #{tenantId, jdbcType=VARCHAR}
+        </where>
+    </select>
+
+</mapper>

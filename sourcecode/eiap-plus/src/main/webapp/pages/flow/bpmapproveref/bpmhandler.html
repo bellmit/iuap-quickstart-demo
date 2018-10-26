@@ -1,0 +1,413 @@
+<!-- start  流程历史图 层---->
+<div class="imgHistory_list">
+	<div class='modal fade' id='imgHistory_list' tabindex='-1' role='dialog'>
+		<div class='modal-content' style='width:100%;height:100% '>
+			<div class='u-mdlayout-page-header'>
+				<span class='content-title'><span class="i18n" name="ht.flo.bpm.0001"></span></span>
+			</div>
+			<div class='u-mdlayout-page-section' >
+				<div class='' >
+					<div class=''>
+						<button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgBack'>
+							<span class="i18n" name="ht.flo.bpm.0002"></span>
+						</button>
+					</div >
+					<div class='' style='' >
+						<iframe id='img_His' width='99%' style='border: 0px;height: 100%;min-height:300px;'></iframe >
+						<div class='table-container' >
+							<table class='u-table' style='width:99%' >
+								<thead >
+								<tr >
+									<th><span class="i18n" name="ht.flo.bpm.0003"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0004"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0005"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0006"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0007"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0008"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0009"></span></th >
+									<th><span class="i18n" name="ht.flo.bpm.0010"></span></th >
+								</tr >
+								</thead >
+								<tbody data-bind="foreach:{data:flowHisDa.rows(), as: 'row', afterAdd: afterAdd}" >
+								<tr data-bind="css: { 'is-selected' : row.selected() } ,attr:{'rowindex': $index},click: $parent.rowClick" >
+									<td style='display: none;' ><label class='u-checkbox only-style' data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}" >
+										<input type='checkbox' class='u-checkbox-input' >
+										<span class='u-checkbox-label'></span > </label ></td >
+									<td data-bind="text: row.ref('id')"></td >
+									<td data-bind="text: row.ref('name')"></td >
+									<td data-bind="text: row.ref('state')"></td >
+									<td data-bind="text: row.ref('executionId')"></td >
+									<td data-bind="text: row.ref('startTime')"></td >
+									<td data-bind="text: row.ref('endTime')"></td >
+									<td data-bind="text: row.ref('deleteReason')"></td >
+									<td data-bind="text: row.ref('claimTime')"></td >
+								</tr >
+								</tbody >
+							</table >
+							<div id='pagination_img' class=''></div >
+						</div >
+					</div >
+				</div >
+			</div >
+		</div >
+
+	</div >
+</div >
+</div>
+<!-- end  流程历史图 层------>
+
+<!-- start 单据上部分按钮-->
+<!--增加单据进来的按钮 --->
+<div class="approveTypeRadio_bill">
+	<div id='approveTypeRadio'>
+		<label>
+			<input name='approvetype' type='radio' value='agree' checked='true'/>
+			<span class='text'></span></label><span class="i18n" name="ht.flo.bpm.0011"></span><label>
+		<input name='approvetype' type='radio' value='unagree'/>
+		&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.bpm.0012"></span></span></label>&nbsp;&nbsp; 		<textarea id='approve_text' style='width:100%;height:100px;'></textarea>
+	</div>
+	<button id='billSubmitBpm' type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmApprove'>
+		<span class="i18n" name="ht.flo.bpm.0013"></span>
+	</button>
+	&nbsp;&nbsp;&nbsp;
+	<button id='billImgBpm'  type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgAddClick'>
+		<span class="i18n" name="ht.flo.bpm.0014"></span>
+	</button>
+	&nbsp;&nbsp;&nbsp;
+</div>
+<!--增加单据进来的按钮 --->
+<div class="approveTypeRadio1">
+	<div id='approveTypeRadio'>
+		<div class="pap-title" style="margin-bottom:20px">
+			<button type='button' class='u-button raised accent u-button-pa backbutton' data-bind='click: bpmBack'>
+				<i class="uf uf-arrow-left"></i><span class="i18n" name="ht.flo.bpm.0002"></span>
+			</button>
+			<h1><span class="i18n" name="ht.flo.bpm.0015"></span></h1>
+			<button type='button' style="margin-top:5px;"  class='u-button raised accent u-button-pa' id='billSubmitBpm' data-bind='click: bpmApprove'>
+				<span class="i18n" name="ht.flo.bpm.0013"></span>
+			</button>
+			&nbsp;&nbsp;&nbsp;
+			<button type='button' style="margin-top:5px;" class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick' id="billImgBpm">
+				<span class="i18n" name="ht.flo.bpm.0014"></span>
+			</button>
+			&nbsp;&nbsp;&nbsp;
+
+		</div>
+		<label style="padding-left: 20px;">
+			<input name='approvetype' type='radio' value='agree' checked='true'/>
+			<span class='text'></span></label><span class="i18n" name="ht.flo.bpm.0011"></span><label>
+		<input name='approvetype' type='radio' value='unagree'/>
+		&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.bpm.0012"></span></span></label>&nbsp;&nbsp; <label>
+		<input name='approvetype' type='radio' value='rejectToActivity'/>
+		&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.bpm.0016"></span></span></label>&nbsp;&nbsp;&nbsp; <label>
+		<input name='approvetype' type='radio' value='rejectToBillMaker'/>
+		&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.bpm.0017"></span></span></label>&nbsp;&nbsp;&nbsp; <label>
+		<input name='approvetype' type='radio' value='signAdd'/>
+		&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.bpm.0018"></span></span></label>&nbsp;&nbsp;&nbsp; <label>
+		<input name='approvetype' type='radio' value='delegate'/>
+		&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.bpm.0019"></span></span></label>
+		<!--<label><input name='approvetype' type='radio' value='termination'/>&nbsp;&nbsp;<span class='text'>终止</span></label>-->
+		<textarea id='approve_text' style='width:100%;height:100px;'></textarea>
+	</div>
+	<!-- <button type='button' class='u-button raised accent u-button-pa' id='billSubmitBpm' data-bind='click: bpmApprove'>
+		<span class="i18n" name="ht.flo.bpm.0013"></span>
+	</button>-->
+	&nbsp;&nbsp;&nbsp;
+	<button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick' id="billImgBpm">
+		<span class="i18n" name="ht.flo.bpm.0014"></span>
+	</button>
+	&nbsp;&nbsp;&nbsp;
+</div>
+<div class="approveTypeRadio2">
+
+
+	<div id='approveTypeRadio'>
+		<div class="pap-title" style="margin-bottom:20px">
+			<button type='button' class='u-button raised accent u-button-pa backbutton' data-bind='click: bpmBack'>
+				<i class="uf uf-arrow-left"></i><span class="i18n" name="ht.flo.bpm.0002"></span>
+			</button>
+			<h1><span class="i18n" name="ht.flo.bpm.0015"></span></h1>
+			<button type='button' class='u-button raised accent u-button-pa' style="margin-top:5px;" id='approveButton' data-bind='click: bpmApprove'>
+				<span class="i18n" name="ht.flo.bpm.0013"></span>
+			</button>
+			&nbsp;&nbsp;&nbsp;
+			<button type='button' class='u-button raised accent u-button-pa'style="margin-top:5px;" data-bind='click: bpmImgApproveClick'>
+				<span class="i18n" name="ht.flo.bpm.0014"></span>
+			</button>
+			&nbsp;&nbsp;&nbsp;
+
+		</div>
+		<label style="padding-left: 20px;">
+			<input name='approvetype' type='radio' value='withdraw' checked='true'/>
+			<span class='text'><span class="i18n" name="ht.flo.bpm.0020"></span></span>
+		</label>
+		<textarea id='approve_text' style='width:100%;height:100px;'></textarea>
+	</div>
+
+</div>
+
+<div class="approveTypeRadio3">
+	<div class="pap-title">
+		<button type='button' class='u-button raised accent u-button-pa backbutton' data-bind='click: bpmBack'>
+			<i class="uf uf-arrow-left"></i><span class="i18n" name="ht.flo.bpm.0002"></span>
+		</button>
+		<h1><span class="i18n" name="ht.flo.bpm.0015"></span></h1>
+		<button type='button' style="margin-top:5px" class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick'>
+			<span class="i18n" name="ht.flo.bpm.0014"></span>
+		</button>
+		&nbsp;&nbsp;&nbsp;
+
+	</div>
+	<!-- <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick'>
+		<span class="i18n" name="ht.flo.bpm.0014"></span>
+	</button>
+	&nbsp;&nbsp;&nbsp;
+	<button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmBack'>
+		<span class="i18n" name="ht.flo.bpm.0002"></span>
+	</button> -->
+</div>
+<div class="approveTypeRadio0">
+	<div class="pap-title">
+		<button type='button' class='u-button raised accent u-button-pa backbutton' data-bind='click: bpmBack'>
+			<i class="uf uf-arrow-left"></i><span class="i18n" name="ht.flo.bpm.0002"></span>
+		</button>
+		<h1><span class="i18n" name="ht.flo.bpm.0015"></span></h1>
+	</div>
+</div>
+<!--end  单据上部分按钮-->
+
+<!--审批单据下半部分 start-->
+<!-- start  流程历史图 层---->
+<div class="bpmApproveFoot">
+	<div class='modal fade' id='imgHistory_list' tabindex='-1' role='dialog'>
+		<div class='u-mdlayout-page-header'>
+			<span class='content-title'><span class="i18n" name="ht.flo.bpm.0001"></span></span>
+		</div>
+		<div class='u-mdlayout-page-section'>
+			<div class='panel-heading' ></div>
+			<div class='u-mdlayout-page-section'>
+				<div class=''>
+					<div class="pap-title">
+						<button type='button' class='u-button raised accent u-button-pa backbutton' data-bind='click: bpmImgBack'>
+							<i class="uf uf-arrow-left"></i><span class="i18n" name="ht.flo.bpm.0002"></span>
+						</button>
+						<h1><span class="i18n" name="ht.flo.bpm.0021"></span></h1>
+					</div>
+					<!-- <div class=''>
+						<button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgBack'>
+
+						</button>
+					</div> -->
+					<div class='' style=''>
+						<iframe id='img_His' width='99%' style='border: 0px;height: 100%;min-height:300px;'></iframe>
+						<div class='table-container'>
+							<table class='u-table' style='width:99%'>
+								<thead>
+								<tr>
+									<th><span class="i18n" name="ht.flo.bpm.0003"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0004"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0005"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0006"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0007"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0008"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0009"></span></th>
+									<th><span class="i18n" name="ht.flo.bpm.0010"></span></th>
+								</tr>
+								</thead>
+								<tbody data-bind="foreach:{data:flowHisDa.rows(), as: 'row', afterAdd: afterAdd}">
+								<tr data-bind="css: { 'is-selected' : row.selected() } ,attr:{'rowindex': $index},click: $parent.rowClick">
+									<td style='display: none;'><label class='u-checkbox only-style' data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+										<input type='checkbox' class='u-checkbox-input'>
+										<span class='u-checkbox-label'></span> </label></td>
+									<td data-bind="text: row.ref('id')"></td>
+									<td data-bind="text: row.ref('name')"></td>
+									<td data-bind="text: bpmApproveTypeShowHandler(row.ref('description')())"></td>
+									<td data-bind="text: row.ref('executionId')"></td>
+									<td data-bind="text: row.ref('startTime')"></td>
+									<td data-bind="text: row.ref('endTime')"></td>
+									<td data-bind="text: row.ref('deleteReason')"></td>
+									<td data-bind="text: row.ref('claimTime')"></td>
+								</tr>
+								</tbody>
+							</table>
+							<div id='pagination_img' class=''></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end  流程历史图 层------>
+
+	<!-- start 驳回/指派列表-->
+	<div class='modal fade' id='rejectDiv' tabindex='-1' role='dialog'>
+		<div class='modal-dialog' style='width:80%'>
+			<div class='modal-content' style=' '>
+				<div class='modal-header'>
+					<h4 class='modal-title'><span class="i18n" name="ht.flo.bpm.0022"></span></h4>
+				</div>
+				<div class='modal-body' style='height:600px'>
+					<div type='text' style='margin-left:5px' u-meta='{"id":"gridreject","data":"rejectDa","type":"grid","editable":false,"multiSelect":false,"editType":"default","afterCreate":"afterCreate"}'>
+						" <div options='{"field":"activityId","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0023></span>","width":"350px","editType":"string","editable":false}'></div>
+						<div options='{"field":"activityName","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0024></span>","editType":"string","editable":false}'></div>
+					</div>
+				</div>
+				<div class='modal-footer'>
+					<button class='u-button raised accent u-button-pa' id='selectRejectOk' data-bind='click: rejectOk'>
+						<span class="i18n" name="ht.flo.bpm.0025"></span>
+					</button>
+					&nbsp;&nbsp;&nbsp;
+					<button class='u-button raised accent u-button-pa' data-bind='click: bpmRejectBack'>
+						<span class="i18n" name="ht.flo.bpm.0026"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end 驳回列表-->
+
+	<!-- start 改派人员列表-->
+	<div class='modal fade' id='personDiv' tabindex='-1' role='dialog'>
+		<div class='modal-dialog' style='width:60%'>
+			<div class='modal-content' style=' '>
+				<div class='modal-header'>
+					<h4 class='modal-title'><span class="i18n" name="ht.flo.bpm.0027"></span></h4>
+				</div>
+				<div style='padding-left:20px'>
+					<span class="i18n" name="ht.flo.bpm.0028"></span>
+					<input id='txtDelegateSearth100' class='u-form-control' style='width:200px'/>
+					<button class='u-button raised  accent u-button-pa'    data-bind='click: bpmDelegateSearchHandler'>
+						<span class="i18n" name="ht.flo.bpm.0029"></span>
+					</button>
+				</div>
+				<div class='modal-body' style='height:400px;overflow: auto'>
+					<div type='text' style='margin-left:5px;' u-meta='{"id":"gridperson","data":"personDa","type":"grid","editable":false,"multiSelect":false,"editType":"default","afterCreate":"afterCreate"}'>
+						<div options='{"field":"name","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0030></span>","width":"350px","editType":"string","editable":false}'></div>
+						<div options='{"field":"code","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0031></span>","editType":"string","editable":false}'></div>
+					</div>
+
+				</div>
+				<div style="text-align: center">
+					<div style="display: inline-block!important;height: 44px">
+						<div style="" id='personDiv_pagination' class='u-pagination pagination-sm pagination-center'></div>
+					</div>
+				</div>
+				<div class='modal-footer'>
+					<button class='u-button raised accent u-button-pa' id='selectPersonOk' data-bind='click: delegateOk'>
+						<span class="i18n" name="ht.flo.bpm.0025"></span>
+					</button>
+					&nbsp;&nbsp;&nbsp;
+					<button class='u-button raised accent u-button-pa' data-bind='click: bpmDelegateBack' >
+						<span class="i18n" name="ht.flo.bpm.0026"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end 改派人员列表-->
+
+	<!-- start 指派派人员列表-->
+	<div class='modal fade' id='assignDiv' tabindex='-1' role='dialog'>
+		<div class='modal-dialog' style='width:60%'>
+			<div class='modal-content' style=' '>
+				<div class='modal-header'>
+					<h4 class='modal-title'><span class="i18n" name="ht.flo.bpm.0032"></span></h4>
+				</div>
+				<div class='modal-body' style='height:400px;overflow: auto;text-align: center;'>
+					<div type='text' style='margin-left:5px;'
+						 u-meta='{"id":"gridAssignperson","data":"personAddDa","type":"grid","multiSelect":true,"editable":false,"editType":"default","afterCreate":"afterCreate"}'>
+						<div options='{"field":"name","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0030></span>","width":"200px","editType":"string","editable":false}'></div>
+						<div options='{"field":"code","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0031></span>","editType":"string","editable":false}'></div>
+						<div options='{"field":"codeaction","width":"20%","editType":"String","title":"<span class=i18n name=ht.flo.bpm.0033></span>","renderType":"codeRenderTypeFun"}'></div>
+					</div>
+
+				</div>
+				<div class='modal-footer'>
+					<button class='u-button raised accent u-button-pa'
+							style="height: 30px;
+					line-height: 30px;
+					padding: 0 25px;
+					font-size: 12px;
+					color: #fff;
+					background-color: #039BE5;
+					border-radius: 4px;"
+							id='selectPersonAssignOk' data-bind='click: bpmAssignOk'>
+						<span class="i18n" name="ht.flo.bpm.0025"></span>
+					</button>
+					&nbsp;&nbsp;&nbsp;
+					<button class='u-button raised accent u-button-pa'
+							style="line-height: 30px;
+					height: 30px;
+					padding: 0 20px;
+					border: 1px solid #039BE5;
+					color: #039BE5;
+					font-size: 12px;
+					border-radius: 4px;
+					background: #fff;"  data-bind='click: bpmAssignBack'>
+						<span class="i18n" name="ht.flo.bpm.0026"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end 指派人员列表-->
+
+	<!-- start 加签人员列表-->
+	<div class='modal fade' id='addsignDiv' tabindex='-1' role='dialog'>
+		<div class='modal-dialog' style='width:60%'>
+			<div class='modal-content' style=' '>
+				<div class='modal-header'>
+					<h4 class='modal-title'><span class="i18n" name="ht.flo.bpm.0034"></span></h4>
+				</div>
+				<div style='padding-left:20px'>
+					<span class="i18n" name="ht.flo.bpm.0028"></span>
+					<input id='txtsignAddSearth100' class='u-form-control' style='width:200px'/>
+					<button class='u-button raised  accent u-button-pa'    data-bind='click: bpmAddSignSearchHandler'>
+						<span class="i18n" name="ht.flo.bpm.0029"></span>
+					</button>
+				</div>
+				<div class='modal-body' style='height:400px;overflow: auto;text-align: center;'>
+					<div type='text' style='margin-left:5px;'
+						 u-meta='{"id":"gridAddperson","data":"personAddDa","type":"grid","editable":false,"multiSelect":true,"editType":"default","afterCreate":"afterCreate"}'>
+						<div options='{"field":"name","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0030></span>","width":"350px","editType":"string","editable":false}'></div>
+						<div options='{"field":"code","dataType":"String","title":"<span class=i18n name=ht.flo.bpm.0031></span>","editType":"string","editable":false}'></div>
+						<div options='{"field":"codeaction","width":"20%","editType":"String","title":"<span class=i18n name=ht.flo.bpm.0033></span>","renderType":"codeRenderTypeFun"}'></div>
+					</div>
+
+				</div>
+				<div style="text-align: center">
+					<div style="display: inline-block!important;">
+						<div style="" id='addsignDiv_pagination' class='u-pagination pagination-sm pagination-center'></div>
+					</div>
+				</div>
+				<div class='modal-footer'>
+					<button class='u-button raised accent u-button-pa'
+							style="height: 30px;
+					line-height: 30px;
+					padding: 0 25px;
+					font-size: 12px;
+					color: #fff;
+					background-color: #039BE5;
+					border-radius: 4px;"
+							id='selectPersonAddOk' data-bind='click: bpmAddSignOk'>
+						<span class="i18n" name="ht.flo.bpm.0025"></span>
+					</button>
+					&nbsp;&nbsp;&nbsp;
+					<button class='u-button raised accent u-button-pa'
+							style="line-height: 30px;
+					height: 30px;
+					padding: 0 20px;
+					border: 1px solid #039BE5;
+					color: #039BE5;
+					font-size: 12px;
+					border-radius: 4px;
+					background: #fff;"  data-bind='click: bpmAddSignBack'>
+						<span class="i18n" name="ht.flo.bpm.0026"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end 加签人员列表-->
+</div>
+<!--审批单据下半部分 end-->

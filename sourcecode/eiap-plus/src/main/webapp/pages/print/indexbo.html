@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>打印业务对象管理</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../../vendor/uui/css/u.min.css">
+	<script src="../../vendor/jquery/jquery-1.11.2.min.js"></script>
+	<script src="../../vendor/uui/js/u.min.js"></script>
+	<script src="../../vendor/knockout/knockout-3.1.0.js"></script>
+	<link rel="stylesheet" href="./print_obj.css">
+</head>
+<style>	
+/* papheader样式 */
+.pap-title{
+  position: relative;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1px;
+}
+.pap-title h1{
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  color: rgb(51, 51, 51);
+  display: inline-block;
+  font-weight: 500;
+}
+.pap-title .backbutton{
+  height: 30px;
+  color: rgb(3,155,229);
+  padding: 0;
+  border: none;
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  margin: 0;
+  padding-left: 13px;
+  padding-right: 13px;
+  line-height: 30px;
+  font-size: 12px!important;
+  background: #ffffff;
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  text-decoration: none;
+}
+.pap-title .backbutton:hover {
+  background-color: #F7F7F7;
+}
+.pap-title .backbutton i{
+  padding: 0;
+  position: relative;
+        top: -2px;
+}
+</style>
+<body>
+	<div id="printObj">
+		<div style="display: none">
+			<h2>设置身份信息</h2>
+			产品CODE：
+			<input id="appCode" list="appCode_list" value='iprint' />
+			<datalist id="appCode_list">
+				<option value="iprint" label="测试" />
+				<option value="hrclouds" label="HR云" />
+				<option value="ipu" label="友云采" />
+				<option value="auditcloud" label="云审" />
+				<option value="yyjzcloud" label="建筑" />
+				<option value="dstcloud" label="电商通" />
+				<option value="iform" label="云表单" />
+				<option value="ybz" label="友报账" />
+				<option value="ficloud" label="友报账" />
+				<option value="shopcloud" label="海底捞" />
+				<option value="sg_nc_cloud" label="国家电网" />
+			</datalist>
+			产品ID：
+			<input id="appId" value='9b718a890c9print' /> 租户ID：
+			<input id="tenantId" list="tenantId_list" value='tenant' />
+			<datalist id="tenantId_list">
+				<option value="tenant" label="测试租户" />
+				<option value="sv3c1td6" label="测试租户2" />
+				<option value="sys" label="系统" />
+			</datalist>
+
+			私钥序号：
+			<input id="secret" value='ascrdm' />
+			<button id='reset' style="width:100px">重置上下文</button>
+		</div>
+		<div class="pap-title">
+				<button class="u-button backbutton" onclick="window.history.go(-1)">
+					<i class="uf uf-arrow-left"></i> 返回
+					<span class="u-button-container">
+						<span class="u-ripple"></span>
+					</span>
+				</button>
+				<h1>打印业务对象管理</h1>
+			</div>
+		<div class="search" style="margin-top: 40px;">
+			<div class="search-title">
+				<span style="float: left;">筛选
+					<i class="uf uf-arrow-c-o-down"></i>
+				</span>
+				<span style="float: right;cursor: pointer;color:#1E7BE2" data-bind="html:openTitle,click:openClick"></span>
+			</div>
+			<div class="search-panel" id="searchPanel">
+				<div class="u-form-group">
+					<label for="code">编号:</label>
+					<input type="text" class="u-form-control" id="code" placeholder="请输入编号">
+				</div>
+				<div class="u-form-group">
+					<label for="name">名称:</label>
+					<input type="text" class="u-form-control" id="name" placeholder="请输入名称">
+				</div>
+				<div class="search-btn-group u-form-group">
+					<button data-bind="click:clearClick" class="u-button clear-btn">清空</button>
+					<button data-bind="click:searchClick" class="u-button search-btn" style="margin-left:10px">查询</button>
+				</div>
+			</div>
+		</div>
+		<div class="cttttn">
+			<div class="other-btn">
+				<button class="u-button search-btn" data-bind="click:addClick">新增</button>
+			</div>
+			<div class="po-tabel">
+				<table class="u-table-base u-table-striped">
+					<thead>
+						<tr>
+							<td style="padding-left:30px;width:30%">业务对象编号</td>
+							<td style="width:30%;">业务对象名称</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach: {data:tableData,as:'item'} ">
+						<tr>
+							<td data-bind="text:bo_code" style="padding-left:30px"></td>
+							<td data-bind="text:bo_name"></td>
+							<td>
+								<i data-bind="click:function(){$parent.editClick(item)}" class="uf uf-pencil" title="编辑"></i>
+								<i data-bind="click:function(){$parent.delClick(pk_bo)}" class="uf uf-del" title="删除"></i>
+							</td>
+						</tr>
+					</tbody>
+					<tbody class="no-data" style="display:none">
+						<tr>
+							<td colspan="3" style="text-align:center">暂无数据</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="text-align:center">
+						<div id='pagination' class='u-pagination'>
+							</div>
+				</div>
+				
+
+			</div>
+
+		</div>
+		<div id="tipContent" style="display:none;top:-100px">
+			<div class="u-msg-title">
+				<h4 style="font-size:14px;">温馨提示</h4>
+			</div>
+			<div class="u-msg-content" data-bind="text:tipContent">
+
+			</div>
+			<div class="u-msg-footer">
+				<button class="u-msg-cancel u-button " style="border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 0px;"
+				    data-bind="click:tipClose">关闭
+					<span class="u-button-container">
+						<span class="u-ripple"></span>
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<div id="freshList" style="display:none;top:-100px">
+			<div class="u-msg-title">
+				<h4 style="font-size:14px;">温馨提示</h4>
+			</div>
+			<div class="u-msg-content">
+				数据可能已发生变更，点击确定按钮刷新
+			</div>
+			<div class="u-msg-footer">
+				<button class="u-msg-cancel u-button " style="border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 4px;"
+				    data-bind="click:loadData">确定
+					<span class="u-button-container">
+						<span class="u-ripple"></span>
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<div id="delModal" style="display:none;">
+			<div class="u-msg-title">
+				<h4 style="font-size:14px;">温馨提示</h4>
+			</div>
+			<div class="u-msg-content">
+				<p>
+					确定要删除么?
+				</p>
+			</div>
+			<div class="u-msg-footer">
+
+				<button class="u-msg-cancel u-button" style="height:30px;border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 4px;"
+				    data-bind="click:delCancel">取消
+					<span class="u-button-container">
+						<span class="u-ripple"></span>
+					</span>
+				</button>
+				<button class="u-msg-ok u-button" style="background:rgb(3,155,229);color:#fff;border-radius: 4px;" data-bind="click:delOk">确定
+						<span class="u-button-container">
+							<span class="u-ripple"></span>
+						</span>
+					</button>
+			</div>
+		</div>
+
+		<div id="printObjEditModal" style="display:none;">
+			<div class="u-msg-title">
+				<h4>新增</h4>
+			</div>
+			<div class="u-msg-content" style="text-align:center">
+				<div class="u-form-group">
+					<label for="code">编号:</label>
+					<input type="text" class="u-form-control" id="saveCode" placeholder="请输入编号">
+				</div>
+				<div class="u-form-group">
+					<label for="name">名称:</label>
+					<input type="text" class="u-form-control" id="saveName" placeholder="请输入名称">
+				</div>
+			</div>
+			<div class="u-msg-footer">
+				<button class="u-msg-ok u-button" style="background:rgb(3,155,229);color:#fff;border-radius: 0px;" data-bind="click:saveClick">保存
+					<span class="u-button-container">
+						<span class="u-ripple"></span>
+					</span>
+				</button>
+				<button class="u-msg-cancel u-button " style="border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 0px;"
+				    data-bind="click:cancelClick">取消
+					<span class="u-button-container">
+						<span class="u-ripple"></span>
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="print_obj.js"></script>
+
+</html>

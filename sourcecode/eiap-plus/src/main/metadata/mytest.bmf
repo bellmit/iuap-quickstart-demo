@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><component conRouterType="曼哈顿直角" createIndustry="0" createTime="2017-04-18 15:05:16" creator="" description="" displayName="mytest" fromSourceBmf="true" gencodestyle="标准样式" help="" id="84b2ed06-a582-4b64-b22c-7f68aa252818" industry="0" industryChanged="false" industryIncrease="false" industryName="0" isSource="false" isbizmodel="false" mainEntity="" metaType=".bmf" modifier="" modifyIndustry="0" modifyTime="2017-04-18 15:05:16" name="mytest" namespace="iuap_qy" ownModule="iuap_qy" preLoad="false" programcode="0" resModuleName="mytest" resid="" version="0" versionType="0">
+    <celllist/>
+    <connectlist/>
+    <refdepends/>
+    <refdependLoseIDs/>
+    <cellRemoveLog/>
+    <rulers>
+        <ruler isHorizontal="true" unit="0">
+            <guideList/>
+        </ruler>
+        <ruler isHorizontal="false" unit="0">
+            <guideList/>
+        </ruler>
+    </rulers>
+</component>

@@ -1,0 +1,107 @@
+<div class="ui-panel">
+  <div class="ui-searchbox">
+    <div id="MessageCenter-searchcontent" class="ui-searchbox-content" style="height:auto"></div>
+    <div class="ui-searchbox-footer">
+      <!-- <div class="ui-search-more hidden">
+        <a>更多<i class="uifont icon-down"></i></a>
+      </div> -->
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+        </a>
+        <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="margin-bottom-10">
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: beforeEdit.bind($data,-1)">
+        <i class="uifont icon-plus margin-right-5"></i>新建
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>
+    </div>
+    <div class="ui-table-container">
+      <div id="MessageList" u-meta='{"id":"grid_MessageList","data":"MessageList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+        <div options='{"field":"sender","dataType":"String","title":"发送人","renderType":"whetherRender"}'></div>
+        <div options='{"field":"subject","dataType":"String","title":"主题"}'></div>
+        <div options='{"field":"receiveTime","dataType":"Datetime","title":"接收时间"}'></div>
+        <div options='{"field":"type","dataType":"String","title":"分类"}'></div>
+        <div options='{"field":"readStatusName","dataType":"String","title":"状态"}'></div>
+        <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div>
+      </div>
+      <div class="ui-statistics margin-top-10">
+        <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+        <span class="font-c-blue" data-bind="text:MessageList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"MessageList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--新增 弹框 start-->
+<div id="dialog_content_newMessageFun" style="display:none;">
+  <div class="u-msg-title">
+    <h4>新建消息</h4>
+  </div>
+  <div class="u-msg-content" id="addContent">
+    <h3 class="ui-collapse-title open">接收人</h3>
+    <div class="clearfix margin-top-5 margin-bottom-5">
+      <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:messageCreationHandler.bind($data,-1) ">
+        <i class="uifont icon-plus margin-right-5"></i>添加</a>
+      <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:messageCreationHandler.bind($data,0)">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>移除</a>
+    </div>
+    <div id="AuthorizedUserRefer" u-meta='{"type":"uiRefer","data":"AuthorizedUserRef","field":"AuthorizedUserRefer"}' style="display:none;">
+        <input readonly="readonly" />
+        <span class="ui-icon uifont icon-bar refer"></span>
+    </div>
+    <div u-meta='{"id":"grid_messageUser","data":"MessageUserCreation","type":"grid","editable":true,"multiSelect":"true","showNumCol":true, "onBeforeEditFun":"bomTreeBeforeEdit"}'>
+        <div options='{"field":"code","dataType":"String","title":"用户编码","editable":false,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"code","editOptions":{"validType":"string","rel":{"refpk":"productId","refname":"productName","refcode":"productCode","proStateCode":"proState"}}}'></div>
+        <div options='{"field":"name","dataType":"String","title":"用户名称","editable":false}'></div>
+    </div>
+    <div class="ui-panel-content clearfix">
+      <div class="clearfix"></div>
+      <div class="ui-item">
+        <div class="ui-name">
+          <i class="strong">*</i>主题：</div>
+        <div class="ui-inputarea">
+          <div class="ui-textonly" u-meta='{"id":"subject","type":"u-text","data":"MessageContentCreation","field":"subject"}'>
+            <input class="u-input" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="ui-item ui-textarea-item">
+        <div class="ui-name">
+          <i class="strong">*</i>内容：</div>
+        <div class="ui-inputarea">
+          <textarea u-meta='{"id":"content","data":"MessageContentCreation","field":"content","type":"textarea"}'>
+                <input class="u-input"/>
+            </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="ui-panel-content clearfix">
+        <div class="clearfix"></div>
+        <div class="ui-item">
+          <div class="ui-name">附件：</div>
+          <a class="ui-btn ui-btn-orange" data-bind="click:addAttHandler.bind($data,-1) "><i class="uifont icon-plus"></i></a>
+          <div class="ui-inputarea">
+            <div class="ui-textonly" u-meta='{"id":"attaches","type":"u-text","data":"MessageContentCreation","field":"attaches"}'>
+              <input class="u-input" />
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="u-msg-ok ui-btn ui-btn-green">发送</a>
+    <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+  </div>
+</div>
+<!--新增 弹框 end-->

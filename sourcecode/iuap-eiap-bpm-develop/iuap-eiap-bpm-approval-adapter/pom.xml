@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.yonyou.iuap.pap.bpm</groupId>
+		<artifactId>iuap-eiap-bpm-parent</artifactId>
+		<version>3.5.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>iuap-eiap-bpm-approval-adapter</artifactId>
+
+	<name>iuap-eiap-bpm-approval-adapter</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.yonyou.iuap.pap.workbench</groupId> -->
+<!-- 			<artifactId>workbench-model</artifactId> -->
+<!-- 			<version>3.5.3-SNAPSHOT</version> -->
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>com.yonyou.iuap.portal</groupId> -->
+<!-- 					<artifactId>portal</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 				<exclusion> -->
+<!-- 				  <groupId>com.yonyou.iuap</groupId> -->
+<!-- 				  <artifactId>iuap-passwordpolicy</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 				<exclusion> -->
+<!-- 					<groupId>com.yonyou.iuap.pap.authrbac</groupId> -->
+<!-- 					<artifactId>iuap-authrbac-core</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 				<exclusion> -->
+<!-- 					  <groupId>com.yonyou.iuap.pap</groupId> -->
+<!-- 					  <artifactId>iweb_app_fe</artifactId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.workbench</groupId>
+			<artifactId>workbench-sdk</artifactId>
+			<version>3.5.3-SNAPSHOT</version>
+	<!-- <exclusions> -->
+	<!-- <exclusion> -->
+	<!-- <groupId>com.yonyou.iuap.portal</groupId> -->
+	<!-- <artifactId>portal</artifactId> -->
+	<!-- </exclusion> -->
+	<!-- <exclusion> -->
+	<!-- <groupId>com.yonyou.iuap</groupId> -->
+	<!-- <artifactId>iuap-passwordpolicy</artifactId> -->
+	<!-- </exclusion> -->
+	<!-- <exclusion> -->
+	<!-- <groupId>com.yonyou.iuap.pap.authrbac</groupId> -->
+	<!-- <artifactId>iuap-authrbac-core</artifactId> -->
+	<!-- </exclusion> -->
+	<!-- <exclusion> -->
+	<!-- <groupId>com.yonyou.iuap.pap</groupId> -->
+	<!-- <artifactId>iweb_app_fe</artifactId> -->
+	<!-- </exclusion> -->
+	<!-- </exclusions> -->
+			<!-- <scope>system</scope> <systemPath>${project.basedir}/lib/workbench-sdk-3.1.0-RC001.jar</systemPath> -->
+		</dependency>
+
+		<!-- sdk中包含了common，不必再单独引用common -->
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>iuap-eiap-bpm-sdk</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yonyou.iuap.pap.bpm</groupId>
+			<artifactId>ubpm-rest-sdk</artifactId>
+			<version>${ubpm-rest-sdk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-auth</artifactId>
+			<version>${iuap.modules.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yonyou.iuap</groupId>
+			<artifactId>iuap-generic</artifactId>
+			<version>${iuap.modules.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>slf4j-api</artifactId>
+			<groupId>org.slf4j</groupId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<configuration>
+						<target name="copylicense">
+							<copy todir="${project.build.directory}/classes/META-INF"
+								file="license.txt"></copy>
+						</target>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+</project>

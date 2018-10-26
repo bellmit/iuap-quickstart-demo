@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><component conRouterType="曼哈顿直角" createIndustry="0" createTime="2017-04-14 10:18:53" creator="" description="" displayName="baseuser" fromSourceBmf="true" gencodestyle="标准样式" help="" id="6e7f2213-30e5-4550-a2de-c9b61d70d1b9" industry="0" industryChanged="false" industryIncrease="false" industryName="0" isSource="false" isbizmodel="false" mainEntity="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" metaType=".bmf" modifier="" modifyIndustry="0" modifyTime="2017-05-23 21:03:06" name="baseuser" namespace="iuap_qy" ownModule="iuap_qy" preLoad="false" programcode="0" resModuleName="baseuser" resid="" version="7" versionType="0">
+    <celllist>
+        <entity accessorClassName="nc.md.model.access.javamap.POJOStyle" bizItfImpClassName="" componentID="6e7f2213-30e5-4550-a2de-c9b61d70d1b9" createIndustry="0" createTime="2017-04-14 10:18:55" creator="" czlist="" description="" displayName="用户参照" fullClassName="com.yonyou.iuap_qy.base.entity.Baseuser" height="179" help="" id="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" industryChanged="false" isAuthen="true" isCreateSQL="true" isExtendBean="false" isPrimary="true" isSource="true" keyAttributeId="2ea54ca4-b478-4051-9b52-0c70e76f93ed" modInfoClassName="" modifier="" modifyIndustry="0" modifyTime="2017-05-23 21:06:35" name="baseuser" resid="" stereoType="" tableName="app_user" userDefClassName="" versionType="0" visibility="public" width="100" x="113" y="62">
+            <attributelist>
+                <attribute accessStrategy="" accesspower="false" accesspowergroup="" calculation="false" classID="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" createIndustry="0" dataType="BS000010000100001051" dataTypeStyle="SINGLE" dbtype="char" defaultValue="" description="" displayName="主键" dynamic="false" dynamicTable="" fieldName="id" fieldType="char" fixedLength="false" forLocale="false" help="" id="2ea54ca4-b478-4051-9b52-0c70e76f93ed" industryChanged="false" isActive="true" isAuthorization="true" isDefaultDimensionAttribute="false" isDefaultMeasureAttribute="false" isFeature="false" isGlobalization="false" isHide="false" isKey="true" isNullable="false" isReadOnly="false" isShare="false" isSource="false" length="36" maxValue="" minValue="" modifyIndustry="0" name="id" notSerialize="false" precise="" refModelName="" resid="" sequence="0" typeDisplayName="ID" typeName="ID" versionType="0" visibility="public"/>
+                <attribute accessStrategy="" accesspower="false" accesspowergroup="" calculation="false" classID="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" createIndustry="0" dataType="BS000010000100001001" dataTypeStyle="SINGLE" dbtype="varchar" defaultValue="" description="" displayName="登录名" dynamic="false" dynamicTable="" fieldName="login_name" fieldType="varchar" fixedLength="false" forLocale="false" help="" id="27534825-cdc8-491f-9446-507729a78661" industryChanged="false" isActive="true" isAuthorization="true" isDefaultDimensionAttribute="false" isDefaultMeasureAttribute="false" isFeature="false" isGlobalization="false" isHide="false" isKey="false" isNullable="false" isReadOnly="false" isShare="false" isSource="false" length="50" maxValue="" minValue="" modifyIndustry="0" name="login_name" notSerialize="false" precise="" refModelName="" resid="" sequence="1" typeDisplayName="String" typeName="String" versionType="0" visibility="public"/>
+                <attribute accessStrategy="" accesspower="false" accesspowergroup="" calculation="false" classID="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" createIndustry="0" dataType="BS000010000100001001" dataTypeStyle="SINGLE" dbtype="varchar" defaultValue="" description="" displayName="名称" dynamic="false" dynamicTable="" fieldName="name" fieldType="varchar" fixedLength="false" forLocale="false" help="" id="0149c88b-71b5-44f7-b7f4-c991be193ac1" industryChanged="false" isActive="true" isAuthorization="true" isDefaultDimensionAttribute="false" isDefaultMeasureAttribute="false" isFeature="false" isGlobalization="false" isHide="false" isKey="false" isNullable="false" isReadOnly="false" isShare="false" isSource="false" length="50" maxValue="" minValue="" modifyIndustry="0" name="name" notSerialize="false" precise="" refModelName="" resid="" sequence="2" typeDisplayName="String" typeName="String" versionType="0" visibility="public"/>
+                <attribute accessStrategy="" accesspower="false" accesspowergroup="" calculation="false" classID="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" createIndustry="0" dataType="BS000010000100001001" dataTypeStyle="SINGLE" dbtype="varchar" defaultValue="" description="" displayName="角色" dynamic="false" dynamicTable="" fieldName="roles" fieldType="varchar" fixedLength="false" forLocale="false" help="" id="19a9c703-1f50-410c-89fc-2a7a80717c92" industryChanged="false" isActive="true" isAuthorization="true" isDefaultDimensionAttribute="false" isDefaultMeasureAttribute="false" isFeature="false" isGlobalization="false" isHide="false" isKey="false" isNullable="true" isReadOnly="false" isShare="false" isSource="false" length="50" maxValue="" minValue="" modifyIndustry="0" name="roles" notSerialize="false" precise="" refModelName="" resid="" sequence="3" typeDisplayName="String" typeName="String" versionType="0" visibility="public"/>
+                <attribute accessStrategy="" accesspower="false" accesspowergroup="" calculation="false" classID="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" createIndustry="0" dataType="BS000010000100001001" dataTypeStyle="SINGLE" dbtype="varchar" defaultValue="" description="" displayName="状态" dynamic="false" dynamicTable="" fieldName="states" fieldType="varchar" fixedLength="false" forLocale="false" help="" id="a3b8fac9-2292-43cc-8cd3-e8776b81d63c" industryChanged="false" isActive="true" isAuthorization="true" isDefaultDimensionAttribute="false" isDefaultMeasureAttribute="false" isFeature="false" isGlobalization="false" isHide="false" isKey="false" isNullable="true" isReadOnly="false" isShare="false" isSource="false" length="50" maxValue="" minValue="" modifyIndustry="0" name="states" notSerialize="false" precise="" refModelName="" resid="" sequence="4" typeDisplayName="String" typeName="String" versionType="0" visibility="public"/>
+            </attributelist>
+            <operationlist/>
+            <busiitfs>
+                <itfid>6c8722b9-911a-489b-8d0d-18bd3734fcf6</itfid>
+            </busiitfs>
+            <busimaps>
+                <busimap attrid="2ea54ca4-b478-4051-9b52-0c70e76f93ed" attrpath="" attrpathid="" busiitfattrid="5dd3c721-22ad-42b1-9c10-4351c236bc77" busiitfid="6c8722b9-911a-489b-8d0d-18bd3734fcf6" cellid="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1"/>
+                <busimap attrid="" attrpath="" attrpathid="" busiitfattrid="c8334364-7ab9-4266-8d4b-e74537935e46" busiitfid="6c8722b9-911a-489b-8d0d-18bd3734fcf6" cellid="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1"/>
+                <busimap attrid="27534825-cdc8-491f-9446-507729a78661" attrpath="" attrpathid="" busiitfattrid="d32cc17b-f415-415a-923f-0764443eb102" busiitfid="6c8722b9-911a-489b-8d0d-18bd3734fcf6" cellid="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1"/>
+                <busimap attrid="0149c88b-71b5-44f7-b7f4-c991be193ac1" attrpath="" attrpathid="" busiitfattrid="89578a97-42fe-439b-827c-8eabd9e3604c" busiitfid="6c8722b9-911a-489b-8d0d-18bd3734fcf6" cellid="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1"/>
+            </busimaps>
+            <canzhaolist/>
+            <accessor classFullname="nc.md.model.access.javamap.POJOStyle" displayName="POJO" name="pojo">
+                <properties/>
+            </accessor>
+        </entity>
+        <Reference componentID="6e7f2213-30e5-4550-a2de-c9b61d70d1b9" createIndustry="0" createTime="2016-11-28 16:45:08" creator="" description="" displayName="引用：IBDObject" fullClassName="com.yonyou.workbench-model.wbuser.reference0" height="100" help="" id="484aad8e-8ed8-4ace-b823-1db300bf3bb2" industryChanged="false" isSource="true" mdFilePath="" modifier="" modifyIndustry="0" modifyTime="2017-05-23 21:03:06" moduleName="baseapp" name="reference0" refId="6c8722b9-911a-489b-8d0d-18bd3734fcf6" resid="" versionType="0" visibility="public" width="100" x="363" y="120"/>
+    </celllist>
+    <connectlist>
+        <busiitfconnection bizItfImpClassName="" componentID="6e7f2213-30e5-4550-a2de-c9b61d70d1b9" createIndustry="0" createTime="2017-04-14 22:39:09" creator="" description="" displayName="" help="" id="d78dea2f-e32f-4093-a3fc-11a74a40f290" industryChanged="false" isSource="false" modifier="" modifyIndustry="0" modifyTime="2017-04-14 22:39:09" name="busiItf connection" realsource="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" realtarget="6c8722b9-911a-489b-8d0d-18bd3734fcf6" source="3c23e2fa-ce33-49e3-9075-beab3ca9bcd1" target="484aad8e-8ed8-4ace-b823-1db300bf3bb2" versionType="0">
+            <points/>
+        </busiitfconnection>
+    </connectlist>
+    <refdepends>
+        <dependfile entityid="6c8722b9-911a-489b-8d0d-18bd3734fcf6"/>
+    </refdepends>
+    <refdependLoseIDs/>
+    <cellRemoveLog/>
+    <rulers>
+        <ruler isHorizontal="true" unit="0">
+            <guideList/>
+        </ruler>
+        <ruler isHorizontal="false" unit="0">
+            <guideList/>
+        </ruler>
+    </rulers>
+</component>

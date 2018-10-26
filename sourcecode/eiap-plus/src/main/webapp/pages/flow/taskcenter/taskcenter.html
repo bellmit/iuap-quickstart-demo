@@ -1,0 +1,149 @@
+<!-- 内容 -->
+<div class="u-mdlayout rwzx" id="taskecenter-mdlayout">
+		<div class="u-row lsz-title">
+				<div class="pap-title"><h1><span class="i18n" name="ht.flo.tas.0001"></span></h1></div>
+		</div>
+		<div id="test" class=" bpmsearch" data-status="opened">
+		<div class=" form-search" >
+				<div class="xy-search-title">
+					<span><span class="i18n" name="ht.flo.tas.0002"></span></span>
+				</div>
+				<div class="u-row margin-right-0 padding-left-15">
+						<div class="u-widget form-group xy-form-group u-col-4"> 
+								<label><span class="i18n" name="ht.flo.tas.0003"></span></label>
+								<input class="u-form-control input_search" id="bpm_search_billno" name="search_EQ_code" />
+							</div>
+							<div class="u-widget form-group xy-form-group u-col-4"> 
+								<label><span class="i18n" name="ht.flo.tas.0004"></span></label>
+								<input class="u-form-control input_search" id="bpm_search_processDefinitionName" />
+							</div>
+							<div class="u-widget form-group xy-form-group u-col-4"> 
+								<label><span class="i18n" name="ht.flo.tas.0005"></span></label>
+								<div u-meta='{"id":"vstatus","type":"u-radio","data":"entityStatusDt","field":"vstatus","datasource":"radiodata"}' style="display:inline-block">
+										<label  class="u-radio" >
+											<input type="radio" class="u-radio-button" name="options">
+											<span class="u-radio-label"></span>
+										</label>						
+									</div>
+							</div>
+							<div class="u-widget form-group xy-form-group u-col-12 text-right padding-right-0"> 
+									<div class="u_form_button_success_new bpmsearch-btn clearfix" style="display:inline-block">
+											<button class="u-button_success_new" data-bind="click: bpmQuickSearch"><span class="i18n" name="ht.flo.tas.0006"></span></button>
+										</div>
+							</div>
+				</div>
+				
+				
+				
+		</div>
+		<!-- 左侧列表缩放  By lsy 2016-10-19 Start-->
+			<div class="toggler">
+				<span class="glyphicon glyphicon-chevron-right" style="display: none;">&nbsp;</span>
+				<span class="glyphicon glyphicon-chevron-left" style="display: none;">&nbsp;</span>
+			</div>
+		</div>
+		<!--End-->
+		
+		<!-- end  u-mdlayout-master -->
+		<div class="u-mdlayout-detail bpm-detail">
+			<!-- <div class="u-mdlayout-page  current" id="list_taskconter123"> -->
+			<div class=" current" id="list">	
+				<!-- <div class="u-mdlayout-page-header">
+					<span class="content-title"> </span>
+				</div> -->
+				<div class=" bpmSection" >
+					<div class="demoe-page-content" style="margin-top: 5px;">
+						<div class="demo-actions" style="margin-bottom: 5px;">
+							<div class="u-row">
+								<div class="u-col-md-12 task-btn-allow">
+									<!--<button id="approveBtn" class="u-button raised accent u-button-pa" id="org-table-add"  data-bind="click: approve" ><span class="i18n" name="ht.flo.tas.0007"></span></button>	-->
+									<button class="u-button raised accent u-button-pa" id="org-table-add" data-bind="click: openBill" ><span class="i18n" name="ht.flo.tas.0008"></span></button>	
+								</div>
+								
+							</div>			 
+						</div>
+						
+						<div type="text" style="margin-left:5px;margin-left: -15px;margin-right: -15px;"
+							u-meta='{"id":"gridundotask","data":"entityUndoDt","type":"grid","editable":false,"multiSelect":true,"editType":"default","afterCreate":"afterCreate"}'>
+									<div options='{"field":"name","dataType":"String","title":"<span class=i18n name=ht.flo.tas.0009></span>","width":"500px","editType":"string","editable":false}'></div>
+									<div options='{"field":"createTime","dataType":"String","title":"<span class=i18n name=ht.flo.tas.0010></span>","editType":"date","editable":false}'></div>
+									<!-- <div options='{"field":"","dataType":"String","title":"流程实例 ","renderType":"renderHtml","editType":"string","editable":false}'></div> -->
+									<div options='{"field":"processDefinitionName","dataType":"String","title":"<span class=i18n name=ht.flo.tas.0011></span>","editType":"string","editable":false}'></div>
+									<!-- <div options='{"field":"formKey","dataType":"String","title":"单据详情","editType":"string","editable":false}'></div> -->
+	
+						</div>
+					   <div type="text" style="margin-left:5px;display:none;margin-left: -15px;margin-right: -15px;"
+							u-meta='{"id":"griddonetask","data":"entityDoneDt","type":"grid","editable":false,"multiSelect":true,"editType":"default","afterCreate":"afterCreate"}'>
+									<div options='{"field":"name","dataType":"String","title":"<span class=i18n name=ht.flo.tas.0009></span>","width":"500px","editType":"string","editable":false}'></div>
+									<div options='{"field":"endTime","dataType":"String","title":"<span class=i18n name=ht.flo.tas.0012></span>","editType":"date","editable":false}'></div>
+									<!-- <div options='{"field":"","dataType":"String","title":"流程实例  ","renderType":"renderHtml","editType":"string","editable":false}'></div> -->
+									<div options='{"field":"processDefinitionName","dataType":"String","title":"<span class=i18n name=ht.flo.tas.0011></span>","editType":"string","editable":false}'></div>
+									<!-- <div options='{"field":"formKey","dataType":"String","title":"单据详情","editType":"string","editable":false}'></div>						   -->
+					   </div>
+						
+						<!--
+											描述：开启分页
+						-->
+						<div style="text-align:center;display:none" id="paginationBox">
+								<div id='pagination' class='u-pagination pagination-sm '></div>
+						</div>
+					</div>
+	
+				</div>
+	
+			</div>
+		</div>
+		
+	
+	<!-- 审批的弹出层  -->
+	<div class="modal fade" id="tree-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="treetitle" id="tree-title" ><span class="i18n" name="ht.flo.tas.0014"></span></h4>
+				</div>
+				<div class="modal-body">
+					<div class="u-row">
+						<div class="u-col-8">
+							<div><label><input id="radioInput" name='approvetype' type='radio' checked='true' value="agree"/><span class='text'></span></label><span class="i18n" name="ht.flo.tas.0015"></span><label>
+								<input name='approvetype' type='radio' value="unagree"/>&nbsp;&nbsp;<span class='text'><span class="i18n" name="ht.flo.tas.0016"></span></span></label></div><br><div style='margin-bottom:10px;'><span class="i18n" name="ht.flo.tas.0017"></span></div>
+								<textarea id='dialog_approve_text' style='width:100%;height:100px;'></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" style="height: 30px;
+					line-height: 30px;
+					padding: 0 25px;
+					font-size: 12px;
+					color: #fff;
+					background-color: #039BE5;
+					border-radius: 4px;" data-bind="click:approveSubmit"><span class="i18n" name="ht.flo.tas.0018"></span></button>
+					<button type="button" class="btn" style="line-height: 30px;
+					height: 30px;
+					padding: 0 20px;
+					border: 1px solid #039BE5;
+					color: #039BE5;
+					font-size: 12px;
+					border-radius: 4px;
+					background: #fff;" data-dismiss="modal"><span class="i18n" name="ht.flo.tas.0019"></span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 审批的弹出层  -->
+	
+	<!-- 单据弹出层-->
+	
+	<div class="modal fade" id="bpmDisplayBill" tabindex="-1" role="dialog">
+		<div class="modal-dialog" style="width:100%;">
+			<div class="modal-content" >
+				<div class="modal-body"  >
+					<div  id="billBody" ></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--单据弹出层-->

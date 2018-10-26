@@ -1,0 +1,50 @@
+.thank-body{
+	width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+	font-family: "Microsoft YaHei";
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.margin-auto{
+	width:100%;
+	margin-right: auto;
+    margin-left: auto;
+}
+.text_center{
+    text-align: center;
+}
+.thank_return{
+    width: 60px;
+	margin-top: 24px;
+    top: 45%;
+    position: absolute;
+    color: #CCCCCC;
+    margin-left: 200px;
+    cursor: pointer;
+}
+.font_36{
+    font-size: 36px;
+    color: #CCCCCC;
+    top: 35%;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    position: absolute;
+}
+.font_13{
+	font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    color: #333333;
+    line-height: normal;
+    position: absolute;
+    bottom:20px;
+}
+.color_3399FF{
+	color:#3399FF;
+}

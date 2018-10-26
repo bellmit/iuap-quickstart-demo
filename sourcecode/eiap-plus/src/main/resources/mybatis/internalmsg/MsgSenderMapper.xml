@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yonyou.iuap.internalmsg.dao.MsgSenderDao">
+    <resultMap id="baseResultMap" type="com.yonyou.iuap.internalmsg.entity.po.MsgSender">
+        <id property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
+
+        <result property="userId" column="user_id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="msgId" column="msg_id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="msgDr" column="msg_dr" javaType="Integer" jdbcType="NUMERIC"/>
+        <result property="tenantId" column="tenant_id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="sysId" column="sys_id" javaType="String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="tableName">
+        iuap_msg_sender
+    </sql>
+
+    <sql id="baseColumnList">
+        id, user_id, msg_id, msg_dr, tenant_id, sys_id
+    </sql>
+
+    <sql id="dataExist">
+        msg_dr = 1
+    </sql>
+
+    <insert id="insert" parameterType="com.yonyou.iuap.internalmsg.entity.po.MsgSender">
+        INSERT INTO
+        <include refid="tableName"/>
+        <trim suffix=")" prefix="(">
+            <include refid="baseColumnList"/>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")">
+            #{id, jdbcType=VARCHAR},
+            #{userId, jdbcType=VARCHAR},
+            #{msgId, jdbcType=VARCHAR},
+            #{msgDr, jdbcType=NUMERIC},
+            #{tenantId, jdbcType=VARCHAR},
+            #{sysId, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <foreach collection="list" index="index" item="item" open="" close="" separator=";">
+            UPDATE
+            <include refid="tableName"/>
+            <trim prefix="SET" suffixOverrides=",">
+                <if test=" item.userId != null and item.userId != '' ">
+                    user_id = #{item.userId, jdbcType=VARCHAR},
+                </if>
+                <if test=" item.msgId != null and item.msgId != '' ">
+                    msg_id = #{item.msgId, jdbcType=VARCHAR},
+                </if>
+                <if test=" item.msgDr != null ">
+                    msg_dr = #{item.msgDr, jdbcType=NUMERIC},
+                </if>
+                <if test=" item.tenantId != null and item.tenantId != '' ">
+                    tenant_id = #{item.tenantId, jdbcType=VARCHAR},
+                </if>
+
+                sys_id = #{item.sysId, jdbcType=VARCHAR}
+            </trim>
+            <where>
+                id = #{item.id, jdbcType=VARCHAR}
+            </where>
+        </foreach>
+    </update>
+
+    <select id="getByMsgId" resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        <where>
+            msg_id = #{msgId, jdbcType=VARCHAR}
+            AND
+            tenant_id = #{tenantId, jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <select id="listByUserId" resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        <where>
+            user_id = #{userId, jdbcType=VARCHAR}
+            AND
+            tenant_id = #{tenantId, jdbcType=VARCHAR}
+            AND
+            <include refid="dataExist"/>
+        </where>
+    </select>
+
+    <select id="listByUserIdAndMsgIds" resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        <where>
+            user_id = #{userId, jdbcType=VARCHAR}
+            AND
+            msg_id
+            IN
+            <foreach collection="list" separator="," item="item" index="index" open="(" close=")">
+                #{item, jdbcType=VARCHAR}
+            </foreach>
+            AND
+            tenant_id = #{tenantId, jdbcType=VARCHAR}
+            AND
+            <include refid="dataExist"/>
+        </where>
+    </select>
+</mapper>

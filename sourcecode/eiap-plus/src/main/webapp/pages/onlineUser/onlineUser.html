@@ -1,0 +1,118 @@
+<div id="busslog" class="u-container-fluid u-widget-bg busslog padding-0">
+    <div id="onlineUserHead">
+
+    </div>
+    <div class="u-row">
+        <div class="u-col-12">
+            <div class="u-widget margin-bottom-20 margin-top-0 margin-left-0 margin-right-0">
+                <div class="header-css">
+                    <h3 class="u-widget-title pull-left hide">在线用户</h3>
+                    <button data-role="returnbtn" class="u-button u-button-accent whitebutton hide">返回</button>
+                    <span class="log-search-btn u-right u-input-label" id="condition-toggle"><span>高级</span><i class="uf uf-anglearrowdown"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-row u-border-top u-not-visible p-v-md searchCon-css" id="condition-row" style="margin-bottom: 15px;">
+        <div class="u-col-12">
+            <div class="u-container-fluid">
+                <div class="u-row">
+                    <div class="u-col-1 u-col-sm-2" style="padding-right: 0px;">
+                        <label class="u-input-label ue-label right">用户编码:</label>
+                    </div>
+                    <div class="u-col-2 u-col-sm-4 m-b-sm">
+                        <div id="userrefer" data-role="user-refer">
+                            <div class="u-input-group u-has-feedback" style="width: 100%;">
+                                <input id="login_name" type="text" class="u-form-control searchinput" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="u-col-1 u-col-sm-2" style="padding-right: 0px;">
+                        <label class="u-input-label ue-label right">用户名称:</label>
+                    </div>
+                    <div class="u-col-2 u-col-sm-4 m-b-sm">
+                        <div class="u-text" id="logkindcombo">
+                            <div class="u-input-group u-has-feedback">
+                                <input id="name" class="u-form-control searchinput" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="u-col-1 u-col-sm-2" style="padding-right: 0px;">
+                        <label class="u-input-label ue-label right">令牌:</label>
+                    </div>
+                    <div class="u-col-2 u-col-sm-4 m-b-sm">
+                        <div class="u-text" id="logkindcombo">
+                            <div class="u-input-group u-has-feedback">
+                                <input id="token" class="u-form-control searchinput" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="u-col-2 u-col-sm-4" style="padding-right: 0px;display: none;">
+                        <label class="u-input-label ue-label right">最后活动时间:</label>
+                    </div>
+                    <div class="u-col-2 u-col-sm-4 m-b-sm" style="display: none;">
+                        <div class="u-datepicker" id="logkindcombo">
+                            <div class="u-input-group u-has-feedback">
+                                <input id="login_time" class="u-form-control searchinput" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-row search-groupbtn-div " style="margin-top: 10px;">
+                    <div class="u-col-12">
+                        <button data-role="clearbtn" class="u-button u-button-accent whitebutton u-right search-clearbtn">清空</button>
+                        <button data-role="searchbtn" class="u-button u-button-primary u-right search-searchbtn bluebutton">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-row">
+        <div class="u-col-12">
+
+            <div id="userNum">当前在线用户数:<span data-bind="text:countData.getData().length"></span>人</div>
+            <div class="u-widget margin-0" style="margin-top: 0px;">
+                <div class="u-widget-body padding-0">
+                    <div>
+                        <table class="u-table ie-table-border" style="width:100%;border-bottom: none;">
+                            <thead>
+                                <tr>
+                                    <!-- <th width="15%">用户id</th> -->
+                                    <th width="16%">用户编码</th>
+                                    <th width="16%">用户名称</th>
+                                    <th width="16%">登录类型</th>
+                                    <th width="16%">登录人数</th>
+                                    <th width="16%">最后活跃时间</th>
+                                    <th width="16%">令牌</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table-fixedheader-body">
+                        <table id="logtable" class="u-table table-content ie-table-border maintable" style="width:100%;border-bottom: none;">
+                            <tbody data-bind="foreach:{data:listData.rows(), as: 'row'}">
+                                <tr data-bind="attr: {'rowindex': $index}">
+                                    <!-- <td width="15%" data-bind="text: row.ref('id')"></td> -->
+                                    <td width="16%" data-bind="text: row.ref('login_name')"></td>
+                                    <td width="16%" data-bind="text: row.ref('name')"></td>
+                                    <td width="16%" data-bind="text: row.ref('loginType')"></td>
+                                    <td width="16%" data-bind="text: row.ref('loginCount')"></td>
+                                    <td width="16%" data-bind="text: row.ref('lastTs')"></td>
+                                    <td width="16%" data-bind="text: row.ref('token')"></td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="paginate-box hide">
+                        <div id='pagination' class='u-pagination pagination pagination-center'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

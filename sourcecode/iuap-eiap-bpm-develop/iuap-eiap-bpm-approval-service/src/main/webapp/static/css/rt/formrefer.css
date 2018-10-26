@@ -1,0 +1,252 @@
+.formrefer-content .loading{
+	background-position:center center;
+	height:100px;
+	width: 160px;
+	margin: auto;
+}
+.formrefer-list-area {
+	padding: 10px;
+	border: 1px solid #ddd;
+	overflow: hidden;
+}
+.formrefer-page-area {
+	text-align: center;
+}
+.formrefer-page-area .pagination {
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+.u-formrefer .addBtn {
+	float: left;
+	margin-right: -26px;
+	color: #333;
+	line-height: 19px;
+}
+.u-formrefer .listArea {
+	margin-left: 30px;
+	padding-left: 0;
+}
+.u-formrefer .cell {
+	width: 150px;
+	float: left;
+	border: 1px solid #e7e7e7;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	box-shadow: 2px 2px 5px #ddd;
+	background: #fff;
+}
+.u-formrefer .cell .title {
+	margin-left: 0;
+	color: #333;
+	line-height: normal;
+	/*border-bottom:1px solid #e7e7e7;*/
+	padding-left: 5px;
+}
+.u-formrefer .cell h4 {
+	font-size: 13px;
+	margin: 0;
+	line-height: 26px;
+	height: 26px;
+	margin-right: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.u-formrefer .cell .title .delBtn{
+	float: right;
+	/*height: 26px;
+	line-height: 26px;*/
+	height: 32px;
+	line-height: 32px;
+	width: 15px;
+	text-align: center;
+}
+.u-formrefer .fields {
+	list-style: none;
+	padding-left: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	max-height:125px;
+	overflow: auto;
+}
+.u-formrefer .fields .label{
+	color: #999;
+}
+.u-formrefer .fields .content{
+	padding: .2em .6em .3em;
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 13px;
+	text-align: left;
+	color: #333;
+	line-height: 19px;
+}
+.formrefer-in-datatable {
+	padding:15px;
+}
+.u-formrefer.formrefer-in-datatable .cell {
+	width: 140px;
+}
+.formrefer-in-datatable .u-grid-content-focus-row {
+	background: #fff !important;
+}
+/*移动参照样式*/
+.bill-mobile .outerContainer {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	background: #fff;
+	display: none;
+}
+.bill-mobile .active .outerContainer {
+	display: block;
+}
+.bill-mobile .outerContainer .innerContainer {
+	border: 0 none !important;
+	height: 100%;
+}
+.bill-mobile .outerContainer .innerContainer .refer_results2 {
+	width: 100%;
+	/* height: calc(100% - 100px)!important; */
+	position: relative;
+}
+.bill-mobile .outerContainer .innerContainer .refer_results {
+	height: auto;
+}
+.bill-mobile .ul_list2{
+	border: 0 none !important;
+	position: absolute;
+	overflow: auto;
+    padding: 0px;
+    margin: 10px 0px;
+    display: block;
+    background-color: white;
+    width: 100%;
+}
+.bill-mobile .ul_list1.hotData.grid,
+.bill-mobile .ul_listselectedData {
+	height: auto !important;
+	border: 0 none !important;
+	max-height: 100% !important;
+	position: absolute;
+	overflow: auto;
+    padding: 0px;
+    margin: 10px 0px;
+    display: block;
+    background-color: white;
+    width: 100%;
+}
+.bill-mobile .refer_results2 .fixed-table-container {
+	height: 100% !important;
+	padding-bottom: 0 !important;
+	position: relative;
+}
+.bill-mobile .refer_nav {
+	height: 38px;
+	line-height: 38px;
+}
+.bill-mobile .refer_nav span {
+	font-size: 14px;
+	line-height: 38px;
+}
+.bill-mobile .refer_results2 .refer_nav li {
+	line-height: 38px;
+	height: 38px;
+}
+.bill-mobile .refer_results2 tbody td {
+	font-size: 14px;
+	line-height: 2;
+}
+.bill-mobile .innerContainer .fixed-table-body {
+	position: absolute;
+	top: 30px;
+	width: 100%;
+	bottom: 0;
+	overflow: auto;
+}
+.bill-mobile .refer_results2 .ref-grid-body {
+	height: 100%;
+}
+.bill-mobile .refer_results2 .ref-grid-body .bootstrap-table {
+	height: 100%;
+}
+.bill-mobile .refer_results2 li.ref_class_close,
+.bill-mobile .refer_results2 li.ref_class_confirm {
+	float: right;
+    margin-right: 1px;
+	width: 28px;
+	height: 38px;
+}
+.bill-mobile .ref_class_close span{
+	content: "\20";
+	width: 100%;
+	height: 100%;
+	text-align: left;
+	display: block;
+	vertical-align: middle;
+	background: url(../../img/teams/unsubmit.png) no-repeat center center;
+}
+.bill-mobile .ref_class_confirm span{
+	content: "\20";
+	width: 100%;
+	height: 100%;
+	text-align: left;
+	display: block;
+	vertical-align: middle;
+	background: url(../../img/teams/submited_flat.png) no-repeat center center;
+}
+.bill-mobile .formrefer-in-datatable{
+	padding: 5px;
+	min-height: 30px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 0.2em;
+	margin-left: 1em;
+}
+.bill-mobile .formrefer-in-datatable .addBtn {
+	display: none;
+}
+.bill-mobile .formrefer-in-datatable .listArea{
+	margin: 0;
+}
+.bill-mobile .formrefer-in-datatable .cell {
+	border: 0 none;
+	box-shadow: none;
+	display: inline-block;
+    line-height: 19px;
+	width: auto;
+	background: transparent;
+	margin: 0;
+}
+.bill-mobile .formrefer-in-datatable .cell:after {
+	content: ',';
+    color: #333;
+    display: inline-block;
+    line-height: 19px;
+}
+.bill-mobile .formrefer-in-datatable .cell:last-child:after {
+	content: '\20';
+}
+.bill-mobile .formrefer-in-datatable .cell .title {
+	display: none;
+}
+.bill-mobile .formrefer-in-datatable .cell .fields {
+	display: inline-block;
+	padding: 0;
+}
+.bill-mobile .formrefer-in-datatable .fields .content {
+	padding: 0;
+}
+.bill-mobile .refer_btn{
+	height: 50px;
+	background-color: #f7f8f8;
+	padding-left: 20px;
+	line-height: 45px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}

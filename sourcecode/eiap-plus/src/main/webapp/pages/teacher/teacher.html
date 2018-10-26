@@ -1,0 +1,160 @@
+<div class="list-panel" id="manager">
+   <!--edit-->
+    <div class="u-row cardtable-row">
+		   <div class="u-col-2 cardtable-title">
+			    <p>教师</p>
+		   </div>
+		  <div class="u-col-10 cardtable-title">
+			  <button class="goback u-button u-button-primary" data-bind="click:event.listBack">返回</button>
+		  </div>
+	  </div>
+	  
+	  <div class="list-panel-bg">
+      <div class="common-header-1" >
+        <div class="u-col-4 padding-right-0" style="float:right">
+          <div class="u-button-group margin-0" style="float:right;">
+            <button class="u-button u-button-primary "
+                    id="addButton" data-bind="click: event.addClick">新增
+            </button>             
+            <button class="u-button u-button-primary "
+                    id="editButton" data-bind="click: event.editClick">编辑
+            </button>         
+            <button class="u-button u-button-primary" id="delButton" data-bind="click: event.delClick">删除</button>
+          </div> 
+        </div>     
+         <!--
+        <div class="u-col-4" style="float:right;text-align:center;">
+             <span>教师</span>
+        </div>-->
+          
+    </div>
+
+    
+    <div class="common-header-2" >
+         <div class="pull-left">
+            <div id="searchdiv" class="u-input-group u-has-feedback ">
+                <input type="text" class="u-form-control sm input_enter" id="search"
+                       placeholder="输入编码/名称"
+> 
+                       <span class="u-form-control-feedback uf uf-zoom"
+                    id="searchBtn" data-bind="click: event.searchClick"></span>
+            </div>
+        </div>
+    </div>
+    <!--table-->
+    <div class="u-mdlayout-detail">
+      <div class="main-container cartable-container">
+        <div class="hr-table ">
+            <div class="u-table b-table width-full"
+                 u-meta='{"id":"gridcardtable","type":"grid","data":"dt1","columnWidth":"150px"}'>
+                                        <div options='{"field":"code","dataType":"String","title":"编码","editType":"string"}'></div>
+                                        <div options='{"field":"name","dataType":"String","title":"名称","editType":"string"}'></div>
+										<div options='{"field":"pk_org_name","dataType":"String","title":"组织","editType":"event.addteacher_selectOrganization","editOptions":{"validType":"string","required":true} }'></div>
+										<div options='{"field":"pk_mainorg_name","dataType":"String","title":"挂靠组织","editType":"event.addteacher_selectOrganization","editOptions":{"validType":"string","required":true} }'></div>
+            </div>
+        </div>
+        <div id='pagination' class='pagination u-pagination pagination-sm'></div>
+    </div>
+</div>
+</div>
+
+<!-编辑-->
+<div class="" id="editPage" style="background: #fff; display: none;">
+    <div class="u-msg-title">新增</div>
+    <div class="u-msg-content " id="edit2">
+        <div class=" system-row u-row margin-top-20">
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">编码:</label>
+            </div>
+            
+ 			<div class="u-col-4 ">
+				<div class="u-input-group-before padding-left-10 "
+                     style="color: red;">*
+                </div>   
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"code"}'>
+            </div>
+            <div class="u-col-2 right-col">
+                <label class="u-input-label right">名称:</label>
+            </div>
+			<div class="u-col-4 ">
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"name"}'>
+            </div>
+        </div>
+        <div class=" system-row u-row margin-top-20">
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">组织:</label>
+            </div>
+            
+ 	        <div class="u-col-md-4 u-combo u-label-floating" u-meta='{"type":"u-text","data":"dtnew","field":"pk_org_name","onlySelect":true}'>
+	           <div class="u-input-group u-has-feedback">
+	                <span class="u-form-control-feedback fa fa-list-ul"
+	                      data-bind="click:event.selectOrganization_pk_org_teacher"></span>
+	                <input class="u-form-control" readonly="readonly"/>
+	            </div>
+	        </div>              
+            <div class="u-col-2 right-col">
+                <label class="u-input-label right">挂靠组织:</label>
+            </div>
+            <div class="u-col-md-4 u-combo u-label-floating" u-meta='{"type":"u-text","data":"dtnew","field":"pk_mainorg_name","onlySelect":true}'>
+	           <div class="u-input-group u-has-feedback">
+	                <span class="u-form-control-feedback fa fa-list-ul"
+	                      data-bind="click:event.selectOrganization_pk_mainorg_teacher"></span>
+	                <input class="u-form-control" readonly="readonly"/>
+	            </div>
+	        </div>  
+        </div>
+    </div>
+    <div class=" u-msg-footer ">
+        <div class="pull-right">
+            <button type="button" class="u-button u-button-white editCancel margin-right-15 "
+                    id="editCancel" data-bind="click: event.saveCancelClick">取消
+            </button>
+            <button type="button"
+                    class="u-button raised u-button-primary margin-right-10" id="editOk" data-bind="click: event.saveOkClick">保存
+            </button>
+            
+        </div>
+    </div>
+</div>
+
+<!-- 树展示的弹出层  -->
+<div id="tree-OrganizationForteacher_pk_org" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom" class="ztree"
+             u-meta='{"id":"OrganizationForteacherTree_pk_org","data":"refOrganizationDa_pk_org","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select_OrganizationToteacher_pk_org" class="u-button u-button-primary pull-right">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click:event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>
+<!-- 树展示的弹出层  -->
+<div id="tree-OrganizationForteacher_pk_mainorg" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom" class="ztree"
+             u-meta='{"id":"OrganizationForteacherTree_pk_mainorg","data":"refOrganizationDa_pk_mainorg","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select_OrganizationToteacher_pk_mainorg" class="u-button u-button-primary pull-right">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click:event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>
+</div>

@@ -1,0 +1,283 @@
+<div class="list-panel" id="manager">
+	
+	<div class="u-row teacher-row">
+		<div class="teacher-title">
+			<p>人员档案</p>
+		</div>
+		<!-- <div class="u-col-10 teacher-title">
+			<button class="goback u-button u-button-primary" data-bind="click:event.listBack">返回</button>
+		</div> -->
+	</div>
+    <div class=" form-search " style="z-index:0;">
+        <div class="u-panel-heading  u-collapse-updown" u-data-toggle="collapse" href="#condition-row-dic">
+            <span class="u-panel-title padding-5 padding-left-15">快速查询
+            <span class="u-link u-right u-input-label sm">
+                 <span>展开</span>
+                 <a>
+                     <i class="uf uf-aadown"></i>
+                 </a>
+             </span>
+            </span>
+        </div>
+        <div class="u-row  u-panel-body  collapse" id="condition-row-dic">
+            <div class="u-col-12 u-col-sm-12">
+                <div class="u-row">          
+                        <div class="u-col-2 u-col-sm-4" style="text-align: right; height: 100%;padding: 5px;">
+                            <label>组织</label>
+                        </div>
+                        <div class="u-col-md-4 u-combo u-label-floating">
+				           <div id="people-org" class="u-input-group u-has-feedback" u-meta='{"id":"people-org","type":"uiRefer", "data":"people_ref", "field":"pk_org","display":"pk_org_name"}'>
+				           		<input id="people-org-input" class="u-form-control sm input_enter" placeholder="输入组织" name="search_pk_org" readonly="readonly"/>
+				                <span class="u-form-control-feedback fa fa-list-ul refer"></span>
+				                
+				            </div>
+				        </div>  
+
+                        <div class="u-col-2 u-col-sm-4" style="text-align: right; height: 100%;padding: 5px;">
+                            <label>部门</label>
+                        </div>
+                        <div class="u-col-md-4 u-combo u-label-floating">
+				           <div id="people-dept" class="u-input-group u-has-feedback" u-meta='{"type":"uiRefer", "data":"people_ref", "field":"pk_dept","display":"pk_dept_name"}'>
+				                <input id="people-dept-input" class="u-form-control sm input_enter" placeholder="输入部门" name="search_pk_dept" readonly="readonly"/>
+				                <span class="u-form-control-feedback fa fa-list-ul refer"></span>
+				                
+				            </div>
+				        </div>  
+
+                    </div>
+                    <div class="u-row">          
+
+                         <div class="u-col-2 u-col-sm-4" style="text-align: right; height: 100%;padding: 5px;">
+                            <label>人员编码</label>
+                        </div>
+                        <div class="u-col-4 u-col-sm-8 m-b-sm">
+                           <input type="text" class="u-form-control sm input_enter"
+                           placeholder="输入人员编码" name="search_psncode"> 
+                        </div>
+
+                         <div class="u-col-2 u-col-sm-4" style="text-align: right; height: 100%;padding: 5px;">
+                            <label>人员姓名</label>
+                        </div>
+                        <div class="u-col-4 u-col-sm-8 m-b-sm">
+                            <input type="text" class="u-form-control sm input_enter"
+                           placeholder="输入人员姓名" name="search_psnname"> 
+                        </div>
+                        
+                    </div>
+                     <div class="u-col-12 u-col-sm-12">
+                        <div class=" padding-top-2 ">
+                            <button class="u-button u-button-primary raised gray-btn u-button-pa margin-right-20"
+                                    id="user-action-search" data-bind="click: event.searchClick">搜索
+                            </button>
+                            <button class="u-button u-button-primary  raised gray-btn u-button-pa " id="user-action-cleanSearch"
+                                    data-bind="click: event.cleanSearch">清空
+                            </button>
+                        </div>
+                </div>
+               </div>     
+            </div>
+    </div>
+   
+</div>
+	<div class="u-mdlayout-btn u-row">
+        <div class="padding-right-0" style="float:right">
+             <div class="u-button-group margin-0" style="float:right;">
+                <button class="u-button u-button-primary "
+                        id="addButton" data-bind="click: event.addClick">新增
+                </button>             
+                <button class="u-button u-button-primary "
+                        id="editButton" data-bind="click: event.editClick">编辑
+                </button>         
+                <button class="u-button u-button-primary" id="delButton" data-bind="click: event.delClick">删除</button>
+             </div> 
+         </div>  
+    </div>
+     
+<div class="u-mdlayout-detail people-detail">
+	<div class="main-container cartable-container">
+        <div class="hr-table ">
+            <div id="peopleListGrid" class="u-table b-table width-full"
+                 u-meta='{"id":"gridcardtable","type":"grid","data":"peopleList","columnWidth":"150px","multiSelect":true,"editType":"default","editable":true }'>
+					<div options='{"field":"pk_org","dataType":"String","title":"组织","renderType":"ncReferRender","editType":"ncReferEditType","showField":"pk_org_name","editOptions":{"validType":"string"}}'></div>
+					<div options='{"field":"pk_dept","dataType":"String","title":"部门","renderType":"ncReferRender","showField":"pk_dept_name","editType":"ncReferEditType","editOptions":{"validType":"string"}}'></div>
+                    <div options='{"field":"psncode","dataType":"String","title":"人员编码","editType":"string"}'></div>
+                    <div options='{"field":"psnname","dataType":"String","title":"姓名","editType":"string"}'></div>
+                    <div options='{"field":"psnage","dataType":"String","title":"年龄","editType":"string"}'></div>
+                    <div options='{"field":"email","dataType":"String","title":"邮件","editType":"string"}'></div>
+                    <div options='{"field":"psntel","dataType":"String","title":"电话","editType":"string"}'></div>
+                    <div options='{"field":"creationtime","dataType":"String","title":"创建时间","editType":"string"}'></div>
+					<div options='{"field":"creator_name","dataType":"String","title":"创建人","editType":"event.addpeople_selectBaseuser","editOptions":{"validType":"string","required":true} }'></div>
+                    <div options='{"field":"modifiedtime","dataType":"String","title":"修改时间","editType":"string"}'></div>
+					<div options='{"field":"modifier_name","dataType":"String","title":"修改人","editType":"event.addpeople_selectBaseuser","editOptions":{"validType":"string","required":true} }'></div>
+            		<div options='{"field":"tenant_id","dataType":"String","title":"租户","editType":"string"}'></div>
+					<div options='{"field":"pk_user","dataType":"String","title":"用户","renderType":"ncReferRender", "showField":"pk_user_name","editOptions":{"validType":"string"}}'></div>
+            </div>
+        </div>
+        <div id='pagination' class='pagination u-pagination pagination-sm'></div>
+    </div>
+</div>
+	
+<!-编辑-->
+<div class="" id="people-editPage" style="background: #fff; display: none;">
+    <div class="u-msg-title">新增</div>
+    <div class="u-msg-content " id="edit2">
+        <div class=" system-row u-row margin-top-20">
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">组织:</label>
+            </div>
+            
+ 	        <div id="people-card-org" class="u-col-md-4 u-combo u-label-floating wrappdept-content" u-meta='{"type":"uiRefer","data":"dtnew","field":"pk_org","display":"pk_org_name"}'>
+	           <div class="u-input-group u-has-feedback">
+               <div class="u-input-group-before padding-left-10 "
+                     style="color: red;">*
+                </div> 
+	                <input id="org-card-input" class="u-form-control ref-cover-show"/>
+	                <span class="u-form-control-feedback fa fa-list-ul refer"></span>
+	            </div>
+	        </div>              
+            <div class="u-col-2 right-col">
+                <label class="u-input-label right">部门:</label>
+            </div>
+
+            <div id="dept-card" class="u-col-md-4 u-label-floating wrappdept-content" u-meta='{"type":"uiRefer","data":"dtnew","field":"pk_dept","display":"pk_dept_name"}'>
+
+	           <div class="u-input-group u-has-feedback">
+                <div class="u-input-group-before padding-left-10 "
+                     style="color: red;">*
+                </div> 
+	           	<input id="dept-card-input" class="u-form-control ref-cover-show"/>
+	                <span class="u-form-control-feedback fa fa-list-ul refer"></span>
+	            </div>
+	        </div>  
+        </div>
+        <div class=" system-row u-row margin-top-20">
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">人员编码:</label>
+            </div>
+            
+ 			<div class="u-col-4 ">
+				<div class="u-input-group-before padding-left-10 "
+                     style="color: red;">*
+                </div>   
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"psncode"}'>
+            </div>
+            <div class="u-col-2 right-col">
+                <label class="u-input-label right">姓名:</label>
+            </div>
+			<div class="u-col-4 ">
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"psnname"}'>
+            </div>
+        </div>
+        <div class=" system-row u-row margin-top-20">
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">年龄:</label>
+            </div>
+            
+ 			<div class="u-col-4 ">
+				<div class="u-input-group-before padding-left-10 "
+                     style="color: red;">*
+                </div>   
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"psnage"}'>
+            </div>
+            <div class="u-col-2 right-col">
+                <label class="u-input-label right">邮件:</label>
+            </div>
+			<div class="u-col-4 ">
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"email"}'>
+            </div>
+        </div>
+        <div class=" system-row u-row margin-top-20">
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">电话:</label>
+            </div>
+            
+ 			<div class="u-col-4 ">
+				<div class="u-input-group-before padding-left-10 "
+                     style="color: red;">*
+                </div>   
+                <input type="text" id="code"
+                       class="u-form-control padding-left-15"
+                       u-meta='{"type":"string","data":"dtnew","field":"psntel"}'>
+            </div>
+            
+            <div class="u-col-2 ">
+                <label for="code" class="u-input-label right">用户:</label>
+            </div>
+            
+ 	        <div class="u-col-md-4 u-combo u-label-floating wrappdept-content" u-meta='{"type":"uiRefer","data":"dtnew","field":"pk_user","onlySelect":true,"display":"pk_user_name"}'>
+	           <div class="u-input-group u-has-feedback">
+	           	<input class="u-form-control ref-cover-show"/>
+	                <span class="u-form-control-feedback fa fa-list-ul refer"></span>
+	            </div>
+	        </div>      
+	        
+        </div>
+        <a id="more-info" data-bind="click:event.show_hide">展开</a>
+        <!-- <span data-bind="click:event.show_hide">展开</span> -->
+        <div id="hide-info" style="display: none;">
+        	<!--添加创建人信息-->
+	        <div class=" system-row u-row margin-top-20">
+	            <div class="u-col-2 ">
+	                <label for="code" class="u-input-label right">创建人:</label>
+	            </div>
+	            
+	 	        <div class="u-col-md-4 u-combo u-label-floating wrappdept-content" u-meta='{"type":"u-text","data":"dtnew","field":"creator_name","onlySelect":true}'>
+		           <div class="u-input-group u-has-feedback">
+		                <input class="u-form-control" readonly="readonly"/>
+		            </div>
+		        </div>              
+	            <div class="u-col-2 right-col">
+	                <label class="u-input-label right">创建时间:</label>
+	            </div>
+				<div class="u-col-4 ">
+	                <input type="text" id="code"
+	                       class="u-form-control padding-left-15"
+	                       u-meta='{"type":"string","data":"dtnew","field":"creationtime"}'>
+	            </div>
+	        </div>
+	        
+	        <!--修改人信息-->
+	        <div class=" system-row u-row margin-top-20">
+	             <div class="u-col-2 ">
+	                <label for="code" class="u-input-label right">修改人:</label>
+	            </div>
+	            
+	 	        <div class="u-col-md-4 u-combo u-label-floating" u-meta='{"type":"u-text","data":"dtnew","field":"modifier_name","onlySelect":true}'>
+		           <div class="u-input-group u-has-feedback">
+		                <input class="u-form-control" readonly="readonly"/>
+		            </div>
+		        </div>                
+	            <div class="u-col-2 right-col">
+	                <label class="u-input-label right">修改时间:</label>
+	            </div>
+				<div class="u-col-4 ">
+	                <input type="text" id="code"
+	                       class="u-form-control padding-left-15"
+	                       u-meta='{"type":"string","data":"dtnew","field":"modifiedtime"}'>
+	            </div>
+	        </div>
+        </div>
+        
+        
+    <div class=" u-msg-footer ">
+        <div class="pull-right">
+            <button type="button" class="u-button u-button-white editCancel margin-right-15 "
+                    id="editCancel" data-bind="click: event.saveCancelClick">取消
+            </button>
+            <button type="button"
+                    class="u-button raised u-button-primary margin-right-10" id="editOk" data-bind="click: event.saveOkClick">保存
+            </button>
+            
+        </div>
+    </div>
+</div>
+
+

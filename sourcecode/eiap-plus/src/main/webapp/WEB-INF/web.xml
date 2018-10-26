@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         metadata-complete="true" version="2.5">
+    <display-name>eiap-plus</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath*:/applicationContext.xml,
+            classpath*:/applicationContext-cache.xml,
+            classpath*:/applicationContext-persistence.xml,
+            classpath*:/applicationContext-shiro.xml,
+            classpath*:/applicationContext-http.xml,
+            classpath*:/applicationContext-metadata.xml
+            <!-- classpath*:/applicationContext-metadata.xml,
+             classpath*:/applicationContext-mq.xml,
+            classpath*:/applicationContext-mq-provider.xml,
+            classpath*:/applicationContext-mq-consumer.xml -->
+            <!-- classpath*:/busilog-applicationContext.xml -->
+            <!-- classpath*:/billcode-applicationContext.xml -->
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>spring-mvc-servlet-name</param-name>
+        <param-value>springServlet</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- <listener>
+      <listener-class>com.yonyou.iuap.common.listener.CustomServletContextListener</listener-class>
+    </listener> -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>statisticsFilter</filter-name>
+        <filter-class>com.yonyou.iuap.common.StatisticsFilter</filter-class>
+        <init-param>
+            <param-name>slowUriMillis</param-name>
+            <param-value>300</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>statisticsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	
+		
+	<!-- 多语监听 -->
+	<listener>  
+	        <listener-class>  
+	            org.springframework.web.context.request.RequestContextListener  
+	        </listener-class>  
+	</listener> 
+	
+    <!-- 流量控制过滤器 -->
+  <!--  <filter>
+        <filter-name>flowControlFilter</filter-name>
+        <filter-class>com.yonyou.iuap.common.FlowControlFilter</filter-class>
+        <init-param>
+            <param-name>permits</param-name>
+            <param-value>128</param-value>
+        </init-param>
+        <init-param>
+            <param-name>timeout</param-name>
+            <param-value>15000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>bufferSize</param-name>
+            <param-value>500</param-value>
+        </init-param>
+        <init-param>
+            <param-name>errorUrl</param-name>
+            <param-value>/views/busy.html</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>flowControlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+
+<!--     <filter>
+        <filter-name>openEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>openEntityManagerInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> -->
+    <servlet>
+        <servlet-name>springServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+<!--     <filter>
+        <filter-name>IWebPlatformFilter</filter-name>
+        <filter-class>com.yonyou.iuap.iweb.platform.IWebPlatformFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>IWebPlatformFilter</filter-name>
+        <servlet-name>springServlet</servlet-name>
+    </filter-mapping> -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>invocationFilter</filter-name>
+        <filter-class>com.yonyou.iuap.system.filter.InvocationFilter</filter-class>
+        <init-param>
+			<param-name>exclusions</param-name >
+			<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,*.htm,*.html</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>refererFilterEnable</param-name>
+		    <param-value>false</param-value>
+		</init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>invocationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>authrbacFilter</filter-name>
+        <filter-class>com.yonyou.uap.ieop.security.filter.AuthorizationCheckFilter_client</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authrbacFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- 连接池 启用 Web 监控统计功能-->
+    <filter>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/static/errorPage/500.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/static/errorPage/500.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/static/errorPage/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/static/errorPage/405.html</location>
+    </error-page>
+</web-app>

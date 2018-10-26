@@ -1,0 +1,158 @@
+<!-- 内容 -->
+<div class="u-mdlayout funcactivityperm" id="role-mdlayout">
+	<div class="u-mdlayout-master" style="display:none"></div>
+	<div class="function-head-row">
+		<div class="function-title apptitle">
+			<span>功能按钮授权</span>
+			<button class="goback u-button btn-back" data-bind="click:listBack">返回</button>
+		</div>
+	</div>
+	
+	<!--页面头部功能条-->
+    <div class="funbar">
+        <!--页面头部功能条-->
+        <div class="Y_sarch_style">
+            <div class="pull-right condsearch" id="condsearch" data-bind="visible:!isEditStatus()">
+                <div class="u-input-group u-has-feedback" style="display: none;">
+                    <input type="text" class="nc-search" placeholder="输入搜索内容">
+                    <span class="u-form-control-feedback iconfont icon-search nc-searchbtn"></span>
+                </div>
+                <div id="condionSearch">
+					高级搜索
+                    <span class="iconfont icon-arrow-down"></span>
+                    <span class="iconfont icon-arrow-up"></span>
+                </div>
+            </div>
+            <div class="guideTit">
+                <div class="u-form-group">
+                    <button class="addbtn" type="button" data-bind="click:assignbtnclick,visible:!isEditStatus()">分配按钮权限</button>
+                    <button class="addbtn" type="button" data-bind="click:backClick,visible:isEditStatus()">返回</button>
+                    <button class="addbtn" type="button" data-bind="click:btnsaveClick,visible:isEditStatus()">分配</button>
+                </div>
+            </div>
+        </div>
+        <div data-bind="visible:!isEditStatus()">
+	        <!--按条件查询区域-->
+	        <div class="Y_selector" id="condition-row">
+	            <dl class="sort">
+	                <dd>
+	                    <div class="outSel u-col-lg-4 u-col-md-6 u-col-sm-6">
+	                        <label class="seLab">角色名称：</label>
+	                        <input type="text" id="s-name" class="ecmi-input u-form-control" placeholder="请输入角色名称">
+	                    </div>
+	                    <div class="outSel u-col-lg-4 u-col-md-6 u-col-sm-6">
+	                        <label class="seLab">角色编码：</label>
+	                        <input type="text" id="s-loginName" class="ecmi-input u-form-control" placeholder="请输入角色编码">
+	                    </div>
+	                    <div class="outSel u-col-lg-4 u-col-md-6 u-col-sm-6">
+	                        <label class="seLab">角色类型：</label>
+	                        <span class="styled-select">
+	                            <select id="s-state"
+	                                    data-bind="options: dataSearchByroleType,
+	                                     optionsText:'name',
+	                                      optionsValue: 'code',
+	                                      optionsCaption: '全部类型'">
+	                            </select>
+	                             <span class="iconfont icon-arrow-down"></span>
+	                        </span>
+	                    </div>
+	                    <div class="clearfix"></div>
+	                </dd>
+	            </dl>
+	        </div>
+        </div>
+    </div>
+<!-- 	<div class="u-mdlayout-btn function-per-btn u-row">
+        <div id="dicttype_list_button_2" class="u-col-6 user-actions">
+            <div class=" u-button-group margin-0 padding-0 fun-btn">
+                <button class="u-button raised primary" id="table-search" data-bind="click: searchClick">查询</button>
+				<button class="u-button raised primary" id="table-button" data-bind="click:assignbtnclick">分配按钮权限</button>
+            </div>
+        </div>
+    </div>edit-end -->
+	<div class="u-mdlayout-detail function-detail">
+		<div class="u-mdlayout-page function-page current" id="role_list">
+			<div class="u-mdlayout-page-section function-section">
+				<div class="u-container-fluid u-widget function-widget">
+						<div class="funPer-widget-body">
+							<div class="page-content-box">
+								<div class="row">
+									<div class="col-md-12">
+										<div type="text" u-meta='{"id":"bter_role_grid1","data":"listData","type":"grid","editable":false,"multiSelect":false,"showNumCol":false,"onDblClickFun":"assignbtnclick"}'>
+											<div options='{"field":"roleName","dataType":"String","title":"角色名称"}'></div>
+											<div options='{"field":"roleCode","dataType":"String","title":"角色编码"}'></div>
+											<div options='{"field":"labelName","dataType":"String","title":"角色类型"}'></div>
+											<div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+											<!-- <div options='{"field":"pro_oper","dataType":"String","title":"操作","width":400}'></div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						<div id='pagination' class='u-pagination pagination'  u-meta='{"type":"pagination","data":"listData","pageChange":"pageChangeFunc","sizeChange":"sizeChangeFunc"}'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="u-mdlayout-page" id="role_showbtnPage">
+			<div class="u-mdlayout-page-section">
+				<div class="u-container-fluid u-widget-bg function-widget">
+					<div class="funPer-ztree">
+						<div class="ztreeHeader">
+							<input type="text" name="searchtxt" id="searchtxt" />
+							<span data-bind="click: searchTreeClick"><i class="uf uf-search"></i></span>
+						</div>
+						<div id="funcaction_zhezhao" style="display:none;width:100%;height:100%;position:absolute;left:0;bottom:0;background:rgb(0,0,0,0.3);z-index:10001;"></div>
+						<div type="text" class="ztree fun-act-tree" u-meta='{"id":"role_tree1","data":"functionData","type":"tree","idField":"id","pidField":"parentId","nameField":"funcName","setting":"treeSetting"}'></div>
+					
+					</div>
+					<div class="funPer-right">
+						<div class="search-section " style="width:100%;display: inline-block;">
+							<div class="u-row row-width" id="input1" disabled="true">
+								<div >
+									<div >
+										<div class="u-col-3 u-col-sm-4 u-col-xs-12">
+											<label class="u-input-label right">功能编码：</label>
+										</div>
+										<div class="u-col-3 u-col-sm-8 u-col-xs-12" data-upgraded=",u.Text" >
+											<input class="u-input u-input-write" type="text" data-bind="value:functionData.ref('funcCode'),enable:false" >
+										</div>
+										<div class="u-col-3 u-col-sm-4 u-col-xs-12">
+											<label class="u-input-label right">功能名称：</label>
+										</div>
+										<div class="u-col-3 u-col-sm-8 u-col-xs-12" data-upgraded=",u.Text">
+											<input class="u-input u-input-write" type="text" data-bind="value:functionData.ref('funcName'),enable:false">
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="funPer-row">
+								<div class="u-col-12 u-button-group margin-0 padding-0 fun-btn">
+									<button id="funPerm-btn" class ="u-button raised primary funper-btn" data-bind="click: btnsaveClick">
+										分配
+									</button>
+									<button class ="u-button raised primary funper-btn" data-bind="click: backClick">
+										返回
+									</button>
+								</div>
+							</div> -->
+							<div class="u-row per-row-grid">
+								<div class="col-md-12">
+									<div type     ="text" u-meta='{"id":"bter_role_grid3","data":"activityChildData","type":"grid","editable":false,"columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"multiSelect":true}'>
+										<div options  ='{"field":"activityCode","dataType":"String","title":"按钮权限编码"}'></div>
+										<div options  ='{"field":"activityName","dataType":"String","title":"按钮权限名称"}'></div>
+										<!-- <div options  ='{"field":"funcCode","dataType":"String","title":"功能编码"}'></div> -->
+										<div options  ='{"field":"funcID","dataType":"String","title":"功能主键","visible":false}'></div>
+										<div options  ='{"field":"id","dataType":"String","title":"主键","visible":false}'></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="role_fade" class="black_overlay" style="display: none"></div>
+	</div>
+</div>

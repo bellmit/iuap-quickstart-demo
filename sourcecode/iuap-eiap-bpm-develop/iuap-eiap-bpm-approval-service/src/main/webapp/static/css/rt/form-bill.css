@@ -1,0 +1,182 @@
+
+/* 审批面板 */
+.workflowpanel {
+    overflow: hidden;
+}
+.approve-history-task-list,
+.approve-history-task-list-tr {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.approve-history-task-list .approve-history-task-list-td {
+	width: 200px;
+	min-height: 76px;
+	float: left;
+	position: relative;
+}
+.approve-history-task-list .odd .approve-history-task-list-td {
+	float: right;
+}
+.approve-history-task-list .approve-history-task-list-td:last-child:after {
+	content: '\20';
+	height: 50%;
+	top: 50%;
+	border-left: 1px solid #00C81F;
+	position: absolute;
+	z-index: 1;
+}
+.approve-history-task-list .approve-history-task-list-td:first-child:before {
+	content: '\20';
+	height: 50%;
+	border-left: 1px solid #00C81F;
+	top: 0;
+	position: absolute;
+	z-index: 1;
+}
+.approve-history-task-list .even .approve-history-task-list-td:last-child:after {
+	right: 0;
+}
+.approve-history-task-list .odd .approve-history-task-list-td:last-child:after {
+	left: 16px;
+}
+.approve-history-task-list .even .approve-history-task-list-td:first-child:before {
+	left: 16px;
+}
+.approve-history-task-list .odd .approve-history-task-list-td:first-child:before {
+	right: 0;
+}
+.approve-history-task-list li:first-child .approve-history-task-list-td:first-child:before {
+	display: none;
+}
+.approve-history-task-list li:last-child .approve-history-task-list-td:last-child:after {
+	display: none;
+}
+
+.approve-history-task-list .approve-left {
+	margin: 0;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -16px;
+	/*z-index: 2;*/
+}
+.approve-history-task-list .approve-todo-action .approve-left {
+	top: 0;
+	margin-top: 24px;
+}
+.approve-history-task-list .approve-bage {
+	background: #00C81F;
+	color: #fff;
+	width: 33px;
+	height: 33px;
+	line-height: 33px;
+	font-size: 16px;
+}
+.approve-history-task-list .approve-pending .approve-bage {
+	background:#0795EC;
+	line-height: 33px;
+	color: #fff;
+}
+.approve-history-task-list .approve-right {
+	float: left;
+	width: 167px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-left: 33px;
+	height: 19px;
+	line-height: 19px;
+}
+.approve-history-task-list .approve-textarea {
+	margin-left: 38px;
+}
+.approve-history-task-list .approve-person,
+.approve-history-task-list .approve-timespan {
+	display: inline-block;
+	vertical-align: middle;
+}
+.approve-history-task-list .approve-person{
+	margin-right: 5px;
+	max-width: 45px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #4DBC22;
+}
+.approve-history-task-list .approve-timespan{
+	width: 119px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.approve-history-task-list .approve-horizon-line {
+	float: left;
+	border-top: 1px solid #00C81F;
+	width: 167px;
+	margin-left: 33px;
+	min-width: 0;
+}
+.approve-history-task-list .last-pass .approve-horizon-line {
+	display: none;
+}
+.approve-history-task-list .last-pass .approve-bage {
+	background: #ccc;
+}
+#apprvoeinner .approve-hor {
+	background: #fff;
+	padding: 0;
+	padding-top: 20px;
+}
+#apprvoeinner .approve-hor .approve-content {
+	margin: 0 auto;
+	float: none;
+	overflow: hidden;
+}
+#apprvoeinner .approve-pending .approve-person {
+	text-decoration: none;
+}
+#apprvoeinner .approve-pending .approve-textarea-scale {
+	width: 150px;
+	margin-top: 10px;
+}
+#apprvoeinner .approve-pending .approve-person-pending {
+	margin-top: 0;
+}
+#apprvoeinner .approve-pending .approve-person-pending.notText {
+	margin-top: 20px;
+}
+#apprvoeinner .approve-pending .approve-textarea:first-child {
+	margin-top: 20px;
+}
+.approve-btn-area {
+	text-align: right;
+	padding: 10px;
+}
+.approve-btn-area .approve-btn {
+	margin-top: 0;
+	background: #2192FF;
+	border: 0 none;
+	border-radius: 0;
+	color: #fff;
+}
+.approve-btn-area .approve-btn:hover{
+	color: #fff;
+}
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4);
+    }
+    20% {
+        -webkit-transform: scaleY(1.0);
+    }
+}
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }
+    20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}

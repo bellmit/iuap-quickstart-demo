@@ -1,0 +1,364 @@
+body {
+	padding-top: 20px;
+}
+.fl{
+	float: left;
+}
+.large{
+	width: 100% !important;
+}
+.medium{
+	width: 75% !important;
+}
+.small{
+	width: 50% !important;
+}
+.text-right{
+	text-align: right;
+}
+.billitem-label-hoz{
+	width: 100px;
+	margin-right: -100px;
+	text-align: right;
+	padding-top: 4px;
+}
+.pl-90{
+	padding-left: 115px;
+}
+.pl-90 .u-combo-name-par{
+	padding-left: 0px;
+	left: 115px;
+}
+.form-tablelayout .pl-90 .u-combo-name-par{
+	padding-left: 0px;
+	left: 75px;
+}
+.input-group.date .input-group-addon{
+	padding: 3px 5px;
+}
+.input-group-addon .fa{
+	width:14px;
+}
+.form-databox-head {
+	margin-top: 10px;
+	/* margin-bottom: 10px; */
+}
+.form-databox-btn-area{
+	float: right;
+}
+.form-databox-btn-area .btn-primary{
+   width: 70px;
+   height: 30px;
+}
+.form-databox-btn-area .btn-primary.btn-del{
+	height: 30px;
+	margin-left: 15px;
+}
+.space-line {
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.column_panel .space-line{
+	float: none;
+}
+.column_panel .form-databox-btn-area {
+	margin-top: 12px;
+	float: none;
+}
+.row-submit {
+	border-top: solid 1px #d2d2d2;
+	background-color: #f5f5f5;
+}
+.row-submit-fixed {
+	position:fixed;
+	bottom:0;
+	left: 0;
+	z-index:50;
+	width:100%;
+}
+.row-submit-display{
+	display: none;
+}
+
+.row-submit .btn-primary,.form-databox-btn-area .btn-add{
+	background-color:#3399ff;
+}
+.row-submit .btn-primary:hover,.form-databox-btn-area .btn-add:hover{
+	background-color:#077bf0;
+}
+.row-submit .btn{
+	margin: 10px 20px 10px 0;
+	border: 0 none;
+	font-size: 14px;
+	height: auto;
+	padding:0 24px;
+	line-height: 30px;
+	height: 30px;
+}
+.bill-submit-btn-cancel ,.form-databox-btn-area .btn-del{
+	background-color: transparent;
+	font-weight:normal;
+	color:#333;
+	line-height: 28px;
+	height: 28px;
+	font-size: 14px;
+	border: 1px solid #3399ff !important;
+	padding: 0px 24px !important;
+}
+.bill-submit-btn-cancel:hover ,.form-databox-btn-area .btn-del:hover{
+	background-color: #cae4ff;
+	font-weight:bold;
+}
+#editBtn .bill-delete-btn {
+	border-radius: 0;
+	float: none;
+	display: none;
+}
+.panel-title {
+	font-size: 20px;
+	font-family: 'Microsoft YaHei',arial;
+	margin-left:10px;
+}
+.panel-body {
+	padding: 0 15px;
+}
+.panel-heading {
+	padding: 10px 20px;
+}
+.u-grid .u-grid-content-sel-row{
+	color: #666666;
+	background-color:#fff;
+}
+.u-grid-content tbody tr:nth-child(even){
+	background-color:#fafafa;
+}
+.u-grid-content-num:nth-child(even){
+	background-color:#fafafa;
+}
+.u-grid {
+	font-family: Arial !important;
+	border: none !important;
+}
+/* 火狐上加上这个height 44px 上传的文件就会看不到 先改成auto */
+.u-grid td{
+	/* min-height: 44px; */
+	height: 44px; 
+} 
+.u-grid .u-grid-header-link{
+	font-size:13px;
+	background-color:#EEEFF1;
+	color:#333;
+	border-top:1px solid #c9c9c9;
+	font-family: "Microsoft YaHei";
+	font-weight:bold;
+}
+.u-grid .u-grid-header{
+	height: 40px;
+}
+.u-grid .u-grid-header .u-grid-header-th{
+	height: 40px;
+	vertical-align:middle;
+}
+.u-grid-edit-form {
+	background-color: #f6f7f9;
+	padding-top: 25px;
+	padding-bottom: 15px;
+	padding-left:10px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #E5E5E5;
+	padding-left: 10px;
+}
+.u-grid-edit-form .grid-combox{
+	border-right:none;
+	box-shadow: none;
+}
+.u-grid-edit-form .input-group-addon{
+	background-color:#fff;
+}
+.u-grid-edit-label {
+	height: 30px;
+	font-weight: 400;
+}
+.u-grid-content-edit-menu {
+	background: none;
+	top: initial !important;
+}
+.u-grid-edit-div {
+	margin-left: 14px;
+}
+.u-grid-edit-div > .u-grid-content-td-div {
+	line-height:0 !important;
+	height: 28px;
+	font-size:12px;
+}
+.u-grid-edit-div .form-control {
+	font-size: 12px;
+	height: 28px;
+	line-height:1 !important;
+}
+.u-grid-edit-div > .input-group > .input-group-addon {
+	padding:3px 10px;
+	background-color: #fff;
+}
+.u-grid-edit-div input:focus {
+	border-color:#c9c9c9;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	transition: none;
+	outline: none;
+}
+.u-grid-edit-div input[type=text] {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.u-grid-header-left{
+	height:40px;
+	border-top: 1px solid #C9C9C9;
+}
+.u-grid-header-multi-select{
+	height:100%;
+}
+.u-grid-content-multiSelect{
+	height:44px;
+	border-right:none;
+}
+.u-grid-content-multiSelect:nth-child(even){
+	background-color:#fafafa;
+}
+.u-grid-content-focus-row .u-grid-content-td-div{
+	background-color: #f1faff;
+	color:#666  !important;
+}
+.u-grid-header-multi-select.checkbox label{
+	top: 3px;
+	left: 2px;
+}
+.u-grid-content-multiSelect.checkbox label{
+	top: 4px;
+	left: 2px;
+}
+.u-grid-header-link {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+
+/* 自定义的样式 */
+.covershade{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display:block;
+	background-color: #f6f7f9;
+	z-index: 10;
+	opacity: 0;
+	filter:alpha(opacity=20);
+}
+.disablecover > .form-control,
+.disablecover > input,
+.disablecover > .input-group-addon,
+.disablecover + .input-group-addon{
+	background-color: #f6f7f9;
+}
+.input-group-addon {
+	color: #e0e0e0;
+}
+.input-group-addon:hover {
+	color: #000;
+}
+.bill-readonly .submit-container {
+	display:none;
+}
+.u-grid-content-td-div > span {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+
+.u-grid-move-bg{
+	background-color: #fff8ee !important;
+}
+.grid_open_edit {
+	box-sizing: border-box;
+	border-bottom: 1px solid #E5E5E5;
+}
+.u-grid-edit-label {
+	white-space: normal;
+}
+.u-grid-content-td-div {
+	/* height: 43px;
+	line-height: 44px; */
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	position:relative;
+}
+.u-grid-edit-label > div {
+	display: table-cell;
+	width: 84px;
+	height: 30px;
+	vertical-align: middle;
+	line-height: 15px;
+}
+.u-grid-header-columnmenu {
+	display:none !important;
+}
+.u-grid-edit-whole-div {
+	position: relative;
+	width: 280px;
+	max-width:280px;
+	min-width:280px;
+}
+.mb-detail-content .u-grid-edit-whole-div{
+	height:auto;
+}
+.u-grid-edit-mustFlag {
+	position: absolute;
+	left: 88px;
+	top: 10px;
+}
+.u-grid-content-num {
+	line-height: 45px;
+	/* border-color: #c9c9c9; */
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+}
+.u-grid-content-td-div .checkbox label {
+	top: 5px;
+}
+.form-runtime-dline{
+	margin-bottom: 0;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.form-runtime-dline.solid{
+	border-style: solid;
+	border-width: 1px 0;
+}
+.form-runtime-dline.dashed{
+	border-style: dashed;
+	border-width: 1px 0 0 0;
+}
+.form-runtime-dline.solid-double{
+	border-style: solid;
+	border-width: 3px 0;
+}
+.form-runtime-dline.thicksolid-double{
+	border-style: solid;
+	border-width: 2px 0;
+	height: 5px;
+}
+.u-grid-header-num {
+	height:100%;
+	border-color: #c9c9c9;
+    border-left-width: 0px;
+    border-right-width: 1px;
+}

@@ -1,0 +1,21 @@
+.paginate-box {
+	text-align: right;
+    padding-right: 20px;
+}
+
+.paginate-box .u-pagination {
+	display: inline-block !important
+}
+
+.paginate-box .pagination-gap>li>a:hover {
+	border-color: #ddd
+}
+
+.paginate-box .u-pagination>.active>a, .paginate-box .u-pagination>.active>a:focus,
+	.paginate-box .u-pagination>.active>a:hover, .paginate-box .u-pagination>.active>span,
+	.paginate-box .u-pagination>.active>span:focus, .paginate-box .u-pagination>.active>span:hover
+	{
+	color: #fff;
+	background-color: #039BE5;
+	border-color: #039BE5
+}

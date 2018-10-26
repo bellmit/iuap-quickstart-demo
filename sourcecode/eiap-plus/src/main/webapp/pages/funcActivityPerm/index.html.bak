@@ -1,0 +1,126 @@
+<div class="main-wrap list-panel" id="roleConUser">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <div class="apptitle">
+                角色分配按钮权限
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:goback">返回</span>
+            </div>
+            <!--tale列表展现区域-->
+            <div class="u-row">
+                <div class="u-col-xs-12 u-col-md-6">
+                    <!--角色列表 -->
+                    <div class="table-list table-responsive">
+                        <div class="table-body">
+                            <h5 class="t-head-title">角色
+                                <div class="input-group pull-right search">
+                                    <input type="search"   class="nc-search" name="searchRole" placeholder="输入角色名称">
+                                    <button type="button" class="nc-searchbtn" id="searchRole" data-bind="click:clickHandle.searchRole"><i
+                                            class="iconfont icon-search"></i></button>
+                                </div>
+                            </h5>
+                            <table class="u-table u-table-striped u-table-hover tabOne" id="rolesTable">
+                                <thead>
+                                <tr>
+                                    <th>角色名称</th>
+                                    <th>角色编码</th>
+                                    <th>角色类型</th>
+                                     <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr data-bind="click:$parent.clickHandle.showConFunction">
+                                    <td data-bind="text: row.ref('roleName')"></td>
+                                    <td data-bind="text: row.ref('roleCode')"><a href="#"> </a></td>
+                                    <td data-bind="text: row.ref('labelName')"></td>
+                                    <td>
+                                        <div class="pro_oper">
+                                            <span class="btn" data-bind="click:$parent.clickHandle.showConFunction">加载应用</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="emptyImage" data-bind="visible:listData.rows()<1">
+                            <img src="./images/empty.png"/>
+                            <span>暂时没有数据~!~</span>
+                        </div>
+                        <!--分页区域-->
+                        <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                            <div id="paginationt1" class="u-pagination pagination-center "></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="u-col-xs-12 u-col-md-6">
+                    <div class="table-list table-responsive">
+                        <div class="table-body">
+                            <h5 class="t-head-title" style="border-bottom: 1px solid #eee">功能列表
+                            </h5>
+
+                            <div class="page-content-box">
+                                <div class="input-group  search" style="margin-left: -10px">
+                                    <input type="search"   class="nc-search" name="searchRole" placeholder="输入应用名称">
+                                    <button type="button" class="nc-searchbtn" id="searchFun" data-bind="click:clickHandle.searchFunc"><i
+                                            class="iconfont icon-search"></i></button>
+                                </div>
+                                <ul class="u-list-group u-list-group-full" data-bind="foreach:CurFunction.functionData" >
+                                    <li class="u-list-group-item   text-truncate"
+                                    data-bind="text:funcName,click:$parent.clickHandle.showConFunctionActivity"></li>
+                                    <!--<li class="u-list-group-item disabled">4. 不可用列表</li>-->
+                                    <!--<li class="u-list-group-item">5. Vestibulum at eros</li>-->
+                                </ul>
+                                <div class="funPer-right">
+                                        <div class="search-section " style="width:100%;display: inline-block;">
+
+                                            <div class="u-row">
+                                                <div class="u-col-6">
+                                                    <label class="u-input-label">功能编码：</label>
+                                                </div>
+                                                <div class="u-col-6">
+                                                    <span class="u-input-label">功能编码：</span>
+                                                </div>
+
+                                            </div> <div class="u-row">
+                                                <div class="u-col-6">
+                                                    <label class="u-input-label">功能编码：</label>
+                                                </div>
+                                                <div class="u-col-6">
+                                                    <span class="u-input-label">功能编码：</span>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="u-row per-row-grid">
+                                                <div class="col-md-12">
+                                                    <div type ="text" u-meta='{"id":"bter_role_grid3","data":"CurFunctionActivity.activityChildData","type":"grid","editable":false,"columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"multiSelect":true}'>
+                                                        <div options  ='{"field":"activityCode","dataType":"String","title":"按钮权限编码","width":120}'></div>
+                                                        <div options  ='{"field":"activityName","dataType":"String","title":"按钮权限名称","width":120}'></div>
+                                                        <!-- <div options  ='{"field":"funcCode","dataType":"String","title":"功能编码"}'></div> -->
+                                                        <div options  ='{"field":"funcID","dataType":"String","title":"功能主键","visible":false}'></div>
+                                                        <div options  ='{"field":"id","dataType":"String","title":"主键","visible":false}'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="Y_sarch_style">
+                                                <div class="guideTit">
+                                                    <button class="addbtn" type="button" data-bind="click:clickHandle.assignConFuncActivity">分配</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

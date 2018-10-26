@@ -1,0 +1,629 @@
+.funcactivityperm .fun-btn{
+	width: 100%;
+	    left: 1%;
+}
+
+.funcactivityperm .fun-act-tree{
+	height: 85%;
+    width: 19.3%;
+    position: fixed;
+    background: white;
+    padding-bottom: 3%;
+}
+
+.funcactivityperm #funPerm-btn{
+	margin-right: 0.5%;
+}
+
+.funcactivityperm .funper-btn{
+	height: 50%;
+}
+.funcactivityperm .funPer-ztree{
+	width: 20%;
+    height: 100%;
+    float: left;
+    overflow: auto;
+    position: relative;
+}
+
+.funcactivityperm .funPer-right{
+	margin-left: 22%;
+}
+.funcactivityperm .funPer-widget-body{
+    /* margin-top: 2%; */
+    background: white;
+    padding: 2%;
+}
+.funcactivityperm .function-head-row{
+	    padding-top: 2%;
+    padding-bottom: 1%;
+}
+
+.funcactivityperm .function-per-btn{
+	padding-left: 1%;
+    background: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.funcactivityperm .function-section{
+  position: static;
+    padding-bottom: 1%;
+    border-width: 0;
+    border-style: solid;
+    border-color: #cecece;
+    margin-bottom: 3%;
+}
+
+.funcactivityperm .function-detail{
+  position: static;
+}
+.funcactivityperm .function-title p{
+	font-size: 21px;
+}
+
+.funcactivityperm .u-col-10.function-title{
+	margin-left:-5%;
+}
+
+.funcactivityperm .function-widget{
+	margin: 0 !important;
+     padding-left: 0 !important; 
+}
+
+.funcactivityperm .function-page{
+	background: #eee;
+	padding:0;
+}
+
+.funcactivityperm {
+  /*新增css*/
+  /*搜索区域*/
+  /*左边财务期间区域*/
+ background: #eee;
+     width: 96%;
+     box-shadow: none !important;
+     overflow-y: auto;
+}
+.funcactivityperm .demoe-page-content {
+  padding: 0;
+  border: 1px solid #E0E0E0;
+  margin-top: 10px;
+}
+.funcactivityperm .demo-actions .u-button {
+  margin: 0 4px;
+}
+.funcactivityperm .demo-datagrid {
+  width: 100%;
+}
+.funcactivityperm .demo-card {
+  padding: 17px;
+}
+.funcactivityperm .demo-card-wide {
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
+  min-height: auto;
+}
+.funcactivityperm .u-table-editable .u-text {
+  width: 39px;
+}
+.funcactivityperm .u-table-editable .not-focused .u-input {
+  border: none;
+}
+.funcactivityperm .u-table-editable .not-focused .u-text:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.funcactivityperm .u-table-editable .not-focused .table-line-save-btn,
+.funcactivityperm .u-table-editable .not-focused .table-line-cancel-btn {
+  display: none;
+}
+.funcactivityperm .u-table-editable .is-focused .table-line-edit-btn,
+.funcactivityperm .u-table-editable .is-focused .table-line-del-btn {
+  display: none;
+}
+.funcactivityperm .demo-actions-float {
+  position: fixed;
+  top: 66px;
+  right: 76px;
+}
+.funcactivityperm .demo-line-button {
+  color: #fff!important;
+  background-color: #2196f3;
+  font-size: 12px;
+  border: none;
+}
+.funcactivityperm .white_content {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  border: 5px solid black;
+  background-color: white;
+  z-index: 1002;
+  overflow: auto;
+}
+.funcactivityperm .black_overlay {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=88);
+}
+
+
+.funcactivityperm .ztreeHeader {
+      background: white;
+    position: relative;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 0px;
+    border-color: #E0E0E0;
+    border-style: solid;
+    margin-bottom: 1%;
+}
+.funcactivityperm .row-width{
+	    width: 100%;
+    margin-left: 1%;
+    padding-top: 2%;
+    background: white;
+}
+
+.funcactivityperm .funPer-row{
+	margin-top: 1%;
+}
+
+.funcactivityperm .per-row-grid {
+    width: 100%;
+    margin-left: 1%;
+    padding-top: 2%;
+    background: white;
+    /* margin-top: 5%; */
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+
+.funcactivityperm .ztreeHeader .searchIcon {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+}
+.funcactivityperm .ztreeHeader .searchIcon img {
+  padding: 0 5px;
+  /*border-left:1px solid #ecf0f1;*/
+  /*border-right:1px solid #ecf0f1;*/
+}
+.funcactivityperm .ztreeHeader .searchIcon .partingLineL {
+  height: 16px;
+  width: 1px;
+  background: #ecf0f1;
+  float: left;
+  margin-top: 4px;
+}
+.funcactivityperm .ztreeHeader .searchIcon .partingLineR {
+  height: 10px;
+  width: 1px;
+  background: #ecf0f1;
+  float: right;
+  margin-top: 8px;
+}
+.funcactivityperm .ztreeHeader input {
+padding-left:0px;
+  padding-top: 1px;
+  text-align: center;
+  width: 80%;
+  border: 0;
+  height: 30px;
+  line-height: 30px;
+}
+
+.funcactivityperm .ztree li span.button {
+  background-image: none;
+}
+.funcactivityperm .ztree li a.curSelectedNode {
+  color: #ed4047;
+}
+.funcactivityperm .ztree li a {
+  height: 100%;
+}
+.funcactivityperm .ztree li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  line-height: 30px;
+  text-align: left;
+  white-space: nowrap;
+  outline: 0;
+}
+.funcactivityperm .ztree li a {
+  padding: 1px 3px 0 0;
+  margin: 0;
+  cursor: pointer;
+  height: 30px;
+  color: #333;
+  background-color: transparent;
+  text-decoration: none;
+  vertical-align: top;
+  display: inline-block;
+}
+.funcactivityperm .ztree li a:hover {
+  text-decoration: underline;
+  color: #3949AB;
+  background-color: #eee;
+}
+.funcactivityperm .ztree li span.button.ico_docu {
+  height: 100%!important;
+  line-height: 25px!important;
+}
+.funcactivityperm .ztree li span.button.ico_docu:after {
+  top: 0!important;
+}
+.funcactivityperm .ztree li span.button {
+  background: none;
+}
+.funcactivityperm .ztree li span.button.switch.noline_close:after {
+  content: "\f105";
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 10px;
+  font-size: 16px;
+}
+.funcactivityperm .ztree li span.button.switch.noline_open:after {
+  content: "\f107";
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 10px;
+  font-size: 16px;
+  left: 5px;
+}
+
+.funcactivityperm .u-mdlayout-page-section {
+    background: #eee !important;
+    overflow: hidden !important;
+}
+
+
+@media (max-width: 1600px){
+	.funcactivityperm .function-title {
+	    font-size: x-large;
+	}
+}
+
+@media(max-width:992px){
+	.funcactivityperm .search-section label{
+		font-size: inherit !important;
+		color: #333 !important;
+	}
+	
+	.funcactivityperm .functionactivity .ztreeHeader input {
+	    text-align: center;
+	    width: 60%;
+	    border: 0;
+	    height: 3%;
+	}
+	
+	.funcactivityperm .funPer-ztree {
+	    width: 40%;
+	    float: left;
+	    overflow: auto;
+	    position: relative;
+	}
+	
+	.funcactivityperm .funPer-right {
+	    margin-left: 40%;
+	}
+	
+/* 	.funcactivityperm .function-detail {
+	    margin-left: 40%;
+	    margin-top: 1%;
+	} */
+	
+	.funcactivityperm .fun-act-tree {
+	    height: 85%;
+	    width: 39.5%;
+	    position: fixed;
+	    background: white;
+	    padding-bottom: 3%;
+	}
+	
+}
+
+
+
+
+.funcactivityperm .funbar {
+	margin-bottom: 10px
+}
+
+.funcactivityperm .Y_sarch_style {
+	position: relative;
+	height: 50px;
+	border-bottom: #eeeff1 1px solid;
+	background-color: #fff;
+	padding-right: 20px
+}
+
+.funcactivityperm .Y_sarch_style .condsearch {
+	display: inline-block;
+	height: 50px;
+	line-height: 50px
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .styled-select {
+	position: relative;
+	display: inline-block;
+	width: 170px;
+	height: 36px;
+	line-height: 36px;
+	margin-top: 7px
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .styled-select select {
+	padding-left: 5px;
+	width: 170px;
+	height: 36px;
+	line-height: 36px;
+	font-family: "microsoft yahei";
+	background: 0 0;
+	border: 1px solid #ccc;
+	outline: 0;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border-radius: initial
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .styled-select select:focus {
+	border: 1px solid #6bcaea
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .styled-select .icon-arrow-down {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: #ccc;
+	font-size: 24px
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .nc-search {
+	border: 1px solid #cecece;
+	font-size: 14px;
+	text-indent: 10px;
+	height: 36px;
+	line-height: 36px;
+	outline: 0;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	-o-border-radius: 1px;
+	border-radius: 1px
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .nc-searchbtn {
+	font-size: 20px;
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	color: #ccc
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .nc-searchbtn:hover {
+	color: #1baede
+}
+
+.funcactivityperm .Y_sarch_style .condsearch .nc-search:focus {
+	border: 1px solid #6bcaea
+}
+
+.funcactivityperm .Y_sarch_style .u-input-group {
+	display: inline-block;
+	margin-bottom: 0;
+	height: 40px;
+	line-height: 40px
+}
+
+.funcactivityperm .Y_sarch_style #condionSearch {
+	padding: 0 20px;
+	font-size: 14px;
+	color: #0377c1;
+	cursor: pointer;
+	display: inline-block
+}
+
+.funcactivityperm .Y_sarch_style #condionSearch .iconfont {
+	padding-left: 5px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 20px
+}
+
+.funcactivityperm .Y_sarch_style #condionSearch .icon-arrow-down {
+	display: none
+}
+
+.funcactivityperm .Y_sarch_style .quickoper {
+	position: absolute;
+	top: 16px;
+	right: -5px;
+	height: 36px;
+	background-color: #00bcd4;
+	border-radius: 2px;
+	padding-right: 15px;
+	padding-left: 10px
+}
+
+.funcactivityperm .Y_sarch_style .quickoper s.bg_quickoper {
+	position: absolute;
+	right: 0;
+	bottom: -5px;
+	display: block;
+	width: 5px;
+	height: 5px
+}
+
+.funcactivityperm .Y_sarch_style .quickoper span {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin: 8px 6px 0;
+	font-size: 24px;
+	color: #fff;
+	cursor: pointer
+}
+
+.funcactivityperm .Y_sarch_style .guideTit {
+	padding-left: 20px;
+	line-height: 50px;
+	height: 50px
+}
+
+.funcactivityperm .Y_sarch_style .guideTit .u-form-group {
+	height: 50px;
+	display: inline-block;
+	padding-top: 7px;
+	margin-bottom: 0;
+	margin-right: 0
+}
+
+.funcactivityperm .Y_sarch_style .guideTit .addbtn {
+	cursor: pointer;
+	background-color: #1baede;
+	font-size: 14px;
+	padding: 0 7px;
+	float: left;
+	height: 36px;
+	line-height: 36px;
+	outline: 0;
+	-webkit-border-radius: 0;
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border-radius: 1px;
+	text-decoration: none;
+	color: #fff;
+	margin-left: 0;
+	margin-right: 10px;
+	border: none;
+	min-width: 72px
+}
+
+.funcactivityperm #condition-row {
+	position: relative;
+	display: none;
+	background-color: #fff;
+	min-height: 50px
+}
+
+.funcactivityperm #condition-row dl {
+	padding: 0 60px;
+	margin-bottom: 0
+}
+
+.funcactivityperm #condition-row dl .u-row {
+	margin: 0;
+	height: 50px
+}
+
+.funcactivityperm #condition-row dl .outSel {
+	float: left;
+	padding-top: 10px;
+	padding-right: 60px;
+	padding-left: 0
+}
+
+.funcactivityperm #condition-row dl .outSel label {
+	float: left;
+	font-size: 13px;
+	font-weight: 700;
+	color: #666;
+	line-height: 29px;
+	padding-right: 10px
+}
+
+.funcactivityperm #condition-row dl .outSel .styled-select {
+	position: relative;
+	display: inline-block;
+	width: 170px;
+	height: 29px;
+	line-height: 29px;
+	overflow: hidden
+}
+
+.funcactivityperm #condition-row dl .outSel .styled-select select {
+	padding-left: 5px;
+	width: 170px;
+	height: 29px;
+	line-height: 29px;
+	-webkit-appearance: none;
+	font-family: "microsoft yahei";
+	background: 0 0;
+	border: 1px solid #ccc;
+	outline: 0
+}
+
+.funcactivityperm #condition-row dl .outSel .styled-select select:focus {
+	border: 1px solid #6bcaea
+}
+
+.funcactivityperm #condition-row dl .outSel .styled-select .icon-arrow-down {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: #ccc;
+	font-size: 24px
+}
+
+.funcactivityperm #condition-row dl .btns-search {
+	padding-left: 45px
+}
+
+.funcactivityperm input {
+	outline: 0
+}
+
+.funcactivityperm .ecmi-input {
+	font-size: 13px;
+	width: 170px;
+	height: 29px;
+	line-height: 29px;
+	border: 1px solid #d7d7d7;
+	outline: 0;
+	margin: 0;
+	padding: 0 0 0 5px;
+	border-radius: initial
+}
+
+.funcactivityperm .ecmi-input:focus {
+	border: 1px solid #6bcaea
+}
+
+.funcactivityperm .apptitle {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	margin-bottom: 20px
+}

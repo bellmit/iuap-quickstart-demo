@@ -1,0 +1,165 @@
+<!-- 内容 -->
+<div class="u-mdlayout functionactivity" id="demo-mdlayout">
+		<div class="u-mdlayout-master" style="display:none"></div>
+		<div class="function-head-row">
+			<div class="function-title">
+				<span><span class="i18n" name="ht.pag.fun.0001"></span></span>
+				<button class="goback u-button btn-back margin-left-20" data-bind="click:listBack"><span class="i18n" name="ht.pag.fun.0002"></span></button>
+			</div>
+		</div>
+
+
+		<div class="u-mdlayout-detail activity-detail">
+			<div class="u-mdlayout-page function-page current" id="list">
+
+				<div class="u-mdlayout-page-section function-section">
+					<div class="u-container-fluid u-widget function-widget" id="ctxBody">
+						<div class="function-menu">
+							<div class="new-out">
+									<div class="ztreeHeader">
+											<div class="u-input-group u-has-feedback margin-bottom-0" style="width:100%;">
+													<input type="text" class="u-form-control" placeholder="ht.pag.fun.0003" data-bind="event: { keypress: searchKeyboardCmd}"
+														   id="searchtxt">
+													<span class="u-form-control-feedback uf uf-magnifyingglass"  data-bind="click: searchClick"></span>
+												</div>
+
+										</div>
+							</div>
+
+							<div id="funcaction_zhezhao" style="display:none;width:100%;height:100%;position:absolute;left:0;bottom:0;background:rgb(0,0,0,0.3);z-index:10001;"></div>
+							<div type="text" class="ztree function-ztree" u-meta='{"id":"tree1","data":"treeData","type":"tree","idField":"id","pidField":"parentId","nameField":"funcName","setting":"treeSetting"}'></div>
+
+						</div>
+
+						<div class="function-detail">
+							<div class="search-section " style="width:100%;display: inline-block;">
+									<label class="u-input-label  "><span class="i18n" name="ht.pag.fun.0004"></span></label>
+									<input class="u-input u-input-write margin-right-30" type="text" data-bind="value:activityData.ref('funcCode'),enable:false">
+									<label class="u-input-label  "><span class="i18n" name="ht.pag.fun.0005"></span></label>
+									<input class="u-input u-input-write" data-bind="value:activityData.ref('funcName'),enable:false">
+									<!-- <div class="u-row row-width">
+									<div class="u-col-3 u-col-sm-2 u-col-xs-12">
+
+									</div>
+									<div class="u-col-3 u-col-sm-4 u-col-xs-12">
+
+									</div>
+
+									<div class="u-col-3 u-col-sm-2 u-col-xs-12">
+
+									</div>
+									<div class="u-col-3 u-col-sm-4 u-col-xs-12">
+
+									</div> -->
+								</div>
+
+								<!--edit-end-->
+								<div class="new">
+										<div class="u-mdlayout-btn function-btn">
+												<div id="dicttype_list_button_2" class="u-col-12 user-actions">
+													<div class=" u-button-group margin-0 padding-0 fun-btn">
+														<button class="u-button raised primary" data-bind="click: cancelClick, visible: gridStatus() =='edit'">
+															<span class="i18n" name="ht.pag.fun.0006"></span>
+														</button>
+														<button class="u-button raised primary" data-bind="click: saveClick, visible: gridStatus() =='edit'">
+															<span class="i18n" name="ht.pag.fun.0007"></span>
+														</button>
+														<button class="u-button raised primary " id="demo-table-ty" data-bind="click: tyClick, visible: gridStatus() =='read'">
+															<span class="i18n" name="ht.pag.fun.0008"></span>
+														</button>
+														<button class="u-button raised primary " id="demo-table-qy" data-bind="click: qyClick, visible: gridStatus() =='read'">
+															<span class="i18n" name="ht.pag.fun.0009"></span>
+														</button>
+														<button class="u-button raised primary " id="demo-table-del" data-bind="click: delClick, visible: gridStatus() =='read'">
+															<span class="i18n" name="ht.pag.fun.0010"></span>
+														</button>
+														<button class="u-button raised primary" id="demo-table-edit" data-bind="click: editClick, visible: gridStatus() =='read'">
+															<span class="i18n" name="ht.pag.fun.0011"></span>
+														</button>
+														<button class="u-button raised primary" id="demo-table-add" data-bind="click: addClick, visible: gridStatus() =='read'">
+															<span class="i18n" name="ht.pag.fun.0012"></span>
+														</button>
+													</div>
+												</div>
+											</div>
+											<div class="u-row row-grid" id="gridid">
+													<div class="col-md-12 u-col-xs-12 u-col-sm-12 u-col-lg-12">
+														<div class="function-grid" type="text" style="display:block" u-meta='{"id":"bter_FunctionActivity_grid1","data":"activityChildData","type":"grid","editable":true,"onBeforeEditFun":"rowClick","columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"editType":"default","afterCreate":"afterCreate"}'>
+															<div options='{"field":"activityCode","dataType":"u-text","editType":"string","title":"<span class=i18n name=ht.pag.fun.0013></span>","editOptions":{"validType":"string","required":true},"required":true}'></div>
+															<div options='{"field":"activityShowName","dataType":"String","editType":"string","title":"<span class=i18n name=ht.pag.fun.0014></span>","editOptions":{"validType":"string","required":true},"required":true}'></div>
+															<div options='{"field":"activityUrl","dataType":"u-text","editType":"string","title":"<span class=i18n name=ht.pag.fun.0015></span>","editOptions":{"validType":"string","required":true},"required":true}'></div>
+															<!-- <div options='{"field":"funcCode","dataType":"String","editType":"string","title":"上级编码","editable":false,"visible":false,"editOptions":{"validType":"string"}}'></div> -->
+															<div options='{"field":"isactive","dataType":"combo","title":"<span class=i18n name=ht.pag.fun.0016></span>","editType":"string","editable":false,"editOptions":{"validType":"string","id":"combobox1","type":"combo","datasource":"comItems"},"renderType":"comboRender"}'></div>
+															<div options='{"field":"funcID","dataType":"String","editType":"string","title":"<span class=i18n name=ht.pag.fun.0017></span>","editable":false,"visible":false,"editOptions":{"validType":"string","required":true}}'></div>
+															<div options='{"field":"id","dataType":"String","editType":"string","title":"<span class=i18n name=ht.pag.fun.0018></span>","editable":false,"visible":false,"editOptions":{"validType":"string"}}'></div>
+														</div>
+														<div id="createDialog" style="display:none">
+										<div class="u-msg-dialog dialog-location">
+											<div class="u-msg-close">
+												<span aria-hidden="true" data-bind='click:closeCreate'>×</span>
+											</div>
+											<div class="u-msg-dialog-content">
+												<div class="layoutEdit" style="display: block; position: relative;">
+													<div class="portal-uui-dialog-title"><span class="i18n" name="js.pag.fun.0019"></span></div>
+													<div class="u-msg-content">
+														<input type="hidden" id="leTag" value="AkMKZ1ZEvHuJw4nWg2Kf5M">
+														<div class="u-row u-form-group">
+															<label class="u-input-label u-col-2 col-30 text-right"><span class=i18n name=ht.pag.fun.0013></span>:</label>
+															<span class="field">*</span>
+															
+															<input style="width:auto;min-width:50%"  u-meta='{"data":"activityTempData","field":"activityCode"}' class="u-form-control u-col-10">
+															<span class="u-form-control-info uf uf-exclamationsign  u-col-10">编码不能为空</span>
+														</div>
+														<div class=" u-row u-form-group">
+															 <label class="u-input-label u-col-2 col-30 text-right"><span class=i18n name=ht.pag.fun.0014></span>:</label>
+															<div class="u-text multi-input" id='default-value' style="width:auto;min-width:50%" >  
+																	<input data-bind="value: $root.mutlilang.defaultLocaleValue,event: {blur: $root.mutlilang.changeDTValue }" type="text" class="u-form-control u-col-10"
+																	u-meta='{"data":"activityTempData","field":"activityShowName"}' />
+																	<div class="input-icon" data-bind='click:mutlilang.showMul'></div>
+																</div>
+																<span class="field namefile">*</span>
+																 <div class='multi-form' data-bind="css:{show:$root.mutlilang.show}">
+																	<div class='arrow'>
+																	</div>
+																	 <div data-bind="foreach: $root.mutlilang.locale">
+																		<div class="item">
+																			<label data-bind="text:label" class="multi-label" ></label>
+																			<div class="u-text input-par" data-bind='attr:{"field":"activityName" + serial}'  u-meta='{"data":"activityTempData","field":"activityShowName"}'>
+																				<input class="" />
+																			</div>
+																		</div>
+																	</div>  
+																	<div class='btn-groups'>
+																		  <button class="u-button u-button-border margin-left-10" data-bind='click:mutlilang.closeMul'><span class="i18n" name="ht.pag.fun.0006"></span></button>
+																		  <button class="u-button u-button-primary btn-noborder" data-bind='click:mutlilang.saveValue'><span class="i18n" name="ht.pag.fun.0007"></span></button> 
+																	</div>
+																</div>
+																<span class="u-form-control-info uf uf-exclamationsign  u-col-10">名称不能为空</span> 
+														</div>
+														<div class=" u-row u-form-group">
+															<label class="u-input-label u-col-2 col-30 text-right"><span class=i18n name=ht.pag.fun.0015></span>:</label>
+															<span class="field">*</span>
+															<input  style="width:auto;min-width:50%" u-meta='{"data":"activityTempData","field":"activityUrl"}'  class="u-form-control u-col-10">
+															<span class="u-form-control-info uf uf-exclamationsign  u-col-10">URL不能为空</span>
+														</div>
+													</div>
+													<div class="u-msg-footer  padding-bottom-20">
+														<button type="button" class="u-button  pull-right layout-cancel" style="border: 1px solid #cecece" name="ht.pag.fun.0006" data-bind="click:closeCreate"><span class="i18n" name="ht.pag.fun.0006"></span></button>
+														<button type="button" class="u-msg-ok u-button u-button-primary raised" name="ht.pag.fun.0007" data-bind="click: saveClick"><span class="i18n" name="ht.pag.fun.0007"></span>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+													</div>
+												</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

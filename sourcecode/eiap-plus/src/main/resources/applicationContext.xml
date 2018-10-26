@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+	default-lazy-init="true">
+
+	<description>Spring公共配置 </description>
+
+	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+	<context:component-scan base-package="com.yonyou" />
+	<!-- 启动对@AspectJ注解的支持 -->
+    <aop:aspectj-autoproxy />
+	<!-- 通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 多语 -->
+	<!-- <bean id="applicationContextUtil" class="com.yonyou.uap.i18n.utils.ApplicationContextUtil" lazy-init="false"/> -->
+	<bean id="applicationContextUtil" class="com.yonyou.iuap.i18n.ApplicationContextUtil" lazy-init="false"/>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:/application.properties</value>
+				<value>classpath*:/busilog-systemConfig.properties</value>
+			</list>
+		</property>
+		<property name="systemPropertiesMode" value="2"></property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<!-- 生产上最好设置时间长一点，单位S -->
+		<property name="cacheSeconds" value="10"></property>
+		<!-- 将日志、提示信息分开 -->
+		<property name="basenames">
+			<list>
+				<value>/WEB-INF/i18n/iuap</value>
+				<!-- <value>/WEB-INF/i18n/logs</value> -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+	<context:component-scan
+		base-package="com.yonyou.iuap,uap.iweb,com.yonyou.metadata.mybatis.service,com.yonyou.metadata.caches.redis,iuap.uitemplate,com.yonyou.iuap_qy,com.yonyou.uap.billcode,com.yonyou.uap.ieop,com.yonyou.uap.wb.service.sdk.impl,com.yonyou.uap.wb.repository,iuap.portal,com.yonyou.iuap">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<!-- 异步线程池   -->
+	<bean id="threadPoolTaskExecutor"
+		  class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->
+		<property name="corePoolSize" value="${threadPool.corePoolSize}" />
+		<!-- 最大线程数 -->
+		<property name="maxPoolSize" value="${threadPool.maxPoolSize}" />
+		<!-- 队列最大长度 >=mainExecutor.maxSize -->
+		<property name="queueCapacity" value="${threadPool.queueCapacity}" />
+		<property name="keepAliveSeconds" value="${threadPool.keepAliveSeconds}" />
+		<!-- 线程池维护线程所允许的空闲时间
+		线程池对拒绝任务(无线程可用)的处理策略 -->
+		<property name="rejectedExecutionHandler">
+			<bean class="${threadPool.rejectedExecutionHandler}" />
+		</property>
+	</bean>
+</beans>

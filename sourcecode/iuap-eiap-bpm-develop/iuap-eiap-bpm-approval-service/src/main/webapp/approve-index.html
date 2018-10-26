@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <title>主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+</head>
+<body style="overflow-x: hidden;" class="taskindex">
+<!-- content -->
+<div id="content" style="width: 1100px;margin: 0 auto">
+    <div class="approvalPanel hide" ></div>
+</div>
+<script>
+    window.$uui="/uui";
+    window.$ctx="/iuap-eiap-bpm-service"
+</script>
+<script src="/uui/libs/requirejs/require.js"></script>
+<script src="/uui/libs/jquery/dist/jquery.min.js"></script>
+<script src="/uui/libs/uui/js/u.js"></script>
+<script src="/uui/libs/bootstrap/dist/js/bootstrap.js"></script>
+<script src="static/js/requireConfig.js"></script>
+<script >
+    require(["approvePanel"],function(approvePanel){
+        var processInstanceId = "4a4fe9c1-c32b-11e6-a99e-067a8600043d";
+        var processDefinitionId = "process_412dd8fa12";
+        approvePanel.init(processInstanceId,processDefinitionId);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<div class="u-mdlayout" id="user-mdlayout">
+	<div class="u-mdlayout-btn u-row">
+		<div id="user_list_button_2" class="u-col-4 user-actions user_list_button_2 ">
+			<div class=" u-button-group margin-0 padding-0">
+				<button class="u-button u-button-primary u-button-sm " data-bind="click: event.addClick">
+					增加
+				</button>
+				<button class="u-button u-button-primary u-button-sm " data-bind="click: event.editClick">
+					编辑
+				</button>
+				<button class="u-button u-button-primary u-button-sm " data-bind="click: event.delRow">
+					删除
+				</button>
+			</div>
+		</div>
+		<div class="u-col-4  center-title">
+			<span>销售订单</span>
+		</div>
+	</div>
+
+	<div class="u-mdlayout-detail">
+		<!-- list -->
+		<div class="u-mdlayout-page u-navlayout-fixed-header current" id="list">
+			<div class="u-mdlayout-page-section">
+				<div class="user-datagrid">
+					<div class="table-container">
+						<table class="u-table" style="width:100%">
+							<thead>
+								<tr>
+									<th name="userCheckbox" style="display: block;border-top:1px solid transparent;">
+										<label class="margin-top-5 u-checkbox only-style u-checkbox-floatl"
+										data-bind="click: saleorderDa.toggleAllSelect.bind(saleorderDa), css:{'is-checked': saleorderDa.allSelected()}">
+										<input id="checkInput" type="checkbox" class="u-checkbox-input">
+										<span class="u-checkbox-label"></span> </label></th>
+									<th>销售订单编号</th>
+									<th>单据日期</th>
+									<th>客户</th>
+								</tr>
+							</thead>
+							<tbody data-bind="foreach:{data:saleorderDa.rows(),as:'row', afterAdd: event.afterAdd}">
+								<tr data-bind="css: { 'is-selected' : row.selected() } ,attr:{'rowindex': $index()}, click: $parent.event.rowClick">
+									<td name="userCheckbox" class="checkbox1"><label class="u-checkbox only-style u-checkbox-floatl"
+									data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+										<input type="checkbox" class="u-checkbox-input">
+										<span class="u-checkbox-label"></span> </label></td>
+									<td data-bind="text: row.ref('projectcode')"></td>
+									<td data-bind="text: u.dateRender(row.ref('dbilldate'))"></td>
+									<td data-bind="text: row.ref('ccustomerid_name')"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>				
+			</div>
+		</div>
+
+		<!-- addPage -->
+        <div class="u-mdlayout-page" id="addPage">
+            <div class="u-mdlayout-page-section" id="user-form">
+                <!-- BEGIN FORM-->
+                <form action="#" class="form-horizontal" >
+                    <div class="u-container-fluid">
+                        <div class="u-row">
+                            <div class="u-col-md-4">
+                                <div class="u-form-group">
+                                    <label>用户编码</label>
+
+                                    <div class="u-input-group u-has-feedback"
+                                         u-meta='{"type":"u-text","data":"saleorderFormDa","field":"projectcode"}'>
+                                        <div class="u-input-group-before" style="color: red;">*</div>
+                                        <input type="text" class="u-form-control" id="projectcode">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-col-md-4">
+                                <div class="u-form-group">
+                                    <label>姓名</label>
+
+                                    <div class="u-input-group u-has-feedback"
+                                         u-meta='{"type":"u-text","data":"saleorderFormDa","field":"ccustomerid_name"}'>
+                                        <div class="u-input-group-before" style="color: red;">*</div>
+                                        <input type="text" class="u-form-control" placeholder="" id="ccustomerid_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-col-md-4">
+                                <div class="u-form-group">
+                                    <label>入职日期</label>
+
+                                    <div class="u-input-group u-has-feedback u-datepicker "
+                                         u-meta='{"type":"u-date","data":"saleorderFormDa","field":"dbilldate"}'>
+                                        <input type="text" class="u-form-control u-input" placeholder="" id="dbilldate">
+                                    </div>
+                                </div>
+                            </div> 
+
+							<div class="u-col-md-4">
+                                <div class="u-form-group">
+                                    <label>组织</label>
+
+                                    <div class="u-input-group u-has-feedback u-datepicker "
+                                         u-meta='{"type":"u-text","data":"saleorderFormDa","field":"pk_org_name"}'>
+                                        <input type="text" class="u-form-control u-input" placeholder="" id="pk_org_name">
+										<button class="u-button u-button-primary u-button-sm " data-bind="click: event.orgselectopen">
+											确定
+										</button>
+                                    </div>
+                                </div>
+                            </div>                       
+                        </div>
+
+					<div class="u-row">
+
+						<button class="u-button u-button-primary u-button-sm " data-bind="click: event.useraddok">
+							确定
+						</button>
+						<button class="u-button u-button-primary u-button-sm " data-bind="click: event.useraddcancel">
+							取消
+						</button>
+					</div>
+                    </div>
+                </form>
+            </div>
+            <!-- END FORM-->
+        </div>
+        <!-- end addPage -->
+
+
+	</div>
+</div>
+
+<!-- 树展示的弹出层  -->
+<div id="tree-modal" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom_org" class="ztree"
+             u-meta='{"id":"commonTree","data":"sysOrgDa","type":"tree","idField":"orgid","pidField":"parentid","nameField":"orgname","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select" class="u-button u-button-primary pull-right" data-bind="click: event.orgtreeConfirmed">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click: event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>

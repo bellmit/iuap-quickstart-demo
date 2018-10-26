@@ -1,0 +1,96 @@
+#printList .u-grid-header-multi-select {
+    margin:0;
+}
+.error-message {
+    top: 0;
+    opacity: 1;
+    width: 100%;
+}
+.right_page_title {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.09);
+    text-align: center;
+    color: #4a4a4a;
+    font-size: 16px;
+    position: fixed;
+    z-index: 9998;
+    transition: all 0.2s linear;
+    box-sizing: border-box;
+    top:0;
+}
+.back-button {
+    color:#1E7BE2;
+    float:left;
+    font-size:14px;
+    margin: 0 0 0 31px;
+    cursor:pointer;
+    display:inline-block;
+}
+.back-button i {
+    vertical-align: middle;
+    padding:0;
+}
+.back-button label {
+    vertical-align: middle;
+    margin:0;
+    color:#1E7BE2;
+    cursor:pointer;
+}
+.right_page_wrap {
+    clear: both;
+}
+.right_page_operation {
+    padding: 8px 20px;
+    background:#fff;
+    position:relative;
+}
+.right_page_operation .btn {
+    height:auto;
+    color:#fff;
+}
+.btn_blue {
+    background-color: #039BE5;
+    border: 1px solid #039BE5 !important;
+    color: #FFF;
+    border-radius: 4px;
+}
+.ui-handle-icon span {
+    margin:0 5px;
+}
+#copyDialg .u-msg-cancel,#testDialg .u-msg-cancel {
+    height:30px;
+}
+#printList #paginationt {
+    display: inline-block !important;
+}
+.search-box {
+    width:300px;
+    position:absolute;
+    right:20px;
+    top:10px;
+}
+.search-box .u-form-control {
+    display: inline-block;
+    width: 200px;
+    height: 32px;
+    vertical-align: middle;
+}
+.u-msg-ok {
+    background: #039BE5;
+}
+/* 固定头 */
+#printList .pap-title{
+    position: fixed;
+    width: 100%;
+    z-index: 22;
+    top: 0;
+}
+#printList #printTemplate{
+    margin-top: 41px;
+}
+.choseObj{
+    z-index: 99999!important;
+}

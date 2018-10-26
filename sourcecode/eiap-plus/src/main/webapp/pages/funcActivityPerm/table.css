@@ -1,0 +1,48 @@
+.u-table tbody tr, .u-table th {
+	height: 44px
+}
+
+.table-list .table-body .u-table-striped>tbody>tr {
+	background-color: #fff;
+	border-top: 1px solid #ccc;
+	clear: both
+}
+
+.table-list .table-body .u-table-striped>tbody>tr:hover {
+	background-color: #E8F7FB
+}
+
+.u-table tbody tr.active {
+	background-color: #c4eaf6
+}
+
+.u-table th {
+	line-height: 44px
+}
+
+.tabOne {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	background-color: #f2fcfd
+}
+
+.tabOne tbody tr:hover {
+	background-color: #c4eaf6
+}
+
+.tabOne th {
+	font-size: 14px
+}
+
+.tabOne td {
+	padding: 0 0 0 18px;
+	height: 41px;
+	line-height: 41px;
+	text-align: center;
+	border: none
+}
+
+.tabOne td .u-checkbox {
+	height: 28px
+}

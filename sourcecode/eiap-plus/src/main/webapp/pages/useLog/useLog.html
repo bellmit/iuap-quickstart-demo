@@ -1,0 +1,114 @@
+<div id="uselog" class="u-container-fluid u-widget-bg uselog padding-0">
+<div id="uselogHead"></div>    
+  <div class="u-row">
+        <div class="u-col-12">
+            <div class="u-widget margin-bottom-20 margin-top-0 margin-left-0 margin-right-0">
+                
+                <div class="header-css">
+                        <h3 class="u-widget-title pull-left hide">上机日志</h3>
+                        	<button data-role="returnbtn" class="u-button u-button-accent whitebutton hide">返回</button>
+                             <span class="log-search-btn u-right u-input-label" id="condition-toggle"><span>高级</span><i class="uf uf-anglearrowdown"></i></span>
+                </div>
+            </div>
+         </div>
+    </div>
+          <div class="u-row u-border-top u-not-visible p-v-md searchCon-css" id="condition-row" style="margin-bottom: 15px;">
+                    <div class="u-col-12">
+                        <div class="u-container-fluid">
+                            <div class="u-row">
+                                <!--<div class="u-col-1 u-col-sm-2" style="padding-right: 0px;">
+                                    <label class="u-input-label ue-label right">日志类别:</label>
+                                </div>
+                                <div class="u-col-2 u-col-sm-4 m-b-sm">
+				                    <div id="userrefer" data-role="user-refer">
+					                        <div class="u-input-group u-has-feedback" style="width: 100%;">
+				                            <input id="logCategory" type="text" class="u-form-control searchinput"/>
+				                           </div>
+				                    </div>
+                                </div>-->
+                                <div class="u-col-1 u-col-sm-2" style="padding-right: 0px;">
+                                    <label class="u-input-label ue-label right">记录日期:</label>
+                                </div>
+                                <div class="u-col-2 u-col-sm-4 m-b-sm">
+					                  <div class="u-datepicker" id="log-recordData">
+					                        <div class="u-input-group u-has-feedback">
+					                            <input id="logDate" class="u-form-control searchinput"/>
+					                        </div>
+					                 </div>
+                                </div>
+                                <div class="u-col-1 u-col-sm-2" style="padding-right: 0px;">
+                                    <label class="u-input-label ue-label right">用户名称:</label>
+                                </div>
+                                <div class="u-col-2 u-col-sm-4 m-b-sm">
+				                    <div id="userrefer" data-role="user-refer">
+					                        <div class="u-input-group u-has-feedback" style="width: 100%;">
+				                            <input id="logCategory" type="text" class="u-form-control searchinput"/>
+				                           </div>
+				                    </div>
+                                </div>
+					        </div>
+                            <div class="u-row search-groupbtn-div " style="margin-top: 10px;">
+                                <div class="u-col-12">
+                                    <button data-role="clearbtn" class="u-button u-button-accent whitebutton u-right search-clearbtn">清空</button>
+                                    <button data-role="searchbtn" class="u-button u-button-primary u-right search-searchbtn bluebutton">搜索</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          </div>
+    <div class="u-row">
+        <div class="u-col-12">
+        	
+            <div class="u-widget margin-0" style="margin-top: 0px;">
+                    <div class="u-widget-body padding-0">
+                        <div>
+                            <table class="u-table ie-table-border" style="width:100%;border-bottom: none;">
+                                <thead>
+                                    <tr>
+                                        <th style="display:none">主键</th>
+                                        <th style="display:none">用户ID</th>
+                                        <th width="20%">用户名</th>
+                                        <th width="10%">日志类别</th>
+                                        <!-- <th width="25%">日志内容</th> -->
+                                        <!-- <th width="25%">应用Id</th> -->
+                                        <th width="20%">记录时间</th>
+                                        <th width="20%">ip地址</th>
+                                        <th width="20%">用户类型</th>
+                                        <th width="10%">操作方式</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-fixedheader-body">
+                            <table id="logtable" class="u-table table-content ie-table-border maintable" style="width:100%;border-bottom: none;">
+                                <tbody data-bind="foreach:{data:listData.rows(), as: 'row'}">
+                                    <tr data-bind="attr: {'rowindex': $index}">
+                                        <td style="display:none" data-bind="text: row.ref('id')"></td>
+                                        <td style="display:none" data-bind="text: row.ref('operUser')"></td>
+                                        <td width="20%" data-bind="text: row.ref('operUserName')"></td>
+                                        <td width="10%" data-bind="text: row.ref('logCategory')()=='login'?'登录':'登出'"></td>
+                                        <!-- <td width="25%" data-bind="text: row.ref('logContent')"></td> -->
+                                        <!-- <td width="25%" data-bind="text: row.ref('sysId')"></td> -->
+                                        <td width="20%" data-bind="text: row.ref('logDate')"></td>
+                                        <td width="20%" data-bind="text: row.ref('clientIp')"></td>
+                                        <td width="20%" data-bind="text: row.ref('userType')()=='2'?'系统管理员':(row.ref('userType')()=='3'?'业务管理员':'业务员')"></td>
+                                        <td width="10%" data-bind="text: row.ref('loginType')()==null?'PC':row.ref('loginType')"></td>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody id="userLogLLL" class="no-data-body">
+                                        <tr>
+                                            <td colspan="6" class="no-data-td">无数据</td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                        <div class="paginate-box hide">
+                   			<div id='pagination' class='u-pagination pagination pagination-center'></div>
+                   		</div>
+                </div>
+            </div>
+        </div>
+    </div>
+                      
+</div>

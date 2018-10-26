@@ -1,0 +1,114 @@
+<!-- 内容 -->
+<div class="u-mdlayout templateAllocate" id="demo-mdlayout">
+	<div class="u-mdlayout-master" style="display:none"></div>
+	<div class="function-head-row">
+		<div class="function-title">
+			<span>资源分配</span>
+			<button class="goback u-button btn-back margin-left-20" data-bind="click:listBack">返回</button>
+		</div>
+	</div>
+	<!--edit-end-->
+
+	<div class="u-mdlayout-detail activity-detail" >
+		<div class="u-mdlayout-page function-page current" id="list">
+
+			<div class="u-mdlayout-page-section function-section">
+				<div class="u-container-fluid u-widget function-widget" id="ctxBody">
+					<div class="function-menu">
+						<div class="new-out">
+								<div class="ztreeHeader">
+										<div class="u-input-group u-has-feedback margin-bottom-0" style="width:100%;">
+											<input type="text" class="u-form-control" placeholder="请输入功能名称" id="searchtxt">
+											<span class="u-form-control-feedback uf uf-magnifyingglass" data-bind="click: searchClick"></span>
+										</div>
+									</div>
+						</div>
+
+						<div id="funcaction_zhezhao" style="display:none;width:100%;height:100%;position:absolute;left:0;bottom:0;background:rgb(0,0,0,0.3);z-index:10001;"></div>
+						<div type="text" class="ztree function-ztree" u-meta='{"id":"tree1","data":"treeData","type":"tree","idField":"id","pidField":"parentId","nameField":"funcName","setting":"treeSetting"}'></div>
+					</div>
+
+					<div class="function-detail">
+						<div class="search-section " style="width:100%;display: inline-block;">
+
+							<label class="u-input-label  ">功能编码：</label>
+							<input class="u-input u-input-write" type="text" data-bind="value:activityData.ref('funcCode'),enable:false">
+							<label class="u-input-label  ">功能名称：</label>
+							<input class="u-input u-input-write" data-bind="value:activityData.ref('funcName'),enable:false">
+							<label class="u-input-label  ">BPM状态：</label>
+							<input class="u-input u-input-write" data-bind="value:(activityData.ref('enableBpm')()=='Y'?'启用':'停用'),enable:false">
+
+
+							<!-- <div class="u-row row-width">
+								<div class="u-col-2 u-col-sm-1 u-col-xs-12">
+									<label class="u-input-label right">功能编码：</label>
+								</div>
+								<div class="u-col-2 u-col-sm-2 u-col-xs-12"  >
+								</div>
+
+								<div class="u-col-2 u-col-sm-1 u-col-xs-12">
+									<label class="u-input-label right">功能名称：</label>
+								</div>
+								<div class="u-col-2 u-col-sm-2 u-col-xs-12">
+								</div>
+
+								<div class="u-col-2 u-col-sm-1 u-col-xs-12">
+									<label class="u-input-label right">是否启用BPM：</label>
+								</div>
+								<div class="u-col-2 u-col-sm-2 u-col-xs-12">
+								</div>
+							</div> -->
+
+							<div class="new">
+								<div class="u-mdlayout-btn function-btn">
+									<div id="dicttype_list_button_2" class=" user-actions">
+										<div class=" u-button-group margin-0 padding-0 fun-btn">
+
+												<button class="u-button raised primary" id="user-action-cancel" data-bind="click: cancelClick, visible: gridStatus() =='edit'">
+														取消
+													</button>
+											<button class="u-button u-button-primary" id="user-action-save" data-bind="click: saveClick, visible: gridStatus() =='edit'">
+														保存
+													</button>
+											<button class="u-button u-button-primary" style="padding: 0 12px;" id="user-action-stop" data-bind="click: stopBPMClick, visible: gridStatus() =='read'">
+														停用BPM
+													</button>
+											<button class="u-button u-button-primary" style="padding: 0 12px;" id="user-action-enable" data-bind="click: enableBPMClick, visible: gridStatus() =='read'">
+														启用BPM
+													</button>
+											<button class="u-button u-button-primary" id="user-action-del" data-bind="click: delClick, visible: gridStatus() =='read'">
+														删除
+													</button>
+											<button class="u-button u-button-primary" id="user-action-edit" data-bind="click: editClick, visible: gridStatus() =='read'">
+														修改
+													</button>
+											<button class="u-button u-button-primary" id="user-action-add" data-bind="click: addClick, visible: gridStatus() =='read'">
+												增加
+											</button>
+
+
+
+
+
+										</div>
+									</div>
+								</div>
+								<div class="u-row row-grid" id="gridid">
+									<div class="col-md-12 u-col-xs-12 u-col-sm-12 u-col-lg-12">
+										<div class="function-grid" type="text" id="grid_AppResAllocate" u-meta='{"id":"grid_AppResAllocate_g","data":"appResAllocateDa","type":"grid","editable":true,"onBeforeEditFun":"rowClick","columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"editType":"default"}'>
+											<div options='{"field":"funccode","dataType":"String","title":"功能编码","editType":"string","editable":"false","editOptions":{"validType":"string","required":true},"required":true}'></div>
+											<div options='{"field":"restype","dataType":"String","title":"资源类型","renderType":"comboRender","editType":"combo","editable":"true","editOptions":{"validType":"string","required":true,"id":"combobox1","type":"combo","datasource":"restypeComItems"},"required":true}'></div>
+											<div options='{"field":"nodekey","dataType":"String","title":"nodekey","editType":"string","editOptions":{"validType":"string","required":true},"required":true}'></div>
+											<div options='{"field":"pk_res","dataType":"String","title":"资源标识","renderType":"ncReferRender","editType":"childGridEditType","showField":"res_name","editOptions":{"validType":"string","required":true},"required":true }'></div>
+											<!--<div options='{"field":"pk_res","dataType":"String","title":"资源标识","editType":"string","editOptions":{"validType":"string","required":true},"required":true}'></div>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

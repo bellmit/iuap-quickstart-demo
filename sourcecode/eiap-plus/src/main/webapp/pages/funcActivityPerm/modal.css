@@ -1,0 +1,61 @@
+#conUserModal .u-msg-close {
+	cursor: pointer;
+	font-size: 28px;
+	padding: 1px 20px 0;
+	filter: alpha(opacity = 60);
+	-moz-opacity: .6;
+	-khtml-opacity: .6;
+	opacity: .6;
+	color: #000;
+	border-bottom: 1px solid #eee
+}
+
+#conUserModal .u-msg-title {
+	color: #333;
+	font-weight: 700;
+	padding-top: 5px;
+	height: 45px;
+	line-height: 45px;
+	overflow: hidden
+}
+
+#conUserModal .u-msg-content {
+	border-top: 1px solid #cecece;
+	padding-top: 0
+}
+
+#conUserModal .u-msg-content .u-table tbody tr {
+	height: 30px
+}
+
+#conUserModal .u-msg-content .u-table th {
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #333
+}
+
+#conUserModal .u-msg-content .u-table td {
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #333;
+	font-weight: 400
+}
+
+#conUserModal .u-msg-content .paginate-box .pagination-state {
+	height: 30px;
+	line-height: 30px
+}
+
+#conUserModal .u-msg-content .paginate-box .pagination-state .page_j,
+	#conUserModal .u-msg-content .paginate-box .pagination-state .page_z,
+	#conUserModal .u-msg-content .paginate-box .pagination-state .pagination-jump
+	{
+	height: 30px;
+	line-height: 25px
+}
+
+#conUserModal .t-head-title input {
+	width: 200px
+}

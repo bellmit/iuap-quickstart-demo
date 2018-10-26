@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yonyou.iuap.internalmsg.dao.MsgDao">
+    <resultMap id="baseResultMap" type="com.yonyou.iuap.internalmsg.entity.po.Msg">
+        <id property="id" column="id" javaType="String" jdbcType="VARCHAR"/>
+
+        <result property="subject" column="subject" javaType="String" jdbcType="VARCHAR"/>
+        <result property="content" column="content" javaType="String" jdbcType="CLOB"/>
+        <result property="cts" column="cts" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result property="ts" column="ts" javaType="java.lang.Long" jdbcType="NUMERIC"/>
+        <result property="type" column="type" javaType="String" jdbcType="VARCHAR"/>
+        <result property="hasAttach" column="has_attach" javaType="Boolean" jdbcType="BOOLEAN"/>
+        <result property="tenantId" column="tenant_id" javaType="String" jdbcType="VARCHAR"/>
+        <result property="sysId" column="sys_id" javaType="String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="tableName">
+        iuap_msg
+    </sql>
+
+    <sql id="baseColumnList">
+        id, subject, content, cts, ts, type, has_attach, tenant_id, sys_id
+    </sql>
+
+    <sql id="columnListAlias">
+        msg.id, msg.subject, msg.content, msg.cts, msg.ts, msg.type, msg.has_attach, msg.tenant_id, msg.sys_id
+    </sql>
+
+    <insert id="insert" parameterType="com.yonyou.iuap.internalmsg.entity.po.Msg">
+        INSERT INTO
+        <include refid="tableName"/>
+        <trim prefix="(" suffix=")">
+            <include refid="baseColumnList"/>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")">
+            #{id, jdbcType=VARCHAR},
+            #{subject, jdbcType=VARCHAR},
+            #{content, jdbcType=CLOB},
+            #{cts, jdbcType=TIMESTAMP},
+            #{ts, jdbcType=NUMERIC},
+            #{type, jdbcType=VARCHAR},
+            #{hasAttach, jdbcType=BOOLEAN},
+            #{tenantId, jdbcType=VARCHAR},
+            #{sysId, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <select id="getById" resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        <where>
+            id = #{id, jdbcType=VARCHAR}
+            AND
+            tenant_id = #{tenantId, jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <!-- oracle 分页查询 -->
+    <select id="pagination" resultMap="baseResultMap">
+        SELECT * FROM
+        <trim prefix="(" suffix=")">
+            SELECT A.*, ROWNUM r FROM
+            <trim prefix="(" suffix=")">
+                SELECT
+                <include refid="columnListAlias"/>
+                FROM
+                <include refid="tableName"/>
+                msg
+                LEFT OUTER JOIN ${searchParam.direction} p
+                ON
+                msg.id = p.msg_id
+                <where>
+                    p.user_id = #{userId, jdbcType=VARCHAR}
+                    AND
+                    p.msg_dr = 1
+                    AND
+                    msg.tenant_id = #{searchParam.tenantId, jdbcType=VARCHAR}
+                    <if test=" searchParam.type != null and searchParam.type != '' ">
+                        AND
+                        msg.type = #{searchParam.type, jdbcType=VARCHAR}
+                    </if>
+                    <if test=" searchParam.readStatus != null ">
+                        AND
+                        p.read_status = #{searchParam.readStatus, jdbcType=NUMERIC}
+                    </if>
+                    <if test=" searchParam.ts != null ">
+                        AND
+                        msg.ts ${searchParam.operator} #{searchParam.ts, jdbcType=NUMERIC}
+                    </if>
+                </where>
+                ORDER BY ${sort.attr} ${sort.direction}
+            </trim>
+            A WHERE ROWNUM &lt;= #{end, jdbcType=NUMERIC}
+        </trim>
+        WHERE r &gt; #{start, jdbcType=NUMERIC}
+    </select>
+
+    <!-- oracle 计数 -->
+    <select id="number" resultType="int">
+        SELECT COUNT(*) FROM
+        <include refid="tableName"/>
+        msg
+        LEFT OUTER JOIN ${searchParam.direction} p
+        ON
+        msg.id = p.msg_id
+        <where>
+            p.user_id = #{userId, jdbcType=VARCHAR}
+            AND
+            p.msg_dr = 1
+            AND
+            msg.tenant_id = #{searchParam.tenantId, jdbcType=VARCHAR}
+            <if test=" searchParam.type != null and searchParam.type != '' ">
+                AND
+                msg.type = #{searchParam.type, jdbcType=VARCHAR}
+            </if>
+            <if test=" searchParam.readStatus != null ">
+                AND
+                p.read_status = #{searchParam.readStatus, jdbcType=NUMERIC}
+            </if>
+            <if test=" searchParam.ts != null ">
+                AND
+                msg.ts ${searchParam.operator} #{searchParam.ts, jdbcType=NUMERIC}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<jmxConfigurator />
+    <property name="log_name" value="eiap-plus"/>
+    
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%cn代表输出在类附加到日志上的上下文名字即APP_Name，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%X{ }来占位，从对应的MDC获取key的值，%msg：日志消息，%n是换行符-->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%cn] [%X{call_thread_id}] [%X{current_user_name}] [%X{current_tenant_id}] [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/var/logs/${log_name}/${log_name}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/var/logs/${log_name}/${log_name}.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--格式化输出：%d表示日期，%cn代表输出在类附加到日志上的上下文名字即APP_Name，%thread表示线程名，%-5level：级别从左显示5个字符宽度，%X{ }来占位，从对应的MDC获取key的值，%msg：日志消息，%n是换行符-->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%cn] [%X{call_thread_id}] [%X{current_user_name}] [%X{current_tenant_id}] [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+		<!--日志文件最大的大小-->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>5MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<!-- 异步输出 -->
+	<appender name ="ASYNC" class= "ch.qos.logback.classic.AsyncAppender">
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、ERROR、INFO级别的日志 -->
+		<discardingThreshold >0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+		<queueSize>512</queueSize>
+		<!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref ="FILE"/>
+	</appender>
+
+	<!-- project default level -->
+	<logger name="iuap.portal" level="ERROR" />
+
+	<!--log4jdbc -->
+	<logger name="jdbc.sqltiming" level="ERROR"/>
+
+	<!-- 自定义特殊包的日志级别 -->
+	<logger name="com.yonyou.iuap" level="ERROR" />
+	<logger name="com.yonyou.uap.ieop.busilog.writer.BusiLogRestWriter" level="ERROR" />
+
+	<!-- log4j.logger.com.ibatis=DEBUG
+log4j.logger.com.ibatis.common.jdbc.SimpleDataSource=DEBUG
+log4j.logger.com.ibatis.common.jdbc.ScriptRunner=DEBUG
+log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate=DEBUG
+log4j.logger.Java.sql.Connection=DEBUG
+log4j.logger.java.sql.Statement=DEBUG
+log4j.logger.java.sql.PreparedStatement=DEBUG -->
+
+	<!-- 打印url映射关系 -->
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="TRACE"/>
+	<logger name="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" level="TRACE"/>
+	<logger name="org.springframework.web.servlet.mvc.method.annotation" level="TRACE"/>
+
+
+	<!-- 打印来源请求体和响应体的json数据 -->
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="TRACE"/>
+
+
+	<logger name="org.springframework.web.servlet.mvc.method.annotation" level="TRACE"/>
+
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor" level="TRACE"/>
+
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestPartMethodArgumentResolver" level="TRACE"/>
+
+	<!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />
+	<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG" />
+	<logger name="org.hibernate.SQL" level="DEBUG" />
+	<logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
+	<logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
+
+	<!--myibatis 日志级别-->
+	<logger name="dao" level="DEBUG"/>
+
+	<!--myibatis log configure-->
+	<logger name="com.apache.ibatis" level="TRACE"/>
+	<logger name="java.sql.Connection" level="DEBUG"/>
+	<logger name="java.sql.Statement" level="DEBUG"/>
+	<logger name="java.sql.PreparedStatement" level="DEBUG"/>
+
+	<!--log4jdbc 选项，默认关闭-->
+	<!--
+	<logger name="jdbc.connection" level="OFF" />
+	<logger name="jdbc.audit" level="OFF" />
+	<logger name="jdbc.resultset" level="OFF" />
+	<logger name="jdbc.sqlonly" level="OFF" />
+	<logger name="jdbc.sqltiming" level="OFF" />
+	-->
+
+	<!-- 自定义特殊包的日志级别 -->
+	<logger name="com.yonyou.iuap" level="DEBUG" />
+	<logger name="com.yonyou.iuap.ism.web.IsmQueryController" level="DEBUG" />
+	<logger name="com.ibatis" level="DEBUG" />
+	<logger name="java.sql" level="DEBUG" />
+
+	<root level="ERROR">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>

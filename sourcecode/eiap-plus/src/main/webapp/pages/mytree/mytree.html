@@ -1,0 +1,311 @@
+<!-- 列表区域  -->
+<div class="u-container-fluid u-widget-bg padding-0">
+	<div class="u-row cardtable-row">
+		   <div class="u-col-2 cardtable-title">
+			    <p>教师</p>
+		   </div>
+		  <div class="u-col-10 cardtable-title">
+			  <button class="goback u-button u-button-primary" data-bind="click:event.listBack">返回</button>
+		  </div>
+	  </div>
+	  
+    <div class="u-widget margin-0">
+        <div class="u-widget-body">
+            <div class="u-row margin-left-0 margin-right-0">
+                <!--树表  -->
+                <div class="u-col-md-3 lefttree" id="treeT">
+                    <div class="" style=" line-height: 30px;float: left;margin-left:15px;">
+                        <span>树卡示例</span>
+                    </div>
+                    <div class=" u-button-group group-spec margin-left-15" style="margin-bottom:4px;float:right;">
+                        <button class="u-button u-button-floating " data-bind="click: event.addinstitClick">
+                            <i class="uf uf-plus"></i>
+                        </button>
+                        <button class="u-button u-button-floating" data-bind="click: event.editinstitClick">
+                            <i class="uf uf-pencil"></i>
+                        </button>
+                        <button class="u-button u-button-floating" data-bind="click: event.delinstitClick">
+                            <i class="uf uf-del"></i>
+                        </button>
+                        <!--instit编辑对话框-->
+                        <div id="dialog_content_instit" style="display:none;">
+                            <div class="u-msg-title">
+                                <h4>新增树卡示例</h4>
+                            </div>
+                            <HR width="100%" color=#F8F9FB SIZE=3 align="center"/>
+                            <div class="u-msg-content add-depart">
+                                <div class="u-form">
+									<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>编码</label>
+                                        </div>
+                                        <input type="text" id="code"
+                                               class="u-col-md-9 u-form-control"
+                                               u-meta='{"type":"string","data":"mytreedatanew","field":"code"}'
+                                               placeholder="">
+                                    </div>
+									<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>名称</label>
+                                        </div>
+                                        <input type="text" id="name"
+                                               class="u-col-md-9 u-form-control"
+                                               u-meta='{"type":"string","data":"mytreedatanew","field":"name"}'
+                                               placeholder="">
+                                    </div>
+									<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>上级节点</label>
+                                        </div>
+                                        <input type="text" id="pk_parent"
+                                               class="u-col-md-9 u-form-control"
+                                               u-meta='{"type":"string","data":"mytreedatanew","field":"pk_parent"}'
+                                               placeholder="">
+                                    </div>
+									<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>备注</label>
+                                        </div>
+                                        <input type="text" id="memo"
+                                               class="u-col-md-9 u-form-control"
+                                               u-meta='{"type":"string","data":"mytreedatanew","field":"memo"}'
+                                               placeholder="">
+                                    </div>
+                            		<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>组织</label>                                           
+                                        </div>    
+                                        <div class="u-col-md-9 u-form-control u-combo"
+                                         u-meta='{"type":"u-text","data":"mytreedatanew","field":"pk_org_name","onlySelect":true}'>
+		                                        <div class="u-input-group u-has-feedback">
+		                                            <span class="u-form-control-feedback fa fa-list-ul"
+		                                                  data-bind="click:event.selectOrganization_mytree_pk_org"></span>
+		                                            <input class="u-form-control" readonly="readonly"/>
+		                                        </div>
+                                    	</div>                                    
+                                    </div>  
+                            
+                            		<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>主组织</label>                                           
+                                        </div>    
+                                        <div class="u-col-md-9 u-form-control u-combo"
+                                         u-meta='{"type":"u-text","data":"mytreedatanew","field":"pk_mainorg_name","onlySelect":true}'>
+		                                        <div class="u-input-group u-has-feedback">
+		                                            <span class="u-form-control-feedback fa fa-list-ul"
+		                                                  data-bind="click:event.selectOrganization_mytree_pk_mainorg"></span>
+		                                            <input class="u-form-control" readonly="readonly"/>
+		                                        </div>
+                                    	</div>                                    
+                                    </div>  
+                            
+                                </div>
+                            </div>
+                            <div class="u-msg-footer">
+                                <div class="pull-right">
+                                    <button id="canceltree" class="u-button editCancel raised back"
+                                            data-bind="click: event.cancelinstitClick">取消<span
+                                            class="u-button-container"><span
+                                            class="u-ripple"></span></span>
+                                    </button>
+                                    
+                                    <button id="savetree" class="u-button raised u-button-primary margin-right-10"
+                                            data-bind="click: event.saveinstitClick">
+                                                                                                                                                        保存<span class="u-button-container"><span class="u-ripple"></span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <HR class="hide" width="100%" color=#F8F9FB SIZE=30 align="center"/>
+                    </div>
+                    <!--tree-->
+                    <div class="u-col-md-3" id="tree2Around" style="width:100%;">                   
+                        <div id="tree2" class="ztree"
+                             u-meta='{"id":"tree2","data":"mytreedata","type":"tree","idField":"pk_tree","pidField":"pk_parent","nameField":"code","setting":"treeSetting"}'>
+                        </div>
+                  
+                    </div>
+                </div>
+
+                <!--右表-->
+                <div class="u-col-md-9 padding-left-0 padding-right-0" style="border-left:1px solid #cecece;">
+                    <div class="infoPanel" id="infoPanel"></div>
+                    <div class="treefrom">
+                        <div class="ec-search u-col-md-12 u-col-sm-12  ">
+                            <div class="u-button-group">
+                                <input
+                                        type="button" class="u-button u-button-primary u-buttom-sm"
+                                        id="add_man" value="新增"
+                                        style="" data-bind="click: event.addManClick">
+                                <input
+                                        type="button" class="u-button u-button-primary u-buttom-sm"
+                                        id="edit_man" value="编辑"
+                                        style="" data-bind="click: event.editManClick">
+                                <input
+                                        type="button" class="u-button u-button-primary u-buttom-sm"
+                                        id="del_man" value="删除"
+                                        style="" data-bind="click: event.delManClick">
+                            </div>
+                            <!--右表编辑对话框-->
+                            <div id="dialog_content_man" class="modal-dialog" style="display:none;">
+                                <div class="u-msg-title">
+                                    <h4>新增</h4>
+                                </div>
+                                <HR width="100%" color=#F8F9FB SIZE=3 align="center"/>
+                                <div class="u-msg-content add-man">
+                                    <div class="u-form" id="add-form">
+
+									<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>备注</label>
+                                        </div>
+                                        <input type="text" id="memo"
+                                               class="u-col-md-9 u-form-control"
+                                               u-meta='{"type":"string","data":"tree_bdatanew","field":"memo"}'
+                                               placeholder="">
+                                    </div>
+
+                            		<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>组织</label>                                           
+                                        </div>    
+                                        <div class="u-col-md-9 u-form-control u-combo"
+                                         u-meta='{"type":"u-text","data":"tree_bdatanew","field":"pk_org_name","onlySelect":true}'>
+		                                        <div class="u-input-group u-has-feedback">
+		                                            <span class="u-form-control-feedback fa fa-list-ul"
+		                                                  data-bind="click:event.selectOrganization_tree_b_pk_org"></span>
+		                                            <input class="u-form-control" readonly="readonly"/>
+		                                        </div>
+                                    	</div>                                    
+                                    </div>                            
+
+                            		<div class="u-col-md-12 form-group">
+                                        <div class="u-col-md-3 control-label">
+                                            <label>主组织</label>                                           
+                                        </div>    
+                                        <div class="u-col-md-9 u-form-control u-combo"
+                                         u-meta='{"type":"u-text","data":"tree_bdatanew","field":"pk_mainorg_name","onlySelect":true}'>
+		                                        <div class="u-input-group u-has-feedback">
+		                                            <span class="u-form-control-feedback fa fa-list-ul"
+		                                                  data-bind="click:event.selectOrganization_tree_b_pk_mainorg"></span>
+		                                            <input class="u-form-control" readonly="readonly"/>
+		                                        </div>
+                                    	</div>                                    
+                                    </div>                            
+                                    </div>
+                                </div>
+                                <div class="u-msg-footer">
+                                    <button id="saveman" class="u-msg-ok u-button u-button-primary"
+                                            data-bind="click: event.saveManClick">保存
+                                        <span class="u-button-container"></span>
+                                    </button>
+                                    <button id="cancelman" class="u-msg-cancel u-button u-button-white"
+                                            data-bind="click: event.cancelManClick">取消
+                                        <span class="u-button-container"></span>
+                                    </button>
+                                    
+                                </div>
+                            </div>
+                            <div id="searchdiv" class="u-input-group u-has-feedback pull-right input_enter">
+                                <input type="text" class="u-form-control sm " id="search"
+                                       placeholder="请输入查询条件">
+                                <span class="u-form-control-feedback uf uf-zoom" id="searchBtn"
+                                      data-bind="click: event.searchClick"></span>
+                            </div>
+                        </div>
+
+
+                        <!--右表-->
+                        <div class="main-container padding-0 contacts-container">
+                            <div class="hr-table ">
+                                <div class="u-table b-table width-full"
+                                     u-meta='{"id":"gridtable","type":"grid","data":"tree_bdata","columnWidth":"150px"}'>
+                                     
+                                        <div options='{"field":"memo","dataType":"String","title":"备注","editType":"string"}'></div>
+										<div options='{"field":"pk_org_name","dataType":"String","title":"组织","editType":"event.addtree_b_selectOrganization","editOptions":{"validType":"string","required":true} }'></div>
+										<div options='{"field":"pk_mainorg_name","dataType":"String","title":"主组织","editType":"event.addtree_b_selectOrganization","editOptions":{"validType":"string","required":true} }'></div>
+                                </div>
+                            </div>
+                            <div id='pagination' class='pagination u-pagination pagination-sm'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 树展示的弹出层  -->
+<div id="tree-OrganizationFormytree_pk_org" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom" class="ztree"
+             u-meta='{"id":"OrganizationFormytreeTree_pk_org","data":"refOrganizationDa_pk_org","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select_OrganizationTomytree_pk_org" class="u-button u-button-primary pull-right">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click:event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>
+<!-- 树展示的弹出层  -->
+<div id="tree-OrganizationFormytree_pk_mainorg" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom" class="ztree"
+             u-meta='{"id":"OrganizationFormytreeTree_pk_mainorg","data":"refOrganizationDa_pk_mainorg","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select_OrganizationTomytree_pk_mainorg" class="u-button u-button-primary pull-right">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click:event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>
+
+<!-- 树展示的弹出层  -->
+<div id="tree-OrganizationFortree_b_pk_org" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom" class="ztree"
+             u-meta='{"id":"OrganizationFortree_bTree_pk_org","data":"refOrganizationDa_pk_org_tree_b","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select_OrganizationTotree_b_pk_org" class="u-button u-button-primary pull-right">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click:event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>
+<!-- 树展示的弹出层  -->
+<div id="tree-OrganizationFortree_b_pk_mainorg" tabindex="-1" role="dialog" style="display:none">
+    <div class="u-msg-title">
+        <h4 class="treetitle" id="tree-title"></h4>
+    </div>
+    <div class="u-msg-content">
+        <!--   <div class="ztree" id="commonTree"></div> -->
+        <div id="treecom" class="ztree"
+             u-meta='{"id":"OrganizationFortree_bTree_pk_mainorg","data":"refOrganizationDa_pk_mainorg_tree_b","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <button type="button" id="confirm_select_OrganizationTotree_b_pk_mainorg" class="u-button u-button-primary pull-right">确定</button>
+        <button type="button" class="u-button button-cancel pull-right margin-right-15" data-bind="click:event.mdClose">
+            取消
+        </button>
+    </div>
+
+</div>
